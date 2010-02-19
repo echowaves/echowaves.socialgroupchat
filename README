@@ -1,0 +1,11 @@
+New born EchoWaves
+
+generated with a command:
+ rails echowaves --edge --skip-activerecord --skip-testunit --skip-prototype
+
+Intended infrastructure:
+	ruby 1.9
+	--edge (rails 3)
+	--skip-activerecord (will use MongoMapper)
+	--skip-testunit (will use RSpec with Cucumber) 
+	--skip-prototype (will use JQuery)
