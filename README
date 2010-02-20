@@ -7,5 +7,6 @@ Intended infrastructure:
 	ruby 1.9
 	--edge (rails 3)
 	--skip-activerecord (will use MongoMapper)
-	--skip-testunit (will use RSpec with Cucumber) 
-	--skip-prototype (will use JQuery)
+	--skip-testunit (will use RSpec 2 with Cucumber)
+	--skip-prototype (will use JQuery 1.4)
+  web sockets (will use an alternative solution for non supported browsers)
