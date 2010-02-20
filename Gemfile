@@ -6,6 +6,7 @@ source 'http://gemcutter.org'
 gem "rails", :git => "git://github.com/rails/rails.git"
 
 ## Bundle the gems you use:
+gem "cucumber-rails", :git => "git://github.com/alg/cucumber-rails.git"
 
 ## Bundle gems used only in certain environments:
 group :test do
