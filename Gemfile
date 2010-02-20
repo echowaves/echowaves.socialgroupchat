@@ -7,6 +7,7 @@ gem "rails", :git => "git://github.com/rails/rails.git"
 
 ## Bundle the gems you use:
 gem "cucumber-rails", :git => "git://github.com/alg/cucumber-rails.git"
+gem "mongo_mapper", :git => 'http://github.com/merbjedi/mongomapper.git', :branch => 'rails3'
 
 ## Bundle gems used only in certain environments:
 group :test do
