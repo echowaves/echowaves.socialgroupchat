@@ -1,0 +1,14 @@
+defaults: &defaults
+  host: localhost
+#  slave_one:
+#    port: 27018
+#  slave_two:
+#    port: 27019
+
+development:
+  <<: *defaults
+  database: echowaves_dev
+
+production:
+  <<: *defaults
+  database: echowaves_prod
