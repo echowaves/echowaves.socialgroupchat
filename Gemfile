@@ -7,9 +7,9 @@ gem "rails", :git => "git://github.com/rails/rails.git"
 
 ## Bundle the gems you use:
 gem "cucumber-rails", :git => "git://github.com/alg/cucumber-rails.git"
-gem "mongoid"
+gem 'mongoid', git: 'git://github.com/durran/mongoid.git', branch: 'prerelease'
+gem 'devise', git: 'git://github.com/plataformatec/devise.git'
 gem "warden"
-gem "devise"
 gem "mongo_ext"
 
 ## Bundle gems used only in certain environments:
