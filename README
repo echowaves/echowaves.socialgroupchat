@@ -16,10 +16,10 @@ Development environment setup
   mkdir -p ~/.rvm/src/ && cd ~/.rvm/src && rm -rf ./rvm/ && git clone git://github.com/wayneeseguin/rvm.git && cd rvm && ./install
 
   # install ruby 1.9
-  rvm install 1.9.1
+  rvm install 1.9.2
 
   # user the installed ruby 1.9 with a dedicated gemset
-  rvm 1.9.1%rails3
+  rvm 1.9.2%rails3
 
   # download the gemset file
   curl -L http://gist.github.com/raw/309613/dbbef96d14111b050e606d5705b7eb2831bc560a/rails3.gems -o rails3.gems
