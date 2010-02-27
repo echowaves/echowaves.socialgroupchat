@@ -33,4 +33,6 @@ Development environment setup
 Installation of ruby gems
   # we are using some pre-released gems which works with Rails 3
   gem install devise --version=1.1.pre
+  gem install rspec-rails --pre
 
+  and last, do "bundle install" to install all the dependencies
