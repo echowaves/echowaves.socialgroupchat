@@ -36,3 +36,11 @@ Installation of ruby gems
   gem install rspec-rails --pre
 
   and last, do "bundle install" to install all the dependencies
+
+
+Know issues
+  there is an issue with the mongoid initializer loading the database.mongo.yml file
+  at this moment you should configure your databases in config/initializers/mongoid instead
+
+  cucumber don't work
+
