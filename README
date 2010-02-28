@@ -22,7 +22,7 @@ Development environment setup
   rvm 1.9.2%rails3
 
   # download the gemset file
-  curl -L http://gist.github.com/raw/309613/dbbef96d14111b050e606d5705b7eb2831bc560a/rails3.gems -o rails3.gems
+  curl -L http://gist.github.com/raw/309613/b25e1df5e6cba14a25b999ee1db4ba626bb62e0a/rails3.gems -o rails3.gems
 
   # import the gemset file into the current environment
   rvm gems import rails3.gems
