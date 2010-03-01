@@ -25,7 +25,7 @@ Development environment setup
   curl -L http://gist.github.com/raw/309613/b25e1df5e6cba14a25b999ee1db4ba626bb62e0a/rails3.gems -o rails3.gems
 
   # import the gemset file into the current environment
-  rvm gems import rails3.gems
+  rvm gemset import rails3.gems
 
   # check to see if you have rails 3.0.0 beta
   rails --version
