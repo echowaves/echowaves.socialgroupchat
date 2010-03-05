@@ -19,5 +19,5 @@ gem "mongo_ext"
 
 ## Bundle gems used only in certain environments:
 group :test do
-  gem "rspec-rails", ">= 2.0.0.a9"
+  gem "rspec-rails", ">= 2.0.0.beta.2"
 end
