@@ -16,27 +16,25 @@ Development environment setup
   mkdir -p ~/.rvm/src/ && cd ~/.rvm/src && rm -rf ./rvm/ && git clone git://github.com/wayneeseguin/rvm.git && cd rvm && ./install
 
   # install ruby 1.9
-  rvm install 1.9.2
+  rvm install 1.9.1
 
   # you might need to specify the readline folder rvm install 1.8.7 -C --enable-shared,--with-readline-dir=/usr/local
 
   # user the installed ruby 1.9 with a dedicated gemset
-  rvm 1.9.2%rails3
+  rvm 1.9.1%rails3
 
-  # download the gemset file
-  curl -L http://gist.github.com/raw/309613/b25e1df5e6cba14a25b999ee1db4ba626bb62e0a/rails3.gems -o rails3.gems
+  gem install tzinfo builder i18n memcache-client rack \
+    rake rack-test rack-mount erubis mail text-format \
+    thor bundler
 
-  # import the gemset file into the current environment
-  rvm gemset import rails3.gems
+  gem install rails --prerelease
+
 
   # check to see if you have rails 3.0.0 beta
   rails --version
 
 Installation of ruby gems
   # we are using some pre-released gems which works with Rails 3
-  gem install devise --version=1.1.pre
-  gem install rspec-rails --pre
-
   and last, do "bundle install" to install all the dependencies
 
 

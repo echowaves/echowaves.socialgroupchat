@@ -1,164 +1,164 @@
 --- 
-dependencies: 
-  rails: 
-    group: 
-    - :default
-    version: ">= 0"
-  mongo_ext: 
-    group: 
-    - :default
-    version: ">= 0"
-  rspec-rails: 
-    group: 
-    - :test
-    version: ">= 2.0.0.beta.2"
-  database_cleaner: 
-    group: 
-    - :default
-    version: ">= 0"
-  cucumber-rails: 
-    group: 
-    - :default
-    version: ">= 0"
-  mongoid: 
-    group: 
-    - :default
-    version: ">= 0"
-  capybara: 
-    group: 
-    - :default
-    version: ">= 0"
+hash: 8265776b8b81fc4c85f0d5417b6347ba1236276a
+sources: 
+- Git: 
+    git: git://github.com/durran/mongoid.git
+    branch: prerelease
+    uri: git://github.com/durran/mongoid.git
+    ref: 554c9fdc318e7e4c88084b1d515dd0a9d73af278
+- Git: 
+    git: git://github.com/aslakhellesoy/cucumber-rails.git
+    uri: git://github.com/aslakhellesoy/cucumber-rails.git
+    ref: 287222f44bb030919ed1d6d5ca142190b670bee1
+- Git: 
+    git: git://github.com/bmabey/database_cleaner.git
+    uri: git://github.com/bmabey/database_cleaner.git
+    ref: 4648d0b89ca84b8dbd1b76363a1771ee123de64a
+- Git: 
+    git: git://github.com/jnicklas/capybara.git
+    uri: git://github.com/jnicklas/capybara.git
+    ref: 8bad0b5e471935e24ff261f9e6f6895caa1773d2
+- Git: 
+    git: git://github.com/rails/rails.git
+    uri: git://github.com/rails/rails.git
+    ref: b7adec3563c18247db85ddae189c0b2fd65975a9
+- Rubygems: 
+    uri: http://gemcutter.org
 specs: 
-- nokogiri: 
-    version: 1.4.1
+- rake: 
+    version: 0.8.7
+- abstract: 
+    version: 1.0.0
 - builder: 
     version: 2.1.2
-- text-hyphen: 
-    version: 1.0.0
-- json_pure: 
-    version: 1.2.2
 - i18n: 
-    version: 0.3.5
-- bundler: 
-    version: 0.9.10
-- arel: 
-    version: 0.2.1
-- cucumber-rails: 
-    version: 0.3.0
-    source: 1
-- will_paginate: 
-    version: 3.0.pre
-- database_cleaner: 
-    version: 0.5.0
-    source: 2
-- rack-mount: 
-    version: 0.5.2
+    version: 0.3.6.pre
+- memcache-client: 
+    version: 1.8.1
+- tzinfo: 
+    version: 0.3.17
+- activesupport: 
+    version: 3.0.0.beta1
+    source: 4
 - activemodel: 
+    version: 3.0.0.beta1
+    source: 4
+- erubis: 
+    version: 2.6.5
+- rack: 
+    version: 1.1.0
+- rack-mount: 
+    version: 0.6.1
+- rack-test: 
+    version: 0.5.3
+- actionpack: 
     version: 3.0.0.beta1
     source: 4
 - mime-types: 
     version: "1.16"
 - mail: 
     version: 2.1.3
-- abstract: 
+- text-hyphen: 
     version: 1.0.0
-- erubis: 
-    version: 2.6.5
-- thor: 
-    version: 0.13.4
-- selenium-webdriver: 
-    version: 0.0.17
-- memcache-client: 
-    version: 1.7.8
-- rack: 
-    version: 1.1.0
-- rack-test: 
-    version: 0.5.3
-- actionpack: 
-    version: 3.0.0.beta1
-    source: 4
-- webrat: 
-    version: 0.7.0
-- rake: 
-    version: 0.8.7
-- ffi: 
-    version: 0.6.2
-- railties: 
-    version: 3.0.0.beta1
-    source: 4
-- diff-lcs: 
-    version: 1.1.2
-- polyglot: 
-    version: 0.3.0
-- treetop: 
-    version: 1.4.4
-- mongo_ext: 
-    version: 0.19.1
-- activerecord: 
-    version: 3.0.0.beta1
-    source: 4
 - text-format: 
     version: 1.0.0
 - actionmailer: 
     version: 3.0.0.beta1
     source: 4
-- mongo: 
-    version: 0.19.1
-- tzinfo: 
-    version: 0.3.16
-- activesupport: 
+- arel: 
+    version: 0.3.1
+- activerecord: 
     version: 3.0.0.beta1
     source: 4
-- rspec-core: 
-    version: 2.0.0.beta.2
-- rspec-expectations: 
-    version: 2.0.0.beta.2
-- rspec-mocks: 
-    version: 2.0.0.beta.2
-- rspec: 
-    version: 2.0.0.beta.2
+- activeresource: 
+    version: 3.0.0.beta1
+    source: 4
+- bundler: 
+    version: 0.9.12
+- culerity: 
+    version: 0.2.9
+- nokogiri: 
+    version: 1.4.1
+- ffi: 
+    version: 0.6.3
+- json_pure: 
+    version: 1.2.3
+- selenium-webdriver: 
+    version: 0.0.17
+- capybara: 
+    version: 0.3.5
+    source: 3
+- diff-lcs: 
+    version: 1.1.2
+- polyglot: 
+    version: 0.3.0
+- term-ansicolor: 
+    version: 1.0.5
+- treetop: 
+    version: 1.4.4
+- cucumber: 
+    version: 0.6.3
+- cucumber-rails: 
+    version: 0.3.0
+    source: 1
+- database_cleaner: 
+    version: 0.5.0
+    source: 2
+- mongo: 
+    version: 0.19.1
+- mongo_ext: 
+    version: 0.19.1
+- will_paginate: 
+    version: 3.0.pre
 - mongoid: 
     version: 2.0.0.pre
     source: 0
-- culerity: 
-    version: 0.2.9
-- capybara: 
-    version: 0.3.0
-    source: 3
-- rspec-rails: 
-    version: 2.0.0.beta.2
-- activeresource: 
+- thor: 
+    version: 0.13.4
+- railties: 
     version: 3.0.0.beta1
     source: 4
 - rails: 
     version: 3.0.0.beta1
     source: 4
-- term-ansicolor: 
-    version: 1.0.4
-- cucumber: 
-    version: 0.6.3
-hash: aeed568aebdb10ed9d646f2e3d83efb4ff9eb423
-sources: 
-- Git: 
-    uri: git://github.com/durran/mongoid.git
-    branch: prerelease
-    git: git://github.com/durran/mongoid.git
-    ref: 6e0e0c0f059fa710bbcefa2fcdbe737f3b6ac0c7
-- Git: 
-    uri: git://github.com/aslakhellesoy/cucumber-rails.git
-    git: git://github.com/aslakhellesoy/cucumber-rails.git
-    ref: f7a6004ce238e1b4a300ad625ab64dc46cd0153a
-- Git: 
-    uri: git://github.com/bmabey/database_cleaner.git
-    git: git://github.com/bmabey/database_cleaner.git
-    ref: f6ee1fc0bf1908281d10b1dc3e2c441258bef0df
-- Git: 
-    uri: git://github.com/jnicklas/capybara.git
-    git: git://github.com/jnicklas/capybara.git
-    ref: d298f4dc8c5030db1708fa3c10cc45afca2f9b23
-- Git: 
-    uri: git://github.com/rails/rails.git
-    git: git://github.com/rails/rails.git
-    ref: 8fc97d198ef31c1d7a4b9b849b96fc08a667fb02
-- Rubygems: 
-    uri: http://gemcutter.org
+- rspec-core: 
+    version: 2.0.0.beta.4
+- rspec-expectations: 
+    version: 2.0.0.beta.4
+- rspec-mocks: 
+    version: 2.0.0.beta.4
+- rspec: 
+    version: 2.0.0.beta.4
+- webrat: 
+    version: 0.7.0
+- rspec-rails: 
+    version: 2.0.0.beta.4
+dependencies: 
+  rails: 
+    version: ">= 0"
+    group: 
+    - :default
+  capybara: 
+    version: ">= 0"
+    group: 
+    - :default
+  database_cleaner: 
+    version: ">= 0"
+    group: 
+    - :default
+  cucumber-rails: 
+    version: ">= 0"
+    group: 
+    - :default
+  mongoid: 
+    version: ">= 0"
+    group: 
+    - :default
+  mongo_ext: 
+    version: ">= 0"
+    group: 
+    - :default
+  rspec-rails: 
+    version: ">= 2.0.0.beta.2"
+    group: 
+    - :test
