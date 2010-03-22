@@ -1,5 +1,5 @@
 --- 
-hash: 8265776b8b81fc4c85f0d5417b6347ba1236276a
+hash: 860bed0e44bcb9573b4658fdae0c7ded494290ea
 sources: 
 - Git: 
     git: git://github.com/durran/mongoid.git
@@ -9,7 +9,7 @@ sources:
 - Git: 
     git: git://github.com/aslakhellesoy/cucumber-rails.git
     uri: git://github.com/aslakhellesoy/cucumber-rails.git
-    ref: 287222f44bb030919ed1d6d5ca142190b670bee1
+    ref: 6d65e93bc9adc693f7c761300584ecc7619e2235
 - Git: 
     git: git://github.com/bmabey/database_cleaner.git
     uri: git://github.com/bmabey/database_cleaner.git
@@ -21,7 +21,7 @@ sources:
 - Git: 
     git: git://github.com/rails/rails.git
     uri: git://github.com/rails/rails.git
-    ref: b7adec3563c18247db85ddae189c0b2fd65975a9
+    ref: 16cad60fd3734740f30ddc770f60da8a5a8deb97
 - Rubygems: 
     uri: http://gemcutter.org
 specs: 
@@ -133,6 +133,8 @@ specs:
     version: 0.7.0
 - rspec-rails: 
     version: 2.0.0.beta.4
+- test-unit: 
+    version: 2.0.7
 dependencies: 
   rails: 
     version: ">= 0"
@@ -147,6 +149,10 @@ dependencies:
     group: 
     - :default
   cucumber-rails: 
+    version: ">= 0"
+    group: 
+    - :default
+  test-unit: 
     version: ">= 0"
     group: 
     - :default
