@@ -1,5 +1,5 @@
 --- 
-hash: a23c10bcb898951a4077984ea30d18023c378bc5
+hash: daeb6c31171a9141ffccd892a5ddf7a76d097b61
 sources: 
 - Git: 
     git: git://github.com/durran/mongoid.git
@@ -13,15 +13,15 @@ sources:
 - Git: 
     git: git://github.com/bmabey/database_cleaner.git
     uri: git://github.com/bmabey/database_cleaner.git
-    ref: 4648d0b89ca84b8dbd1b76363a1771ee123de64a
+    ref: ba886ee1ec3bfcacd08a2bfe6274a68dee76b996
 - Git: 
     git: git://github.com/jnicklas/capybara.git
     uri: git://github.com/jnicklas/capybara.git
-    ref: 8bad0b5e471935e24ff261f9e6f6895caa1773d2
+    ref: dbe7d8ad2251049088f0a4e24398abb7c8584b19
 - Git: 
     git: git://github.com/rails/rails.git
     uri: git://github.com/rails/rails.git
-    ref: 16cad60fd3734740f30ddc770f60da8a5a8deb97
+    ref: 1f93a46b435434b6d128493cd3480ca82e301766
 - Rubygems: 
     uri: http://gemcutter.org
 specs: 
@@ -104,6 +104,10 @@ specs:
 - database_cleaner: 
     version: 0.5.0
     source: 2
+- warden: 
+    version: 0.9.7
+- devise: 
+    version: 1.1.pre4
 - mongo: 
     version: 0.19.1
 - mongo_ext: 
@@ -162,6 +166,14 @@ dependencies:
     - :default
   mongo_ext: 
     version: ">= 0"
+    group: 
+    - :default
+  warden: 
+    version: = 0.9.7
+    group: 
+    - :default
+  devise: 
+    version: = 1.1.pre4
     group: 
     - :default
   rspec-rails: 
