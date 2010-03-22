@@ -1,14 +1,26 @@
 defaults: &defaults
   host: localhost
-#  slave_one:
-#    port: 27018
-#  slave_two:
-#    port: 27019
-
+  # slave_one:
+  #   port: 27018
+  # slave_two:
+  #   port: 27019
+ 
 development:
   <<: *defaults
-  database: echowaves_dev
-
+  database: echowaves_development
+ 
+test: &TEST
+  <<: *defaults
+  database: echowaves_test
+ 
+cucumber:
+  <<: *defaults
+  database: echowaves_cucumber
+    
 production:
   <<: *defaults
-  database: echowaves_prod
+  host: echowaves.com
+  port: 27021
+  username: 
+  password: 
+  database:
