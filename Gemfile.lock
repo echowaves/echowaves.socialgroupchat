@@ -1,15 +1,15 @@
 --- 
-hash: 32d096f8600aeb3dc8a0a4fb08f624842097266d
+hash: 35206f420f6745407b671a6dd5911aa4062092ac
 sources: 
 - Git: 
-    git: git://github.com/plataformatec/devise
-    uri: git://github.com/plataformatec/devise
-    ref: bd4b29c0fd06c06350beb6a7d252da42dafa0439
+    git: git://github.com/railsjedi/devise.git
+    uri: git://github.com/railsjedi/devise.git
+    ref: fd035b841b8e5639618d30a1488cf876428a39cc
 - Git: 
     git: git://github.com/durran/mongoid.git
     branch: prerelease
     uri: git://github.com/durran/mongoid.git
-    ref: 554c9fdc318e7e4c88084b1d515dd0a9d73af278
+    ref: 6e0e0c0f059fa710bbcefa2fcdbe737f3b6ac0c7
 - Git: 
     git: git://github.com/aslakhellesoy/cucumber-rails.git
     uri: git://github.com/aslakhellesoy/cucumber-rails.git
@@ -25,7 +25,7 @@ sources:
 - Git: 
     git: git://github.com/rails/rails.git
     uri: git://github.com/rails/rails.git
-    ref: b20a105ed0d52bf1490cf0fad97e0b3268ba63fd
+    ref: bc4cdae3d9b8667a24b24ad4bc17ee623e84feb9
 - Rubygems: 
     uri: http://gemcutter.org
 specs: 
