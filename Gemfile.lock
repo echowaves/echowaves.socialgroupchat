@@ -1,6 +1,10 @@
 --- 
-hash: daeb6c31171a9141ffccd892a5ddf7a76d097b61
+hash: 32d096f8600aeb3dc8a0a4fb08f624842097266d
 sources: 
+- Git: 
+    git: git://github.com/plataformatec/devise
+    uri: git://github.com/plataformatec/devise
+    ref: bd4b29c0fd06c06350beb6a7d252da42dafa0439
 - Git: 
     git: git://github.com/durran/mongoid.git
     branch: prerelease
@@ -17,11 +21,11 @@ sources:
 - Git: 
     git: git://github.com/jnicklas/capybara.git
     uri: git://github.com/jnicklas/capybara.git
-    ref: dbe7d8ad2251049088f0a4e24398abb7c8584b19
+    ref: 5661d67ae9458890ac458cb6bbb2ac45513fac2a
 - Git: 
     git: git://github.com/rails/rails.git
     uri: git://github.com/rails/rails.git
-    ref: 1f93a46b435434b6d128493cd3480ca82e301766
+    ref: b20a105ed0d52bf1490cf0fad97e0b3268ba63fd
 - Rubygems: 
     uri: http://gemcutter.org
 specs: 
@@ -32,17 +36,17 @@ specs:
 - builder: 
     version: 2.1.2
 - i18n: 
-    version: 0.3.6.pre
+    version: 0.3.6
 - memcache-client: 
     version: 1.8.1
 - tzinfo: 
     version: 0.3.17
 - activesupport: 
     version: 3.0.0.beta1
-    source: 4
+    source: 5
 - activemodel: 
     version: 3.0.0.beta1
-    source: 4
+    source: 5
 - erubis: 
     version: 2.6.5
 - rack: 
@@ -53,7 +57,7 @@ specs:
     version: 0.5.3
 - actionpack: 
     version: 3.0.0.beta1
-    source: 4
+    source: 5
 - mime-types: 
     version: "1.16"
 - mail: 
@@ -64,17 +68,17 @@ specs:
     version: 1.0.0
 - actionmailer: 
     version: 3.0.0.beta1
-    source: 4
+    source: 5
 - arel: 
-    version: 0.3.1
+    version: 0.3.3
 - activerecord: 
     version: 3.0.0.beta1
-    source: 4
+    source: 5
 - activeresource: 
     version: 3.0.0.beta1
-    source: 4
+    source: 5
 - bundler: 
-    version: 0.9.12
+    version: 0.9.13
 - culerity: 
     version: 0.2.9
 - nokogiri: 
@@ -87,7 +91,7 @@ specs:
     version: 0.0.17
 - capybara: 
     version: 0.3.5
-    source: 3
+    source: 4
 - diff-lcs: 
     version: 1.1.2
 - polyglot: 
@@ -100,14 +104,15 @@ specs:
     version: 0.6.3
 - cucumber-rails: 
     version: 0.3.0
-    source: 1
+    source: 2
 - database_cleaner: 
     version: 0.5.0
-    source: 2
+    source: 3
 - warden: 
     version: 0.9.7
 - devise: 
     version: 1.1.pre4
+    source: 0
 - mongo: 
     version: 0.19.1
 - mongo_ext: 
@@ -116,15 +121,15 @@ specs:
     version: 3.0.pre
 - mongoid: 
     version: 2.0.0.pre
-    source: 0
+    source: 1
 - thor: 
     version: 0.13.4
 - railties: 
     version: 3.0.0.beta1
-    source: 4
+    source: 5
 - rails: 
     version: 3.0.0.beta1
-    source: 4
+    source: 5
 - rspec-core: 
     version: 2.0.0.beta.4
 - rspec-expectations: 
@@ -168,12 +173,12 @@ dependencies:
     version: ">= 0"
     group: 
     - :default
-  warden: 
-    version: = 0.9.7
+  devise: 
+    version: ">= 0"
     group: 
     - :default
-  devise: 
-    version: = 1.1.pre4
+  warden: 
+    version: = 0.9.7
     group: 
     - :default
   rspec-rails: 

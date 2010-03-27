@@ -15,8 +15,8 @@ gem 'cucumber-rails',   :git => 'git://github.com/aslakhellesoy/cucumber-rails.g
 gem 'test-unit'
 gem 'mongoid', :git => 'git://github.com/durran/mongoid.git', :branch => 'prerelease'  
 gem "mongo_ext"
+gem "devise", :git => 'git://github.com/plataformatec/devise' # "1.1.pre4"
 gem "warden", "0.9.7" 
-gem "devise", "1.1.pre4"
 
 
 ## Bundle gems used only in certain environments:
