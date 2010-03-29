@@ -2,7 +2,11 @@
 # four configuration values can also be set straight in your models.
 Devise.setup do |config|
   # Configure the e-mail address which will be shown in DeviseMailer.
+<<<<<<< HEAD
   config.mailer_sender = "please-change-me@config-initializers-devise.com"
+=======
+  config.mailer_sender = "system@echowaves.com"
+>>>>>>> 3c31856f22359d1d10f7a2ed4523e53f6e67cc15
 
   # ==> Configuration for :authenticatable
   # Invoke `rake secret` and use the printed value to setup a pepper to generate
@@ -24,7 +28,11 @@ Devise.setup do |config|
   # authenticating an user, both parameters are required. Remember that those
   # parameters are used only when authenticating and not when retrieving from
   # session. If you need permissions, you should implement that in a before filter.
+<<<<<<< HEAD
   # config.authentication_keys = [ :email ]
+=======
+  config.authentication_keys = [ :user ]
+>>>>>>> 3c31856f22359d1d10f7a2ed4523e53f6e67cc15
 
   # The realm used in Http Basic Authentication
   # config.http_authentication_realm = "Application"
@@ -38,6 +46,16 @@ Devise.setup do |config|
   # The time the user will be remembered without asking for credentials again.
   # config.remember_for = 2.weeks
 
+<<<<<<< HEAD
+=======
+  # ==> Configuration for :validatable
+  # Range for password length
+  # config.password_length = 6..20
+
+  # Regex to use to validate the email address
+  # config.email_regex = /^([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})$/i
+
+>>>>>>> 3c31856f22359d1d10f7a2ed4523e53f6e67cc15
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
   # time the user will be asked for credentials again.
@@ -58,12 +76,21 @@ Devise.setup do |config|
 
   # ==> Configuration for :token_authenticatable
   # Defines name of the authentication token params key
+<<<<<<< HEAD
   # config.token_authentication_key = :auth_token
 
   # ==> General configuration
   # Load and configure the ORM. Supports :active_record (default), :mongo_mapper
   # (requires mongo_ext installed) and :data_mapper (experimental).
   require 'devise/orm/active_record'
+=======
+  config.token_authentication_key = :auth_token
+
+  # ==> General configuration
+  # Load and configure the ORM. Supports :active_record (default), :mongoid
+  # (requires mongo_ext installed) and :data_mapper (experimental).
+  require 'devise/orm/mongoid'
+>>>>>>> 3c31856f22359d1d10f7a2ed4523e53f6e67cc15
 
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "sessions/users/new". It's turned off by default because it's slower if you
