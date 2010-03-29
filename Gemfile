@@ -16,7 +16,7 @@ gem 'test-unit'
 gem 'mongoid', :git => 'git://github.com/durran/mongoid.git', :branch => 'prerelease'
 gem "mongo_ext"
 gem "devise", :git => 'git://github.com/railsjedi/devise.git' # "mongoid compatible"
-gem "warden", "0.9.7"
+gem "warden", "0.10.2"
 
 
 ## Bundle gems used only in certain environments:
