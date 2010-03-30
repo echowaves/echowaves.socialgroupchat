@@ -1,5 +1,6 @@
 Echowaves::Application.routes.draw do |map|
 
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -55,6 +56,6 @@ Echowaves::Application.routes.draw do |map|
 
   # resource :user, :only => [:edit, :new]
   resources :welcome, :only => [:index]
-  # devise_for :users
+  devise_for :users
   root :to => "welcome#index"
 end
