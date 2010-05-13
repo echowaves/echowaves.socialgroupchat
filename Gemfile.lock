@@ -4,28 +4,28 @@ sources:
 - Git: 
     git: git://github.com/railsjedi/devise.git
     uri: git://github.com/railsjedi/devise.git
-    ref: 866e40782dd54b8eff5ba45e53b15b1ecb4be1e5
+    ref: c3e2d8435113485eaa5266b915ab9d12e6eedf16
 - Git: 
     git: git://github.com/durran/mongoid.git
     branch: prerelease
     uri: git://github.com/durran/mongoid.git
-    ref: 554c9fdc318e7e4c88084b1d515dd0a9d73af278
+    ref: ff82c37afccb7865cf77512dfa67d210f420e9b0
 - Git: 
     git: git://github.com/aslakhellesoy/cucumber-rails.git
     uri: git://github.com/aslakhellesoy/cucumber-rails.git
-    ref: 6d65e93bc9adc693f7c761300584ecc7619e2235
+    ref: 3b2adf9a6bc62561826f3934d9a5e512bd5dab24
 - Git: 
     git: git://github.com/bmabey/database_cleaner.git
     uri: git://github.com/bmabey/database_cleaner.git
-    ref: ba886ee1ec3bfcacd08a2bfe6274a68dee76b996
+    ref: 7ea99d7209a291b94d1fe84edd5b1e8ec60544b1
 - Git: 
     git: git://github.com/jnicklas/capybara.git
     uri: git://github.com/jnicklas/capybara.git
-    ref: 5661d67ae9458890ac458cb6bbb2ac45513fac2a
+    ref: 8ff36c49338dd214bee611317cf1ef8cfce2016e
 - Git: 
     git: git://github.com/rails/rails.git
     uri: git://github.com/rails/rails.git
-    ref: de2b0147d04d5460e576cc21afbb062eb012ea7e
+    ref: 92160219a8bf17bd435252304319c094e56e5849
 - Rubygems: 
     uri: http://gemcutter.org
 specs: 
@@ -36,77 +36,83 @@ specs:
 - builder: 
     version: 2.1.2
 - i18n: 
-    version: 0.3.6
+    version: 0.4.0.beta1
 - memcache-client: 
-    version: 1.8.1
+    version: 1.8.3
 - tzinfo: 
-    version: 0.3.17
+    version: 0.3.20
 - activesupport: 
-    version: 3.0.0.beta1
+    version: 3.0.0.beta3
     source: 5
 - activemodel: 
-    version: 3.0.0.beta1
+    version: 3.0.0.beta3
     source: 5
 - erubis: 
     version: 2.6.5
 - rack: 
     version: 1.1.0
 - rack-mount: 
-    version: 0.6.1
+    version: 0.6.3
 - rack-test: 
     version: 0.5.3
 - actionpack: 
-    version: 3.0.0.beta1
+    version: 3.0.0.beta3
     source: 5
 - mime-types: 
     version: "1.16"
+- polyglot: 
+    version: 0.3.1
+- treetop: 
+    version: 1.4.5
 - mail: 
-    version: 2.1.5.2
+    version: 2.2.1
 - text-hyphen: 
     version: 1.0.0
 - text-format: 
     version: 1.0.0
 - actionmailer: 
-    version: 3.0.0.beta1
+    version: 3.0.0.beta3
     source: 5
 - arel: 
     version: 0.3.3
 - activerecord: 
-    version: 3.0.0.beta1
+    version: 3.0.0.beta3
     source: 5
 - activeresource: 
-    version: 3.0.0.beta1
+    version: 3.0.0.beta3
     source: 5
+- bson: 
+    version: 1.0.1
 - bundler: 
-    version: 0.9.13
+    version: 0.9.25
 - culerity: 
-    version: 0.2.9
+    version: 0.2.10
 - nokogiri: 
     version: 1.4.1
 - ffi: 
     version: 0.6.3
 - json_pure: 
-    version: 1.2.3
+    version: 1.4.3
 - selenium-webdriver: 
-    version: 0.0.17
+    version: 0.0.18
 - capybara: 
-    version: 0.3.5
+    version: 0.3.8
     source: 4
 - diff-lcs: 
     version: 1.1.2
-- polyglot: 
-    version: 0.3.0
+- trollop: 
+    version: 1.16.2
+- gherkin: 
+    version: 1.0.26
 - term-ansicolor: 
     version: 1.0.5
-- treetop: 
-    version: 1.4.4
 - cucumber: 
-    version: 0.6.3
+    version: 0.7.2
 - cucumber-rails: 
-    version: 0.3.0
+    version: 0.3.1
     source: 2
 - database_cleaner: 
-    version: 0.5.0
+    version: 0.5.2
     source: 3
 - warden: 
     version: 0.10.2
@@ -114,34 +120,34 @@ specs:
     version: 1.1.pre4
     source: 0
 - mongo: 
-    version: 0.19.1
+    version: 1.0.1
 - mongo_ext: 
-    version: 0.19.1
+    version: 0.19.3
 - will_paginate: 
     version: 3.0.pre
 - mongoid: 
-    version: 2.0.0.pre
+    version: 2.0.0
     source: 1
 - thor: 
-    version: 0.13.4
+    version: 0.13.6
 - railties: 
-    version: 3.0.0.beta1
+    version: 3.0.0.beta3
     source: 5
 - rails: 
-    version: 3.0.0.beta1
+    version: 3.0.0.beta3
     source: 5
 - rspec-core: 
-    version: 2.0.0.beta.4
+    version: 2.0.0.beta.8
 - rspec-expectations: 
-    version: 2.0.0.beta.4
+    version: 2.0.0.beta.8
 - rspec-mocks: 
-    version: 2.0.0.beta.4
+    version: 2.0.0.beta.8
 - rspec: 
-    version: 2.0.0.beta.4
+    version: 2.0.0.beta.8
 - webrat: 
-    version: 0.7.0
+    version: 0.7.1
 - rspec-rails: 
-    version: 2.0.0.beta.4
+    version: 2.0.0.beta.8
 - test-unit: 
     version: 2.0.7
 dependencies: 
