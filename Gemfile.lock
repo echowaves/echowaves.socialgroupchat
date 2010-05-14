@@ -1,0 +1,175 @@
+--- 
+dependencies: 
+  test-unit: 
+    group: 
+    - :default
+    version: ">= 0"
+  bson_ext: 
+    group: 
+    - :default
+    version: = 0.20.1
+  rails: 
+    group: 
+    - :default
+    version: = 3.0.0.beta3
+  rspec-rails: 
+    group: 
+    - :test
+    version: ">= 2.0.0.beta.8"
+  database_cleaner: 
+    group: 
+    - :default
+    version: ">= 0"
+  devise: 
+    group: 
+    - :default
+    version: ">= 0"
+  cucumber-rails: 
+    group: 
+    - :default
+    version: ">= 0"
+  mongoid: 
+    group: 
+    - :default
+    version: = 2.0.0.beta4
+  warden: 
+    group: 
+    - :default
+    version: = 0.10.3
+  capybara: 
+    group: 
+    - :default
+    version: ">= 0"
+specs: 
+- rake: 
+    version: 0.8.7
+- abstract: 
+    version: 1.0.0
+- builder: 
+    version: 2.1.2
+- i18n: 
+    version: 0.3.7
+- memcache-client: 
+    version: 1.8.3
+- tzinfo: 
+    version: 0.3.20
+- activesupport: 
+    version: 3.0.0.beta3
+- activemodel: 
+    version: 3.0.0.beta3
+- erubis: 
+    version: 2.6.5
+- rack: 
+    version: 1.1.0
+- rack-mount: 
+    version: 0.6.3
+- rack-test: 
+    version: 0.5.3
+- actionpack: 
+    version: 3.0.0.beta3
+- mime-types: 
+    version: "1.16"
+- polyglot: 
+    version: 0.3.1
+- treetop: 
+    version: 1.4.5
+- mail: 
+    version: 2.2.1
+- text-hyphen: 
+    version: 1.0.0
+- text-format: 
+    version: 1.0.0
+- actionmailer: 
+    version: 3.0.0.beta3
+- arel: 
+    version: 0.3.3
+- activerecord: 
+    version: 3.0.0.beta3
+- activeresource: 
+    version: 3.0.0.beta3
+- bson: 
+    version: 0.20.1
+- bson_ext: 
+    version: 0.20.1
+- bundler: 
+    version: 0.9.25
+- culerity: 
+    version: 0.2.10
+- nokogiri: 
+    version: 1.4.1
+- ffi: 
+    version: 0.6.3
+- json_pure: 
+    version: 1.4.3
+- selenium-webdriver: 
+    version: 0.0.18
+- capybara: 
+    version: 0.3.8
+    source: 3
+- diff-lcs: 
+    version: 1.1.2
+- trollop: 
+    version: 1.16.2
+- gherkin: 
+    version: 1.0.26
+- term-ansicolor: 
+    version: 1.0.5
+- cucumber: 
+    version: 0.7.2
+- cucumber-rails: 
+    version: 0.3.1
+    source: 1
+- database_cleaner: 
+    version: 0.5.2
+    source: 2
+- warden: 
+    version: 0.10.3
+- devise: 
+    version: 1.1.rc1
+    source: 0
+- mongo: 
+    version: 0.20.1
+- will_paginate: 
+    version: 3.0.pre
+- mongoid: 
+    version: 2.0.0.beta4
+- thor: 
+    version: 0.13.6
+- railties: 
+    version: 3.0.0.beta3
+- rails: 
+    version: 3.0.0.beta3
+- rspec-core: 
+    version: 2.0.0.beta.8
+- rspec-expectations: 
+    version: 2.0.0.beta.8
+- rspec-mocks: 
+    version: 2.0.0.beta.8
+- rspec: 
+    version: 2.0.0.beta.8
+- webrat: 
+    version: 0.7.1
+- rspec-rails: 
+    version: 2.0.0.beta.8
+- test-unit: 
+    version: 2.0.7
+hash: 319f99b0b09295ea62fee9ef04ad46d6e89e82b9
+sources: 
+- Git: 
+    uri: git://github.com/plataformatec/devise.git
+    git: git://github.com/plataformatec/devise.git
+    ref: 08c51798691289697f6dff0f59d999ea19d564f8
+- Git: 
+    uri: git://github.com/aslakhellesoy/cucumber-rails.git
+    git: git://github.com/aslakhellesoy/cucumber-rails.git
+    ref: 3b2adf9a6bc62561826f3934d9a5e512bd5dab24
+- Git: 
+    uri: git://github.com/bmabey/database_cleaner.git
+    git: git://github.com/bmabey/database_cleaner.git
+    ref: 7ea99d7209a291b94d1fe84edd5b1e8ec60544b1
+- Git: 
+    uri: git://github.com/jnicklas/capybara.git
+    git: git://github.com/jnicklas/capybara.git
+    ref: 8ff36c49338dd214bee611317cf1ef8cfce2016e
+- Rubygems: 
+    uri: http://gemcutter.org
