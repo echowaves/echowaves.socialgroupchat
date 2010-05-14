@@ -1,15 +1,10 @@
 --- 
-hash: 801f4a43d2bc78a67468fe7f94664330b4996c9e
+hash: 67eb078267137fa4dc21c8e89c9e6d4565af6686
 sources: 
 - Git: 
     git: git://github.com/railsjedi/devise.git
     uri: git://github.com/railsjedi/devise.git
     ref: c3e2d8435113485eaa5266b915ab9d12e6eedf16
-- Git: 
-    git: git://github.com/durran/mongoid.git
-    branch: prerelease
-    uri: git://github.com/durran/mongoid.git
-    ref: ff82c37afccb7865cf77512dfa67d210f420e9b0
 - Git: 
     git: git://github.com/aslakhellesoy/cucumber-rails.git
     uri: git://github.com/aslakhellesoy/cucumber-rails.git
@@ -72,9 +67,9 @@ specs:
 - activeresource: 
     version: 3.0.0.beta3
 - bson: 
-    version: 1.0.1
+    version: 0.20.1
 - bson_ext: 
-    version: 1.0.1
+    version: 0.20.1
 - bundler: 
     version: 0.9.25
 - culerity: 
@@ -89,7 +84,7 @@ specs:
     version: 0.0.18
 - capybara: 
     version: 0.3.8
-    source: 4
+    source: 3
 - diff-lcs: 
     version: 1.1.2
 - trollop: 
@@ -102,22 +97,21 @@ specs:
     version: 0.7.2
 - cucumber-rails: 
     version: 0.3.1
-    source: 2
+    source: 1
 - database_cleaner: 
     version: 0.5.2
-    source: 3
+    source: 2
 - warden: 
     version: 0.10.3
 - devise: 
     version: 1.1.pre4
     source: 0
 - mongo: 
-    version: 1.0.1
+    version: 0.20.1
 - will_paginate: 
     version: 3.0.pre
 - mongoid: 
-    version: 2.0.0
-    source: 1
+    version: 2.0.0.beta4
 - thor: 
     version: 0.13.6
 - railties: 
@@ -160,11 +154,11 @@ dependencies:
     group: 
     - :default
   mongoid: 
-    version: ">= 0"
+    version: = 2.0.0.beta4
     group: 
     - :default
   bson_ext: 
-    version: ">= 0"
+    version: = 0.20.1
     group: 
     - :default
   devise: 

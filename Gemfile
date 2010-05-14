@@ -13,8 +13,9 @@ gem 'capybara',         :git => 'git://github.com/jnicklas/capybara.git'
 gem 'database_cleaner', :git => 'git://github.com/bmabey/database_cleaner.git'
 gem 'cucumber-rails',   :git => 'git://github.com/aslakhellesoy/cucumber-rails.git'
 gem 'test-unit'
-gem 'mongoid', :git => 'git://github.com/durran/mongoid.git', :branch => 'prerelease'
-gem "bson_ext"
+gem "mongoid", "2.0.0.beta4"
+gem "bson_ext", "0.20.1"
+
 gem "devise", :git => 'git://github.com/railsjedi/devise.git' # "mongoid compatible"
 gem "warden", "0.10.3"
 
