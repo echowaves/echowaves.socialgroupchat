@@ -1,45 +1,29 @@
 --- 
-dependencies: 
-  test-unit: 
-    group: 
-    - :default
-    version: ">= 0"
-  bson_ext: 
-    group: 
-    - :default
-    version: ">= 0"
-  rails: 
-    group: 
-    - :default
-    version: ">= 0"
-  rspec-rails: 
-    group: 
-    - :test
-    version: ">= 2.0.0.beta.8"
-  database_cleaner: 
-    group: 
-    - :default
-    version: ">= 0"
-  devise: 
-    group: 
-    - :default
-    version: ">= 0"
-  cucumber-rails: 
-    group: 
-    - :default
-    version: ">= 0"
-  mongoid: 
-    group: 
-    - :default
-    version: ">= 0"
-  warden: 
-    group: 
-    - :default
-    version: = 0.10.3
-  capybara: 
-    group: 
-    - :default
-    version: ">= 0"
+hash: 801f4a43d2bc78a67468fe7f94664330b4996c9e
+sources: 
+- Git: 
+    git: git://github.com/railsjedi/devise.git
+    uri: git://github.com/railsjedi/devise.git
+    ref: c3e2d8435113485eaa5266b915ab9d12e6eedf16
+- Git: 
+    git: git://github.com/durran/mongoid.git
+    branch: prerelease
+    uri: git://github.com/durran/mongoid.git
+    ref: ff82c37afccb7865cf77512dfa67d210f420e9b0
+- Git: 
+    git: git://github.com/aslakhellesoy/cucumber-rails.git
+    uri: git://github.com/aslakhellesoy/cucumber-rails.git
+    ref: 3b2adf9a6bc62561826f3934d9a5e512bd5dab24
+- Git: 
+    git: git://github.com/bmabey/database_cleaner.git
+    uri: git://github.com/bmabey/database_cleaner.git
+    ref: 7ea99d7209a291b94d1fe84edd5b1e8ec60544b1
+- Git: 
+    git: git://github.com/jnicklas/capybara.git
+    uri: git://github.com/jnicklas/capybara.git
+    ref: 8ff36c49338dd214bee611317cf1ef8cfce2016e
+- Rubygems: 
+    uri: http://gemcutter.org
 specs: 
 - rake: 
     version: 0.8.7
@@ -48,17 +32,15 @@ specs:
 - builder: 
     version: 2.1.2
 - i18n: 
-    version: 0.4.0.beta1
+    version: 0.3.7
 - memcache-client: 
     version: 1.8.3
 - tzinfo: 
     version: 0.3.20
 - activesupport: 
     version: 3.0.0.beta3
-    source: 5
 - activemodel: 
     version: 3.0.0.beta3
-    source: 5
 - erubis: 
     version: 2.6.5
 - rack: 
@@ -69,7 +51,6 @@ specs:
     version: 0.5.3
 - actionpack: 
     version: 3.0.0.beta3
-    source: 5
 - mime-types: 
     version: "1.16"
 - polyglot: 
@@ -84,15 +65,12 @@ specs:
     version: 1.0.0
 - actionmailer: 
     version: 3.0.0.beta3
-    source: 5
 - arel: 
     version: 0.3.3
 - activerecord: 
     version: 3.0.0.beta3
-    source: 5
 - activeresource: 
     version: 3.0.0.beta3
-    source: 5
 - bson: 
     version: 1.0.1
 - bson_ext: 
@@ -144,10 +122,8 @@ specs:
     version: 0.13.6
 - railties: 
     version: 3.0.0.beta3
-    source: 5
 - rails: 
     version: 3.0.0.beta3
-    source: 5
 - rspec-core: 
     version: 2.0.0.beta.8
 - rspec-expectations: 
@@ -162,32 +138,44 @@ specs:
     version: 2.0.0.beta.8
 - test-unit: 
     version: 2.0.7
-hash: f3387725b98b7af9c58a65238179fc1a5fe92567
-sources: 
-- Git: 
-    uri: git://github.com/railsjedi/devise.git
-    git: git://github.com/railsjedi/devise.git
-    ref: c3e2d8435113485eaa5266b915ab9d12e6eedf16
-- Git: 
-    uri: git://github.com/durran/mongoid.git
-    branch: prerelease
-    git: git://github.com/durran/mongoid.git
-    ref: ff82c37afccb7865cf77512dfa67d210f420e9b0
-- Git: 
-    uri: git://github.com/aslakhellesoy/cucumber-rails.git
-    git: git://github.com/aslakhellesoy/cucumber-rails.git
-    ref: 3b2adf9a6bc62561826f3934d9a5e512bd5dab24
-- Git: 
-    uri: git://github.com/bmabey/database_cleaner.git
-    git: git://github.com/bmabey/database_cleaner.git
-    ref: 7ea99d7209a291b94d1fe84edd5b1e8ec60544b1
-- Git: 
-    uri: git://github.com/jnicklas/capybara.git
-    git: git://github.com/jnicklas/capybara.git
-    ref: 8ff36c49338dd214bee611317cf1ef8cfce2016e
-- Git: 
-    uri: git://github.com/rails/rails.git
-    git: git://github.com/rails/rails.git
-    ref: 4a8a62058a81ba9c0ec12adc772adbdca4c900a5
-- Rubygems: 
-    uri: http://gemcutter.org
+dependencies: 
+  rails: 
+    version: = 3.0.0.beta3
+    group: 
+    - :default
+  capybara: 
+    version: ">= 0"
+    group: 
+    - :default
+  database_cleaner: 
+    version: ">= 0"
+    group: 
+    - :default
+  cucumber-rails: 
+    version: ">= 0"
+    group: 
+    - :default
+  test-unit: 
+    version: ">= 0"
+    group: 
+    - :default
+  mongoid: 
+    version: ">= 0"
+    group: 
+    - :default
+  bson_ext: 
+    version: ">= 0"
+    group: 
+    - :default
+  devise: 
+    version: ">= 0"
+    group: 
+    - :default
+  warden: 
+    version: = 0.10.3
+    group: 
+    - :default
+  rspec-rails: 
+    version: ">= 2.0.0.beta.8"
+    group: 
+    - :test
