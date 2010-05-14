@@ -55,7 +55,7 @@ Echowaves::Application.routes.draw do |map|
   # See how all your routes lay out with "rake routes"
 
   # resource :user, :only => [:edit, :new]
-  resources :welcome, :only => [:index]
+  match 'welcome' => 'welcome#index', :as => :welcome
   devise_for :users
   root :to => "welcome#index"
 end
