@@ -16,7 +16,7 @@ gem 'test-unit'
 gem "mongoid", "2.0.0.beta4"
 gem "bson_ext", "0.20.1"
 
-gem "devise", :git => 'git://github.com/railsjedi/devise.git' # "mongoid compatible"
+gem "devise", :git => 'git://github.com/plataformatec/devise.git'
 gem "warden", "0.10.3"
 
 
