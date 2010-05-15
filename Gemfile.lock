@@ -1,22 +1,10 @@
 --- 
-hash: 319f99b0b09295ea62fee9ef04ad46d6e89e82b9
+hash: 9e929d42ac2685bcd3231ec72a5b6c275e6291af
 sources: 
 - Git: 
     git: git://github.com/plataformatec/devise.git
     uri: git://github.com/plataformatec/devise.git
     ref: 08c51798691289697f6dff0f59d999ea19d564f8
-- Git: 
-    git: git://github.com/aslakhellesoy/cucumber-rails.git
-    uri: git://github.com/aslakhellesoy/cucumber-rails.git
-    ref: 3b2adf9a6bc62561826f3934d9a5e512bd5dab24
-- Git: 
-    git: git://github.com/bmabey/database_cleaner.git
-    uri: git://github.com/bmabey/database_cleaner.git
-    ref: 7ea99d7209a291b94d1fe84edd5b1e8ec60544b1
-- Git: 
-    git: git://github.com/jnicklas/capybara.git
-    uri: git://github.com/jnicklas/capybara.git
-    ref: 8ff36c49338dd214bee611317cf1ef8cfce2016e
 - Rubygems: 
     uri: http://gemcutter.org
 specs: 
@@ -84,7 +72,8 @@ specs:
     version: 0.0.18
 - capybara: 
     version: 0.3.8
-    source: 3
+- configuration: 
+    version: 1.1.0
 - diff-lcs: 
     version: 1.1.2
 - trollop: 
@@ -97,15 +86,15 @@ specs:
     version: 0.7.2
 - cucumber-rails: 
     version: 0.3.1
-    source: 1
 - database_cleaner: 
     version: 0.5.2
-    source: 2
 - warden: 
     version: 0.10.3
 - devise: 
     version: 1.1.rc1
     source: 0
+- launchy: 
+    version: 0.3.5
 - mongo: 
     version: 0.20.1
 - will_paginate: 
@@ -130,27 +119,11 @@ specs:
     version: 0.7.1
 - rspec-rails: 
     version: 2.0.0.beta.8
-- test-unit: 
-    version: 2.0.7
+- spork: 
+    version: 0.8.3
 dependencies: 
   rails: 
     version: = 3.0.0.beta3
-    group: 
-    - :default
-  capybara: 
-    version: ">= 0"
-    group: 
-    - :default
-  database_cleaner: 
-    version: ">= 0"
-    group: 
-    - :default
-  cucumber-rails: 
-    version: ">= 0"
-    group: 
-    - :default
-  test-unit: 
-    version: ">= 0"
     group: 
     - :default
   mongoid: 
@@ -169,7 +142,31 @@ dependencies:
     version: = 0.10.3
     group: 
     - :default
+  capybara: 
+    version: ">= 0"
+    group: 
+    - :test
+  database_cleaner: 
+    version: ">= 0"
+    group: 
+    - :test
+  cucumber-rails: 
+    version: ">= 0"
+    group: 
+    - :test
+  cucumber: 
+    version: = 0.7.2
+    group: 
+    - :test
   rspec-rails: 
-    version: ">= 2.0.0.beta.8"
+    version: = 2.0.0.beta.8
+    group: 
+    - :test
+  spork: 
+    version: ">= 0"
+    group: 
+    - :test
+  launchy: 
+    version: ">= 0"
     group: 
     - :test

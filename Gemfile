@@ -9,10 +9,7 @@ gem "rails", "3.0.0.beta3"
 ## Bundle the gems you use:
 
 # cuke and friends for rails 3
-gem 'capybara',         :git => 'git://github.com/jnicklas/capybara.git'
-gem 'database_cleaner', :git => 'git://github.com/bmabey/database_cleaner.git'
-gem 'cucumber-rails',   :git => 'git://github.com/aslakhellesoy/cucumber-rails.git'
-gem 'test-unit'
+
 gem "mongoid", "2.0.0.beta4"
 gem "bson_ext", "0.20.1"
 
@@ -22,5 +19,11 @@ gem "warden", "0.10.3"
 
 ## Bundle gems used only in certain environments:
 group :test do
-  gem "rspec-rails", ">= 2.0.0.beta.8"
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'cucumber-rails'
+  gem 'cucumber', '0.7.2'
+  gem 'rspec-rails', '2.0.0.beta.8'
+  gem 'spork'
+  gem 'launchy'
 end
