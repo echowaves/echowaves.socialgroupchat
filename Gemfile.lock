@@ -1,45 +1,24 @@
 --- 
-dependencies: 
-  test-unit: 
-    group: 
-    - :default
-    version: ">= 0"
-  bson_ext: 
-    group: 
-    - :default
-    version: = 0.20.1
-  rails: 
-    group: 
-    - :default
-    version: = 3.0.0.beta3
-  rspec-rails: 
-    group: 
-    - :test
-    version: ">= 2.0.0.beta.8"
-  database_cleaner: 
-    group: 
-    - :default
-    version: ">= 0"
-  devise: 
-    group: 
-    - :default
-    version: ">= 0"
-  cucumber-rails: 
-    group: 
-    - :default
-    version: ">= 0"
-  mongoid: 
-    group: 
-    - :default
-    version: = 2.0.0.beta4
-  warden: 
-    group: 
-    - :default
-    version: = 0.10.3
-  capybara: 
-    group: 
-    - :default
-    version: ">= 0"
+hash: 319f99b0b09295ea62fee9ef04ad46d6e89e82b9
+sources: 
+- Git: 
+    git: git://github.com/plataformatec/devise.git
+    uri: git://github.com/plataformatec/devise.git
+    ref: 08c51798691289697f6dff0f59d999ea19d564f8
+- Git: 
+    git: git://github.com/aslakhellesoy/cucumber-rails.git
+    uri: git://github.com/aslakhellesoy/cucumber-rails.git
+    ref: 3b2adf9a6bc62561826f3934d9a5e512bd5dab24
+- Git: 
+    git: git://github.com/bmabey/database_cleaner.git
+    uri: git://github.com/bmabey/database_cleaner.git
+    ref: 7ea99d7209a291b94d1fe84edd5b1e8ec60544b1
+- Git: 
+    git: git://github.com/jnicklas/capybara.git
+    uri: git://github.com/jnicklas/capybara.git
+    ref: 8ff36c49338dd214bee611317cf1ef8cfce2016e
+- Rubygems: 
+    uri: http://gemcutter.org
 specs: 
 - rake: 
     version: 0.8.7
@@ -153,23 +132,44 @@ specs:
     version: 2.0.0.beta.8
 - test-unit: 
     version: 2.0.7
-hash: 319f99b0b09295ea62fee9ef04ad46d6e89e82b9
-sources: 
-- Git: 
-    uri: git://github.com/plataformatec/devise.git
-    git: git://github.com/plataformatec/devise.git
-    ref: 08c51798691289697f6dff0f59d999ea19d564f8
-- Git: 
-    uri: git://github.com/aslakhellesoy/cucumber-rails.git
-    git: git://github.com/aslakhellesoy/cucumber-rails.git
-    ref: 3b2adf9a6bc62561826f3934d9a5e512bd5dab24
-- Git: 
-    uri: git://github.com/bmabey/database_cleaner.git
-    git: git://github.com/bmabey/database_cleaner.git
-    ref: 7ea99d7209a291b94d1fe84edd5b1e8ec60544b1
-- Git: 
-    uri: git://github.com/jnicklas/capybara.git
-    git: git://github.com/jnicklas/capybara.git
-    ref: 8ff36c49338dd214bee611317cf1ef8cfce2016e
-- Rubygems: 
-    uri: http://gemcutter.org
+dependencies: 
+  rails: 
+    version: = 3.0.0.beta3
+    group: 
+    - :default
+  capybara: 
+    version: ">= 0"
+    group: 
+    - :default
+  database_cleaner: 
+    version: ">= 0"
+    group: 
+    - :default
+  cucumber-rails: 
+    version: ">= 0"
+    group: 
+    - :default
+  test-unit: 
+    version: ">= 0"
+    group: 
+    - :default
+  mongoid: 
+    version: = 2.0.0.beta4
+    group: 
+    - :default
+  bson_ext: 
+    version: = 0.20.1
+    group: 
+    - :default
+  devise: 
+    version: ">= 0"
+    group: 
+    - :default
+  warden: 
+    version: = 0.10.3
+    group: 
+    - :default
+  rspec-rails: 
+    version: ">= 2.0.0.beta.8"
+    group: 
+    - :test
