@@ -1,10 +1,14 @@
 --- 
-hash: 9e929d42ac2685bcd3231ec72a5b6c275e6291af
+hash: 47cbe06bb4be19b772895d96b31bc6fb2284c2d9
 sources: 
 - Git: 
     git: git://github.com/plataformatec/devise.git
     uri: git://github.com/plataformatec/devise.git
-    ref: 08c51798691289697f6dff0f59d999ea19d564f8
+    ref: bff64a6291a3144047c6a642e76d15a53d402702
+- Git: 
+    git: git://github.com/rails/rails.git
+    uri: git://github.com/rails/rails.git
+    ref: b753b4a076d7067efccbd1ad384829f77e62a064
 - Rubygems: 
     uri: http://gemcutter.org
 specs: 
@@ -15,15 +19,17 @@ specs:
 - builder: 
     version: 2.1.2
 - i18n: 
-    version: 0.3.7
+    version: 0.4.0.beta1
 - memcache-client: 
     version: 1.8.3
 - tzinfo: 
     version: 0.3.20
 - activesupport: 
     version: 3.0.0.beta3
+    source: 1
 - activemodel: 
     version: 3.0.0.beta3
+    source: 1
 - erubis: 
     version: 2.6.5
 - rack: 
@@ -34,6 +40,7 @@ specs:
     version: 0.5.3
 - actionpack: 
     version: 3.0.0.beta3
+    source: 1
 - mime-types: 
     version: "1.16"
 - polyglot: 
@@ -48,12 +55,15 @@ specs:
     version: 1.0.0
 - actionmailer: 
     version: 3.0.0.beta3
+    source: 1
 - arel: 
     version: 0.3.3
 - activerecord: 
     version: 3.0.0.beta3
+    source: 1
 - activeresource: 
     version: 3.0.0.beta3
+    source: 1
 - bson: 
     version: 0.20.1
 - bson_ext: 
@@ -79,7 +89,7 @@ specs:
 - trollop: 
     version: 1.16.2
 - gherkin: 
-    version: 1.0.26
+    version: 1.0.29
 - term-ansicolor: 
     version: 1.0.5
 - cucumber: 
@@ -95,6 +105,10 @@ specs:
     source: 0
 - launchy: 
     version: 0.3.5
+- machinist: 
+    version: 1.0.6
+- machinist_mongo: 
+    version: 1.1.0
 - mongo: 
     version: 0.20.1
 - will_paginate: 
@@ -105,8 +119,10 @@ specs:
     version: 0.13.6
 - railties: 
     version: 3.0.0.beta3
+    source: 1
 - rails: 
     version: 3.0.0.beta3
+    source: 1
 - rspec-core: 
     version: 2.0.0.beta.8
 - rspec-expectations: 
@@ -123,7 +139,7 @@ specs:
     version: 0.8.3
 dependencies: 
   rails: 
-    version: = 3.0.0.beta3
+    version: ">= 0"
     group: 
     - :default
   mongoid: 
@@ -167,6 +183,10 @@ dependencies:
     group: 
     - :test
   launchy: 
+    version: ">= 0"
+    group: 
+    - :test
+  machinist_mongo: 
     version: ">= 0"
     group: 
     - :test

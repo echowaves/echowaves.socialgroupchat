@@ -3,8 +3,8 @@ source 'http://gemcutter.org'
 
 
 ## Bundle edge rails:
-# gem "rails", :git => "git://github.com/rails/rails.git"
-gem "rails", "3.0.0.beta3"
+gem "rails", :git => "git://github.com/rails/rails.git"
+#gem "rails", "3.0.0.beta3"
 
 ## Bundle the gems you use:
 
@@ -26,4 +26,5 @@ group :test do
   gem 'rspec-rails', '2.0.0.beta.8'
   gem 'spork'
   gem 'launchy'
+  gem 'machinist_mongo'  
 end
