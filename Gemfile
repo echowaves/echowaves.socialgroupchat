@@ -27,4 +27,5 @@ group :test do
   gem 'spork'
   gem 'launchy'
   gem 'machinist_mongo'  
+  gem 'faker'
 end
