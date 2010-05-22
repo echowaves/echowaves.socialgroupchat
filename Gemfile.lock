@@ -1,14 +1,14 @@
 --- 
-hash: 2ce76a997177c04b0ec2eb3626a06f3969d78a53
+hash: f5e4fb8d410776b1f8c31f96c62d8f6407d66de6
 sources: 
 - Git: 
     git: git://github.com/plataformatec/devise.git
     uri: git://github.com/plataformatec/devise.git
-    ref: 0150fddb4c062050a483b855a138ad3fa816db38
+    ref: 7c82d3ee6775629158dc36f3acfdd499f5c2c73c
 - Git: 
     git: git://github.com/rails/rails.git
     uri: git://github.com/rails/rails.git
-    ref: c0db7840fe6dfd9aef8120b24e05f7e6f400d382
+    ref: f3abc8ac36055afed9fcc902c33ee146e066d17a
 - Rubygems: 
     uri: http://gemcutter.org
 specs: 
@@ -93,7 +93,7 @@ specs:
 - term-ansicolor: 
     version: 1.0.5
 - cucumber: 
-    version: 0.7.2
+    version: 0.7.3
 - cucumber-rails: 
     version: 0.3.1
 - database_cleaner: 
@@ -173,7 +173,7 @@ dependencies:
     group: 
     - :test
   cucumber: 
-    version: = 0.7.2
+    version: = 0.7.3
     group: 
     - :test
   rspec-rails: 
