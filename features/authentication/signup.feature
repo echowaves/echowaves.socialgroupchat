@@ -26,3 +26,13 @@ Feature: Signing Up
     And I should see "Password doesn't match confirmation"
     And I should see "Password is too short (minimum is 6 characters)"
     And I should see "Username is already taken"
+
+  Scenario: Attempt Registration with non validating email 
+    Given I am on the sign up page
+    When I fill in "user_username" with "tester"
+	# this email does not correspond to email format
+    And I fill in "user_email" with "test@example" 
+    And I fill in "user_password" with "test123"
+    And I fill in "user_password_confirmation" with "test123"
+    And I press "user_submit"
+    Then I should see "Email is invalid"
