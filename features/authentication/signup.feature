@@ -13,7 +13,7 @@ Feature: Signing Up
     Then I should see "confirmation was sent to your e-mail"
 
   Scenario: Attempt Registration with dup username, and/or email, short password, and non matching confirmation password 
-    Given test user exists
+    Given I have pending confirmation
 	#
     Given I am on the sign up page
     When I fill in "user_username" with "tester"
