@@ -5,8 +5,7 @@ Sham.body  { Faker::Lorem.paragraph }
 
 
 User.blueprint do
-  password {'password'}
-  password_confirmation {'password'}
-  name {Sham.name}
-  email {Sham.email}
+  username {Sham.name}
+  password {'test123'}
+  email {Sham.email}  
 end
