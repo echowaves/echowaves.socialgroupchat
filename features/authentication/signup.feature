@@ -36,3 +36,7 @@ Feature: Signing Up
     And I fill in "user_password_confirmation" with "test123"
     And I press "user_submit"
     Then I should see "Email is invalid"
+
+
+  Scenario: Resend confirmation
+      

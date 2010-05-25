@@ -16,6 +16,8 @@ module NavigationHelpers
       new_user_session_path
     when /sign out link/
       destroy_user_session_path
+    when /forgotten password page/
+      new_user_password_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

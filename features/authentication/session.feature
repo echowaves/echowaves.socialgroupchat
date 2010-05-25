@@ -13,10 +13,10 @@ Feature: Session handling
     And I press "user_submit"
     Then I should <action>
     Examples:
-      |         username      |  password     |              action             |
-      |         "tester"      |  "test123"    | see "Signed in successfully"    |
-      |         "tester1"     |  "test1234"   | see "Invalid email or password" |
-      |         "tester"      |  "test12345"  | see "Invalid email or password" |
+      |   username  |  password     |              action             |
+      |   "tester"  |  "test123"    | see "Signed in successfully"    |
+      |   "tester1" |  "test1234"   | see "Invalid email or password" |
+      |   "tester"  |  "test12345"  | see "Invalid email or password" |
 
   Scenario: Logging out
     Given I am logged in
