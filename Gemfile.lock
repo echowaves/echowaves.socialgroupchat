@@ -4,11 +4,11 @@ sources:
 - Git: 
     git: git://github.com/plataformatec/devise.git
     uri: git://github.com/plataformatec/devise.git
-    ref: 7c82d3ee6775629158dc36f3acfdd499f5c2c73c
+    ref: 28b10e397f87e7ed67246d0564e623e8332d68fb
 - Git: 
     git: git://github.com/rails/rails.git
     uri: git://github.com/rails/rails.git
-    ref: f3abc8ac36055afed9fcc902c33ee146e066d17a
+    ref: b5f9c8822dce55b33a4a6ab929f5b86b055a0284
 - Rubygems: 
     uri: http://gemcutter.org
 specs: 
@@ -73,7 +73,7 @@ specs:
 - culerity: 
     version: 0.2.10
 - nokogiri: 
-    version: 1.4.1
+    version: 1.4.2
 - ffi: 
     version: 0.6.3
 - json_pure: 
