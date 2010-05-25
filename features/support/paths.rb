@@ -18,6 +18,8 @@ module NavigationHelpers
       destroy_user_session_path
     when /forgotten password page/
       new_user_password_path
+    when /resend confirmation page/
+      new_user_confirmation_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
