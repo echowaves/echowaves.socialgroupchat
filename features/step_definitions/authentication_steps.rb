@@ -14,7 +14,6 @@ Given /^that a confirmed user exists$/ do
   visit destroy_user_session_path
 end
 
-
 When /^I confirm the account$/ do
   visit user_confirmation_path(:confirmation_token => @user.confirmation_token)
   page.should have_content("Your account was successfully confirmed")
@@ -25,7 +24,6 @@ Then /^I should find that I am confirmed$/ do
   @user.confirmed?.should be_true
 end
  
- 
 Given /^I am logged in$/ do
   visit new_user_session_path
   fill_in('user_username', :with => @user.username)
@@ -33,8 +31,6 @@ Given /^I am logged in$/ do
   click_button('Sign in')
   page.should have_content('Signed in successfully')
 end
-
-
 
 Given /^that I have reset my password$/ do
   @user.send_reset_password_instructions
@@ -53,3 +49,9 @@ Then /^I expect to be able to reset my password$/ do
   page.should have_content('Your password was changed successfully')
 end
 
+Given /^that I register and login as "([^\"]*)" with password "([^\"]*)"$/ do |login, password|
+  @user = User.make(:username => "#{login}", :email => "#{login}@echowaves.com", :password => "#{password}")
+  visit user_confirmation_path(:confirmation_token => @user.confirmation_token)
+  page.should have_content("Your account was successfully confirmed")
+  @user.confirm!
+end
