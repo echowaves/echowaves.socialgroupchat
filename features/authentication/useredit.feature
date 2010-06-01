@@ -36,4 +36,5 @@ Feature: Signing Up
     And I should see "Current password can't be blank"
 
 
+  @wip
   Scenario: Cancel my account
