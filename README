@@ -37,5 +37,5 @@ Installation of ruby gems
 
 
 Know issues
-  cucumber don't work
+  rake faill -- Please try installing the latest version of bundler, then gem cleanup bundler and then bundle install
 
