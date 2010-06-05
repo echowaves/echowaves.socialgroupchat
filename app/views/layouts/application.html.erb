@@ -3,13 +3,15 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<%#= csrf_meta_tag %>
+  <%= javascript_include_tag "jquery-1.4.2.min" %>
+  <%= javascript_include_tag "rails" %>
+	<%= csrf_meta_tag %>
 </head>
 
 <body>
-	
+
 	<%= render :partial => 'shared/header' %>
-	
+
 	<p class="notice"><%= notice %></p>
 	<p class="alert"><%= alert %></p>
 
