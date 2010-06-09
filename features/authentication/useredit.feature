@@ -35,6 +35,9 @@ Feature: Signing Up
     Then I should see "1 error prohibited this user from being saved"
     And I should see "Current password can't be blank"
 
-
-  @wip
+  @selenium
   Scenario: Cancel my account
+	When I go to the edit user link
+	And I confirm a js popup on the next step
+	And I follow "Cancel my account"
+	Then I should not be able to login as "testuser1" with password "testing1234" 

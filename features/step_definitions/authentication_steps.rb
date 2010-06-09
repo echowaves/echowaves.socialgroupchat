@@ -55,3 +55,13 @@ Given /^that I register and login as "([^\"]*)" with password "([^\"]*)"$/ do |l
   page.should have_content("Your account was successfully confirmed")
   @user.confirm!
 end
+
+Then /^I should not be able to login as "([^\"]*)" with password "([^\"]*)"$/ do |username, password|
+  visit new_user_session_path
+  fill_in('user_username', :with => username)
+  fill_in('user_password', :with => password)
+  click_button('Sign in')
+  page.should have_content('Invalid email or password.')
+  
+end
+
