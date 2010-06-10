@@ -1,5 +1,5 @@
 --- 
-hash: 829858f2170112f12ff440d1d75e70b791604243
+hash: 777e62370d3754af027d88c9355ed512b7c4e01f
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org
@@ -79,9 +79,9 @@ specs:
 - term-ansicolor: 
     version: 1.0.5
 - cucumber: 
-    version: 0.7.3
+    version: 0.8.0
 - cucumber-rails: 
-    version: 0.3.1
+    version: 0.3.2
 - database_cleaner: 
     version: 0.5.2
 - warden: 
@@ -109,17 +109,17 @@ specs:
 - rails: 
     version: 3.0.0.beta3
 - rspec-core: 
-    version: 2.0.0.beta.8
+    version: 2.0.0.beta.11
 - rspec-expectations: 
-    version: 2.0.0.beta.8
+    version: 2.0.0.beta.11
 - rspec-mocks: 
-    version: 2.0.0.beta.8
+    version: 2.0.0.beta.11
 - rspec: 
-    version: 2.0.0.beta.8
+    version: 2.0.0.beta.11
 - webrat: 
     version: 0.7.1
 - rspec-rails: 
-    version: 2.0.0.beta.8
+    version: 2.0.0.beta.11
 - spork: 
     version: 0.8.3
 dependencies: 
@@ -156,11 +156,11 @@ dependencies:
     group: 
     - :test
   cucumber: 
-    version: = 0.7.3
+    version: = 0.8.0
     group: 
     - :test
   rspec-rails: 
-    version: = 2.0.0.beta.8
+    version: = 2.0.0.beta.11
     group: 
     - :test
   spork: 
