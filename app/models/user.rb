@@ -9,8 +9,8 @@ class User
   validates_uniqueness_of :username
 
 
-  field :username #  t.string,  :null               => false
-  field :email #  t.string,  :null               => false
+  field :username, :unique => true, :background => true #  t.string,  :null               => false
+  field :email, :unique => true, :background => true #  t.string,  :null               => false
   field :encrypted_password # t.string, :limit   => 40, :null => false
   field :password_salt # t.string, :null         => false
   field :confirmation_token # t.string, :limit   => 20
