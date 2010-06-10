@@ -1,5 +1,4 @@
 class Convo
   include Mongoid::Document
-  field :title
-  embeds_one :user
+  field :title, :type => String
 end

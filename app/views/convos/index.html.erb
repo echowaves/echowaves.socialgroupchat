@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Title</th>
     <th></th>
     <th></th>
     <th></th>
@@ -9,6 +10,7 @@
 
 <% @convos.each do |convo| %>
   <tr>
+    <td><%= convo.title %></td>
     <td><%= link_to 'Show', convo %></td>
     <td><%= link_to 'Edit', edit_convo_path(convo) %></td>
     <td><%= link_to 'Destroy', convo, :confirm => 'Are you sure?', :method => :delete %></td>

@@ -1,16 +1,19 @@
 <%= form_for(@convo) do |f| %>
   <% if @convo.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@convo.errors.count, "error") %> prohibited this convo from being saved:</h2>
-
-      <ul>
-      <% @convo.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@convo.errors.count, "error") %> prohibited this convo from being saved:</h2>
+    <ul>
+    <% @convo.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
