@@ -1,14 +1,6 @@
 --- 
-hash: f5e4fb8d410776b1f8c31f96c62d8f6407d66de6
+hash: 829858f2170112f12ff440d1d75e70b791604243
 sources: 
-- Git: 
-    git: git://github.com/plataformatec/devise.git
-    uri: git://github.com/plataformatec/devise.git
-    ref: 28b10e397f87e7ed67246d0564e623e8332d68fb
-- Git: 
-    git: git://github.com/rails/rails.git
-    uri: git://github.com/rails/rails.git
-    ref: b5f9c8822dce55b33a4a6ab929f5b86b055a0284
 - Rubygems: 
     uri: http://gemcutter.org
 specs: 
@@ -19,17 +11,15 @@ specs:
 - builder: 
     version: 2.1.2
 - i18n: 
-    version: 0.4.0.beta1
+    version: 0.3.7
 - memcache-client: 
     version: 1.8.3
 - tzinfo: 
-    version: 0.3.20
+    version: 0.3.22
 - activesupport: 
     version: 3.0.0.beta3
-    source: 1
 - activemodel: 
     version: 3.0.0.beta3
-    source: 1
 - erubis: 
     version: 2.6.5
 - rack: 
@@ -37,39 +27,35 @@ specs:
 - rack-mount: 
     version: 0.6.3
 - rack-test: 
-    version: 0.5.3
+    version: 0.5.4
 - actionpack: 
     version: 3.0.0.beta3
-    source: 1
 - mime-types: 
     version: "1.16"
 - polyglot: 
     version: 0.3.1
 - treetop: 
-    version: 1.4.5
+    version: 1.4.8
 - mail: 
-    version: 2.2.1
+    version: 2.2.3
 - text-hyphen: 
     version: 1.0.0
 - text-format: 
     version: 1.0.0
 - actionmailer: 
     version: 3.0.0.beta3
-    source: 1
 - arel: 
     version: 0.3.3
 - activerecord: 
     version: 3.0.0.beta3
-    source: 1
 - activeresource: 
     version: 3.0.0.beta3
-    source: 1
 - bson: 
-    version: 0.20.1
+    version: 1.0.2
 - bson_ext: 
-    version: 0.20.1
+    version: 1.0.1
 - bundler: 
-    version: 0.9.25
+    version: 0.9.26
 - culerity: 
     version: 0.2.10
 - nokogiri: 
@@ -79,7 +65,7 @@ specs:
 - json_pure: 
     version: 1.4.3
 - selenium-webdriver: 
-    version: 0.0.18
+    version: 0.0.20
 - capybara: 
     version: 0.3.8
 - configuration: 
@@ -101,8 +87,7 @@ specs:
 - warden: 
     version: 0.10.3
 - devise: 
-    version: 1.1.rc1
-    source: 0
+    version: 1.1.rc0
 - faker: 
     version: 0.3.1
 - launchy: 
@@ -112,19 +97,17 @@ specs:
 - machinist_mongo: 
     version: 1.1.0
 - mongo: 
-    version: 0.20.1
+    version: 1.0.2
 - will_paginate: 
     version: 3.0.pre
 - mongoid: 
-    version: 2.0.0.beta4
+    version: 2.0.0.beta6
 - thor: 
     version: 0.13.6
 - railties: 
     version: 3.0.0.beta3
-    source: 1
 - rails: 
     version: 3.0.0.beta3
-    source: 1
 - rspec-core: 
     version: 2.0.0.beta.8
 - rspec-expectations: 
@@ -141,19 +124,19 @@ specs:
     version: 0.8.3
 dependencies: 
   rails: 
-    version: ">= 0"
+    version: = 3.0.0.beta3
     group: 
     - :default
   mongoid: 
-    version: = 2.0.0.beta4
+    version: = 2.0.0.beta6
     group: 
     - :default
   bson_ext: 
-    version: = 0.20.1
+    version: = 1.0.1
     group: 
     - :default
   devise: 
-    version: ">= 0"
+    version: = 1.1.rc0
     group: 
     - :default
   warden: 

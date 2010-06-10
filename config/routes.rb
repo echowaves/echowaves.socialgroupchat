@@ -1,4 +1,6 @@
 Echowaves::Application.routes.draw do |map|
+  resources :convos
+
 
 
   # The priority is based upon order of creation:

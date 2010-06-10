@@ -1,0 +1,21 @@
+<h1>Listing convos</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @convos.each do |convo| %>
+  <tr>
+    <td><%= link_to 'Show', convo %></td>
+    <td><%= link_to 'Edit', edit_convo_path(convo) %></td>
+    <td><%= link_to 'Destroy', convo, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Convo', new_convo_path %>
