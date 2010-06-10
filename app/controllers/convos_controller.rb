@@ -1,4 +1,6 @@
 class ConvosController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :show]
+
   # GET /convos
   # GET /convos.xml
   def index
