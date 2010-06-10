@@ -42,6 +42,8 @@ class ConvosController < ApplicationController
   # POST /convos.xml
   def create
     @convo = Convo.new(params[:convo])
+    
+    @convo.user = current_user
 
     respond_to do |format|
       if @convo.save
