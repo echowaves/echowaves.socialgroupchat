@@ -32,4 +32,5 @@ group :test do
   gem 'launchy'
   gem 'machinist_mongo'  
   gem 'faker'
+  gem 'cucover'
 end

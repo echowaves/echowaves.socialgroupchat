@@ -1,5 +1,5 @@
 --- 
-hash: 777e62370d3754af027d88c9355ed512b7c4e01f
+hash: 5d63998b8ac6d327257b3ebecdd0903ecdf953df
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org
@@ -65,7 +65,7 @@ specs:
 - json_pure: 
     version: 1.4.3
 - selenium-webdriver: 
-    version: 0.0.20
+    version: 0.0.22
 - capybara: 
     version: 0.3.8
 - configuration: 
@@ -80,6 +80,14 @@ specs:
     version: 1.0.5
 - cucumber: 
     version: 0.8.0
+- little-plugger: 
+    version: 1.1.2
+- logging: 
+    version: 1.4.3
+- rcov: 
+    version: 0.9.8
+- cucover: 
+    version: 0.1.4
 - cucumber-rails: 
     version: 0.3.2
 - database_cleaner: 
@@ -121,7 +129,7 @@ specs:
 - rspec-rails: 
     version: 2.0.0.beta.11
 - spork: 
-    version: 0.8.3
+    version: 0.8.4
 dependencies: 
   rails: 
     version: = 3.0.0.beta3
@@ -176,6 +184,10 @@ dependencies:
     group: 
     - :test
   faker: 
+    version: ">= 0"
+    group: 
+    - :test
+  cucover: 
     version: ">= 0"
     group: 
     - :test
