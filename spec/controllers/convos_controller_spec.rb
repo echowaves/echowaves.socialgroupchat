@@ -6,6 +6,11 @@ describe ConvosController do
     @mock_convo ||= mock_model(Convo, stubs).as_null_object
   end
 
+  # WORKAROUND
+  before do
+    request.env['warden'] = mock_model(Warden, :authenticate => @user, :authenticate! => @user)
+  end
+
   describe "GET index" do
     it "assigns all convos as @convos" do
       Convo.stub(:all) { [mock_convo] }

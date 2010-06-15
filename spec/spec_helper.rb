@@ -11,6 +11,7 @@ require 'rspec/rails'
 # in ./support/ and its subdirectories.
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
+
 Rspec.configure do |config|
   # Remove this line if you don't want Rspec's should and should_not
   # methods or matchers
