@@ -17,7 +17,9 @@
 		<script type="text/javascript">
 			$(function($)
 			{
-       $('.page').layout({resize: false});
+       $('.box').layout();
+       $('.sidebar').layout();
+       $('.convo').layout({resize: false});
 				var container = $('.layout');
 				function relayout() {
 					container.layout({resize: false});
@@ -31,17 +33,28 @@
 	<body>
 		<div class="layout {layout: {type: 'border', hgap: 3, vgap: 3}}">
 
-			<div class="center page {layout: {type: 'border', hgap: 0, vgap: 0, resize: false}}">
-
+			<div class="center convo {layout: {type: 'border', hgap: 0, vgap: 0, resize: false}}">
+			  <div class="north warn" id="convo_header">
+			    echowaves2 new design/layout sample app
+          <div id="convo_settings"><img src="/images/gear.png"/></div>
+          <div class="clear"></div>
+			  </div>
 			  <div class="center" id="convo_content">
           <p class="notice"><%= notice %></p>
           <p class="alert"><%= alert %></p>
           <%= yield %>
 			  </div>
+			  <div class="south" id="convo_footer">
+			    <textarea id="message_area" cols="80"></textarea>
+			  </div>
+			</div><!-- center & convo -->
 
-			</div><!-- center -->
-
-
+      <div class="east sidebar {layout: {type: 'grid', hgap: 3, vgap: 6, columns: 1, rows: 1}}">
+				  <div class="box {layout: {type: 'border', hgap: 0, vgap: 0, resize: false}}" id="component-1">
+            <div class="north box_header">right panel</div>
+            <div class="center box_content_round"></div>
+          </div>
+      </div><!-- east -->
 
 			<div class="north">
         <%= render :partial => 'shared/header' %>

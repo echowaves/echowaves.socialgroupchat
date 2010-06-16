@@ -1,11 +1,20 @@
-logo
-
-<div id="user_nav">  
-  <% if user_signed_in? %>  
-    Signed in as <%= current_user.email %>. Not you?  
-    <%= link_to "Sign out", destroy_user_session_path %>  
-  <% else %>  
-    <%= link_to "Sign up", new_user_registration_path %> or  
-    <%= link_to "Sign in", new_user_session_path %>  
-  <% end %>  
+<div id="header">
+  <%= link_to(image_tag("/images/echowaves.png", :alt => "echowaves logo"), root_path) %>
+  <ul id="main_nav">
+    <% if user_signed_in? %>
+      <li class="red"><a href="">new convo</a></li>
+      <li class="red"><a href="">new page</a></li>
+      <li><%= link_to "logout", destroy_user_session_path %></li>
+      <li><a href="">profile</a></li>
+    <% else %>
+      <li class="red"><%= link_to "login", new_user_session_path %></li>
+      <li class="red"><%= link_to "signup", new_user_registration_path %></li>
+    <% end %>
+    <li><a href=""><img src="/images/glass.png"/></a></li>
+    <li><a href=""><img src="/images/users.png"/></a></li>
+    <li><a href=""><img src="/images/pages.png"/></a></li>
+    <li><a href=""><img src="/images/chat.png"/></a></li>
+  </ul>
+  <div class="clear"></div>
 </div>
+
