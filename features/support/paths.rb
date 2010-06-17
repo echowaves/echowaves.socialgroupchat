@@ -7,26 +7,28 @@ module NavigationHelpers
   #
   def path_to(page_name)
     case page_name
+
     when /the home\s?page/
       '/'
-    when /sign up page/
-      new_user_registration_path
-    when /login page/
-      new_user_session_path
-    when /sign out link/
-      destroy_user_session_path
-    when /forgotten password page/
-      new_user_password_path
-    when /resend confirmation page/
-      new_user_confirmation_path
-    when /edit user link/
-      edit_user_registration_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
+
+     when /sign up page/
+       new_user_registration_path
+     when /login page/
+       new_user_session_path
+     when /sign out link/
+       destroy_user_session_path
+     when /forgotten password page/
+       new_user_password_path
+     when /resend confirmation page/
+       new_user_confirmation_path
+     when /edit user link/
+       edit_user_registration_path
 
     else
       begin
