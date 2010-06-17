@@ -1,5 +1,5 @@
 --- 
-hash: 5d63998b8ac6d327257b3ebecdd0903ecdf953df
+hash: a420238dc6f9ad73752f1098d01f3c1e4af27ff3
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org
@@ -8,28 +8,26 @@ specs:
     version: 0.8.7
 - abstract: 
     version: 1.0.0
+- activesupport: 
+    version: 3.0.0.beta4
 - builder: 
     version: 2.1.2
 - i18n: 
-    version: 0.3.7
-- memcache-client: 
-    version: 1.8.3
-- tzinfo: 
-    version: 0.3.22
-- activesupport: 
-    version: 3.0.0.beta3
+    version: 0.4.1
 - activemodel: 
-    version: 3.0.0.beta3
+    version: 3.0.0.beta4
 - erubis: 
     version: 2.6.5
 - rack: 
     version: 1.1.0
 - rack-mount: 
-    version: 0.6.3
+    version: 0.6.4
 - rack-test: 
     version: 0.5.4
+- tzinfo: 
+    version: 0.3.22
 - actionpack: 
-    version: 3.0.0.beta3
+    version: 3.0.0.beta4
 - mime-types: 
     version: "1.16"
 - polyglot: 
@@ -37,21 +35,17 @@ specs:
 - treetop: 
     version: 1.4.8
 - mail: 
-    version: 2.2.3
-- text-hyphen: 
-    version: 1.0.0
-- text-format: 
-    version: 1.0.0
+    version: 2.2.4
 - actionmailer: 
-    version: 3.0.0.beta3
+    version: 3.0.0.beta4
 - arel: 
-    version: 0.3.3
+    version: 0.4.0
 - activerecord: 
-    version: 3.0.0.beta3
+    version: 3.0.0.beta4
 - activeresource: 
-    version: 3.0.0.beta3
+    version: 3.0.0.beta4
 - bson: 
-    version: 1.0.2
+    version: 1.0.3
 - bson_ext: 
     version: 1.0.1
 - bundler: 
@@ -65,7 +59,7 @@ specs:
 - json_pure: 
     version: 1.4.3
 - selenium-webdriver: 
-    version: 0.0.22
+    version: 0.0.24
 - capybara: 
     version: 0.3.8
 - configuration: 
@@ -75,11 +69,11 @@ specs:
 - trollop: 
     version: 1.16.2
 - gherkin: 
-    version: 1.0.30
+    version: 2.0.2
 - term-ansicolor: 
     version: 1.0.5
 - cucumber: 
-    version: 0.8.0
+    version: 0.8.3
 - little-plugger: 
     version: 1.1.2
 - logging: 
@@ -105,17 +99,17 @@ specs:
 - machinist_mongo: 
     version: 1.1.0
 - mongo: 
-    version: 1.0.2
+    version: 1.0.3
 - will_paginate: 
     version: 3.0.pre
 - mongoid: 
-    version: 2.0.0.beta6
+    version: 2.0.0.beta7
 - thor: 
     version: 0.13.6
 - railties: 
-    version: 3.0.0.beta3
+    version: 3.0.0.beta4
 - rails: 
-    version: 3.0.0.beta3
+    version: 3.0.0.beta4
 - rspec-core: 
     version: 2.0.0.beta.11
 - rspec-expectations: 
@@ -132,11 +126,11 @@ specs:
     version: 0.8.4
 dependencies: 
   rails: 
-    version: = 3.0.0.beta3
+    version: = 3.0.0.beta4
     group: 
     - :default
   mongoid: 
-    version: = 2.0.0.beta6
+    version: = 2.0.0.beta7
     group: 
     - :default
   bson_ext: 
@@ -164,7 +158,7 @@ dependencies:
     group: 
     - :test
   cucumber: 
-    version: = 0.8.0
+    version: = 0.8.3
     group: 
     - :test
   rspec-rails: 

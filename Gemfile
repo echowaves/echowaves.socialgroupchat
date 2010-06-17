@@ -4,7 +4,7 @@ source 'http://gemcutter.org'
 
 ## Bundle edge rails:
 # gem "rails", :git => "git://github.com/rails/rails.git"
-gem "rails", "3.0.0.beta3"
+gem "rails", "3.0.0.beta4"
 
 ## Bundle the gems you use:
 
@@ -13,7 +13,7 @@ gem "rails", "3.0.0.beta3"
 # gem "mongoid", "2.0.0.beta4"
 # gem "bson_ext", "0.20.1"
 
-gem "mongoid", "2.0.0.beta6"
+gem "mongoid", "2.0.0.beta7"
 gem "bson_ext", "1.0.1"
 
 # gem "devise", :git => 'git://github.com/plataformatec/devise.git'
@@ -26,7 +26,7 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'cucumber-rails'
-  gem 'cucumber', '0.8.0'
+  gem 'cucumber', '0.8.3'
   gem 'rspec-rails', '2.0.0.beta.11'
   gem 'spork'
   gem 'launchy'
