@@ -11,7 +11,6 @@ require 'rspec/rails'
 # in ./support/ and its subdirectories.
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
-
 Rspec.configure do |config|
   # Remove this line if you don't want Rspec's should and should_not
   # methods or matchers
@@ -27,6 +26,11 @@ Rspec.configure do |config|
   # config.mock_with :rr
   config.mock_with :rspec
 
+  config.before(:each) do
+    User.delete_all
+    Convo.delete_all
+    Message.delete_all
+  end
   # == Fixtures
   #
   # If you're not using ActiveRecord you should remove these
