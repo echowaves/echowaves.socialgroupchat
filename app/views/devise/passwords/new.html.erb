@@ -1,7 +1,8 @@
 <h2>Forgot your password?</h2>
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+
+  <%= error_messages_for resource %>
 
   <p><%= f.label :email %><br />
   <%= f.text_field :email %></p>
