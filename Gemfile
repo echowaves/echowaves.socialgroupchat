@@ -25,12 +25,13 @@ gem "warden", "0.10.3"
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'cucumber-rails'
-  gem 'cucumber', '0.8.3'
+  # gem 'cucumber-rails'
+  # gem 'cucumber', '0.8.3'
   gem 'rspec-rails', '2.0.0.beta.11'
   gem 'spork'
   gem 'launchy'
   gem 'machinist_mongo'
   gem 'faker'
-  gem 'cucover'
+  # gem 'cucover'
+  gem 'steak', '>= 0.4.0.a5'
 end
