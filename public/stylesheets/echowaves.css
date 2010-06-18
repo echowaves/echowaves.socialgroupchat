@@ -57,6 +57,12 @@ html, body {
   background:#e9e2d8;
   font-size: 0.9em; font-family: helvetica, "microsoft sans serif", arial, sans-serif;
 }
+
+/* font sizes */
+
+h1 {font-size:160%;}
+h2 {font-size:130%;}
+h3 {font-size:110%;}
 .layout {
   height: 100%;
      width:970px;
