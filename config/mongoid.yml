@@ -17,6 +17,7 @@ test:
 # set these environment variables on your prod server
 production:
   <<: *defaults
+  uri: <%= ENV['MONGOID_URI'] %>
   host: <%= ENV['MONGOID_HOST'] %>
   port: <%= ENV['MONGOID_PORT'] %>
   username: <%= ENV['MONGOID_USERNAME'] %>
