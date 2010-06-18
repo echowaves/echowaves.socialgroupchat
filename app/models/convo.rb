@@ -5,5 +5,5 @@ class Convo
   validates_presence_of :user
 
   field :title, :type => String
-  embeds_one :user #yes, yes, yes! We are embedding user here, faster, and if the user ever gets deleted, the data will not be corrupted
+  belongs_to_related :user #yes, yes, yes! We are embedding user here, faster, and if the user ever gets deleted, the data will not be corrupted
 end
