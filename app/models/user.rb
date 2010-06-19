@@ -30,5 +30,4 @@ class User
   field :created_at, :type => DateTime # t.datetime
   field :updated_at, :type => DateTime # t.datetime
 
-  has_many_related :convos
 end
