@@ -33,17 +33,5 @@ Math.uuid = (function() {
   };
 })();
 
-  $("#message_area").keydown(function(e){
-    if ((e.keyCode || e.which) == 13){
-      var m = $("#message_area").val();
-      var uuid = Math.uuid(8, 16);
-      $('<div class="message" style="color:#'+ Math.uuid(6, 16)+'"id="'+uuid+'">').append(m).appendTo("#convo_content");
-
-        $("#convo_content").attr({ scrollTop: $("#convo_content").attr("scrollHeight") - $('#convo_content').height() }, 3000);
-
-      $.post("/messages",{uuid:uuid, message:m});
-     $("#message_area").val("");
-    };
-  });
 
 });

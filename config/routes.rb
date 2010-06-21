@@ -5,6 +5,8 @@ Echowaves::Application.routes.draw do |map|
     end
   end
 
+  # just to make the mockup convo work, this will become a nested resource for convos
+  resources :messages
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

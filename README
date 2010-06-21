@@ -37,5 +37,10 @@ Installation of ruby gems
 
 
 Know issues
-  rake faill -- Please try installing the latest version of bundler, then gem cleanup bundler and then bundle install
+  rake fail -- Please try installing the latest version of bundler, then gem cleanup bundler and then bundle install
+
+Environment vars
+  EW2_PUSHER_APP_ID
+  EW2_PUSHER_KEY
+  EW2_PUSHER_SECRET
 
