@@ -1,5 +1,6 @@
 class ConvosController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :authenticate_user!, :except => [:index, :show, :mockup]
+
   # GET /convos
   # GET /convos.xml
   def index
@@ -19,6 +20,12 @@ class ConvosController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @convo }
+    end
+  end
+
+  def mockup
+    respond_to do |format|
+      format.html { render :layout => 'convo' }
     end
   end
 
@@ -42,7 +49,7 @@ class ConvosController < ApplicationController
   # POST /convos.xml
   def create
     @convo = Convo.new(params[:convo])
-    
+
     @convo.user = current_user
 
     respond_to do |format|
