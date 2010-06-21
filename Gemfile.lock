@@ -1,61 +1,8 @@
 --- 
-dependencies: 
-  spork: 
-    group: 
-    - :test
-    version: ">= 0"
-  faker: 
-    group: 
-    - :test
-    version: ">= 0"
-  rails: 
-    group: 
-    - :default
-    version: = 3.0.0.beta4
-  machinist_mongo: 
-    group: 
-    - :test
-    version: ">= 0"
-  database_cleaner: 
-    group: 
-    - :test
-    version: ">= 0"
-  rspec-rails: 
-    group: 
-    - :test
-    version: = 2.0.0.beta.11
-  devise: 
-    group: 
-    - :default
-    version: = 1.1.rc0
-  cucumber-rails: 
-    group: 
-    - :test
-    version: ">= 0"
-  cucover: 
-    group: 
-    - :test
-    version: ">= 0"
-  cucumber: 
-    group: 
-    - :test
-    version: = 0.8.3
-  mongoid: 
-    group: 
-    - :default
-    version: = 2.0.0.beta7
-  warden: 
-    group: 
-    - :default
-    version: = 0.10.3
-  capybara: 
-    group: 
-    - :test
-    version: ">= 0"
-  launchy: 
-    group: 
-    - :test
-    version: ">= 0"
+hash: 90bbd172d127c85c0cb86e31d5fe256e4a620f5b
+sources: 
+- Rubygems: 
+    uri: http://gemcutter.org
 specs: 
 - rake: 
     version: 0.8.7
@@ -175,7 +122,60 @@ specs:
     version: 2.0.0.beta.11
 - spork: 
     version: 0.8.4
-hash: 90bbd172d127c85c0cb86e31d5fe256e4a620f5b
-sources: 
-- Rubygems: 
-    uri: http://gemcutter.org
+dependencies: 
+  rails: 
+    version: = 3.0.0.beta4
+    group: 
+    - :default
+  mongoid: 
+    version: = 2.0.0.beta7
+    group: 
+    - :default
+  devise: 
+    version: = 1.1.rc0
+    group: 
+    - :default
+  warden: 
+    version: = 0.10.3
+    group: 
+    - :default
+  capybara: 
+    version: ">= 0"
+    group: 
+    - :test
+  database_cleaner: 
+    version: ">= 0"
+    group: 
+    - :test
+  cucumber-rails: 
+    version: ">= 0"
+    group: 
+    - :test
+  cucumber: 
+    version: = 0.8.3
+    group: 
+    - :test
+  rspec-rails: 
+    version: = 2.0.0.beta.11
+    group: 
+    - :test
+  spork: 
+    version: ">= 0"
+    group: 
+    - :test
+  launchy: 
+    version: ">= 0"
+    group: 
+    - :test
+  machinist_mongo: 
+    version: ">= 0"
+    group: 
+    - :test
+  faker: 
+    version: ">= 0"
+    group: 
+    - :test
+  cucover: 
+    version: ">= 0"
+    group: 
+    - :test

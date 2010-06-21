@@ -54,15 +54,15 @@ ActionController::Base.allow_rescue = false
 # DatabaseCleaner.strategy = :truncation
 # DatabaseCleaner.orm = "mongoid"
 # 
-# Before do
-#   DatabaseCleaner.clean!
-# end
-
-begin 
-  require 'database_cleaner' 
-  require 'database_cleaner/cucumber' 
-  DatabaseCleaner.strategy = :truncation 
-  DatabaseCleaner.orm = "mongoid" 
-rescue LoadError => ignore_if_database_cleaner_not_present 
-  puts "Error on cleaner" 
+Before do
+  Mongoid.master.collections.reject { |c| c.name == 'system.indexes' }.each(&:drop)
 end
+
+# begin 
+#   require 'database_cleaner' 
+#   require 'database_cleaner/cucumber' 
+#   DatabaseCleaner.strategy = :truncation 
+#   DatabaseCleaner.orm = "mongoid" 
+# rescue LoadError => ignore_if_database_cleaner_not_present 
+#   puts "Error on cleaner" 
+# end
