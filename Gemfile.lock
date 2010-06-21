@@ -4,6 +4,10 @@ dependencies:
     group: 
     - :test
     version: ">= 0"
+  pusher: 
+    group: 
+    - :default
+    version: ">= 0.5.3"
   spork: 
     group: 
     - :test
@@ -119,6 +123,8 @@ specs:
     version: 0.3.8
 - configuration: 
     version: 1.1.0
+- crack: 
+    version: 0.1.7
 - diff-lcs: 
     version: 1.1.2
 - trollop: 
@@ -147,6 +153,8 @@ specs:
     version: 1.1.rc0
 - faker: 
     version: 0.3.1
+- json: 
+    version: 1.4.3
 - launchy: 
     version: 0.3.5
 - machinist: 
@@ -159,6 +167,12 @@ specs:
     version: 3.0.pre
 - mongoid: 
     version: 2.0.0.beta7
+- ruby-hmac: 
+    version: 0.4.0
+- signature: 
+    version: 0.1.0
+- pusher: 
+    version: 0.5.3
 - thor: 
     version: 0.13.6
 - railties: 
@@ -181,7 +195,7 @@ specs:
     version: 0.8.4
 - steak: 
     version: 0.4.0.beta.1
-hash: 050f7ac7e34ee72da93e6049d8044b1c0036dafc
+hash: 4220d39b3951f16a80f0ba9f5d8666b6712262b5
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org

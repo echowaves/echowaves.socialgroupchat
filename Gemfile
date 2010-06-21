@@ -8,6 +8,7 @@ gem "rails", "3.0.0.beta4"
 
 ## Bundle the gems you use:
 
+gem "pusher", ">= 0.5.3"
 # cuke and friends for rails 3
 
 # gem "mongoid", "2.0.0.beta4"
