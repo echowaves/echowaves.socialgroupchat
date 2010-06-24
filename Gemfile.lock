@@ -1,5 +1,5 @@
 --- 
-hash: 90bbd172d127c85c0cb86e31d5fe256e4a620f5b
+hash: e499fb74349e61a2e7457ea92adb7136cd06b0e9
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org
@@ -21,7 +21,7 @@ specs:
 - rack: 
     version: 1.1.0
 - rack-mount: 
-    version: 0.6.4
+    version: 0.6.6
 - rack-test: 
     version: 0.5.4
 - tzinfo: 
@@ -44,8 +44,12 @@ specs:
     version: 3.0.0.beta4
 - activeresource: 
     version: 3.0.0.beta4
+- bcrypt-ruby: 
+    version: 2.1.2
 - bson: 
     version: 1.0.3
+- bson_ext: 
+    version: 1.0.1
 - bundler: 
     version: 0.9.26
 - culerity: 
@@ -82,12 +86,10 @@ specs:
     version: 0.1.4
 - cucumber-rails: 
     version: 0.3.2
-- database_cleaner: 
-    version: 0.5.2
 - warden: 
-    version: 0.10.3
+    version: 0.10.7
 - devise: 
-    version: 1.1.rc0
+    version: 1.1.rc2
 - faker: 
     version: 0.3.1
 - launchy: 
@@ -109,17 +111,17 @@ specs:
 - rails: 
     version: 3.0.0.beta4
 - rspec-core: 
-    version: 2.0.0.beta.11
+    version: 2.0.0.beta.13
 - rspec-expectations: 
-    version: 2.0.0.beta.11
+    version: 2.0.0.beta.13
 - rspec-mocks: 
-    version: 2.0.0.beta.11
+    version: 2.0.0.beta.13
 - rspec: 
-    version: 2.0.0.beta.11
+    version: 2.0.0.beta.13
 - webrat: 
     version: 0.7.1
 - rspec-rails: 
-    version: 2.0.0.beta.11
+    version: 2.0.0.beta.13
 - spork: 
     version: 0.8.4
 dependencies: 
@@ -131,19 +133,23 @@ dependencies:
     version: = 2.0.0.beta7
     group: 
     - :default
+  bson_ext: 
+    version: = 1.0.1
+    group: 
+    - :default
   devise: 
-    version: = 1.1.rc0
+    version: = 1.1.rc2
     group: 
     - :default
   warden: 
-    version: = 0.10.3
+    version: = 0.10.7
     group: 
     - :default
-  capybara: 
-    version: ">= 0"
+  cucumber: 
+    version: = 0.8.3
     group: 
     - :test
-  database_cleaner: 
+  capybara: 
     version: ">= 0"
     group: 
     - :test
@@ -151,12 +157,8 @@ dependencies:
     version: ">= 0"
     group: 
     - :test
-  cucumber: 
-    version: = 0.8.3
-    group: 
-    - :test
   rspec-rails: 
-    version: = 2.0.0.beta.11
+    version: = 2.0.0.beta.13
     group: 
     - :test
   spork: 
