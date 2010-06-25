@@ -49,11 +49,20 @@ ActionController::Base.allow_rescue = false
 # Cucumber::Rails::World.use_transactional_fixtures = false
 # How to clean your database when transactions are turned off. See
 # http://github.com/bmabey/database_cleaner for more info.
-require 'database_cleaner'
-require 'database_cleaner/cucumber'
-DatabaseCleaner.strategy = :truncation
-DatabaseCleaner.orm = "mongoid"
-
+# require 'database_cleaner'
+# require 'database_cleaner/cucumber'
+# DatabaseCleaner.strategy = :truncation
+# DatabaseCleaner.orm = "mongoid"
+# 
 Before do
-  DatabaseCleaner.clean!
+  Mongoid.master.collections.reject { |c| c.name == 'system.indexes' }.each(&:drop)
 end
+
+# begin 
+#   require 'database_cleaner' 
+#   require 'database_cleaner/cucumber' 
+#   DatabaseCleaner.strategy = :truncation 
+#   DatabaseCleaner.orm = "mongoid" 
+# rescue LoadError => ignore_if_database_cleaner_not_present 
+#   puts "Error on cleaner" 
+# end
