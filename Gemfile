@@ -1,7 +1,6 @@
 # Edit this Gemfile to bundle your application's dependencies.
 source 'http://gemcutter.org'
 
-
 ## Bundle edge rails:
 # gem "rails", :git => "git://github.com/rails/rails.git"
 gem "rails", "3.0.0.beta4"
@@ -9,10 +8,6 @@ gem "rails", "3.0.0.beta4"
 ## Bundle the gems you use:
 
 gem "pusher", ">= 0.5.3"
-# cuke and friends for rails 3
-
-# gem "mongoid", "2.0.0.beta4"
-# gem "bson_ext", "0.20.1"
 
 gem "mongoid", "2.0.0.beta7"
 gem "bson_ext", "1.0.1"
