@@ -1,8 +1,69 @@
 --- 
-hash: df0628dbe5560b541e0bcd979f1e47050ad17f3e
-sources: 
-- Rubygems: 
-    uri: http://gemcutter.org
+dependencies: 
+  faker: 
+    group: 
+    - :test
+    version: ">= 0"
+  bson_ext: 
+    group: 
+    - :default
+    version: = 1.0.1
+  pusher: 
+    group: 
+    - :default
+    version: ">= 0.5.3"
+  spork: 
+    group: 
+    - :test
+    version: ">= 0"
+  rails: 
+    group: 
+    - :default
+    version: = 3.0.0.beta4
+  rspec-rails: 
+    group: 
+    - :test
+    version: = 2.0.0.beta.13
+  machinist_mongo: 
+    group: 
+    - :test
+    version: ">= 0"
+  devise: 
+    group: 
+    - :default
+    version: = 1.1.rc2
+  cucumber-rails: 
+    group: 
+    - :test
+    version: ">= 0"
+  steak: 
+    group: 
+    - :test
+    version: ">= 0"
+  cucover: 
+    group: 
+    - :test
+    version: ">= 0"
+  mongoid: 
+    group: 
+    - :default
+    version: = 2.0.0.beta7
+  cucumber: 
+    group: 
+    - :test
+    version: = 0.8.3
+  warden: 
+    group: 
+    - :default
+    version: = 0.10.7
+  launchy: 
+    group: 
+    - :test
+    version: ">= 0"
+  capybara: 
+    group: 
+    - :test
+    version: ">= 0"
 specs: 
 - rake: 
     version: 0.8.7
@@ -136,68 +197,12 @@ specs:
     version: 0.8.4
 - steak: 
     version: 0.4.0.beta.1
-dependencies: 
-  rails: 
-    version: = 3.0.0.beta4
-    group: 
-    - :default
-  pusher: 
-    version: ">= 0.5.3"
-    group: 
-    - :default
-  mongoid: 
-    version: = 2.0.0.beta7
-    group: 
-    - :default
-  bson_ext: 
-    version: = 1.0.1
-    group: 
-    - :default
-  devise: 
-    version: = 1.1.rc2
-    group: 
-    - :default
-  warden: 
-    version: = 0.10.7
-    group: 
-    - :default
-  cucumber: 
-    version: = 0.8.3
-    group: 
-    - :test
-  capybara: 
-    version: ">= 0"
-    group: 
-    - :test
-  cucumber-rails: 
-    version: ">= 0"
-    group: 
-    - :test
-  rspec-rails: 
-    version: = 2.0.0.beta.13
-    group: 
-    - :test
-  spork: 
-    version: ">= 0"
-    group: 
-    - :test
-  launchy: 
-    version: ">= 0"
-    group: 
-    - :test
-  machinist_mongo: 
-    version: ">= 0"
-    group: 
-    - :test
-  faker: 
-    version: ">= 0"
-    group: 
-    - :test
-  cucover: 
-    version: ">= 0"
-    group: 
-    - :test
-  steak: 
-    version: ">= 0.4.0.a5"
-    group: 
-    - :test
+    source: 0
+hash: 13d0e7585a4345b4339bc8f2a07af15fc26d9720
+sources: 
+- Git: 
+    uri: git://github.com/cavalle/steak.git
+    git: git://github.com/cavalle/steak.git
+    ref: d299ee1b374347e56592e5c4bf7e69131abd6bd6
+- Rubygems: 
+    uri: http://gemcutter.org
