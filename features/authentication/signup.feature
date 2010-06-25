@@ -36,3 +36,9 @@ Feature: Signing Up
     And I fill in "user_password_confirmation" with "test123"
     And I press "user_submit"
     Then I should see "Email is invalid"
+
+  # Scenario: registering case nonsensitive username, email
+  #   Given I have pending confirmation
+  #   When I fill in "user_username" with "Tester"
+  #   And I fill in "user_email" with "Test@example.com"
+	
