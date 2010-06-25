@@ -29,5 +29,4 @@ group :test do
   gem 'machinist_mongo'
   gem 'faker'
   gem 'cucover'
-  gem 'steak', :git => 'git://github.com/cavalle/steak.git'
 end

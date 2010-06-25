@@ -1,18 +1,18 @@
 --- 
 dependencies: 
-  faker: 
+  spork: 
     group: 
     - :test
     version: ">= 0"
-  bson_ext: 
-    group: 
-    - :default
-    version: = 1.0.1
   pusher: 
     group: 
     - :default
     version: ">= 0.5.3"
-  spork: 
+  bson_ext: 
+    group: 
+    - :default
+    version: = 1.0.1
+  faker: 
     group: 
     - :test
     version: ">= 0"
@@ -20,11 +20,15 @@ dependencies:
     group: 
     - :default
     version: = 3.0.0.beta4
+  machinist_mongo: 
+    group: 
+    - :test
+    version: ">= 0"
   rspec-rails: 
     group: 
     - :test
     version: = 2.0.0.beta.13
-  machinist_mongo: 
+  cucumber-rails: 
     group: 
     - :test
     version: ">= 0"
@@ -32,35 +36,27 @@ dependencies:
     group: 
     - :default
     version: = 1.1.rc2
-  cucumber-rails: 
-    group: 
-    - :test
-    version: ">= 0"
-  steak: 
-    group: 
-    - :test
-    version: ">= 0"
   cucover: 
     group: 
     - :test
     version: ">= 0"
-  mongoid: 
-    group: 
-    - :default
-    version: = 2.0.0.beta7
   cucumber: 
     group: 
     - :test
     version: = 0.8.3
+  mongoid: 
+    group: 
+    - :default
+    version: = 2.0.0.beta7
   warden: 
     group: 
     - :default
     version: = 0.10.7
-  launchy: 
+  capybara: 
     group: 
     - :test
     version: ">= 0"
-  capybara: 
+  launchy: 
     group: 
     - :test
     version: ">= 0"
@@ -195,14 +191,7 @@ specs:
     version: 2.0.0.beta.13
 - spork: 
     version: 0.8.4
-- steak: 
-    version: 0.4.0.beta.1
-    source: 0
-hash: 13d0e7585a4345b4339bc8f2a07af15fc26d9720
+hash: 9f31d327d6577b21532434f8fc6b71392b587022
 sources: 
-- Git: 
-    uri: git://github.com/cavalle/steak.git
-    git: git://github.com/cavalle/steak.git
-    ref: d299ee1b374347e56592e5c4bf7e69131abd6bd6
 - Rubygems: 
     uri: http://gemcutter.org
