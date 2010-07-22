@@ -1,65 +1,8 @@
 --- 
-dependencies: 
-  spork: 
-    group: 
-    - :test
-    version: ">= 0"
-  pusher: 
-    group: 
-    - :default
-    version: ">= 0.5.3"
-  bson_ext: 
-    group: 
-    - :default
-    version: = 1.0.1
-  faker: 
-    group: 
-    - :test
-    version: ">= 0"
-  rails: 
-    group: 
-    - :default
-    version: = 3.0.0.beta4
-  machinist_mongo: 
-    group: 
-    - :test
-    version: ">= 0"
-  rspec-rails: 
-    group: 
-    - :test
-    version: = 2.0.0.beta.13
-  cucumber-rails: 
-    group: 
-    - :test
-    version: ">= 0"
-  devise: 
-    group: 
-    - :default
-    version: = 1.1.rc2
-  cucover: 
-    group: 
-    - :test
-    version: ">= 0"
-  cucumber: 
-    group: 
-    - :test
-    version: = 0.8.3
-  mongoid: 
-    group: 
-    - :default
-    version: = 2.0.0.beta7
-  warden: 
-    group: 
-    - :default
-    version: = 0.10.7
-  capybara: 
-    group: 
-    - :test
-    version: ">= 0"
-  launchy: 
-    group: 
-    - :test
-    version: ">= 0"
+hash: ff36bcf61593be4e164346929f1d1afa7c6acc64
+sources: 
+- Rubygems: 
+    uri: http://gemcutter.org
 specs: 
 - rake: 
     version: 0.8.7
@@ -74,11 +17,11 @@ specs:
 - activemodel: 
     version: 3.0.0.beta4
 - erubis: 
-    version: 2.6.5
+    version: 2.6.6
 - rack: 
     version: 1.1.0
 - rack-mount: 
-    version: 0.6.6
+    version: 0.6.9
 - rack-test: 
     version: 0.5.4
 - tzinfo: 
@@ -104,7 +47,7 @@ specs:
 - bcrypt-ruby: 
     version: 2.1.2
 - bson: 
-    version: 1.0.3
+    version: 1.0.4
 - bson_ext: 
     version: 1.0.1
 - bundler: 
@@ -117,14 +60,16 @@ specs:
     version: 0.6.3
 - json_pure: 
     version: 1.4.3
+- rubyzip: 
+    version: 0.9.4
 - selenium-webdriver: 
-    version: 0.0.24
+    version: 0.0.27
 - capybara: 
-    version: 0.3.8
+    version: 0.3.9
 - configuration: 
     version: 1.1.0
 - crack: 
-    version: 0.1.7
+    version: 0.1.8
 - diff-lcs: 
     version: 1.1.2
 - trollop: 
@@ -154,25 +99,25 @@ specs:
 - json: 
     version: 1.4.3
 - launchy: 
-    version: 0.3.5
+    version: 0.3.7
 - machinist: 
     version: 1.0.6
 - machinist_mongo: 
-    version: 1.1.0
+    version: 1.1.1
 - mongo: 
-    version: 1.0.3
+    version: 1.0.5
 - will_paginate: 
     version: 3.0.pre
 - mongoid: 
-    version: 2.0.0.beta7
+    version: 2.0.0.beta9
 - ruby-hmac: 
     version: 0.4.0
 - signature: 
-    version: 0.1.0
+    version: 0.1.1
 - pusher: 
     version: 0.5.3
 - thor: 
-    version: 0.13.6
+    version: 0.13.8
 - railties: 
     version: 3.0.0.beta4
 - rails: 
@@ -191,7 +136,64 @@ specs:
     version: 2.0.0.beta.13
 - spork: 
     version: 0.8.4
-hash: 9f31d327d6577b21532434f8fc6b71392b587022
-sources: 
-- Rubygems: 
-    uri: http://gemcutter.org
+dependencies: 
+  rails: 
+    version: = 3.0.0.beta4
+    group: 
+    - :default
+  pusher: 
+    version: ">= 0.5.3"
+    group: 
+    - :default
+  mongoid: 
+    version: = 2.0.0.beta9
+    group: 
+    - :default
+  bson_ext: 
+    version: = 1.0.1
+    group: 
+    - :default
+  devise: 
+    version: = 1.1.rc2
+    group: 
+    - :default
+  warden: 
+    version: = 0.10.7
+    group: 
+    - :default
+  cucumber: 
+    version: = 0.8.3
+    group: 
+    - :test
+  capybara: 
+    version: ">= 0"
+    group: 
+    - :test
+  cucumber-rails: 
+    version: ">= 0"
+    group: 
+    - :test
+  rspec-rails: 
+    version: = 2.0.0.beta.13
+    group: 
+    - :test
+  spork: 
+    version: ">= 0"
+    group: 
+    - :test
+  launchy: 
+    version: ">= 0"
+    group: 
+    - :test
+  machinist_mongo: 
+    version: ">= 0"
+    group: 
+    - :test
+  faker: 
+    version: ">= 0"
+    group: 
+    - :test
+  cucover: 
+    version: ">= 0"
+    group: 
+    - :test
