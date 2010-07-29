@@ -7,6 +7,13 @@ Echowaves::Application.routes.draw do |map|
 
   # just to make the mockup convo work, this will become a nested resource for convos
   resources :messages
+  devise_for :users
+
+
+  match 'welcome', :to => 'welcome#index', :as => :welcome
+  root :to => "welcome#index"
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -62,7 +69,4 @@ Echowaves::Application.routes.draw do |map|
   # See how all your routes lay out with "rake routes"
 
   # resource :user, :only => [:edit, :new]
-  match 'welcome' => 'welcome#index', :as => :welcome
-  devise_for :users
-  root :to => "welcome#index"
 end
