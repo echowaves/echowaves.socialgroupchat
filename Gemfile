@@ -10,7 +10,7 @@ gem "rails", "3.0.0.rc"
 gem "pusher", ">= 0.5.3"
 
 gem "mongoid", "2.0.0.beta.14"
-gem "bson_ext", "1.0.1"
+gem "bson_ext", "1.0.4"
 
 # gem "devise", :git => 'git://github.com/plataformatec/devise.git'
 gem "devise", "1.1.1"

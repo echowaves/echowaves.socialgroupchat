@@ -32,7 +32,7 @@ GEM
       activesupport (>= 3.0.0.beta)
     bcrypt-ruby (2.1.2)
     bson (1.0.4)
-    bson_ext (1.0.1)
+    bson_ext (1.0.4)
     builder (2.1.2)
     capybara (0.3.9)
       culerity (>= 0.2.4)
@@ -157,7 +157,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bson_ext (= 1.0.1)
+  bson_ext (= 1.0.4)
   capybara
   cucover
   cucumber (= 0.8.5)
