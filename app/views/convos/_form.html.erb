@@ -14,6 +14,13 @@
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
+  <div>
+	<%= f.label :privacy %><br />
+	<%= t 'privacy.public' %>
+	<%= f.radio_button :privacy, :public , :checked => true %>
+	<%= t 'privacy.private' %>
+	<%= f.radio_button :privacy, :private %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
