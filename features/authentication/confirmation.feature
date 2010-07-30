@@ -1,4 +1,4 @@
-Feature:
+Feature: Confirmation Feature
   In order activate my account
   As a user
   I want to be able to confirm
