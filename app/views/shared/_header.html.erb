@@ -2,7 +2,7 @@
   <%= link_to(image_tag("/images/echowaves.png", :alt => "echowaves logo"), root_path) %>
   <ul id="main_nav">
     <% if user_signed_in? %>
-      <li class="red"><a href="">new convo</a></li>
+      <li class="red"><%= link_to("new convo", new_convo_path)%></li>
       <li class="red"><a href="">new page</a></li>
       <li><%= link_to "logout", destroy_user_session_path %></li>
       <li><a href="">profile</a></li>

@@ -29,6 +29,8 @@ module NavigationHelpers
        new_user_confirmation_path
      when /edit user link/
        edit_user_registration_path
+     when /convos page/
+       convos_path
 
     else
       begin

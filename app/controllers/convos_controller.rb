@@ -1,5 +1,5 @@
 class ConvosController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :show, :mockup]
+  before_filter :authenticate_user!, :except => [:index, :show]
 
   # GET /convos
   # GET /convos.xml
@@ -23,11 +23,11 @@ class ConvosController < ApplicationController
     end
   end
 
-  def mockup
-    respond_to do |format|
-      format.html { render :layout => 'convo' }
-    end
-  end
+  # def mockup
+  #   respond_to do |format|
+  #     format.html { render :layout => 'convo' }
+  #   end
+  # end
 
   # GET /convos/new
   # GET /convos/new.xml

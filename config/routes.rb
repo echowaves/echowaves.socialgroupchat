@@ -1,15 +1,10 @@
 Echowaves::Application.routes.draw do |map|
   resources :convos do
-    collection do
-      get :mockup
-    end
     # nested message
     resources :messages
   end
 
-  # just to make the mockup convo work, this will become a nested resource for convos
   devise_for :users
-
 
   match 'welcome', :to => 'welcome#index', :as => :welcome
   root :to => "welcome#index"
