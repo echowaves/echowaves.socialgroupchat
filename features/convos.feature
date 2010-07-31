@@ -28,7 +28,6 @@ Feature: Convos Feature
 	  Given that I register and login as "testuser1" with password "testing1234"
 	  And "testuser1" creates "21" public convos
 	  When I go to convos page
-	  # And I sleep
       Then I should see "Convo 20."
 	  And I should see "Next"
 	  And I should see "Previous"
