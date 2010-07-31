@@ -4,7 +4,8 @@ class ConvosController < ApplicationController
   # GET /convos
   # GET /convos.xml
   def index
-    @convos = Convo.desc(:created_at)
+    # here we list only public convos
+    @convos = Convo.desc(:created_at).where(:privacy => "public")
 
     respond_to do |format|
       format.html # index.html.erb
