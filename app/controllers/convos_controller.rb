@@ -40,20 +40,19 @@ class ConvosController < ApplicationController
     end
   end
 
-  # GET /convos/1/edit
-  def edit
-    @convo = Convo.find(params[:id])
-  end
 
   # POST /convos
   # POST /convos.xml
   def create
     @convo = Convo.new(params[:convo])
-
     @convo.user = current_user
 
+
     respond_to do |format|
-      if @convo.save
+      if @convo.save 
+        @convo_user = ConvoUser.new :convo => @convo, :user => current_user
+        @convo_user.save
+        
         format.html { redirect_to(@convo, :notice => 'Convo was successfully created.') }
         format.xml  { render :xml => @convo, :status => :created, :location => @convo }
       else
@@ -63,31 +62,4 @@ class ConvosController < ApplicationController
     end
   end
 
-  # PUT /convos/1
-  # PUT /convos/1.xml
-  def update
-    @convo = Convo.find(params[:id])
-
-    respond_to do |format|
-      if @convo.update_attributes(params[:convo])
-        format.html { redirect_to(@convo, :notice => 'Convo was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @convo.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /convos/1
-  # DELETE /convos/1.xml
-  def destroy
-    @convo = Convo.find(params[:id])
-    @convo.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(convos_url) }
-      format.xml  { head :ok }
-    end
-  end
 end

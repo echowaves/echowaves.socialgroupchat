@@ -22,7 +22,15 @@ Feature: Convos Feature
 	
     
 
+
+
   # Scenario: registered user creates a private Convo
+
+	# Scenario: public convo is accessible by all users
+	
+	# Scenario: private convo is only accessible by participants
+	
+
 
 	#   Scenario: visitor can't create a Convo
 	# 
