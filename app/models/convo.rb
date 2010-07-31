@@ -1,5 +1,7 @@
 class Convo
   include Mongoid::Document
+  include Mongoid::Timestamps
+  
   validates_presence_of :title
   validates_length_of :title, :maximum => 140
   validates_presence_of :user

@@ -4,7 +4,7 @@ class ConvosController < ApplicationController
   # GET /convos
   # GET /convos.xml
   def index
-    @convos = Convo.all
+    @convos = Convo.desc(:created_at)
 
     respond_to do |format|
       format.html # index.html.erb

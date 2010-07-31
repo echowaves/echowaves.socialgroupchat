@@ -30,6 +30,7 @@ Feature: Convos Feature
 	
 	# Scenario: private convo is only accessible by participants
 	
+	# Scenario: test convos pagination
 
 
 	#   Scenario: visitor can't create a Convo
