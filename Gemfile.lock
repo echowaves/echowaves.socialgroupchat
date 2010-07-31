@@ -92,7 +92,7 @@ GEM
       mongo (= 1.0.6)
       tzinfo (= 0.3.22)
       will_paginate (~> 3.0.pre)
-    nokogiri (1.4.2)
+    nokogiri (1.4.3.1)
     polyglot (0.3.1)
     pusher (0.5.3)
       crack
@@ -172,3 +172,4 @@ DEPENDENCIES
   rspec-rails (= 2.0.0.beta.19)
   spork
   warden (= 0.10.7)
+  will_paginate (~> 3.0.pre2)

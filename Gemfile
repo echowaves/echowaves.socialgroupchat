@@ -15,6 +15,7 @@ gem "bson_ext", "1.0.4"
 # gem "devise", :git => 'git://github.com/plataformatec/devise.git'
 gem "devise", "1.1.1"
 gem "warden", "0.10.7"
+gem "will_paginate", "~> 3.0.pre2"
 
 
 ## Bundle gems used only in certain environments:

@@ -5,7 +5,7 @@ class ConvosController < ApplicationController
   # GET /convos.xml
   def index
     # here we list only public convos
-    @convos = Convo.desc(:created_at).where(:privacy => "public")
+    @convos = Convo.desc(:created_at).where(:privacy => "public").paginate(:page => params[:page], :per_page => 20)
 
     respond_to do |format|
       format.html # index.html.erb
