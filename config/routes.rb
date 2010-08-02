@@ -1,5 +1,5 @@
 Echowaves::Application.routes.draw do |map|
-  resources :convos do
+  resources :convos, :only => [:index, :show, :new, :create] do
     # nested message
     resources :messages
   end
