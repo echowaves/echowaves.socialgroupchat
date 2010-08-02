@@ -16,7 +16,8 @@ module NavigationHelpers
     #
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
-
+     when /home page/
+       root_path
      when /sign up page/
        new_user_registration_path
      when /login page/
@@ -31,6 +32,8 @@ module NavigationHelpers
        edit_user_registration_path
      when /convos page/
        convos_path
+     when /create new convo page/
+       new_convo_path
 
     else
       begin
