@@ -41,11 +41,3 @@ Feature: Convos Feature
 	  Then I should not see "new convo"
 	  And I go to create new convo page
 	  Then I should see "You need to sign in or sign up before continuing."
-	  
-	
-	# 
-	#   Scenario: update convo is not supported
-	# Given that I register and login as "testuser1" with password "testing1234"
-	#  
-	#   Scenario: delete convo is not supported
-	# Given that I register and login as "testuser1" with password "testing1234"
