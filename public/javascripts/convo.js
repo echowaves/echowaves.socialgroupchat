@@ -17,7 +17,7 @@ $(function(){
 
         $("#convo_content").attr({ scrollTop: $("#convo_content").attr("scrollHeight") - $('#convo_content').height() }, 3000);
 
-      $.post("/messages",{uuid:uuid, message:m});
+      $.post("/convos/mockup/messages",{uuid:uuid, message:m});
      $("#message_area").val("");
     };
   });
