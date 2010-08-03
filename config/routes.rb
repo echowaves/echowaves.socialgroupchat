@@ -1,5 +1,8 @@
 Echowaves::Application.routes.draw do |map|
   resources :convos, :only => [:index, :show, :new, :create] do
+    collection do
+      get :mockup
+    end
     # nested message, essential to support restful resources for messages
     resources :messages, :only => [:index, :show, :new, :create]
   end
