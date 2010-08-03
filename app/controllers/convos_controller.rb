@@ -1,5 +1,5 @@
 class ConvosController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :authenticate_user!, :except => [:index, :show, :mockup]
 
   # GET /convos
   # GET /convos.xml
