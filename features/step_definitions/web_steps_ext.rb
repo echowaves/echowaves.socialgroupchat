@@ -4,5 +4,5 @@ When /^I confirm a js popup on the next step$/ do
 end
 
 Then /^I sleep$/ do
-  sleep 10
+  sleep 100
 end

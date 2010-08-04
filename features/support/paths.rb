@@ -34,7 +34,13 @@ module NavigationHelpers
        convos_path
      when /create new convo page/
        new_convo_path
-
+     when /"(.+)" convo page/ 
+       convo = Convo.find(:first, :conditions => {:title => $1})
+       convo_path(convo)
+     when /messages page for "(.+)" convo/ 
+       convo = Convo.find(:first, :conditions => {:title => $1})
+       convo_messages_path(convo)
+       
     else
       begin
         page_name =~ /the (.*) page/
