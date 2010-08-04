@@ -41,3 +41,6 @@ Feature: Convos Feature
 	  Then I should not see "new convo"
 	  And I go to create new convo page
 	  Then I should see "You need to sign in or sign up before continuing."
+	
+	@wip
+	Scenario: non invited user cannot access private convo_privacy_private
