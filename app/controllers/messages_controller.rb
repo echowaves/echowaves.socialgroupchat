@@ -7,9 +7,12 @@ class MessagesController < ApplicationController
 
 
   def create
+    @message = Message.new(:convo => @convo, :user => current_user, :body => params[:message], :uuid =>  params[:uuid])
     respond_to do |format|
       format.js do
-        Pusher['test_echowaves'].trigger('message-create', { :message => params[:message], :uuid => params[:uuid] })
+        if @message.save
+          Pusher["convo-#{@convo.id}"].trigger('message-create', { :message => params[:message], :uuid => params[:uuid] })
+        end
         render :nothing => true
       end
     end
@@ -17,7 +20,8 @@ class MessagesController < ApplicationController
 
 
 private
-  def current_convo    
+
+  def current_convo
     @convo = Convo.criteria.id(params[:convo_id])[0]
   end
 

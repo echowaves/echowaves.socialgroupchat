@@ -24,15 +24,6 @@ class ConvosController < ApplicationController
     end
   end
 
-  def post_message
-    respond_to do |format|
-      format.js do        
-        Pusher[params[:id]].trigger_async('message-create', { :message => params[:message], :uuid => params[:uuid] })
-        render :nothing => true
-      end
-    end
-  end
-
   # GET /convos/new
   # GET /convos/new.xml
   def new
@@ -53,10 +44,10 @@ class ConvosController < ApplicationController
 
 
     respond_to do |format|
-      if @convo.save 
+      if @convo.save
         @convo_user = ConvoUser.new :convo => @convo, :user => current_user
         @convo_user.save
-        
+
         format.html { redirect_to(@convo, :notice => 'Convo was successfully created.') }
         format.xml  { render :xml => @convo, :status => :created, :location => @convo }
       else

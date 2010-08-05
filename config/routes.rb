@@ -1,10 +1,7 @@
 Echowaves::Application.routes.draw do |map|
   resources :convos, :only => [:index, :show, :new, :create] do
-    member do
-      post :post_message
-    end      
     # nested message, essential to support restful resources for messages
-    resources :messages, :only => [:index, :show] 
+    resources :messages, :only => [:index, :show, :create]
   end
 
   devise_for :users
