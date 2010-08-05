@@ -27,7 +27,7 @@ class ConvosController < ApplicationController
   def post_message
     respond_to do |format|
       format.js do        
-        Pusher[params[:id]].trigger('message-create', { :message => params[:message], :uuid => params[:uuid] })
+        Pusher[params[:id]].trigger_async('message-create', { :message => params[:message], :uuid => params[:uuid] })
         render :nothing => true
       end
     end
