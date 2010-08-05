@@ -44,3 +44,6 @@ Feature: Convos Feature
 	
 	@wip
 	Scenario: non invited user cannot access private convo_privacy_private
+
+	@wip
+	Scenario: make sure that a user who is not made part of the private convo cannot access it
