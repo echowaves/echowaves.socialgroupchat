@@ -10,4 +10,4 @@ Feature: Messages Feature
 	And "testuser1" has a "public" convo "want to start talking"
     And I am on "want to start talking" convo page
     And I am on messages page for "want to start talking" convo
-	# Then I sleep
+	And I 

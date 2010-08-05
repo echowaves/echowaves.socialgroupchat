@@ -1,1 +1,8 @@
-hello messages
+
+<table>
+<% @messages.each do |message| %>
+  <tr>
+    <td><%= message.body %></td>
+  </tr>
+<% end %>
+</table>

@@ -1,10 +1,9 @@
 <h1>Listing public convos</h1>
 
 <table>
-
 <% @convos.each do |convo| %>
   <tr>
-    <td><%= link_to convo.title, convo_path(convo) %></td>
+    <td><%= link_to convo.title, convo_messages_path(convo) %></td>
   </tr>
 <% end %>
 </table>

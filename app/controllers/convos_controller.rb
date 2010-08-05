@@ -24,9 +24,9 @@ class ConvosController < ApplicationController
     end
   end
 
-  def mockup
+  def post_message
     respond_to do |format|
-      format.html { render :layout => 'convo' }
+      format.html { render :nothing => true }
     end
   end
 
@@ -62,5 +62,6 @@ class ConvosController < ApplicationController
       end
     end
   end
+
 
 end

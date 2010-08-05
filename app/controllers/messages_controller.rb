@@ -1,6 +1,8 @@
 class MessagesController < ApplicationController
+  before_filter :current_convo
 
   def index
+    @messages = @convo.messages
   end
 
 
@@ -11,6 +13,12 @@ class MessagesController < ApplicationController
         render :nothing => true
       end
     end
+  end
+
+
+private
+  def current_convo    
+    @convo = Convo.criteria.id(params[:convo_id])[0]
   end
 
 end
