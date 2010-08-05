@@ -22,7 +22,7 @@
 	$(function(){
 
     WebSocket.__swfLocation = "/WebSocketMain.swf";
-    var server = new Pusher('381b300d73c5fd5e106e', 'convo-<%=params[:convo_id]%>');
+    var server = new Pusher('381b300d73c5fd5e106e', 'convos-<%=params[:convo_id]%>');
     server.bind('message-create', function(m) {
       if($("#"+m.uuid).length == 0){
         $('<div class="message" style="color:#'+ Math.uuid(6, 16)+'"id="'+m.uuid+'">').append(m.message).appendTo("#convo_content");
