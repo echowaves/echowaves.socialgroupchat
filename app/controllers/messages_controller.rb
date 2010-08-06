@@ -5,6 +5,8 @@ class MessagesController < ApplicationController
     @messages = @convo.messages
   end
 
+  def new
+  end
 
   def create
     @message = Message.new(:convo => @convo, :user => current_user, :body => params[:message], :uuid =>  params[:uuid])
@@ -16,6 +18,10 @@ class MessagesController < ApplicationController
         render :nothing => true
       end
     end
+  end
+
+
+  def show
   end
 
 
