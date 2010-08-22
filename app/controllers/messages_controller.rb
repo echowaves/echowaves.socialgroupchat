@@ -5,9 +5,6 @@ class MessagesController < ApplicationController
     @messages = @convo.messages
   end
 
-  def new
-  end
-
   def create
     @message = Message.new(:convo => @convo, :user => current_user, :body => params[:message], :uuid =>  params[:uuid])
     respond_to do |format|
