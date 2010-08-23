@@ -13,7 +13,7 @@
     <%= javascript_include_tag "jquery.jlayout.js" %>
     <script src="http://js.pusherapp.com/1.4/pusher.min.js"></script>
     <%= javascript_include_tag "echowaves.js" %>
-    <%#= javascript_include_tag "convo.js" %>
+    <%= javascript_include_tag "convo.js" %>
     <%= javascript_include_tag "rails.js" %>
 
 
@@ -25,20 +25,19 @@
     var server = new Pusher('381b300d73c5fd5e106e', 'convos-<%=params[:convo_id]%>');
     server.bind('message-create', function(m) {
       if($("#"+m.uuid).length == 0){
-        $('<div class="message" style="color:#'+ Math.uuid(6, 16)+'"id="'+m.uuid+'">').append(m.message).appendTo("#convo_content");
+        new messageView($('#messages'),m,$('#message_template'));
         $("#convo_content").attr({ scrollTop: $("#convo_content").attr("scrollHeight") - $('#convo_content').height() }, 3000);
       };
 	  });
 
 	  $("#message_area").keydown(function(e){
 	    if ((e.keyCode || e.which) == 13){
-	      var m = $("#message_area").val();
+	      var text = $("#message_area").val();
 	      var uuid = Math.uuid(8, 16);
-	      $('<div class="message" style="color:#'+ Math.uuid(6, 16)+'"id="'+uuid+'">').append(m).appendTo("#convo_content");
-
-	        $("#convo_content").attr({ scrollTop: $("#convo_content").attr("scrollHeight") - $('#convo_content').height() }, 3000);
-
-	      $.post("/convos/<%=@convo.id%>/messages",{uuid:uuid, message:m});
+        var msg = {uuid:uuid, text:text};
+        new messageView($('#messages'),msg,$('#message_template'));
+        $("#convo_content").attr({ scrollTop: $("#convo_content").attr("scrollHeight") - $('#convo_content').height() }, 3000);
+	      $.post("/convos/<%= @convo.id %>/messages",msg);
 	     $("#message_area").val("");
 	    };
 	  });
@@ -46,22 +45,24 @@
 	});
 
 
-			$(function($)
-			{
-       $('.box').layout();
-       $('.sidebar').layout();
-       $('.convo').layout({resize: false});
-				var container = $('.layout');
-				function relayout() {
-					container.layout({resize: false});
-				}
-				relayout();
-				$(window).resize(relayout);
-			});
-		</script>
-    <%= csrf_meta_tag %>
+  $(function($){
+    $('.box').layout();
+    $('.sidebar').layout();
+    $('.convo').layout({resize: false});
+    var container = $('.layout');
+    function relayout() {
+      container.layout({resize: false});
+    };
+    relayout();
+    $(window).resize(relayout);
+  });
+  </script>
+  <%= csrf_meta_tag %>
 	</head>
 	<body>
+
+    <%= render :partial => 'shared/templates' %>
+
 		<div class="layout {layout: {type: 'border', hgap: 3, vgap: 3}}">
 
 			<div class="center convo {layout: {type: 'border', hgap: 0, vgap: 0, resize: false}}">
@@ -94,5 +95,6 @@
         <%= render :partial => 'shared/footer' %>
 			</div>
 		</div>
+
 	</body>
 </html>

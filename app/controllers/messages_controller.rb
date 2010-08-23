@@ -6,11 +6,11 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(:convo => @convo, :user => current_user, :body => params[:message], :uuid =>  params[:uuid])
+    @message = Message.new(:convo => @convo, :user => current_user, :body => params[:text], :uuid =>  params[:uuid])
     respond_to do |format|
       format.js do
         if @message.save
-          Pusher["convos-#{@convo.id}"].trigger('message-create', { :message => params[:message], :uuid => params[:uuid] })
+          Pusher["convos-#{@convo.id}"].trigger('message-create', { :text => params[:text], :uuid => params[:uuid] })
         end
         render :nothing => true
       end
