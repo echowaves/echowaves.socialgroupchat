@@ -250,3 +250,32 @@ h3 {font-size:110%;}
   color:#84878a;
 }
 .hot {color:#ea5036;}
+
+/************/
+/* messages */
+/************/
+
+.convo .message {
+  border-bottom: 1px dashed #CCCCCC;
+  margin-bottom:8px;
+  padding-bottom:8px;
+  overflow:hidden;
+  position:relative;
+}
+.convo .message .username a:link { color: #aa9c84; }
+.convo .message .username a:visited { color: #aa9c84; }
+.convo .message .username a:hover { color: #cc3333; }
+.convo .message .username a:active { color: #cc3333; }
+.convo .message .username { font-size:80%; }
+.convo .message .avatar { float: left; }
+.convo .message .date a:link { color: #aa9c84; }
+.convo .message .date a:visited { color: #aa9c84; }
+.convo .message .date a:hover { color: #cc3333; }
+.convo .message .date a:active { color: #cc3333; }
+.convo .message .date { font-size:80%; }
+.convo .message .body {
+  padding-left: 40px;
+  padding-right: 8px;
+  text-align:justify;
+}
+.convo .message .meta { padding-left: 40px; margin-top:5px; }
