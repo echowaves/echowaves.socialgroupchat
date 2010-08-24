@@ -1,4 +1,4 @@
-Echowaves::Application.routes.draw do |map|
+Echowaves::Application.routes.draw do
   resources :convos, :only => [:index, :show, :new, :create] do
     # nested message, essential to support restful resources for messages
     resources :messages, :only => [:index, :show, :create]
