@@ -11,7 +11,7 @@
     <%= javascript_include_tag "jlayout.grid.js" %>
     <%= javascript_include_tag "jlayout.flexygrid.js" %>
     <%= javascript_include_tag "jquery.jlayout.js" %>
-    <script src="http://js.pusherapp.com/1.4/pusher.min.js"></script>
+    <script src="http://js.pusherapp.com/1.6/pusher.min.js"></script>
     <%= javascript_include_tag "echowaves.js" %>
     <%= javascript_include_tag "convo.js" %>
     <%= javascript_include_tag "rails.js" %>
@@ -21,7 +21,6 @@
 
 	$(function(){
 
-    WebSocket.__swfLocation = "/WebSocketMain.swf";
     var server = new Pusher('381b300d73c5fd5e106e', 'convos-<%=params[:convo_id]%>');
     server.bind('message-create', function(m) {
       if($("#"+m.uuid).length == 0){
