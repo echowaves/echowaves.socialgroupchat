@@ -11,7 +11,9 @@ class MessagesController < ApplicationController
     respond_to do |format|
       format.js do
         if @message.save
-          Pusher["convos-#{@convo.id}"].trigger('message-create', { :text => params[:text], :uuid => params[:uuid] })
+          Pusher["convos-#{@convo.id}"].trigger('message-create', { :text => params[:text],
+                                                  :uuid => params[:uuid],
+                                                  :gravatar_url => params[:gravatar_url] })
         end
         render :nothing => true
       end

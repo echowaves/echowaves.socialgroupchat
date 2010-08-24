@@ -31,9 +31,14 @@
 
 	  $("#message_area").keydown(function(e){
 	    if ((e.keyCode || e.which) == 13){
+        //----------------------------------------------------------------------
+        // message attributes
+        //----------------------------------------------------------------------
 	      var text = $("#message_area").val();
 	      var uuid = Math.uuid(8, 16);
-        var msg = {uuid:uuid, text:text};
+        var gravatar_url = "<%= user_signed_in? ? gravatar_url(current_user.email) : "/images/icons/default-avatar-60.png" %>"
+        var msg = {uuid:uuid, text:text, gravatar_url:gravatar_url};
+
         new messageView($('#messages'),msg,$('#message_template'));
         $("#convo_content").attr({ scrollTop: $("#convo_content").attr("scrollHeight") - $('#convo_content').height() }, 3000);
 	      $.post("/convos/<%= @convo.id %>/messages",msg);
