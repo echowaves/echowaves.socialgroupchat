@@ -7,9 +7,9 @@ gem "rails", "3.0.0.rc"
 
 ## Bundle the gems you use:
 
-gem "pusher", ">= 0.5.3"
+gem "pusher", ">= 0.6.0"
 
-gem "mongoid", "2.0.0.beta.14"
+gem "mongoid", "2.0.0.beta.16"
 gem "bson_ext", "1.0.4"
 
 # gem "devise", :git => 'git://github.com/plataformatec/devise.git'

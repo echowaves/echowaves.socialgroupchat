@@ -84,12 +84,12 @@ GEM
       mime-types
       treetop (>= 1.4.5)
     mime-types (1.16)
-    mongo (1.0.6)
+    mongo (1.0.7)
       bson (>= 1.0.4)
-    mongoid (2.0.0.beta.14)
+    mongoid (2.0.0.beta.16)
       activemodel (= 3.0.0.rc)
       bson (= 1.0.4)
-      mongo (= 1.0.6)
+      mongo (= 1.0.7)
       tzinfo (= 0.3.22)
       will_paginate (~> 3.0.pre)
     nokogiri (1.4.3.1)
@@ -166,8 +166,8 @@ DEPENDENCIES
   faker
   launchy
   machinist_mongo
-  mongoid (= 2.0.0.beta.14)
-  pusher (>= 0.5.3)
+  mongoid (= 2.0.0.beta.16)
+  pusher (>= 0.6.0)
   rails (= 3.0.0.rc)
   rspec-rails (= 2.0.0.beta.19)
   spork
