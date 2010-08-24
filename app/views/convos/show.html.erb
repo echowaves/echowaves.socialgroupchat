@@ -1,7 +1,3 @@
-<p>
-  <b>Title:</b>
-  <%= @convo.title %>
-</p>
+<p>Loading Messages...</p>
 
-
-<%= link_to 'Back', convos_path %>
+<p>(well, not really, for now go <%= link_to 'here', convo_messages_path(@convo) %> to manually load the messages)</p>

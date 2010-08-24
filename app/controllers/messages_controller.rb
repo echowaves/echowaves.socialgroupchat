@@ -4,6 +4,11 @@ class MessagesController < ApplicationController
 
   def index
     @messages = @convo.messages
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @messages }
+      format.json { render :json => @messages }
+    end
   end
 
   def create

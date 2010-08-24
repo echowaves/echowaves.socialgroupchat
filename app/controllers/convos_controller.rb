@@ -19,7 +19,7 @@ class ConvosController < ApplicationController
     @convo = Convo.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render :layout => 'messages' }# show.html.erb
       format.xml  { render :xml => @convo }
     end
   end
