@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_filter :current_convo
+  before_filter :authenticate_user!, :only => [:create]
 
   def index
     @messages = @convo.messages
