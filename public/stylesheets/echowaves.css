@@ -68,7 +68,8 @@ h3 {font-size:110%;}
      width:970px;
      margin:0 auto;
 }
-
+.small {font-size:80%}
+.mute {color:#666;}
 .center, .east, .west, .convo {
   display: inline-block;
 }
@@ -250,6 +251,24 @@ h3 {font-size:110%;}
   color:#84878a;
 }
 .hot {color:#ea5036;}
+
+/*********/
+/* links */
+/*********/
+
+
+
+/**********/
+/* convos */
+/**********/
+
+#convos_table { width:100%; }
+#convos_table tr {
+  border-bottom:1px dashed #ccc;
+}
+#convos_table td {
+  padding:10px 0;
+}
 
 /************/
 /* messages */

@@ -1,13 +1,14 @@
-<h1>Listing public convos</h1>
+<h1>Public Conversations</h1>
 
-<table>
+<%= will_paginate @convos %>
+<table id="convos_table">
 <% @convos.each do |convo| %>
   <tr>
-    <td><%= link_to convo.title, convo_messages_path(convo) %></td>
+    <td>
+      <%= link_to convo.title, convo_messages_path(convo) %><br/>
+      <span class="mute small"><%= convo.created_at %></span>
+    </td>
   </tr>
 <% end %>
 </table>
 <%= will_paginate @convos %>
-
-
-
