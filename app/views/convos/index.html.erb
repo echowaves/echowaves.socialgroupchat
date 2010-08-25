@@ -5,7 +5,7 @@
 <% @convos.each do |convo| %>
   <tr>
     <td>
-      <%= link_to convo.title, convo_messages_path(convo) %><br/>
+      <%= link_to convo.title, convo_path(convo) %><br/>
       <span class="mute small"><%= convo.created_at %></span>
     </td>
   </tr>

@@ -5,8 +5,11 @@ class MessagesController < ApplicationController
   respond_to :html, :json, :xml, :except => :create
 
   def index
-    @messages = @convo.messages
-    respond_with @messages
+    @raw_messages = @convo.messages
+    @messages = @raw_messages.collect{|m| {:uuid => m.uuid, :id => m.id, :text => m.body, :gravatar_url => "/images/icons/default-avatar-60.png" }}
+    respond_with @messages do |format|
+      format.html { redirect_to convo_url(@convo) }
+    end
   end
 
   def create
