@@ -16,4 +16,19 @@ $(function(){
         draw();
     };
 
+	  $("#message_area").keydown(function(e){
+	      if ((e.keyCode || e.which) == 13){
+            //----------------------------------------------------------------------
+            // message attributes
+            //----------------------------------------------------------------------
+	          var text = $("#message_area").val();
+	          var uuid = Math.uuid(8, 16);
+            var msg = {uuid:uuid, text:text, gravatar_url:g.userGravatar};
+
+            new messageView($('#messages'),msg,$('#message_template'));
+            scrollBottom();
+	          $.post("/convos/" + g.convoId + "/messages", msg);
+	          $("#message_area").val("");
+	      };
+	  });
 });
