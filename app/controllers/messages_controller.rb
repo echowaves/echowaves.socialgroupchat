@@ -2,24 +2,20 @@ class MessagesController < ApplicationController
   before_filter :current_convo
   before_filter :authenticate_user!, :only => [:create]
 
+  respond_to :html, :json, :xml, :except => :create
+
   def index
     @messages = @convo.messages
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @messages }
-      format.json { render :json => @messages }
-    end
+    respond_with @messages
   end
 
   def create
-    @message = Message.new(:convo => @convo, :user => current_user, :body => params[:text], :uuid =>  params[:uuid])
-    respond_to do |format|
+    @message = Message.create(:convo => @convo, :user => current_user, :body => params[:text], :uuid =>  params[:uuid])
+    respond_with([@convo, @message]) do |format|
       format.js do
-        if @message.save
-          Pusher["convos-#{@convo.id}"].trigger('message-create', { :text => params[:text],
-                                                  :uuid => params[:uuid],
-                                                  :gravatar_url => params[:gravatar_url] })
-        end
+        Pusher["convos-#{@convo.id}"].trigger('message-create', { :text => params[:text],
+                                                :uuid => params[:uuid],
+                                                :gravatar_url => params[:gravatar_url] })
         render :nothing => true
       end
     end

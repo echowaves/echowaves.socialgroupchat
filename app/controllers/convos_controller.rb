@@ -1,43 +1,27 @@
 class ConvosController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show, :mockup]
 
-  # GET /convos
-  # GET /convos.xml
+  respond_to :html, :json, :xml
+
   def index
     # here we list only public convos
     @convos = Convo.desc(:created_at).where(:privacy => "public").paginate(:page => params[:page], :per_page => 20)
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @convos }
-    end
+    respond_with @convos
   end
 
-  # GET /convos/1
-  # GET /convos/1.xml
   def show
     @convo = Convo.find(params[:id])
-
-    respond_to do |format|
-      format.html { render :layout => 'messages' }# show.html.erb
-      format.xml  { render :xml => @convo }
+    respond_with(@convo) do |format|
+      format.html { render :layout => 'messages' }
     end
   end
 
-  # GET /convos/new
-  # GET /convos/new.xml
   def new
     @convo = Convo.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @convo }
-    end
+    respond_with(@convo)
   end
 
 
-  # POST /convos
-  # POST /convos.xml
   def create
     @convo = Convo.new(params[:convo])
     @convo.user = current_user
