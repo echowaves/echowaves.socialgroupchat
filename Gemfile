@@ -3,17 +3,17 @@ source 'http://gemcutter.org'
 
 ## Bundle edge rails:
 # gem "rails", :git => "git://github.com/rails/rails.git"
-gem "rails", "3.0.0.rc"
+gem "rails", "3.0.0"
 
 ## Bundle the gems you use:
 
 gem "pusher", ">= 0.6.0"
 
-gem "mongoid", "2.0.0.beta.16"
+gem "mongoid", "2.0.0.beta.17"
 gem "bson_ext", "1.0.4"
 
 # gem "devise", :git => 'git://github.com/plataformatec/devise.git'
-gem "devise", "1.1.1"
+gem "devise", "1.1.2"
 gem "warden", "0.10.7"
 gem "will_paginate", "~> 3.0.pre2"
 gem "gravatarify", ">= 2.1.0"
@@ -24,7 +24,7 @@ group :test do
   gem 'capybara'
   # gem 'database_cleaner'
   gem 'cucumber-rails'
-  gem 'rspec-rails', '2.0.0.beta.19'
+  gem 'rspec-rails', '2.0.0.beta.20'
   gem 'spork'
   gem 'launchy'
   gem 'machinist_mongo'
