@@ -1,5 +1,4 @@
 $(function(){
-
     // scroll the convo to the bottom
     //----------------------------------------------------------------------
     scrollBottom = function(){

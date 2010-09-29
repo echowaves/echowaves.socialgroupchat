@@ -5,6 +5,7 @@ require "action_controller/railtie"
 
 require "mongoid"
 require 'mongoid/railtie'
+require 'gravatarify'
 require "action_mailer/railtie"
 require "active_resource/railtie"
 require "rails/test_unit/railtie"

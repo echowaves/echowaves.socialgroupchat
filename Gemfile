@@ -16,7 +16,7 @@ gem "bson_ext", "1.0.4"
 gem "devise", "1.1.2"
 gem "warden", "0.10.7"
 gem "will_paginate", "~> 3.0.pre2"
-gem "gravatarify", ">= 2.1.0"
+gem "gravatarify", ">= 2.2.1"
 
 ## Bundle gems used only in certain environments:
 group :test do
