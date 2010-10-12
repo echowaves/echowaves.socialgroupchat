@@ -28,10 +28,11 @@ GEM
       activemodel (= 3.0.0)
       activesupport (= 3.0.0)
     activesupport (3.0.0)
+    addressable (2.2.1)
     arel (1.0.1)
       activesupport (~> 3.0.0)
     bcrypt-ruby (2.1.2)
-    bson (1.0.4)
+    bson (1.1)
     bson_ext (1.0.4)
     builder (2.1.2)
     capybara (0.3.9)
@@ -42,7 +43,6 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (>= 0.0.3)
     configuration (1.1.0)
-    crack (0.1.8)
     cucover (0.1.4)
       cucumber (>= 0.6.4)
       logging (>= 1.4.1)
@@ -60,9 +60,16 @@ GEM
       bcrypt-ruby (~> 2.1.2)
       warden (~> 0.10.7)
     diff-lcs (1.1.2)
+    em-http-request (0.2.14)
+      addressable (>= 2.0.0)
+      eventmachine (>= 0.12.9)
+    em-websocket (0.1.4)
+      addressable (>= 2.1.1)
+      eventmachine (>= 0.12.9)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     escape_utils (0.1.8)
+    eventmachine (0.12.10)
     faker (0.3.1)
     ffi (0.6.3)
       rake (>= 0.8.7)
@@ -87,21 +94,15 @@ GEM
       mime-types
       treetop (>= 1.4.5)
     mime-types (1.16)
-    mongo (1.0.7)
-      bson (>= 1.0.4)
-    mongoid (2.0.0.beta.17)
-      activemodel (~> 3.0.0)
-      bson (= 1.0.4)
-      mongo (= 1.0.7)
+    mongo (1.0.9)
+      bson (>= 1.0.5)
+    mongoid (2.0.0.beta.19)
+      activemodel (~> 3.0)
+      mongo (= 1.0.9)
       tzinfo (~> 0.3.22)
       will_paginate (~> 3.0.pre)
     nokogiri (1.4.3.1)
     polyglot (0.3.1)
-    pusher (0.6.0)
-      crack
-      json
-      ruby-hmac
-      signature
     rack (1.2.1)
     rack-mount (0.6.13)
       rack (>= 1.0.0)
@@ -134,14 +135,15 @@ GEM
       rspec-expectations (= 2.0.0.rc)
     rspec-rails (2.0.0.rc)
       rspec (= 2.0.0.rc)
-    ruby-hmac (0.4.0)
     rubyzip (0.9.4)
     selenium-webdriver (0.0.28)
       ffi (>= 0.6.1)
       json_pure
       rubyzip
-    signature (0.1.1)
-      ruby-hmac
+    socky (0.2.1)
+      em-http-request
+      em-websocket (>= 0.1.4)
+      json
     spork (0.8.4)
     term-ansicolor (1.0.5)
     thor (0.14.3)
@@ -156,10 +158,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bson_ext (= 1.0.4)
-  capybara (>= 0.3.9)
+  bson_ext
+  capybara
   cucover
-  cucumber (>= 0.9.2)
+  cucumber
   cucumber-rails
   devise (= 1.1.3)
   escape_utils
@@ -167,10 +169,10 @@ DEPENDENCIES
   gravatarify (>= 2.2.1)
   launchy
   machinist_mongo
-  mongoid (= 2.0.0.beta.17)
-  pusher (>= 0.6.0)
+  mongoid (= 2.0.0.beta.19)
   rails (= 3.0.0)
   rspec
-  rspec-rails (= 2.0.0.rc)
+  rspec-rails
+  socky
   spork
   will_paginate (~> 3.0.pre2)
