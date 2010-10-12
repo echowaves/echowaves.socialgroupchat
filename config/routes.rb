@@ -9,7 +9,12 @@ Echowaves::Application.routes.draw do
   match 'welcome', :to => 'welcome#index', :as => :welcome
   root :to => "welcome#index"
 
-
+  resource :socket do
+    member do
+      post :subscribe
+      post :unsubscribe
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

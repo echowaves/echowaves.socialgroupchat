@@ -1,0 +1,59 @@
+h1. Changelog
+
+h2. 0.2.1 / 2010-10-09
+
+* new features:
+** new callbacks
+* bugfixes:
+** none
+
+h2. 0.2.0 / 2010-09-11
+
+* new features:
+** removed old syntax
+* bugfixes:
+** error when trying to call Socky.send from model
+
+h2. 0.1.2 / 2010-08-25
+
+* new features:
+** socky should be working with all flash and flash-lite enabled devices
+* bugfixes:
+** fexed a bug that wss doesn't accept officialy signed certificates.
+
+h2. 0.1.1 / 2010-08-19
+
+* new features:
+** socky is now compatible with any flash-enabled android phones(not tested on other brands)
+* bugfixes:
+** none
+
+h2. 0.1.0 / 2010-08-03
+
+*IMPORTANT! This version will not work with gem version lower than 0.1.0*
+
+* new features:
+** callbacks for connection open/close and authentication
+** automatic reconnect after connection broken
+** new syntax of sending message(Socky.send instead of render :socky)
+** deprecation of old syntax(render :socky and Socky.send_to_all, send_to_clients etc.)
+** new syntax is compatybile with rails 3
+** option to exclude clients/channels
+* bugfixes:
+** catch exeption on invalid format of received data
+
+h2. 0.0.9 / 2010-06-20
+
+*IMPORTANT! This version will not work with gem version lower than 0.0.9*
+
+* new features:
+** support for websocket draft 76
+** support for wss/SSL connections
+** allow multiple socky servers
+** socky now sending all messages in JSON format
+* bugfixes:
+** none
+
+h2. 0.0.7
+
+* initial release

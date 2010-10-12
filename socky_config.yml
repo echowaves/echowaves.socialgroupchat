@@ -1,8 +1,8 @@
 :port: 8090
 :debug: true
 
-:subscribe_url: http://localhost:8080/socky/subscribe
-:unsubscribe_url: http://localhost:8080/socky/unsubscribe
+:subscribe_url: http://localhost:8080/socket/subscribe
+:unsubscribe_url: http://localhost:8080/socket/unsubscribe
 
 :secret: my_secret_key
 

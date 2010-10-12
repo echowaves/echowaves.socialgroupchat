@@ -11,58 +11,65 @@
     <%= javascript_include_tag "jlayout.grid.js" %>
     <%= javascript_include_tag "jlayout.flexygrid.js" %>
     <%= javascript_include_tag "jquery.jlayout.js" %>
-    <script src="http://js.pusherapp.com/1.6/pusher.min.js"></script>
+    <%= javascript_include_tag :socky %>
+    <%= socky :client_id => (user_signed_in? ? current_user.id : nil), :channels => "convo_#{@convo.id}" %>
     <%= javascript_include_tag "echowaves.js" %>
     <%= javascript_include_tag "convo.js" %>
     <%= javascript_include_tag "rails.js" %>
 
+    <script type="text/javascript">
 
-	<script type="text/javascript">
-
-    //----------------------------------------------------------------------
-    // global settings
-    //----------------------------------------------------------------------
-
-    var g = {
-      convoId      : "<%= @convo.id %>"
-     ,userGravatar : "<%= user_signed_in? ? gravatar_url(current_user.email) : "/images/icons/default-avatar-60.png" %>"
-    }
-
-    //----------------------------------------------------------------------
-    // start javascript when window is ready
-    //----------------------------------------------------------------------
-
-    $(function(){
-
-      // pusher
+      //----------------------------------------------------------------------
+      // global settings
       //----------------------------------------------------------------------
 
-      var server = new Pusher('381b300d73c5fd5e106e', 'convos-' + g.convoId);
-      server.bind('message-create', function(m) {
-        if($("#"+m.uuid).length == 0){
-          new messageView($('#messages'),m,$('#message_template'));
-          $("#convo_content").attr({ scrollTop: $("#convo_content").attr("scrollHeight") - $('#convo_content').height() }, 3000);
+      var g = {
+        convoId      : "<%= @convo.id %>"
+       ,userGravatar : "<%= user_signed_in? ? gravatar_url(current_user.email) : "/images/icons/default-avatar-60.png" %>"
+      }
+
+      //----------------------------------------------------------------------
+      // start javascript when window is ready
+      //----------------------------------------------------------------------
+
+      $(function(){
+
+        // socky
+        //----------------------------------------------------------------------
+
+        Socky.prototype.respond_to_message = function(m) {
+          msg = JSON.parse(m)
+          if($("#"+msg.uuid).length == 0){
+            new messageView($('#messages'),msg,$('#message_template'));
+            $("#convo_content").attr({ scrollTop: $("#convo_content").attr("scrollHeight") - $('#convo_content').height() }, 3000);
+          };
         };
+
+        // Socky.prototype.respond_to_connect = function() {};
+        // Socky.prototype.respond_to_authentication_success = function() {};
+        // Socky.prototype.respond_to_authentication_failure = function() {};
+        // Socky.prototype.respond_to_disconnect = function() {
+        //   setTimeout(function(instance) { instance.connect(); }, 1000, this);
+        // };
+
+
+        // layout
+        //----------------------------------------------------------------------
+
+        $('.box').layout();
+        $('.sidebar').layout();
+        $('.convo').layout({resize: false});
+        var container = $('.layout');
+        function relayout() {
+          container.layout({resize: false});
+        };
+        relayout();
+        $(window).resize(relayout);
+        scrollBottom();
+
       });
-
-      // layout
-      //----------------------------------------------------------------------
-
-      $('.box').layout();
-      $('.sidebar').layout();
-      $('.convo').layout({resize: false});
-      var container = $('.layout');
-      function relayout() {
-        container.layout({resize: false});
-      };
-      relayout();
-      $(window).resize(relayout);
-      scrollBottom();
-
-    });
-
-  </script>
-  <%= csrf_meta_tag %>
+    </script>
+    <%= csrf_meta_tag %>
 	</head>
 	<body>
 

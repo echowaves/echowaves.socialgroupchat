@@ -6,7 +6,6 @@ class MessagesController < ApplicationController
 
   def index
     @raw_messages = @convo.messages
-    
     @messages = @raw_messages.collect{|m| {:uuid => m.uuid, :id => m.id, :text => m.body, :gravatar_url => m.user.gravatar }}
     respond_with @messages do |format|
       format.html { redirect_to convo_url(@convo) }
@@ -17,9 +16,10 @@ class MessagesController < ApplicationController
     @message = Message.create(:convo => @convo, :user => current_user, :body => params[:text], :uuid =>  params[:uuid])
     respond_with([@convo, @message]) do |format|
       format.js do
-        Pusher["convos-#{@convo.id}"].trigger('message-create', { :text => params[:text],
-                                                :uuid => params[:uuid],
-                                                :gravatar_url => params[:gravatar_url] })
+        Socky.send({ :text => params[:text],
+                     :uuid => params[:uuid],
+                     :gravatar_url => params[:gravatar_url] }.to_json,
+                   :to => { :channels => "convo_#{@convo.id}"} )
         render :nothing => true
       end
     end
