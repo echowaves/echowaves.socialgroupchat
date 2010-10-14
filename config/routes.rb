@@ -6,6 +6,8 @@ Echowaves::Application.routes.draw do
 
   devise_for :users
 
+  resources :users, :only => [:index, :show]
+
   match 'welcome', :to => 'welcome#index', :as => :welcome
   root :to => "welcome#index"
 

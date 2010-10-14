@@ -4,13 +4,13 @@
     <% if user_signed_in? %>
       <li class="red"><%= link_to("new convo", new_convo_path)%></li>
       <li><%= link_to "logout", destroy_user_session_path %></li>
-      <li><a href="">profile</a></li>
+      <li><%= link_to "profile", user_path(current_user), :id => 'nav_profile_link' %></li>
     <% else %>
       <li class="red"><%= link_to "login", new_user_session_path %></li>
       <li class="red"><%= link_to "signup", new_user_registration_path %></li>
     <% end %>
     <li><a href=""><img src="/images/glass.png"/></a></li>
-    <li><a href=""><img src="/images/users.png"/></a></li>
+    <li><%= link_to image_tag("/images/users.png"), users_path, :id => 'nav_users_link' %></li>
     <li><a href=""><img src="/images/pages.png"/></a></li>
     <li><%= link_to image_tag("/images/chat.png"), convos_path, :id => 'nav_convos_link' %></li>
   </ul>

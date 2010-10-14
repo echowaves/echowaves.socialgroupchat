@@ -1,21 +1,10 @@
-<h1>Listing users</h1>
-
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<h1>Users List</h1>
 
 <% @users.each do |user| %>
-  <tr>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user_path(user), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+
+    <li><%= link_to gravatar_tag(user, :size => 64, :rating => :g, :html => { :class => "gravatar" }), user %> <%= link_to user.username, user_path(user) %></li>
+
 <% end %>
-</table>
 
-<br />
 
-<%= link_to 'New User', new_user_path %>
+
