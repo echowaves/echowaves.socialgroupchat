@@ -2,7 +2,7 @@
 
 source 'http://gemcutter.org'
 
-gem "rails", "3.0.0"
+gem "rails", "3.0.1"
 gem "socky"
 
 gem "mongoid", "2.0.0.beta.19"
