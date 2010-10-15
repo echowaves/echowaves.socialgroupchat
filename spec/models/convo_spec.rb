@@ -56,7 +56,7 @@ describe "A convo instance" do
     user = User.make
     user2 = User.make
     convo = Convo.make(:privacy => "private", :user => user)
-    subscription = ConvoUser.make(:user => user2, :convo => convo)
+    ConvoUser.make(:user => user2, :convo => convo)
     convo.should be_accesible_by_user user2
   end
 

@@ -11,6 +11,7 @@ class Convo
 
   embed_one :user #yes, yes, yes! We are embedding user here, faster, and if the user ever gets deleted, the data will not be corrupted
   references_many :messages
+  references_many :convo_users
 
   def public?
     self.privacy == "public"
@@ -22,7 +23,7 @@ class Convo
 
   def accesible_by_user?(user)
     self.public? ||
-      user == self.user ||
-      ConvoUser.where(:user_id => user.id, :convo_id => self.id).first
+      user && ( user == self.user ||
+                ConvoUser.where(:user_id => user.id, :convo_id => self.id).first )
   end
 end

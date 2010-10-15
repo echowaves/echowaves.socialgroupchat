@@ -3,9 +3,6 @@ class ConvoUser
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  validates_presence_of :convo
-  validates_presence_of :user
-
   referenced_in :convo
   referenced_in :user
 end

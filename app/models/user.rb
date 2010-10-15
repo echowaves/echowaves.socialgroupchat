@@ -2,7 +2,7 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
   include Gravatarify::Helper
-  
+
   # Include default devise modules. Others available are:
   # :http_authenticatable, :token_authenticatable, :lockable, :timeoutable and :activatable
   devise :database_authenticatable, :registerable, :confirmable, :recoverable,
@@ -11,6 +11,7 @@ class User
   validates_presence_of :username
   validates_uniqueness_of :username
 
+  references_many :convo_users
 
   field :username, :unique => true, :background => true #  t.string,  :null               => false
   field :email, :unique => true, :background => true #  t.string,  :null               => false
@@ -32,7 +33,7 @@ class User
   field :locked_at, :type => DateTime # t.datetime
   field :created_at, :type => DateTime # t.datetime
   field :updated_at, :type => DateTime # t.datetime
-  
+
   def gravatar
     gravatar_url email
   end
