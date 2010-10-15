@@ -12,7 +12,11 @@ class ConvosController < ApplicationController
   def show
     @convo = Convo.find(params[:id])
     respond_with(@convo) do |format|
-      format.html { render :layout => 'messages' }
+      if @convo.public? || (current_user && @convo.accesible_by_user?(current_user))
+        format.html { render :layout => 'messages' }
+      else
+        format.html { redirect_to convos_path, :alert => "Sorry but this convo is private" }
+      end
     end
   end
 
@@ -21,11 +25,9 @@ class ConvosController < ApplicationController
     respond_with(@convo)
   end
 
-
   def create
     @convo = Convo.new(params[:convo])
     @convo.user = current_user
-
 
     respond_to do |format|
       if @convo.save
@@ -41,5 +43,13 @@ class ConvosController < ApplicationController
     end
   end
 
+  # The current user follows a conversation.
+  def follow
+    @convo = Convo.find(params[:id])
+    if @convo.public?
+      ConvoUser.create :convo => @convo, :user => current_user
+    end
+    redirect_to convo_path(@convo)
+  end
 
 end

@@ -1,5 +1,9 @@
 Echowaves::Application.routes.draw do
   resources :convos, :only => [:index, :show, :new, :create] do
+    member do
+      get 'follow'
+      get 'unfollow'
+    end
     # nested message, essential to support restful resources for messages
     resources :messages, :only => [:index, :show, :create]
   end
