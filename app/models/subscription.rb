@@ -1,5 +1,5 @@
 # this model represents a many-to-many relationship between convos and users, it stores the embedded objects for performance
-class ConvoUser
+class Subscription
   include Mongoid::Document
   include Mongoid::Timestamps
 

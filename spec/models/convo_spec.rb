@@ -56,7 +56,7 @@ describe "A convo instance" do
     user = User.make
     user2 = User.make
     convo = Convo.make(:privacy => "private", :user => user)
-    ConvoUser.make(:user => user2, :convo => convo)
+    Subscription.make(:user => user2, :convo => convo)
     convo.should be_accesible_by_user user2
   end
 
@@ -64,21 +64,21 @@ describe "A convo instance" do
     user = User.make
     user2 = User.make
     convo = Convo.make
-    convo.convo_users.count.should == 1 # the owner is subscribed
+    convo.subscriptions.count.should == 1 # the owner is subscribed
     convo.add_user(user)
-    convo.convo_users.count.should == 2
+    convo.subscriptions.count.should == 2
     convo.add_user(user2)
-    convo.convo_users.count.should == 3
+    convo.subscriptions.count.should == 3
   end
 
   it "can't have duplicated subscriptions" do
     user = User.make
     convo = Convo.make
-    convo.convo_users.count.should == 1 # the owner is subscribed
+    convo.subscriptions.count.should == 1 # the owner is subscribed
     convo.add_user(user)
-    convo.convo_users.count.should == 2
+    convo.subscriptions.count.should == 2
     convo.add_user(user)
-    convo.convo_users.count.should == 2
+    convo.subscriptions.count.should == 2
   end
 
   it "can have multiple users subscribed" do

@@ -16,7 +16,7 @@ Convo.blueprint do
   user
 end
 
-ConvoUser.blueprint do
+Subscription.blueprint do
   user
   convo
 end

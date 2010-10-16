@@ -11,7 +11,7 @@ class User
   validates_presence_of :username
   validates_uniqueness_of :username
 
-  references_many :convo_users
+  references_many :subscriptions
 
   field :username, :unique => true, :background => true #  t.string,  :null               => false
   field :email, :unique => true, :background => true #  t.string,  :null               => false
