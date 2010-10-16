@@ -20,3 +20,13 @@ Given /^"([^"]*)" follow the "([^"]*)" convo$/ do |username, title|
   convo = Convo.where(:title => title).first
   Subscription.make(:user => user, :convo => convo)
 end
+
+Then /^I should be subscribed to the convo "([^"]*)"$/ do |title|
+  convo = Convo.where(:title => title).first
+  convo.users.should include @user
+end
+
+Then /^I should be unsubscribed from the convo "([^"]*)"$/ do |title|
+  convo = Convo.where(:title => title).first
+  convo.users.should_not include @user
+end

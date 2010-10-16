@@ -1,5 +1,5 @@
 class ConvosController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :show, :mockup]
+  before_filter :authenticate_user!, :except => [:index, :show]
 
   respond_to :html, :json, :xml
 
