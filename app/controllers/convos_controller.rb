@@ -28,10 +28,8 @@ class ConvosController < ApplicationController
   def create
     @convo = Convo.new(params[:convo])
     @convo.user = current_user
-
     respond_to do |format|
       if @convo.save
-        ConvoUser.create(:convo => @convo, :user => current_user)
         format.html { redirect_to(@convo, :notice => 'Convo was successfully created.') }
         format.xml  { render :xml => @convo, :status => :created, :location => @convo }
       else
@@ -42,12 +40,16 @@ class ConvosController < ApplicationController
   end
 
   # The current user follows a conversation.
-  def follow
+  def subscribe
     @convo = Convo.find(params[:id])
-    if @convo.public?
-      ConvoUser.create :convo => @convo, :user => current_user
+    respond_to do |format|
+      if @convo.accesible_by_user?(current_user)
+        @convo.add_user(current_user)
+        format.html { redirect_to(@convo, :notice => 'You are subscribed to the conversation.') }
+      else
+        format.html { redirect_to @convo, :notice => "Sorry, but you can't access this conversation" }
+      end
     end
-    redirect_to convo_path(@convo)
   end
 
 end

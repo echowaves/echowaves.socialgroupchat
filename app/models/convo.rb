@@ -13,6 +13,12 @@ class Convo
   references_many :messages
   references_many :convo_users
 
+  after_create :subscribe_owner
+
+  def users
+    self.convo_users.map(&:user)
+  end
+
   def public?
     self.privacy == "public"
   end
@@ -25,5 +31,15 @@ class Convo
     self.public? ||
       user && ( user == self.user ||
                 ConvoUser.where(:user_id => user.id, :convo_id => self.id).first )
+  end
+
+  def add_user(user)
+    if self.accesible_by_user?(user)
+      ConvoUser.create(:user => user, :convo => self) unless self.users.include? user
+    end
+  end
+
+  def subscribe_owner
+    add_user self.user
   end
 end

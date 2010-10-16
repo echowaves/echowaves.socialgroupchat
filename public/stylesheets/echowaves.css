@@ -238,3 +238,18 @@ h3 {font-size:110%;}
   text-align:justify;
 }
 .convo .message .meta { padding-left: 40px; margin-top:2px; }
+
+
+a.button-small-red {
+  font-size:90%;
+  background: #cc3333;
+  color:#fff;
+  text-decoration:none;
+  padding:0 4px;
+}
+/* Note: Gecko uses non-compliant syntax! */
+.borderradius a.button-small-red {
+   border-radius: 4px;
+   -moz-border-radius: 4px;
+   -webkit-border-radius: 4px;
+}
