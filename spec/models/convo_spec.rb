@@ -91,6 +91,18 @@ describe "A convo instance" do
     convo.users.should include user2
   end
 
+  it "can remove a user from the convo" do
+    user = User.make
+    user2 = User.make
+    convo = Convo.make
+    convo.add_user(user)
+    convo.add_user(user2)
+    convo.remove_user(user)
+    convo.remove_user(user2)
+    convo.users.should_not include user
+    convo.users.should_not include user2
+  end
+
   it "should create a subscription when created" do
     user = User.make
     convo = Convo.make(:user => user)

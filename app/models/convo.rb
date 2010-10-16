@@ -39,6 +39,11 @@ class Convo
     end
   end
 
+  def remove_user(user)
+    subscription = ConvoUser.where(:user_id => user.id, :convo_id => self.id).first
+    subscription.destroy unless subscription.blank?
+  end
+
   def subscribe_owner
     add_user self.user
   end
