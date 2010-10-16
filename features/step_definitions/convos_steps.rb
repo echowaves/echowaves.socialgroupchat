@@ -30,3 +30,8 @@ Then /^I should be unsubscribed from the convo "([^"]*)"$/ do |title|
   convo = Convo.where(:title => title).first
   convo.users.should_not include @user
 end
+
+Given /^I have an invitation for the "([^"]*)" convo$/ do |title|
+  convo = Convo.where(:title => title).first
+  convo.invite_user(@user)
+end
