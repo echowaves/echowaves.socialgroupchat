@@ -253,3 +253,17 @@ a.button-small-red {
    -moz-border-radius: 4px;
    -webkit-border-radius: 4px;
 }
+
+a.button-small-blue {
+  font-size:90%;
+  background: #4E829A;
+  color:#eee;
+  text-decoration:none;
+  padding:0 4px;
+}
+/* Note: Gecko uses non-compliant syntax! */
+.borderradius a.button-small-blue {
+   border-radius: 4px;
+   -moz-border-radius: 4px;
+   -webkit-border-radius: 4px;
+}

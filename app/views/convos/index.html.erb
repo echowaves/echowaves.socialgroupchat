@@ -6,7 +6,10 @@
   <tr>
     <td>
       <%= link_to convo.title, convo_path(convo) %>
-      <%= link_to "subscribe", subscribe_convo_path(convo), :class => 'button-small-red' %><br/>
+      <% if user_signed_in? %>
+        <%= subscribe_or_unsubscribe_link(:convo => convo, :user => current_user) %>
+      <% end %>
+      <br/>
       <span class="mute small"><%= convo.created_at %></span>
     </td>
   </tr>

@@ -52,4 +52,13 @@ class ConvosController < ApplicationController
     end
   end
 
+  # The current user unfollows a conversation.
+  def unsubscribe
+    @convo = Convo.find(params[:id])
+    respond_to do |format|
+      @convo.remove_user(current_user)
+      format.html { redirect_to(convos_path, :notice => 'You are unsubscribed from the conversation.') }
+    end
+  end
+
 end
