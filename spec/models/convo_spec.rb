@@ -109,5 +109,46 @@ describe "A convo instance" do
     convo.users.should include user
   end
 
+  it "should not add a user to their subscriptions if the convo is private and the user does not have an invitation" do
+    user = User.make
+    convo = Convo.make(:privacy => "private")
+    convo.add_user(user)
+    convo.users.should_not include user
+  end
+
+  it "should create an invitation" do
+    user = User.make
+    convo = Convo.make(:privacy => "private")
+    convo.invite_user(user)
+    convo.invitations.count.should == 1
+  end
+
+  it "should not create an invitation if a invitation already exists" do
+    user = User.make
+    convo = Convo.make(:privacy => "private")
+    convo.invite_user(user)
+    convo.invitations.count.should == 1
+    convo.invite_user(user)
+    convo.invitations.count.should == 1
+  end
+
+  it "should add a user to their subscriptions if the user has an invitation" do
+    user = User.make
+    requestor = User.make
+    convo = Convo.make(:user => requestor, :privacy => 'private')
+    convo.invite_user(user)
+    convo.add_user(user)
+    convo.users.should include user
+  end
+
+  it "should destroy the invitation when the user is added to the convo" do
+    user = User.make
+    requestor = User.make
+    convo = Convo.make(:user => requestor, :privacy => 'private')
+    convo.invite_user(user)
+    convo.add_user(user)
+    convo.invitations.count.should == 0
+  end
+
 end
 

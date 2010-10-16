@@ -31,18 +31,27 @@ class Convo
   def accesible_by_user?(user)
     self.public? ||
       user && ( user == self.user ||
-                Subscription.where(:user_id => user.id, :convo_id => self.id).first )
+                Subscription.where(:user_id => user.id, :convo_id => self.id).first ||
+                self.invitations.where(:user_id => user.id).first)
   end
 
   def add_user(user)
     if self.accesible_by_user?(user)
       Subscription.create(:user => user, :convo => self) unless self.users.include? user
+      invitation = self.invitations.where(:user_id => user.id).first
+      invitation.destroy if invitation.present?
     end
   end
 
   def remove_user(user)
     subscription = Subscription.where(:user_id => user.id, :convo_id => self.id).first
     subscription.destroy unless subscription.blank?
+  end
+
+  def invite_user(user)
+    unless self.invitations.where(:user_id => user.id).first
+      Invitation.create(:user => user, :convo => self, :requestor_id => self.user.id)
+    end
   end
 
   def subscribe_owner
