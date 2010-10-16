@@ -12,6 +12,7 @@ class User
   validates_uniqueness_of :username
 
   references_many :subscriptions
+  references_many :invitations
 
   field :username, :unique => true, :background => true #  t.string,  :null               => false
   field :email, :unique => true, :background => true #  t.string,  :null               => false
