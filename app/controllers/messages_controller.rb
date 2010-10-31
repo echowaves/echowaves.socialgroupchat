@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
         Socky.send({ :text => params[:text],
                      :uuid => params[:uuid],
                      :gravatar_url => params[:gravatar_url] }.to_json,
-                   :to => { :channels => "convo_#{@convo.id}"} )
+                     :channels => "convo_#{@convo.id}" )
         render :nothing => true
       end
     end

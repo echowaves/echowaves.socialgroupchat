@@ -28,7 +28,7 @@ GEM
       activemodel (= 3.0.1)
       activesupport (= 3.0.1)
     activesupport (3.0.1)
-    addressable (2.2.1)
+    addressable (2.2.2)
     arel (1.0.1)
       activesupport (~> 3.0.0)
     bcrypt-ruby (2.1.2)
@@ -143,7 +143,11 @@ GEM
       ffi (~> 0.6.3)
       json_pure
       rubyzip
-    socky (0.2.1)
+    socky-client (0.4.3)
+      json
+    socky-client-rails (0.4.1)
+      socky-client (~> 0.4.2)
+    socky-server (0.4.0)
       em-http-request
       em-websocket (>= 0.1.4)
       json
@@ -176,6 +180,7 @@ DEPENDENCIES
   rails (= 3.0.1)
   rspec
   rspec-rails
-  socky
+  socky-client-rails
+  socky-server
   spork
   will_paginate (~> 3.0.pre2)

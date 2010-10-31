@@ -3,7 +3,9 @@
 source 'http://gemcutter.org'
 
 gem "rails", "3.0.1"
-gem "socky"
+
+gem "socky-server" # this is a stand-alone server, is not part of the app and should not be here
+gem "socky-client-rails" # this is the client used to connect the app to the server
 
 gem "mongoid", "2.0.0.beta.19"
 gem "bson_ext"
