@@ -1,0 +1,16 @@
+<h1>Subscriptions</h1>
+
+<%#this is not a mistake, paginating over the subscriptions since that's what we select from the db, then mapping each subscription to convo%>
+<%= will_paginate @subscription %>
+<table id="convos_list">
+<% @convos.each do |convo| %>
+  <tr>
+    <td>
+      <%= link_to convo.title, convo_path(convo) %>
+      <br/>
+      <span class="mute small"><%= convo.created_at %></span>
+    </td>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @subscription %>

@@ -4,5 +4,5 @@ class Subscription
   include Mongoid::Timestamps
 
   referenced_in :convo
-  referenced_in :user
+  referenced_in :user  
 end
