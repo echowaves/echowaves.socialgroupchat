@@ -32,6 +32,9 @@ module NavigationHelpers
        edit_user_registration_path
      when /convos page/
        convos_path
+     when /subscriptions page for user "(.+)"/
+       user = User.find(:first, :conditions => {:username => $1})       
+       user_subscriptions_path(user.id)
      when /create new convo page/
        new_convo_path
      when /"(.+)" convo page/

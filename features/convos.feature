@@ -13,7 +13,7 @@ Feature: Convos Feature
 	  Then I should be on "my new convo" convo page
 	  And I should see "Convo was successfully created."
     When I go to convos page
-	  Then I should <action> "my new convo"
+	  Then I should <action> "<message>"
 	  # make sure that non registerred user is still can see or not see the convo
 	  When I go to the sign out link
 	  And I go to convos page

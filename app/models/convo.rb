@@ -55,6 +55,6 @@ class Convo
   end
 
   def subscribe_owner
-    add_user self.user
+    Subscription.create(:user => user, :convo => self, :created_at => created_at) #should enforce the created_at the same as for conversation
   end
 end

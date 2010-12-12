@@ -7,6 +7,7 @@ Given /^"(.+)" creates "(\d+)" (.+) convos$/ do |username, number, privacy|
   eval(number).to_i.times do |n|
     Convo.make(:title => "Convo #{n}.", :privacy => "public",
                :created_at => n, :user => user)
+    # sleep 1 # must sleep to enforce natural order
   end
 end
 
