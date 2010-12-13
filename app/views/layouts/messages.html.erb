@@ -81,7 +81,7 @@
 			<div class="center convo {layout: {type: 'border', hgap: 0, vgap: 0, resize: false}}">
 			  <div class="north warn" id="convo_header">
 			    <%= @convo.title %>
-          <div id="convo_settings"><img src="/images/gear.png"/></div>
+          <div id="convo_settings"><%="private" if @convo.private?%><img src="/images/gear.png"/></div>
           <div class="clear"></div>
 			  </div>
 			  <div class="center" id="convo_content">
