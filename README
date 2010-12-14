@@ -31,6 +31,12 @@ Development environment setup
   # check to see if you have rails 3.0.0 beta
   rails --version
 
+Sample data
+  you can populate the db with some sample data using:
+  rake db:load_sample_data
+  take a look at lib/tasks/sample_data.task for the details
+  ***THIS WILL ERASE YOUR DB CONTENTS***
+
 Installation of ruby gems
   # we are using some pre-released gems which works with Rails 3
   and last, do "bundle install" to install all the dependencies
