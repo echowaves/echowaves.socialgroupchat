@@ -271,3 +271,17 @@ a.button-small-blue {
 .private #convo_header{
   background: #cc3333;
 }
+
+.highlight_box {
+  background: #ffee80;
+  padding: 5px;
+}
+.no-boxshadow .highlight_box {
+  border-right:1px solid #ffcc00;
+  border-bottom:1px solid #ffcc00;
+}
+.boxshadow .highlight_box {
+  -webkit-box-shadow: rgba(255, 204, 0, 0.8) 1px 1px 1px;
+  -moz-box-shadow: 1px 1px 1px rgba(255, 204, 0, 0.8) ;
+}
+.item5 { margin-bottom:5px; }

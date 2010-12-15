@@ -1,0 +1,24 @@
+<%= content_for :secondary_panel do %>
+<div class="north box_header">manage users</div>
+<div class="center box_content_round">
+  <div class="highlight_box item5">
+    a list of the users you follow will appear here, also a search field to search for other users to add to the convo
+  </div>
+
+  <%= link_to "back to the convo", convo_path(@convo) %>
+</div>
+<% end %>
+
+
+<div class="highlight_box item5">
+  a list of all the users that are actually subscribed to the convo will appear here, you can remove users from this list if the convo is provate
+</div>
+
+
+<h3>Users in this convo</h3>
+
+<ul>
+<% @users.each do |user| %>
+    <li><%= link_to user.username, user_path(user) %></li>
+<% end %>
+</ul>
