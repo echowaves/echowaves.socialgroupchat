@@ -9,7 +9,9 @@ class ConvoUsersController < ApplicationController
 
   def index
     @users = @convo.users
-    respond_with @users
+    respond_with @users do |format|
+      format.html { render :layout => "convo_one_panel" }
+    end
   end
 
   def manage

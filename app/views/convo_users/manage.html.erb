@@ -1,17 +1,16 @@
 <%= content_for :secondary_panel do %>
-<div class="north box_header">manage users</div>
+<div class="north box_header admin">manage users</div>
 <div class="center box_content_round">
   <div class="highlight_box item5">
-    a list of the users you follow will appear here, also a search field to search for other users to add to the convo
+    A list of the users you follow will appear here, also a search field to search for other users to add to the convo. Users you add from here will appear in the "users in this convo" list in the panel of the left
   </div>
 
-  <%= link_to "back to the convo", convo_path(@convo) %>
 </div>
 <% end %>
 
 
 <div class="highlight_box item5">
-  a list of all the users that are actually subscribed to the convo will appear here, you can remove users from this list if the convo is provate
+  a list of all the users that are actually subscribed to the convo will appear here, you can remove users from this list if the convo is private
 </div>
 
 

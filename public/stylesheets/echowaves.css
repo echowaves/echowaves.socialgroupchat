@@ -271,7 +271,7 @@ a.button-small-blue {
 .private #convo_header{
   background: #cc3333;
 }
-
+.box .box_header.admin { background: #cc3333; }
 .highlight_box {
   background: #ffee80;
   padding: 5px;
@@ -285,3 +285,8 @@ a.button-small-blue {
   -moz-box-shadow: 1px 1px 1px rgba(255, 204, 0, 0.8) ;
 }
 .item5 { margin-bottom:5px; }
+.hidden { display:none; }
+
+#convo_menu a {
+  color:#fff;
+}

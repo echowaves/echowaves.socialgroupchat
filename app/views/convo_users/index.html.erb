@@ -1,8 +1,8 @@
-<h1>Users in this convo</h1>
+<h3>Users in this convo</h3>
 
 <% @users.each do |user| %>
 
-    <li><%= link_to gravatar_tag(user, :size => 64, :rating => :g, :html => { :class => "gravatar" }), user %> <%= link_to user.username, user_path(user) %></li>
+    <li><%= link_to user.username, user_path(user) %></li>
 
 <% end %>
 
