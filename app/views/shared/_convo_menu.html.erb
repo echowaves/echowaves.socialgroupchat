@@ -1,0 +1,10 @@
+<div id="convo_settings"><%= link_to image_tag("/images/gear.png"), "#", :id => "convo_menu_link" %></div>
+
+<div id="convo_menu" class="hidden">
+  <!-- user actions -->
+  <!-- ... -->
+  <!-- admin actions -->
+  <% if @convo.manageable_by_user?(@current_user) %>
+    <%= link_to "manage users", manage_convo_users_path(@convo) %>
+  <% end %>
+</div>

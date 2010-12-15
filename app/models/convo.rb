@@ -35,6 +35,11 @@ class Convo
                 self.invitations.where(:user_id => user.id).first)
   end
 
+  # just the owner for now
+  def manageable_by_user?(user)
+    user == self.user
+  end
+
   def add_user(user)
     if self.accesible_by_user?(user)
       Subscription.create(:user => user, :convo => self) unless self.users.include? user

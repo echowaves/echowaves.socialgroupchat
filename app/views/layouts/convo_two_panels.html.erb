@@ -40,21 +40,7 @@
         // socky
         //----------------------------------------------------------------------
 
-        Socky.prototype.respond_to_message = function(m) {
-          msg = JSON.parse(m)
-          if($("#"+msg.uuid).length == 0){
-            new messageView($('#messages'),msg,$('#message_template'));
-            $("#convo_content").attr({ scrollTop: $("#convo_content").attr("scrollHeight") - $('#convo_content').height() }, 3000);
-          };
-        };
-
-        // Socky.prototype.respond_to_connect = function() {};
-        // Socky.prototype.respond_to_authentication_success = function() {};
-        // Socky.prototype.respond_to_authentication_failure = function() {};
-        // Socky.prototype.respond_to_disconnect = function() {
-        //   setTimeout(function(instance) { instance.connect(); }, 1000, this);
-        // };
-
+        //...real time notifications here...
 
         // layout
         //----------------------------------------------------------------------
@@ -76,14 +62,12 @@
 	</head>
 	<body>
 
-    <%= render :partial => 'shared/templates' %>
-
 		<div class="layout {layout: {type: 'border', hgap: 3, vgap: 3}}">
 
 			<div class="center convo <%= @convo.private? ? 'private' : 'public' %> {layout: {type: 'border', hgap: 0, vgap: 0, resize: false}}">
 			  <div class="north warn" id="convo_header">
 			    <%= @convo.title %>
-          <%= render :partial => "shared/convo_menu" %>
+          <div id="convo_settings"><%= link_to "back", convo_path(@convo) %></div>
           <div class="clear"></div>
 			  </div>
 			  <div class="center" id="convo_content">
@@ -91,12 +75,17 @@
           <p class="alert"><%= alert %></p>
           <%= yield %>
 			  </div>
-			  <div class="south" id="convo_footer">
-          <%= render :partial => 'shared/message_area' %>
+			  <div class="south">
 			  </div>
 			</div><!-- center & convo -->
 
       <div class="east sidebar {layout: {type: 'grid', hgap: 3, vgap: 6, columns: 1, rows: 1}}">
+
+				  <div class="box {layout: {type: 'border', hgap: 0, vgap: 0, resize: false}}" id="component-2">
+            <%= yield :secondary_panel %>
+
+          </div>
+
 				  <div class="box {layout: {type: 'border', hgap: 0, vgap: 0, resize: false}}" id="component-1">
             <div class="north box_header">dashboard</div>
             <div class="center box_content_round">

@@ -1,5 +1,29 @@
 $(function(){
 
+$("#convo_menu_link").qtip({
+    content: { text: $("#convo_menu") },
+    show: { when: 'click', delay: 0 },
+    hide: {
+      when: 'unfocus',
+      fixed: true
+    },
+    position: {
+        corner: {
+            target: 'bottomMiddle',
+            tooltip: 'topMiddle'
+        }
+    },
+    style: {
+        tip: 'topMiddle',
+        name: 'dark',
+        border: {
+            radius: 8
+        }
+    }
+});
+
+
+
 Math.uuid = (function() {
   // Private array of chars to use
   var CHARS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
