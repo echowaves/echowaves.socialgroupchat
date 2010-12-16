@@ -6,7 +6,7 @@ describe Convo do
     @convo = Convo.create!(:title => "test convo", :user => @user)
   end
 
-  it "should embed one user" do
+  it "should reference one user" do
     @convo.user.should == @user
   end
 end

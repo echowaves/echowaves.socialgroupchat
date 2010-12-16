@@ -3,7 +3,6 @@ Sham.email { Faker::Internet.email }
 Sham.title { Faker::Lorem.sentence }
 Sham.body  { Faker::Lorem.paragraph }
 
-
 User.blueprint do
   username {Sham.name}
   password {'test123'}
@@ -19,4 +18,10 @@ end
 Subscription.blueprint do
   user
   convo
+end
+
+Message.blueprint do
+  user
+  convo
+  body {Sham.body}
 end
