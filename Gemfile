@@ -15,12 +15,12 @@ gem "gravatarify", "~>2.2.2"
 gem "escape_utils" # this will fix an issue with Rack::Test 1.2.1 and ruby 1.9.2
 
 group :test do
-  gem 'cucumber', "~>0.10.0"
   gem 'capybara', "~>0.4.1.rc"
   # gem 'database_cleaner'
   gem 'cucumber-rails', "~>0.3.2"
   gem 'rspec', "~>2.4.0"
   gem 'rspec-rails', "~>2.4.1"
+  gem 'steak', '~>1.1.0'
   gem 'spork', "~>0.9.0.rc2"
   gem 'launchy', "~>0.3.7"
   gem 'machinist_mongo', "~>2.0.0.pre"
