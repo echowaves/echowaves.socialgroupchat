@@ -14,9 +14,8 @@ gem "will_paginate", "~>3.0.pre2"
 gem "gravatarify", "~>2.2.2"
 gem "escape_utils" # this will fix an issue with Rack::Test 1.2.1 and ruby 1.9.2
 
-group :test do
+group :test, :development do
   gem 'capybara', "~>0.4.1.rc"
-  # gem 'database_cleaner'
   gem 'cucumber-rails', "~>0.3.2"
   gem 'rspec', "~>2.4.0"
   gem 'rspec-rails', "~>2.4.1"
