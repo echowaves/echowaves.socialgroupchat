@@ -5,13 +5,14 @@ require 'capybara/rails'
 module Steak::Capybara
   include Rack::Test::Methods
   include Capybara
-  
+
   def app
     ::Rails.application
   end
 end
 
 RSpec.configuration.include Steak::Capybara, :type => :acceptance
+RSpec.configuration.include Rails.application.routes.url_helpers, :type => :acceptance
 
 # Put your acceptance spec helpers inside /spec/acceptance/support
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
