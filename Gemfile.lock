@@ -152,6 +152,8 @@ GEM
       em-websocket (>= 0.1.4)
       json
     spork (0.8.4)
+    steak (1.0.0)
+      rspec
     term-ansicolor (1.0.5)
     thor (0.14.6)
     treetop (1.4.9)
@@ -168,7 +170,6 @@ DEPENDENCIES
   bson_ext (= 1.1.4)
   capybara
   cucover
-  cucumber
   cucumber-rails
   devise (= 1.1.5)
   escape_utils
@@ -183,4 +184,5 @@ DEPENDENCIES
   socky-client-rails
   socky-server
   spork
+  steak
   will_paginate (~> 3.0.pre2)
