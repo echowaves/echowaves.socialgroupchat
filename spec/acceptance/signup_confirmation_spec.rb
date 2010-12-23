@@ -14,7 +14,7 @@ feature "Signup Confirmation", %q{
     @user.should_not be_confirmed
     visit user_confirmation_path(:confirmation_token => @user.confirmation_token)
     page.should have_content("Your account was successfully confirmed")
-    @user.confirm!
+    # @user.confirm!
     @user.should be_confirmed
   end
 
