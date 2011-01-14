@@ -7,6 +7,7 @@ class User
   # :http_authenticatable, :token_authenticatable, :lockable, :timeoutable and :activatable
   devise :database_authenticatable, :registerable, :confirmable, :recoverable,
   :rememberable, :trackable, :validatable
+  devise :encryptable, :encryptor => 'sha1'
   
   validates_presence_of :username
   validates_uniqueness_of :username
