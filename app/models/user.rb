@@ -36,6 +36,8 @@ class User
   field :created_at, :type => DateTime # t.datetime
   field :updated_at, :type => DateTime # t.datetime
 
+  attr_accessible :username, :email, :password, :password_confirmation
+
   def gravatar
     gravatar_url email
   end
