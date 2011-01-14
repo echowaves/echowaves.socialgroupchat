@@ -3,6 +3,7 @@ Feature: Convos Feature
   As a registered user
   I want to be able to create a convo
 
+@selenium
   Scenario Outline: registered user creates a public/private Convo
 	  Given that I register and login as "testuser1" with password "testing1234"
 	  And I should not have any convos
@@ -23,6 +24,7 @@ Feature: Convos Feature
 	  |   "convo_privacy_public"   |  see     | my new convo  |
 	  |   "convo_privacy_private"  |  not see | my new convo  |
 
+@selenium
 	Scenario: test convos pagination
 	  Given that I register and login as "testuser1" with password "testing1234"
 	  And "testuser1" creates "21" public convos
@@ -100,6 +102,7 @@ Feature: Convos Feature
     And I go to the convos page
     Then I should not see "subscribe" within "#convos_list"
 
+@selenium
   Scenario: I can subscribe to a public convo from the convos list
     Given a user with username "otherguy" exists
     And "otherguy" has a "public" convo "other guy's public convo"
@@ -108,6 +111,7 @@ Feature: Convos Feature
     And I follow "subscribe" within "#convos_list"
     Then I should be subscribed to the convo "other guy's public convo"
 
+@selenium
   Scenario: I can unsubscribe from a convo from the convos list
     Given a user with username "otherguy" exists
     And "otherguy" has a "public" convo "other guy's public convo"

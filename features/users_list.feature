@@ -2,6 +2,7 @@ Feature: Users list
 In order to view a list of existing users
 I will need to access a page with this list
 
+@selenium
   Scenario: Click on the users icon
     Given a user with username "crossblaim" exists
     And a user with username "dmitry" exists

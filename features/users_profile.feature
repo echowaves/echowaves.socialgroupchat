@@ -2,6 +2,7 @@ Feature: User profile
 In order to know more about an user
 I will need to access a page with info about the user
 
+@selenium
   Scenario: Public profile
     Given a user with username "crossblaim" exists
     And a user with username "dmitry" exists
@@ -9,6 +10,7 @@ I will need to access a page with info about the user
     And I follow "crossblaim"
     Then I should see "crossblaim's profile"
 
+@selenium
   Scenario: Own profile
     Given that I register and login as "crossblaim" with password "pass123"
     When I go to the home page

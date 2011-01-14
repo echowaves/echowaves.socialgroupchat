@@ -15,8 +15,8 @@ Feature: Session handling
     Examples:
       |   username  |  password     |              action             |
       |   "tester"  |  "test123"    | see "Signed in successfully"    |
-      |   "tester1" |  "test1234"   | see "Invalid email or password" |
-      |   "tester"  |  "test12345"  | see "Invalid email or password" |
+      |   "tester1" |  "test1234"   | see "Invalid username or password" |
+      |   "tester"  |  "test12345"  | see "Invalid username or password" |
 
   Scenario: Logging out
     Given I am logged in

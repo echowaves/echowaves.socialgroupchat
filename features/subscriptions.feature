@@ -3,6 +3,7 @@ Feature: Subscriptions Feature
   As a registered user
   I want to be able to subscribe/unsubscribe conversations
 
+@selenium
   Scenario Outline: registered user creates a public/private Convo which results in subscribing to that convo as well
 	  Given that I register and login as "testuser1" with password "testing1234"
 	  And I should not have any convos
@@ -19,6 +20,7 @@ Feature: Subscriptions Feature
 	  |   "convo_privacy_public"   |  see     | my new convo  |
 	  |   "convo_privacy_private"  |  see     | my new convo  |
 
+@selenium
 	Scenario: test subscriptions pagination
 	  Given that I register and login as "testuser1" with password "testing1234"
 	  And "testuser1" creates "21" public convos
