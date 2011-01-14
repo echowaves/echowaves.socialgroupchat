@@ -1,18 +1,14 @@
 <%
 progress_output = "--format progress features"
-junit = "--format junit --out ./log"
 rerun_output = "--format rerun --out rerun.txt"
 no_wip = "--tags ~@wip"
-no_selenium = "--tags ~@selenium"
 
 rerun = File.file?('rerun.txt') ? IO.read('rerun.txt') : ""
 rerun_opts = rerun.to_s.strip.empty? ? progress_output : "--format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} #{rerun}"
-std_opts = "#{rerun_opts} #{rerun_output} --strict #{no_wip}"
-hudson_opts = "#{junit} --strict #{no_wip} "
+std_opts = "#{rerun_opts} #{rerun_output} --strict #{no_wip} -r features "
 %>
 default: <%= std_opts %>
 wip: --tags @wip:3 --wip features
-hudson-selenium: <%= hudson_opts %>
 
 autotest: --color --format pretty
 autotest-all: --color --format progress
