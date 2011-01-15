@@ -61,7 +61,7 @@ Then /^I should not be able to login as "([^\"]*)" with password "([^\"]*)"$/ do
   fill_in('user_username', :with => username)
   fill_in('user_password', :with => password)
   click_button('Sign in')
-  page.should have_content('Invalid email or password.')
+  page.should have_content('Invalid username or password.')
   
 end
 

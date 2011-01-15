@@ -1,4 +1,11 @@
 Echowaves::Application.routes.draw do
+  
+  devise_for :users
+
+  resources :users, :only => [:index, :show] do
+    resources :subscriptions, :only => [:index]
+  end
+  
   resources :convos, :only => [:index, :show, :new, :create] do
     member do
       # FIXME: should be post, not get
@@ -11,13 +18,6 @@ Echowaves::Application.routes.draw do
       get :manage, :on => :collection
     end
   end
-
-  devise_for :users
-
-  resources :users, :only => [:index, :show] do
-    resources :subscriptions, :only => [:index]
-  end
-
 
   match 'welcome', :to => 'welcome#index', :as => :welcome
   root :to => "welcome#index"

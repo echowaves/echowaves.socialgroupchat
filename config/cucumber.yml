@@ -1,8 +1,15 @@
 <%
+progress_output = "--format progress features"
+rerun_output = "--format rerun --out rerun.txt"
+no_wip = "--tags ~@wip"
+
 rerun = File.file?('rerun.txt') ? IO.read('rerun.txt') : ""
-rerun_opts = rerun.to_s.strip.empty? ? "--format #{ENV['CUCUMBER_FORMAT'] || 'progress'} features" : "--format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} #{rerun}"
-std_opts = "--format #{ENV['CUCUMBER_FORMAT'] || 'progress'} --strict --tags ~@wip"
+rerun_opts = rerun.to_s.strip.empty? ? progress_output : "--format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} #{rerun}"
+std_opts = "#{rerun_opts} #{rerun_output} --strict #{no_wip} -r features "
 %>
-default: <%= std_opts %> features
+default: <%= std_opts %>
 wip: --tags @wip:3 --wip features
-rerun: <%= rerun_opts %> --format rerun --out rerun.txt --strict --tags ~@wip
+
+autotest: --color --format pretty
+autotest-all: --color --format progress
+

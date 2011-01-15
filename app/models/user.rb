@@ -7,6 +7,7 @@ class User
   # :http_authenticatable, :token_authenticatable, :lockable, :timeoutable and :activatable
   devise :database_authenticatable, :registerable, :confirmable, :recoverable,
   :rememberable, :trackable, :validatable
+  # devise :encryptable, :encryptor => 'sha1'
   
   validates_presence_of :username
   validates_uniqueness_of :username
@@ -34,6 +35,8 @@ class User
   field :locked_at, :type => DateTime # t.datetime
   field :created_at, :type => DateTime # t.datetime
   field :updated_at, :type => DateTime # t.datetime
+
+  attr_accessible :username, :email, :password, :password_confirmation
 
   def gravatar
     gravatar_url email
