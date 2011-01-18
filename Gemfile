@@ -24,5 +24,9 @@ group :test, :development do
   gem 'launchy', "~>0.3.7"
   gem 'machinist_mongo', "~>2.0.0.pre"
   gem 'faker', "~>0.9.4"
-  gem 'cucover', "~>0.1.4"
+  # autotest stuff
+  gem 'autotest'
+  gem 'ZenTest'
+  gem 'autotest-rails'
+  gem 'autotest-growl'
 end
