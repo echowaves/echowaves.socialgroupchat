@@ -10,11 +10,13 @@ feature "Signup Confirmation", %q{
     @user = User.make(:username => "tester", :email => "test@example.com")
   end
 
-  scenario "Confirmation" do
+  scenario "Confirmation" do  
     @user.should_not be_confirmed
+    puts user_confirmation_path(:confirmation_token => @user.confirmation_token)
     visit user_confirmation_path(:confirmation_token => @user.confirmation_token)
     page.should have_content("Your account was successfully confirmed")
     # @user.confirm!
+    @user.reload
     @user.should be_confirmed
   end
 
