@@ -99,6 +99,8 @@ describe "A convo instance" do
     convo.add_user(user2)
     convo.remove_user(user)
     convo.remove_user(user2)
+    # not sure why have to reload, but this fixes the spec
+    convo.reload
     convo.users.should_not include user
     convo.users.should_not include user2
   end
@@ -147,6 +149,7 @@ describe "A convo instance" do
     convo = Convo.make(:user => requestor, :privacy => 'private')
     convo.invite_user(user)
     convo.add_user(user)
+    convo.reload
     convo.invitations.count.should == 0
   end
 
