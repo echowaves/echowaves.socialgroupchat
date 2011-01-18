@@ -127,6 +127,7 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.8.7)
+    rcov (0.9.9)
     rspec (2.4.0)
       rspec-core (~> 2.4.0)
       rspec-expectations (~> 2.4.0)
@@ -187,6 +188,7 @@ DEPENDENCIES
   machinist_mongo (~> 2.0.0.pre)
   mongoid (= 2.0.0.rc.4)
   rails (= 3.0.3)
+  rcov
   rspec (~> 2.4.0)
   rspec-rails (~> 2.4.1)
   socky-client-rails (>= 0.4.3)

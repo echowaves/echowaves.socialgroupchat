@@ -4,3 +4,4 @@ log/*.log
 tmp/**/*
 rerun.txt
 cucover.data
+coverage
