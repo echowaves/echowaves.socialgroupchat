@@ -86,7 +86,8 @@ feature "Useredit", %q{
     click_link "Cancel my account"
     page.should have_content "Bye! Your account was successfully cancelled. We hope to see you again soon."
     login_as_user(@user)
-    # page.should have_content "Signed in successfully."
+    pending "looks like a bug in devise, if we cancel the account termination, it still deletes it"
+    page.should have_content "Signed in successfully."
   end
 
 
