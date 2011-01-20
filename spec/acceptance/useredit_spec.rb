@@ -71,14 +71,23 @@ feature "Useredit", %q{
     page.should have_content "Current password can't be blank"
   end
 
-  scenario "Edit user, cancel my account" do
-    
-    # test that cancel button cancels the action and the ok button cancels the account
-    
-  #     
-  # And I confirm a js popup on the next step
-  # And I follow "Cancel my account"
-  # Then I should not be able to login as "testuser1" with password "testing1234" 
+  scenario "Edit user, cancel my account (confirm with 'ok' button)", :js => true do
+    page.evaluate_script("window.alert = function(msg) { return true; }")
+    page.evaluate_script("window.confirm = function(msg) { return true; }")
+    click_link "Cancel my account"
+    page.should have_content "Bye! Your account was successfully cancelled. We hope to see you again soon."
+    login_as_user(@user)
+    page.should have_content "Invalid username or password."
   end
+
+  scenario "Edit user, cancel my account (confirm with 'cancel' button)", :js => true do
+    page.evaluate_script("window.alert = function(msg) { return true; }")
+    page.evaluate_script("window.confirm = function(msg) { return false; }")
+    click_link "Cancel my account"
+    page.should have_content "Bye! Your account was successfully cancelled. We hope to see you again soon."
+    login_as_user(@user)
+    # page.should have_content "Signed in successfully."
+  end
+
 
 end

@@ -10,7 +10,6 @@ feature "Session", %q{
     @user = active_user
   end
 
-
   scenario "Logging out" do
     login_as_user(@user)
     visit destroy_user_session_path
