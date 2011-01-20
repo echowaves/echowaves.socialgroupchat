@@ -13,7 +13,7 @@ module HelperMethods
   #   user
   # end
 
-  def login(username, password = 'changeme')
+  def login(username, password = 'password')
     visit destroy_user_session_path
     visit new_user_session_path
     fill_in "user_username", :with => username
@@ -22,7 +22,7 @@ module HelperMethods
   end
   
   def login_as_user(user)
-    login(user.username, 'changeme')
+    login(user.username)
   end
 end
 

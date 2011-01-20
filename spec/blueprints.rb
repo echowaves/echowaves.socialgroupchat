@@ -5,7 +5,7 @@ Sham.body  { Faker::Lorem.paragraph }
 
 User.blueprint do
   username { Sham.username }
-  password { "changeme" }
+  password { "password" }
   email {Sham.email}
 end
 
