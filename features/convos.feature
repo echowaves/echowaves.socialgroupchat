@@ -7,12 +7,6 @@ Feature: Convos Feature
 @selenium
 
 
-  Scenario: visitor can't access private convo
-    Given a user with username "otherguy" exists
-    And "otherguy" has a "private" convo "other guy's private convo"
-    And I go to the "other guy's private convo" convo page
-    Then I should be on the convos page
-    And I should see "Sorry but this convo is private"
 
   Scenario: visitor should not see the subscriptions links in the convos list
     Given a user with username "otherguy" exists

@@ -145,5 +145,17 @@ feature "Convos", %q{
       page.should have_content("other guy's public convo")
     end
 
+
+    scenario "visitor can't access private convo" do
+      @other_user = active_user
+
+      @other_user_convo = Convo.make(:user => @other_user, :title => "other guy's private convo", :privacy => "private")
+
+      visit convo_path(@other_user_convo)
+
+      URI.parse(current_url).path.should eq convos_path
+      page.should have_content("Sorry but this convo is private")
+    end
+    
     
   end
