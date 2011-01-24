@@ -5,17 +5,6 @@ Feature: Convos Feature
 
 
 @selenium
-	Scenario: test convos pagination
-	  Given that I register and login as "testuser1" with password "testing1234"
-	  And "testuser1" creates "21" public convos
-	  When I go to convos page
-    Then I should see "Convo 20."
-	  And I should see "Next"
-	  And I should see "Previous"
-    And I should not see "Convo 0."
-	  When I follow "Next"
-	  Then I should see "Convo 0."
-	  And I should not see "Convo 20."
 
   Scenario: visitor can't create a Convo
 	  When I go to home page

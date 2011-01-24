@@ -45,4 +45,23 @@ feature "Convos", %q{
     end
 
 
+    scenario "test convos pagination" do
+      @user = active_user
+      login_as_user @user
+      
+      
+      21.times do |i|
+        Convo.make(:user => @user, :title => "Convo #{i}", :created_at => i*1000).save
+      end
+      
+      visit convos_path
+      page.should have_content "Convo 20"
+      page.should have_content "Next"
+      page.should have_content "Previous"
+      page.should_not have_content "Convo 0"
+      click_link "Next"
+      page.should have_content "Convo 0"
+      page.should_not have_content "Convo 20"
+    end
+
   end
