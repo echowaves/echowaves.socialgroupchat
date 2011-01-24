@@ -7,14 +7,6 @@ Feature: Convos Feature
 @selenium
 
 
-
-  Scenario: visitor can access public convo
-    Given a user with username "otherguy" exists
-    And "otherguy" has a "public" convo "other guy's public convo"
-    And I go to the "other guy's public convo" convo page
-    Then I should be on the "other guy's public convo" convo page
-    And I should see "other guy's public convo" within "#convo_header"
-
   Scenario: visitor can't access private convo
     Given a user with username "otherguy" exists
     And "otherguy" has a "private" convo "other guy's private convo"
