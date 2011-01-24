@@ -49,7 +49,7 @@ feature "Convos", %q{
       @user = active_user
       login_as_user @user
       21.times do |i|
-        Convo.make(:user => @user, :title => "Convo #{i}", :created_at => i*1000).save
+        Convo.make(:user => @user, :title => "Convo #{i}", :created_at => i*1000)
       end
       visit convos_path
       page.should have_content "Convo 20"
@@ -69,6 +69,15 @@ feature "Convos", %q{
       page.should have_content "You need to sign in or sign up before continuing."
     end
 
+
+    scenario "owner can visit his own private convos" do
+      @user = active_user
+      login_as_user @user
+      @private_convo = Convo.make(:user => @user, :title => "my private convo", :privacy => "private")
+      visit convo_path(@private_convo)
+      URI.parse(current_url).path.should eq convo_path(@private_convo)
+      page.should have_content "my private convo"
+    end
 
 
   end

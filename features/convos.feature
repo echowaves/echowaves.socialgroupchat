@@ -6,13 +6,6 @@ Feature: Convos Feature
 
 @selenium
 
-  Scenario: owner can visit his own private convos
-	  Given that I register and login as "testuser1" with password "testing1234"
-    And "testuser1" has a "private" convo "my private convo"
-    And I go to "my private convo" convo page
-    Then I should be on the "my private convo" convo page
-    And I should see "my private convo" within "#convo_header"
-
   Scenario: owner can visit his own public convos
 	  Given that I register and login as "testuser1" with password "testing1234"
     And "testuser1" has a "public" convo "my public convo"
