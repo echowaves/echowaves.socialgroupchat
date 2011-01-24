@@ -8,13 +8,6 @@ Feature: Convos Feature
 
 
 @selenium
-  Scenario: I can subscribe to a public convo from the convos list
-    Given a user with username "otherguy" exists
-    And "otherguy" has a "public" convo "other guy's public convo"
-	  And that I register and login as "testuser1" with password "testing1234"
-    When I go to the convos page
-    And I follow "subscribe" within "#convos_list"
-    Then I should be subscribed to the convo "other guy's public convo"
 
 @selenium
   Scenario: I can unsubscribe from a convo from the convos list

@@ -168,4 +168,21 @@ feature "Convos", %q{
       find('#convos_list').should_not have_content("subscribe")
     end
     
+
+    scenario "I can subscribe to a public convo from the convos list" do
+      @user = active_user
+      login_as_user @user
+            
+      @other_user = active_user
+      @other_user_convo = Convo.make(:user => @other_user, :title => "other guy's public convo", :privacy => "public")
+
+      visit convos_path
+
+      click_link "subscribe"
+      
+      visit user_subscriptions_path(@user)
+      
+      page.should have_content("other guy's public convo")
+    end
+
   end
