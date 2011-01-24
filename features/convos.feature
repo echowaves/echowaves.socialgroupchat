@@ -7,14 +7,6 @@ Feature: Convos Feature
 @selenium
 
 
-  Scenario: user can't access a private convo he don't follows
-	  Given that I register and login as "testuser1" with password "testing1234"
-    And a user with username "otherguy" exists
-    And "otherguy" has a "private" convo "other guy's private convo"
-    And I go to "other guy's private convo" convo page
-    Then I should be on the convos page
-    And I should see "Sorry but this convo is private"
-
   Scenario: user can access a public convo
 	  Given that I register and login as "testuser1" with password "testing1234"
     And a user with username "otherguy" exists

@@ -6,6 +6,7 @@ feature "Convos", %q{
   I want to be able to create a convo
   } do
 
+
     scenario "registered user creates a public Convo" do
       @convo_title = "my new convo"
       @user = active_user
@@ -22,6 +23,7 @@ feature "Convos", %q{
       click_link "nav_convos_link"
       page.should have_content @convo_title
     end
+
 
     scenario "registered user creates a private Convo" do
       @convo_title = "my new convo"
@@ -43,6 +45,7 @@ feature "Convos", %q{
       page.should_not have_content @convo_title
     end
 
+
     scenario "test convos pagination" do
       @user = active_user
       login_as_user @user
@@ -59,12 +62,14 @@ feature "Convos", %q{
       page.should_not have_content "Convo 20"
     end
 
+
     scenario "visitor can't create a Convo" do
       visit "/"
       page.should_not have_link "new convo"  
       visit new_convo_path
       page.should have_content "You need to sign in or sign up before continuing."
     end
+
 
     scenario "owner can visit his own private convos" do
       @user = active_user
@@ -75,6 +80,7 @@ feature "Convos", %q{
       page.should have_content "my private convo"
     end
 
+
     scenario "owner can visit his own public convos" do
       @user = active_user
       login_as_user @user
@@ -84,4 +90,18 @@ feature "Convos", %q{
       page.should have_content "my public convo"
     end
 
+
+    scenario "user can't access a private convo he don't follows" do
+      @user = active_user
+      login_as_user @user
+            
+      @other_user = active_user
+      @other_user_convo = Convo.make(:user => @other_user, :title => "other guy's private convo", :privacy => "private")
+
+      visit convo_path(@other_user_convo)
+      URI.parse(current_url).path.should eq convos_path
+      page.should have_content("Sorry but this convo is private")
+    end
+    
+    
   end
