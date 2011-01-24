@@ -8,15 +8,6 @@ Feature: Convos Feature
 
 
 
-  Scenario: user can access a private convo he follows
-	  Given that I register and login as "testuser1" with password "testing1234"
-    And a user with username "otherguy" exists
-    And "otherguy" has a "private" convo "other guy's private convo"
-    And "testuser1" follow the "other guy's private convo" convo
-    And I go to "other guy's private convo" convo page
-    Then I should be on the "other guy's private convo" convo page
-    And I should see "other guy's private convo" within "#convo_header"
-
   Scenario: visitor can access public convo
     Given a user with username "otherguy" exists
     And "otherguy" has a "public" convo "other guy's public convo"
