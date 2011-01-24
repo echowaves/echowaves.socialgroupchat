@@ -20,6 +20,11 @@ Subscription.blueprint do
   convo
 end
 
+Invitation.blueprint do
+  user
+  convo
+end
+
 Message.blueprint do
   user
   convo

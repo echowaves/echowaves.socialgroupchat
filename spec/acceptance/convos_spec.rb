@@ -200,6 +200,20 @@ feature "Convos", %q{
       click_link "unsubscribe"
       visit user_subscriptions_path(@user)
       page.should_not have_content("other guy's public convo")
-
     end
+
+    scenario "I can access a private convo if I have an invitation" do
+      @user = active_user
+      login_as_user @user
+      @other_user = active_user
+      @other_user_convo = Convo.make(:user => @other_user, :title => "other guy's private convo", :privacy => "private")
+
+      Invitation.make(:user => @user, :convo => @other_user_convo)
+
+      visit convo_path(@other_user_convo)
+    
+      URI.parse(current_url).path.should eq convo_path(@other_user_convo)
+      find("#convo_header").should have_content("other guy's private convo")
+    end
+
   end
