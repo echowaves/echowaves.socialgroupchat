@@ -7,13 +7,6 @@ Feature: Convos Feature
 @selenium
 
 
-
-  Scenario: visitor should not see the subscriptions links in the convos list
-    Given a user with username "otherguy" exists
-    And "otherguy" has a "public" convo "other guy's public convo"
-    And I go to the convos page
-    Then I should not see "subscribe" within "#convos_list"
-
 @selenium
   Scenario: I can subscribe to a public convo from the convos list
     Given a user with username "otherguy" exists

@@ -158,4 +158,14 @@ feature "Convos", %q{
     end
     
     
+    scenario "visitor should not see the subscriptions links in the convos list" do
+      @other_user = active_user
+
+      @other_user_convo = Convo.make(:user => @other_user, :title => "other guy's private convo", :privacy => "private")
+
+      visit convos_path
+
+      find('#convos_list').should_not have_content("subscribe")
+    end
+    
   end
