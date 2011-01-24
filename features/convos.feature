@@ -6,12 +6,6 @@ Feature: Convos Feature
 
 @selenium
 
-  Scenario: visitor can't create a Convo
-	  When I go to home page
-	  Then I should not see "new convo"
-	  And I go to create new convo page
-	  Then I should see "You need to sign in or sign up before continuing."
-
   Scenario: owner can visit his own private convos
 	  Given that I register and login as "testuser1" with password "testing1234"
     And "testuser1" has a "private" convo "my private convo"
