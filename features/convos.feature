@@ -7,13 +7,6 @@ Feature: Convos Feature
 @selenium
 
 
-  Scenario: user can access a public convo
-	  Given that I register and login as "testuser1" with password "testing1234"
-    And a user with username "otherguy" exists
-    And "otherguy" has a "public" convo "other guy's public convo"
-    And I go to "other guy's public convo" convo page
-    Then I should be on the "other guy's public convo" convo page
-    And I should see "other guy's public convo" within "#convo_header"
 
   Scenario: user can access a private convo he follows
 	  Given that I register and login as "testuser1" with password "testing1234"
