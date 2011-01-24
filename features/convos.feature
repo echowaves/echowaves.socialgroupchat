@@ -4,20 +4,6 @@ Feature: Convos Feature
   I want to be able to create a convo
 
 
-@selenium
-
-
-@selenium
-
-@selenium
-  Scenario: I can unsubscribe from a convo from the convos list
-    Given a user with username "otherguy" exists
-    And "otherguy" has a "public" convo "other guy's public convo"
-	  And that I register and login as "testuser1" with password "testing1234"
-    And "testuser1" follow the "other guy's public convo" convo
-    When I go to the convos page
-    And I follow "unsubscribe" within "#convos_list"
-    Then I should be unsubscribed from the convo "other guy's public convo"
 
   Scenario: I can access a private convo if I have an invitation
     Given a user with username "otherguy" exists

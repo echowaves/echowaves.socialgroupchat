@@ -185,4 +185,21 @@ feature "Convos", %q{
       page.should have_content("other guy's public convo")
     end
 
+
+    scenario "I can unsubscribe from a convo from the convos list" do
+      @user = active_user
+      login_as_user @user
+            
+      @other_user = active_user
+      @other_user_convo = Convo.make(:user => @other_user, :title => "other guy's public convo", :privacy => "public")
+
+      Subscription.make(:user => @user, :convo => @other_user_convo) 
+
+      visit convos_path
+      
+      click_link "unsubscribe"
+      visit user_subscriptions_path(@user)
+      page.should_not have_content("other guy's public convo")
+
+    end
   end
