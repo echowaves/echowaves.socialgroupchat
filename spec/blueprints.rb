@@ -12,21 +12,21 @@ end
 Convo.blueprint do
   title {Sham.title}
   privacy {"public"}
-  user
+  user { User.make }
 end
 
 Subscription.blueprint do
-  user
-  convo
+  user { User.make }
+  convo { Convo.make }
 end
 
 Invitation.blueprint do
-  user
-  convo
+  user { User.make }
+  convo { Convo.make }
 end
 
 Message.blueprint do
-  user
-  convo
+  user { User.make }
+  convo { Convo.make }
   body {Sham.body}
 end
