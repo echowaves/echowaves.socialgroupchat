@@ -16,13 +16,13 @@ feature "Login Forgot Password", %q{
 
   scenario "Reset password request" do
     visit new_user_password_path
-    fill_in "user_email", :with => "test@example.com"
+    fill_in "user_username", :with => "tester"
     click_button "Send me reset password instructions"
     page.should have_content("You will receive an email with instructions about how to reset")
     visit new_user_password_path
-    fill_in "user_email", :with => "bad@example.com"
+    fill_in "user_username", :with => "bad_example"
     click_button "Send me reset password instructions"
-    page.should have_content("Email not found")
+    page.should have_content("Username not found")
   end
 
   scenario "Reset password confirmation" do

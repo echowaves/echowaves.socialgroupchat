@@ -74,7 +74,7 @@ feature "Useredit", %q{
   scenario "Edit user, cancel my account (confirm with 'ok' button)", :js => true do
     page.evaluate_script("window.alert = function(msg) { return true; }")
     page.evaluate_script("window.confirm = function(msg) { return true; }")
-    click_link "Cancel my account"
+    click_button "Cancel my account"
     page.should have_content "Bye! Your account was successfully cancelled. We hope to see you again soon."
     login_as_user(@user)
     page.should have_content "Invalid username or password."
@@ -83,10 +83,9 @@ feature "Useredit", %q{
   scenario "Edit user, cancel my account (confirm with 'cancel' button)", :js => true do
     page.evaluate_script("window.alert = function(msg) { return true; }")
     page.evaluate_script("window.confirm = function(msg) { return false; }")
-    click_link "Cancel my account"
-    page.should have_content "Bye! Your account was successfully cancelled. We hope to see you again soon."
+    click_button "Cancel my account"
+
     login_as_user(@user)
-    pending "looks like a bug in devise, if we cancel the account termination, it still deletes it"
     page.should have_content "Signed in successfully."
   end
 

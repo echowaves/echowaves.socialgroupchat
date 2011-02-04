@@ -13,7 +13,7 @@ feature "Signup", %q{
     fill_in "user_password", :with => "test1234"
     fill_in "user_password_confirmation", :with => "test1234"
     click_button "user_submit"
-    page.should have_content "confirmation was sent to your e-mail"
+    page.should have_content "You have signed up successfully. However, we could not sign you in because your account is unconfirmed."
   end
 
   scenario "Attempt registration with dup username, and/or email, short password, and not matching confirmation password" do
