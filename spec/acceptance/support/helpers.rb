@@ -24,6 +24,12 @@ module HelperMethods
   def login_as_user(user)
     login(user.username)
   end
+  
+  def login_new
+    @user = active_user
+    login_as_user @user
+    @user
+  end
 end
 
 RSpec.configuration.include HelperMethods, :type => :acceptance

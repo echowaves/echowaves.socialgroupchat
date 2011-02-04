@@ -9,8 +9,7 @@ feature "Convos", %q{
 
     scenario "registered user creates a public Convo" do
       @convo_title = "my new convo"
-      @user = active_user
-      login_as_user @user
+      @user = login_new
       click_link "new convo"
       fill_in "convo_title", :with => @convo_title
       choose('convo_privacy_public')
@@ -27,8 +26,7 @@ feature "Convos", %q{
 
     scenario "registered user creates a private Convo" do
       @convo_title = "my new convo"
-      @user = active_user
-      login_as_user @user
+      @user = login_new
       click_link "new convo"
       fill_in "convo_title", :with => @convo_title
       choose('convo_privacy_private')
@@ -47,8 +45,7 @@ feature "Convos", %q{
 
 
     scenario "test convos pagination" do
-      @user = active_user
-      login_as_user @user
+      @user = login_new
       21.times do |i|
         Convo.make(:user => @user, :title => "Convo #{i}", :created_at => i*1000)
       end
@@ -72,55 +69,50 @@ feature "Convos", %q{
 
 
     scenario "owner can visit his own private convos" do
-      @user = active_user
-      login_as_user @user
+      @user = login_new
       @private_convo = Convo.make(:user => @user, :title => "my private convo", :privacy => "private")
       visit convo_path(@private_convo)
-      URI.parse(current_url).path.should eq convo_path(@private_convo)
+      current_path.should == convo_path(@private_convo)
       page.should have_content "my private convo"
     end
 
 
     scenario "owner can visit his own public convos" do
-      @user = active_user
-      login_as_user @user
+      @user = login_new
       @public_convo = Convo.make(:user => @user, :title => "my public convo", :privacy => "public")
       visit convo_path(@public_convo)
-      URI.parse(current_url).path.should eq convo_path(@public_convo)
+      current_path.should == convo_path(@public_convo)
       page.should have_content "my public convo"
     end
 
 
     scenario "user can't access a private convo he don't follows" do
-      @user = active_user
-      login_as_user @user
+      @user = login_new
             
       @other_user = active_user
       @other_user_convo = Convo.make(:user => @other_user, :title => "other guy's private convo", :privacy => "private")
 
       visit convo_path(@other_user_convo)
-      URI.parse(current_url).path.should eq convos_path
+      current_path.should == convos_path
       page.should have_content("Sorry but this convo is private")
     end
     
     
     scenario "user can access a public convo" do
-      @user = active_user
-      login_as_user @user
+      @user = login_new
             
       @other_user = active_user
       @other_user_convo = Convo.make(:user => @other_user, :title => "other guy's public convo", :privacy => "public")
 
       visit convo_path(@other_user_convo)
-      URI.parse(current_url).path.should eq convo_path(@other_user_convo)
+      current_path.should == convo_path(@other_user_convo)
       page.should_not have_content("Sorry but this convo is private")
       page.should have_content("other guy's public convo")
     end
 
     
     scenario "user can access a private convo he follows" do
-      @user = active_user
-      login_as_user @user
+      @user = login_new
             
       @other_user = active_user
       @other_user_convo = Convo.make(:user => @other_user, :title => "other guy's private convo", :privacy => "private")
@@ -128,7 +120,7 @@ feature "Convos", %q{
       Subscription.make(:user => @user, :convo => @other_user_convo) 
 
       visit convo_path(@other_user_convo)
-      URI.parse(current_url).path.should eq convo_path(@other_user_convo)
+      current_path.should == convo_path(@other_user_convo)
       page.should_not have_content("Sorry but this convo is private")
       page.should have_content("other guy's private convo")
     end
@@ -141,7 +133,7 @@ feature "Convos", %q{
 
       visit convo_path(@other_user_convo)
 
-      URI.parse(current_url).path.should eq convo_path(@other_user_convo)
+      current_path.should == convo_path(@other_user_convo)
       page.should have_content("other guy's public convo")
     end
 
@@ -153,7 +145,7 @@ feature "Convos", %q{
 
       visit convo_path(@other_user_convo)
 
-      URI.parse(current_url).path.should eq convos_path
+      current_path.should == convos_path
       page.should have_content("Sorry but this convo is private")
     end
     
@@ -170,8 +162,7 @@ feature "Convos", %q{
     
 
     scenario "I can subscribe to a public convo from the convos list" do
-      @user = active_user
-      login_as_user @user
+      @user = login_new
             
       @other_user = active_user
       @other_user_convo = Convo.make(:user => @other_user, :title => "other guy's public convo", :privacy => "public")
@@ -187,8 +178,7 @@ feature "Convos", %q{
 
 
     scenario "I can unsubscribe from a convo from the convos list" do
-      @user = active_user
-      login_as_user @user
+      @user = login_new
             
       @other_user = active_user
       @other_user_convo = Convo.make(:user => @other_user, :title => "other guy's public convo", :privacy => "public")
@@ -202,9 +192,10 @@ feature "Convos", %q{
       page.should_not have_content("other guy's public convo")
     end
 
+
     scenario "I can access a private convo if I have an invitation" do
-      @user = active_user
-      login_as_user @user
+      @user = login_new
+
       @other_user = active_user
       @other_user_convo = Convo.make(:user => @other_user, :title => "other guy's private convo", :privacy => "private")
 
@@ -212,7 +203,7 @@ feature "Convos", %q{
 
       visit convo_path(@other_user_convo)
     
-      URI.parse(current_url).path.should eq convo_path(@other_user_convo)
+      current_path.should == convo_path(@other_user_convo)
       find("#convo_header").should have_content("other guy's private convo")
     end
 

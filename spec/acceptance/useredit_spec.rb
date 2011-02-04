@@ -7,8 +7,7 @@ feature "Useredit", %q{
 } do
 
   background do
-    @user = active_user
-    login_as_user(@user)
+    @user = login_new
     @user2 = active_user
     visit edit_user_registration_path
   end
