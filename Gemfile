@@ -18,6 +18,7 @@ group :test, :development do
   gem 'capybara', "~>0.4.1.1"
   gem 'rspec', "~>2.4.0"
   gem 'rspec-rails', "~>2.4.1"
+  gem 'mongoid-rspec'
   gem 'steak', '~>1.1.0'
   gem 'spork', "~>0.9.0.rc2"
   gem 'launchy', "~>0.3.7"
