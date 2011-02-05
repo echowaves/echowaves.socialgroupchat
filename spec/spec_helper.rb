@@ -16,6 +16,7 @@ Rspec.configure do |config|
   # methods or matchers
   require 'rspec/expectations'
   # config.include Rspec::Matchers
+  config.include Mongoid::Matchers
 
   # == Mock Framework
   #
