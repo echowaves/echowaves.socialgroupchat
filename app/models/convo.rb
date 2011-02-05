@@ -3,8 +3,8 @@ class Convo
   include Mongoid::Timestamps
 
   validates_presence_of :title
-  validates_length_of :title, :maximum => 140
   validates_presence_of :user
+  validates_length_of :title, :maximum => 140
 
   field :title, :type   => String
   field :privacy, :type => String

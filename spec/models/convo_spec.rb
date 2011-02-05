@@ -2,10 +2,20 @@ require 'spec_helper'
 
 describe Convo do
   describe "mongoid-rspec" do
+    it { should validate_presence_of(:title) }
+    it { should validate_presence_of(:user) }
+    it { should validate_length_of(:title) }
+
     it { should embed_one :user }
     it { should reference_many :messages }
     it { should reference_many :subscriptions }
     it { should reference_many :invitations }
+    
+    it { should have_fields(:title, :privacy).of_type(String) }
+    
+    it { should have_fields(:created_at, :updated_at).of_type(Time) }
+    
+    
   end
   
   
