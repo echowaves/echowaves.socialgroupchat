@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe Convo do
   describe "mongoid-rspec" do
-    it { should validate_presence_of(:title) }
     it { should validate_presence_of(:user) }
+    it { should validate_presence_of(:title) }
     it { should validate_length_of(:title) }
 
     it { should embed_one :user }
@@ -15,11 +15,10 @@ describe Convo do
     
     it { should have_fields(:created_at, :updated_at).of_type(Time) }
     
-    
   end
   
   
-  describe "testing business logic" do
+  describe "business logic" do
     before do
       @user = User.make(:username => "tester", :email => "test@example.com")
       @convo = Convo.create!(:title => "test convo", :user => @user)
