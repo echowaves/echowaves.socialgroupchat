@@ -5,6 +5,7 @@ require File.dirname(__FILE__) + "/../config/environment" unless defined?(RAILS_
 require File.dirname(__FILE__) + '/blueprints'
 
 require 'rspec/rails'
+require 'cover_me'
 
 
 # Requires supporting files with custom matchers and macros, etc,

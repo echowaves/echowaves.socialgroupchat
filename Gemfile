@@ -26,7 +26,7 @@ group :test, :development do
   gem 'launchy', "~> 0.3.7"
   gem 'machinist_mongo', "~> 2.0.0.pre"
   gem 'faker', "~> 0.9.5"
-  gem 'rcov'
+  gem 'cover_me', '>= 1.0.0.rc5'
   gem 'ruby-graphviz'
   # autotest stuff
   gem 'autotest'
