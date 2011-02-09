@@ -25,7 +25,7 @@ Development environment setup
   rvm gemset create ew
   rvm use 1.9.2-head@ew
 
-  gem install rails --pre
+  gem install rails
 
 
   # check to see if you have rails 3.0.0 beta
