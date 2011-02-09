@@ -10,6 +10,7 @@ feature "Messages", %q{
     @user = login_new
   end
 
+
   scenario "registered user can post a message to a public convo", :js => true do
     @convo = Convo.make(:user => @user, :privacy => 'public')
     visit convo_path(@convo)
@@ -26,7 +27,6 @@ feature "Messages", %q{
     within '#messages' do
       page.should have_content 'Really Long Text...'
     end
-
 
   end
   
