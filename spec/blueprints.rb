@@ -5,13 +5,13 @@ Sham.body  { Faker::Lorem.paragraph }
 
 User.blueprint do
   username { Sham.username }
-  password { "password" }
+  password { 'password' }
   email {Sham.email}
 end
 
 Convo.blueprint do
   title {Sham.title}
-  privacy {"public"}
+  privacy {'public'}
   user { User.make }
 end
 
