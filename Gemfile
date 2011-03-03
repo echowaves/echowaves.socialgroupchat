@@ -13,8 +13,9 @@ gem "mongoid", "~> 2.0.0.rc.7"
 gem "bson_ext", "~> 1.2.0"
 gem "devise", "~> 1.2.rc"
 gem "will_paginate", "~> 3.0.pre2"
-gem "gravatarify", "~> 2.2.2"
-gem "escape_utils" # this will fix an issue with Rack::Test 1.2.1 and ruby 1.9.2
+gem 'gravatarify', "~> 2.2.2"
+gem 'escape_utils' # this will fix an issue with Rack::Test 1.2.1 and ruby 1.9.2
+gem 'dynamic_form'
 
 group :test, :development do
   gem 'capybara', "~> 0.4.1.2"
