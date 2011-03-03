@@ -41,6 +41,8 @@ Installation of ruby gems
   # we are using some pre-released gems which works with Rails 3
   and last, do "bundle install" to install all the dependencies
 
+Run the socky server
+  socky -c socky_config.yml 
 
 Know issues
 
