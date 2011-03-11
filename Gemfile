@@ -2,7 +2,9 @@
 
 source 'http://gemcutter.org'
 
-gem "rails", "3.0.4"
+gem "rails", "3.0.5"
+
+gem 'unicorn'
 
 gem "socky-server", ">= 0.4.0" # this is a stand-alone server, is not part of the app and should not be here
 gem "socky-client-rails", ">= 0.4.3" # this is the client used to connect the app to the server
