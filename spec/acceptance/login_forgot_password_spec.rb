@@ -14,7 +14,7 @@ feature "Login Forgot Password", %q{
     visit destroy_user_session_path
   end
 
-  scenario "Reset password request", :js => true  do
+  scenario "Reset password request" do
     visit new_user_password_path
     fill_in "user_email", :with => "test@example.com"
     click_button "Send me reset password instructions"
