@@ -33,7 +33,7 @@ class MessagesController < ApplicationController
 private
 
   def current_convo
-    @convo = Convo.criteria.for_ids(params[:convo_id])[0]
+    @convo = Convo.find(params[:convo_id])
   end
 
 end
