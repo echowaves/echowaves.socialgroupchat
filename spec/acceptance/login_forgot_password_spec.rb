@@ -14,15 +14,16 @@ feature "Login Forgot Password", %q{
     visit destroy_user_session_path
   end
 
-  scenario "Reset password request" do
+  scenario "Reset password request", :js => true  do
     visit new_user_password_path
-    fill_in "user_username", :with => "tester"
+    fill_in "user_email", :with => "test@example.com"
     click_button "Send me reset password instructions"
+    
     page.should have_content("You will receive an email with instructions about how to reset")
     visit new_user_password_path
-    fill_in "user_username", :with => "bad_example"
+    fill_in "user_email", :with => "bad_example"
     click_button "Send me reset password instructions"
-    page.should have_content("Username not found")
+    page.should have_content("Email not found")
   end
 
   scenario "Reset password confirmation" do
