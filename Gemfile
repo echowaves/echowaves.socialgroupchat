@@ -9,7 +9,7 @@ gem 'unicorn'
 gem "socky-server", ">= 0.4.0" # this is a stand-alone server, is not part of the app and should not be here
 gem "socky-client-rails", ">= 0.4.3" # this is the client used to connect the app to the server
 
-gem "mongoid", "~> 2.0.0.rc.7"
+gem "mongoid", "~> 2.0.0"
 # gem "mongoid", :git => "git://github.com/mongoid/mongoid.git", :branch => "safe_master"
 
 gem "bson_ext", "~> 1.2.0"
