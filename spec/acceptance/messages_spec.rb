@@ -24,12 +24,10 @@ feature "Messages", %q{
     end
     #now lets reload the page and the message should still be on the same place
     visit convo_path(@convo)
+    
     within '#messages' do
       page.should have_content 'Really Long Text...'
     end
 
   end
-  
-  
-  
 end
