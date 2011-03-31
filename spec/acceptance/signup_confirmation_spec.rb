@@ -7,7 +7,7 @@ feature "Signup Confirmation", %q{
 } do
 
   background do
-    @user = User.make(:username => "tester", :email => "test@example.com")
+    @user = User.make!(:username => "tester", :email => "test@example.com")
   end
 
   scenario "Confirmation" do  

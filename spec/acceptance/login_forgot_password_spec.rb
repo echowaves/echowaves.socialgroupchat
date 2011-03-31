@@ -7,7 +7,7 @@ feature "Login Forgot Password", %q{
 } do
 
   background do
-    @user = User.make(:username => "tester", :email => "test@example.com", :password => "test123")
+    @user = User.make!(:username => "tester", :email => "test@example.com", :password => "test123")
     visit user_confirmation_path(:confirmation_token => @user.confirmation_token)
     page.should have_content("Your account was successfully confirmed")
     @user.confirm!

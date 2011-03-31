@@ -27,8 +27,10 @@ group :test, :development do
   gem 'steak', '~> 1.1.0'
   # gem 'spork', "~> 0.9.0.rc2"
   gem 'launchy', ">=0.4.0"
-  gem 'machinist_mongo', "~> 2.0.0.pre"
-  gem 'faker', ">=0.9.5"
+  # gem 'machinist_mongo', "~> 2.0.0.pre"
+  gem 'machinist_mongo', :require => 'machinist/mongoid', :git => "git://github.com/nmerouze/machinist_mongo.git", :branch => 'machinist2'
+   # or mongo_mapper
+  # gem 'faker', ">=0.9.5"
   gem 'simplecov', :require => false  
   gem 'ruby-graphviz'
   # autotest stuff

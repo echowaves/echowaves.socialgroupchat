@@ -1,32 +1,32 @@
-Sham.username {|index| "user_#{index}" }
-Sham.email { Faker::Internet.email }
-Sham.title { Faker::Lorem.sentence }
-Sham.body  { Faker::Lorem.paragraph }
-
 User.blueprint do
-  username { Sham.username }
+  username { "username#{sn}" }
   password { 'password' }
-  email {Sham.email}
+  email {"#{object.username}@example.com"}
 end
+
 
 Convo.blueprint do
-  title {Sham.title}
+  title {"title#{sn}"}
   privacy {'public'}
+  # associations eventually should just work
   user { User.make }
 end
+
 
 Subscription.blueprint do
-  user { User.make }
-  convo { Convo.make }
+  user
+  convo
 end
+
 
 Invitation.blueprint do
-  user { User.make }
-  convo { Convo.make }
+  user
+  convo
 end
 
+
 Message.blueprint do
-  user { User.make }
-  convo { Convo.make }
-  body {Sham.body}
+  user
+  convo
+  body { "body#{sn}"}
 end

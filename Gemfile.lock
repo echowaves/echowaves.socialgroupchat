@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/nmerouze/machinist_mongo.git
+  revision: fa4819c4e1233a4e3ce527b68af8aeee85dfc6c3
+  branch: machinist2
+  specs:
+    machinist_mongo (2.0.0.beta.1)
+      machinist (~> 2.0.0.beta2)
+
+GIT
   remote: https://github.com/shingara/mongoid-rspec.git
   revision: 3c9c68c3b9a82915f839dac8d3974e3a58f82ac6
   branch: mongoid-2.0.0.rc1
@@ -81,8 +89,6 @@ GEM
       abstract (>= 1.0.0)
     escape_utils (0.2.3)
     eventmachine (0.12.10)
-    faker (0.9.5)
-      i18n (~> 0.4)
     ffi (1.0.7)
       rake (>= 0.8.7)
     gravatarify (2.2.2)
@@ -93,9 +99,7 @@ GEM
     launchy (0.4.0)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
-    machinist (1.0.6)
-    machinist_mongo (2.0.0.pre)
-      machinist (~> 1.0.6)
+    machinist (2.0.0.beta2)
     mail (2.2.15)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
@@ -190,10 +194,9 @@ DEPENDENCIES
   devise (~> 1.2.rc)
   dynamic_form
   escape_utils
-  faker (>= 0.9.5)
   gravatarify (~> 2.2.2)
   launchy (>= 0.4.0)
-  machinist_mongo (~> 2.0.0.pre)
+  machinist_mongo!
   mongoid (~> 2.0.0)
   mongoid-rspec!
   rails (= 3.0.5)

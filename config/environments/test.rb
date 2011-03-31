@@ -1,7 +1,7 @@
 Echowaves::Application.configure do
   require 'machinist/mongoid'
-  require 'sham'
-  require 'faker'
+  # require 'sham'
+  # require 'faker'
 
   # Settings specified here will take precedence over those in config/environment.rb
 
