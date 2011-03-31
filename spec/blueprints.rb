@@ -8,7 +8,7 @@ end
 Convo.blueprint do
   title {"title#{sn}"}
   privacy {'public'}
-  # associations eventually should just work
+  # associations eventually should just work, perhaps not working as expected because the user is embedded, oh well
   user { User.make }
 end
 
