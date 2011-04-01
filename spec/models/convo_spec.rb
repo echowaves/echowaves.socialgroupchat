@@ -47,6 +47,18 @@ describe Convo do
       convo3.should be_private
     end
 
+    it "should be manageable by user if the user is the creator of the convo" do
+      user = User.make
+      convo = Convo.make(:user => user)
+      convo.should be_manageable_by_user user
+    end
+
+    it "should not be manageable by user if the user is not the creator of the convo" do
+      user = User.make
+      convo = Convo.make
+      convo.should_not be_manageable_by_user user
+    end
+
 
     it "should be accesible by user if the user is the creator of the convo and the convo is public" do
       user = User.make!
@@ -188,6 +200,7 @@ describe Convo do
       convo.reload
       convo.invitations.count.should == 0
     end
+    
   end
 end
 
