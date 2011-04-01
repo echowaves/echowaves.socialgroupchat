@@ -15,21 +15,18 @@ class ConvoUsersController < ApplicationController
   end
 
   def manage
-    require_admin
-    @users = @convo.users
-    respond_with @users
+    if !@convo.manageable_by_user?(current_user)
+        redirect_to @convo, :alert => "You can't manage this convo."
+    else
+      @users = @convo.users
+      respond_with @users
+    end
   end
 
   private
 
   def find_convo
     @convo = Convo.find(params[:convo_id])
-  end
-
-  def require_admin
-    if !@convo.manageable_by_user?(current_user)
-      format.html { redirect_to convo_path(@convo), :alert => "You can't manage this convo" }
-    end
   end
 
 end
