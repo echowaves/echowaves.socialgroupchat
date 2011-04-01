@@ -22,7 +22,7 @@ Echowaves::Application.routes.draw do
   match 'welcome', :to => 'welcome#index', :as => :welcome
   root :to => "welcome#index"
 
-  resource :socket do
+  resource :socket, :only => [:subscribe, :unsubscribe] do
     member do
       post :subscribe
       post :unsubscribe
