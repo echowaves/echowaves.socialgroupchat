@@ -47,7 +47,7 @@ class ConvosController < ApplicationController
         @convo.add_user(current_user)
         format.html { redirect_to(@convo, :notice => 'You are subscribed to the conversation.') }
       else
-        format.html { redirect_to @convo, :notice => "Sorry, but you can't access this conversation" }
+        format.html { redirect_to @convo, :notice => "Sorry, but you can't access this conversation." }
       end
     end
   end
