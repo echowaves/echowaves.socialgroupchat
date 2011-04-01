@@ -20,8 +20,13 @@ describe User do
     
     it { should have_fields( :sign_in_count).of_type(Integer)}
     it { should have_fields( :failed_attempts).of_type(Integer).with_default_value_of(0)}
-
   end
   
 
+  describe "business logic" do
+    it "should produce gravatar url" do
+      user = User.make(:email => "test@example.com")
+      user.gravatar.should include("gravatar.com/avatar/55502f40dc8b7c769880b10874abc9d0.jpg")      
+    end
+  end
 end
