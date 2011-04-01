@@ -1,10 +1,7 @@
 require 'spec_helper'
 
 describe ConvosController do
-  # include Devise::TestHelpers
-
   # let(:convo) { mock_model(Convo).as_null_object }
-
   def mock_convo(stubs={})
     @mock_convo ||= mock_model(Convo, stubs).as_null_object
   end  
