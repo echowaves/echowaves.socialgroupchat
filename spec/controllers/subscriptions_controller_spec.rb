@@ -12,8 +12,6 @@ describe SubscriptionsController do
     mock_subscription.stub(:convo).and_return(convo)
   end
 
-
-
   describe "GET index" do
     it "assigns @convos with only subscribed convos" do
       Subscription.stub_chain(:desc, :where, :paginate) { [mock_subscription] }
