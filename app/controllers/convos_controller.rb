@@ -5,7 +5,7 @@ class ConvosController < ApplicationController
 
   def index
     # here we list only public convos
-    @convos = Convo.desc(:created_at).where(:privacy => "public").paginate(:page => params[:page], :per_page => 20)
+    @convos = Convo.where(:privacy => "public").desc(:created_at).paginate(:page => params[:page], :per_page => 20)
     respond_with @convos
   end
 
