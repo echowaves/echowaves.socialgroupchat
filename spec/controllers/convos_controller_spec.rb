@@ -24,11 +24,21 @@ describe ConvosController do
   end
 
 
-  describe "GET show" do
-    it "assigns the requested convo as @convo" do
-      Convo.stub(:find).with("37") { mock_convo }
-      get :show, :id => "37"
+  describe 'GET show' do
+    it 'has access to @convo' do
+      Convo.stub(:find).with('37') { mock_convo }
+      mock_convo.should_receive(:accesible_by_user?).and_return(true)
+      get :show, :id => '37'
       assigns(:convo).should be(mock_convo)
+      response.should render_template("layouts/messages") 
+    end
+    it 'does not have access to @convo' do
+      Convo.stub(:find).with('37') { mock_convo }
+      mock_convo.should_receive(:accesible_by_user?).and_return(false)
+      get :show, :id => '37'
+      assigns(:convo).should be(mock_convo)
+      flash[:alert].should eq("Sorry but this convo is private.")
+      response.should redirect_to(convos_path) 
     end
   end
 
@@ -71,10 +81,9 @@ describe ConvosController do
         post :create, :convo => {}
         response.should render_template("new")
       end
-
     end
-
   end
+
 
   describe "subscribe unsubscribe" do
     it "allows user to subscribe to public convo" do
@@ -95,11 +104,14 @@ describe ConvosController do
       response.should redirect_to(convo_url(mock_convo))
     end
     # 
-    # it "unsubscribes user from a previously subscribed convo" do
-    # end
+    it 'unsubscribes user from convo' do
+      Convo.stub(:find).with('37') { mock_convo }
+      mock_convo.should_receive(:remove_user)
+      get :unsubscribe, :id => '37'
+      flash[:notice].should eq('You are unsubscribed from the conversation.')
+      response.should redirect_to(convos_url)
+    end
     # 
-    # it "allows user to unsubscribe from a convo even if it's not subscribed" do
-    # end
   end
   
 end

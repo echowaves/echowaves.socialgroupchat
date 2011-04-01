@@ -15,7 +15,7 @@ class ConvosController < ApplicationController
       if @convo.accesible_by_user?(current_user)
         format.html { render :layout => 'messages' }
       else
-        format.html { redirect_to convos_path, :alert => "Sorry but this convo is private" }
+        format.html { redirect_to convos_path, :alert => "Sorry but this convo is private." }
       end
     end
   end
