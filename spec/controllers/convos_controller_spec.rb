@@ -14,7 +14,7 @@ describe ConvosController do
 
   describe "GET index" do
     it "assigns all convos as @convos" do
-      Convo.stub_chain(:where, :desc, :paginate) { [mock_convo] }
+      Convo.stub_chain(:where, :desc, :page) { [mock_convo] }
       get :index
       assigns(:convos).should eq([mock_convo])
     end

@@ -1,7 +1,7 @@
 <h1>Subscriptions</h1>
 
 <%#this is not a mistake, paginating over the subscriptions since that's what we select from the db, then mapping each subscription to convo%>
-<%= will_paginate @subscription %>
+<%= paginate @subscriptions %>
 <table id="convos_list">
 <% @convos.each do |convo| %>
   <tr>
@@ -16,4 +16,4 @@
   </tr>
 <% end %>
 </table>
-<%= will_paginate @subscription %>
+<%= paginate @subscriptions %>

@@ -95,6 +95,8 @@ GEM
     i18n (0.5.0)
     json (1.5.1)
     json_pure (1.5.1)
+    kaminari (0.10.4)
+      rails (>= 3.0.0)
     kgio (2.3.3)
     launchy (0.4.0)
       configuration (>= 0.0.5)
@@ -155,9 +157,9 @@ GEM
       ffi (>= 1.0.7)
       json_pure
       rubyzip
-    simplecov (0.4.1)
-      simplecov-html (~> 0.4.3)
-    simplecov-html (0.4.3)
+    simplecov (0.4.2)
+      simplecov-html (~> 0.4.4)
+    simplecov-html (0.4.4)
     socky-client (0.4.3)
       json
     socky-client-rails (0.4.3)
@@ -195,6 +197,7 @@ DEPENDENCIES
   dynamic_form
   escape_utils
   gravatarify (~> 2.2.2)
+  kaminari
   launchy (>= 0.4.0)
   machinist_mongo!
   mongoid (~> 2.0.0)
@@ -203,9 +206,8 @@ DEPENDENCIES
   rspec (>= 2.5.0)
   rspec-rails (~> 2.5.0)
   ruby-graphviz
-  simplecov
+  simplecov (>= 0.4.2)
   socky-client-rails (>= 0.4.3)
   socky-server (>= 0.4.0)
   steak (~> 1.1.0)
   unicorn
-  will_paginate (~> 3.0.pre2)

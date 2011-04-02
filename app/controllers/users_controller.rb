@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   respond_to :html, :json, :xml
 
   def index
-    @users = User.desc(:created_at).paginate(:page => params[:page], :per_page => 20)
+    @users = User.desc(:created_at).page(params[:page])
     respond_with @users
   end
 

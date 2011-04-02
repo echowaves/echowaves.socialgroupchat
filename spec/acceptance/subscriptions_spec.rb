@@ -27,17 +27,19 @@ feature "Subscriptions", %q{
 
 
   scenario "test subscriptions pagination" do
-    21.times do |i|
+    26.times do |i|
       Convo.make!(:user => @user, :title => "Convo #{i}.", :created_at => i*1000)
     end
     visit user_subscriptions_path @user
-    page.should have_content"Convo 20."
+    page.should have_content"Convo 25."
     page.should have_content"Next"
-    page.should have_content"Previous"
+    page.should have_no_content"Prev"
     page.should have_no_content"Convo 0."
     click_link "Next"
-    page.should have_no_content"Convo 20."
+    page.should have_no_content"Convo 25."
     page.should have_content"Convo 0."
+    page.should have_no_content"Next"
+    page.should have_content"Prev"
   end
   
   

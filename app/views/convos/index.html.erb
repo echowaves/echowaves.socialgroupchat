@@ -1,6 +1,6 @@
 <h1>Public Conversations</h1>
 
-<%= will_paginate @convos %>
+<%= paginate @convos %>
 <table id="convos_list">
 <% @convos.each do |convo| %>
   <tr>
@@ -15,4 +15,4 @@
   </tr>
 <% end %>
 </table>
-<%= will_paginate @convos %>
+<%= paginate @convos %>

@@ -14,7 +14,8 @@ gem "mongoid", "~> 2.0.0"
 
 gem "bson_ext", "~> 1.2.0"
 gem "devise", "~> 1.2.rc"
-gem "will_paginate", "~> 3.0.pre2"
+gem "kaminari" #replacement for willpaginate
+
 gem 'gravatarify', "~> 2.2.2"
 gem 'escape_utils' # this will fix an issue with Rack::Test 1.2.1 and ruby 1.9.2
 gem 'dynamic_form'
@@ -31,7 +32,7 @@ group :test, :development do
   gem 'machinist_mongo', :require => 'machinist/mongoid', :git => "git://github.com/nmerouze/machinist_mongo.git", :branch => 'machinist2'
    # or mongo_mapper
   # gem 'faker', ">=0.9.5"
-  gem 'simplecov', :require => false  
+  gem 'simplecov', ">=0.4.2", :require => false  
   gem 'ruby-graphviz'
   # autotest stuff
   gem 'autotest'

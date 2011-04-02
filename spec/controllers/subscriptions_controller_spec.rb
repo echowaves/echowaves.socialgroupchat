@@ -14,7 +14,7 @@ describe SubscriptionsController do
 
   describe "GET index" do
     it "assigns @convos with only subscribed convos" do
-      Subscription.stub_chain(:desc, :where, :paginate) { [mock_subscription] }
+      Subscription.stub_chain(:desc, :where, :page) { [mock_subscription] }
       get :index, :user_id => 1
 
       assigns(:user_id).should eq(1)

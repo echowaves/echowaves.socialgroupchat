@@ -8,7 +8,7 @@ describe UsersController do
 
   describe "GET index" do
     it "assigns all users as @users" do
-      User.stub_chain(:desc, :paginate) { [mock_user] }
+      User.stub_chain(:desc, :page) { [mock_user] }
       get :index
       assigns(:users).should eq([mock_user])
     end
