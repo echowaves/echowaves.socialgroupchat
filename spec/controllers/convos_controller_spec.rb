@@ -89,7 +89,7 @@ describe ConvosController do
       mock_convo.should_receive(:add_user)
       get :subscribe, :id => "37"
       flash[:notice].should eq("You are subscribed to the conversation.")
-      response.should redirect_to(convo_url(mock_convo))
+      response.should redirect_to(convos_url)
     end
 
     it "rejects user attempt to subscribe to private convo" do
@@ -98,7 +98,7 @@ describe ConvosController do
       mock_convo.should_not_receive(:add_user)
       get :subscribe, :id => "37"
       flash[:notice].should eq("Sorry, but you can't access this conversation.")
-      response.should redirect_to(convo_url(mock_convo))
+      response.should redirect_to(convos_url)
     end
     # 
     it 'unsubscribes user from convo' do
