@@ -9,6 +9,7 @@ describe User do
 
     it { should reference_many :subscriptions }
     it { should reference_many :invitations }
+    it { should reference_many :followerships }
     
     it { should validate_uniqueness_of( :username) }
     it { should validate_uniqueness_of( :email) }

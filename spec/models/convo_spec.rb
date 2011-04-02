@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe Convo do
   describe "mongoid-rspec" do
-    it { should validate_presence_of(:user) }
-    it { should validate_presence_of(:title) }
-    it { should validate_length_of(:title) }
+    it { should validate_presence_of :user }
+    it { should validate_presence_of :title }
+    it { should validate_length_of :title }
 
     it { should embed_one :user }
     it { should reference_many :messages }

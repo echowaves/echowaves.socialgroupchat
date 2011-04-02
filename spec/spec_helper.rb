@@ -1,3 +1,4 @@
+# require 'remarkable/mongoid'
 require 'simplecov'
 SimpleCov.start 'rails'
 
