@@ -15,4 +15,22 @@ feature "Users List", %q{
     page.should have_content "foo"
     page.should have_content "bar"
   end
+
+  scenario "test users pagination" do
+    26.times do |i|
+      User.make!(:username => "User-#{i}", :created_at => i*1000)
+    end
+    visit users_path
+    page.should have_content "User-25"
+
+    page.should have_content "Next"
+    page.should have_no_content "Prev"
+    page.should have_no_content "User-0"
+    click_link "Next"
+    page.should have_content "User-0"
+    page.should_not have_content "User-25"
+    page.should have_no_content "Next"
+    page.should have_content "Prev"
+  end
+
 end
