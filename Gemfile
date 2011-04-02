@@ -12,8 +12,8 @@ gem "socky-client-rails", ">= 0.4.3" # this is the client used to connect the ap
 gem "mongoid", "~> 2.0.0"
 # gem "mongoid", :git => "git://github.com/mongoid/mongoid.git", :branch => "safe_master"
 
-gem "bson_ext", "~> 1.2.0"
-gem "devise", "~> 1.2.rc"
+gem "bson_ext", ">= 1.2.4"
+gem "devise", ">=1.2.1"
 gem "kaminari" #replacement for willpaginate
 
 gem 'gravatarify', "~> 2.2.2"
