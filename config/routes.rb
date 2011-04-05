@@ -4,13 +4,17 @@ Echowaves::Application.routes.draw do
 
   resources :users, :only => [:index, :show] do
     resources :subscriptions, :only => [:index]
+    member do
+      get :follow
+      get :unfollow
+    end
   end
   
   resources :convos, :only => [:index, :show, :new, :create] do
     member do
       # FIXME: should be post, not get
-      get 'subscribe'
-      get 'unsubscribe'
+      get :subscribe
+      get :unsubscribe
     end
     # nested message, essential to support restful resources for messages
     resources :messages, :only => [:index, :show, :create]

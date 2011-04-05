@@ -1,2 +1,5 @@
 <h1><%= @user.username %>'s profile</h1>
 <p><%= gravatar_tag @user, :size => 200, :rating => :g, :html => { :class => "gravatar" } %></p>
+<% if user_signed_in? %>
+  <%= follow_or_unfollow_link(:follower => current_user, :leader => @user) %>
+<% end %>
