@@ -11,7 +11,7 @@ describe ConvosController do
     request.env['warden'] = mock(Warden, :authenticate => @user, :authenticate! => @user, :authenticate? => @user)
   end
 
-
+  
   describe "GET index" do
     it "assigns all convos as @convos" do
       Convo.stub_chain(:where, :desc, :page) { [mock_convo] }
@@ -84,6 +84,7 @@ describe ConvosController do
 
   describe "subscribe unsubscribe" do
     it "allows user to subscribe to public convo" do
+      @request.env['HTTP_REFERER'] = '/convos'      
       Convo.stub(:find).with("37") { mock_convo }
       mock_convo.stub(:accesible_by_user?) { true }
       mock_convo.should_receive(:add_user)
@@ -93,6 +94,7 @@ describe ConvosController do
     end
 
     it "rejects user attempt to subscribe to private convo" do
+      @request.env['HTTP_REFERER'] = '/convos'
       Convo.stub(:find).with("37") { mock_convo }
       mock_convo.stub(:accesible_by_user?) { false }
       mock_convo.should_not_receive(:add_user)
@@ -100,8 +102,9 @@ describe ConvosController do
       flash[:notice].should eq("Sorry, but you can't access this conversation.")
       response.should redirect_to(convos_url)
     end
-    # 
+
     it 'unsubscribes user from convo' do
+      @request.env['HTTP_REFERER'] = '/convos'      
       Convo.stub(:find).with('37') { mock_convo }
       mock_convo.should_receive(:remove_user)
       get :unsubscribe, :id => '37'

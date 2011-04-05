@@ -62,6 +62,21 @@ feature "Convos", %q{
       page.should have_content "Prev"
     end
 
+    scenario "test convos subscribe/ubsubscribe stays on the same page" do
+      @user = login_new
+      100.times do |i|
+        Convo.make!(:user => @user, :title => "Convo #{i}", :created_at => i*1000)
+      end
+      visit convos_path
+      click_link "Next"
+      click_link "Next"
+      page.should have_content "Convo 49"
+      click_link "unsubscribe"
+      page.should have_content "Convo 49"
+      click_link "subscribe"
+      page.should have_content "Convo 49"
+    end
+
 
     scenario "visitor can't create a Convo" do
       visit "/"

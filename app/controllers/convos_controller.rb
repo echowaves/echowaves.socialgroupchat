@@ -45,9 +45,9 @@ class ConvosController < ApplicationController
     respond_to do |format|
       if @convo.accesible_by_user?(current_user)
         @convo.add_user(current_user)
-        format.html { redirect_to convos_path, :notice => 'You are subscribed to the conversation.' }
+        format.html { redirect_to :back, :notice => 'You are subscribed to the conversation.' }
       else
-        format.html { redirect_to convos_path, :notice => "Sorry, but you can't access this conversation." }
+        format.html { redirect_to :back, :notice => "Sorry, but you can't access this conversation." }
       end
     end
   end
@@ -57,7 +57,7 @@ class ConvosController < ApplicationController
     @convo = Convo.find(params[:id])
     respond_to do |format|
       @convo.remove_user(current_user)
-      format.html { redirect_to(convos_path, :notice => 'You are unsubscribed from the conversation.') }
+      format.html { redirect_to(:back, :notice => 'You are unsubscribed from the conversation.') }
     end
   end
 
