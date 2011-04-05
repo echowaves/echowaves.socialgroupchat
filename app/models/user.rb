@@ -41,4 +41,21 @@ class User
     gravatar_url email
   end
 
+  def follow(user)
+      Followership.create(:user_id=>user.id, :follower_id=>self.id) unless self.follows?(user)
+  end
+
+  def unfollow(user)
+    followerships = Followership.where(:user_id=>user.id, :follower_id=>self.id)
+    followerships.destroy unless followerships.blank?
+  end
+  
+  def follows?(user)
+    Followership.where(:user_id=>user.id, :follower_id=>self.id).count > 0 ? true : false
+  end
+  
+  def followed?(user)
+    user.follows?(self)
+  end
+
 end
