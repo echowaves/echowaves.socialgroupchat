@@ -40,7 +40,7 @@ class Convo
     user == self.user
   end
 
-  def add_user(user)
+  def subscribe(user)
     if self.accesible_by_user?(user)
       Subscription.create(:user => user, :convo => self) unless self.users.include? user
       invitation = self.invitations.where(:user_id => user.id).first
@@ -48,7 +48,7 @@ class Convo
     end
   end
 
-  def remove_user(user)
+  def unsubscribe(user)
     subscription = Subscription.where(:user_id => user.id, :convo_id => self.id).first
     subscription.destroy unless subscription.blank?
   end

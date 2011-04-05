@@ -12,7 +12,7 @@ describe ConvosHelper do
   it "creates unsubscribe link if the user is subscribed" do
     user = User.make!
     convo = Convo.make!
-    convo.add_user user
+    convo.subscribe user
     content = helper.subscribe_or_unsubscribe_link(:convo => convo, :user => user)
     content.should include ">unsubscribe<"
   end

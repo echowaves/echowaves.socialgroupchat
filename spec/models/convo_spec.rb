@@ -104,9 +104,9 @@ describe Convo do
       user2 = User.make!
       convo = Convo.make!
       convo.subscriptions.count.should == 1 # the owner is subscribed
-      convo.add_user(user)
+      convo.subscribe(user)
       convo.subscriptions.count.should == 2
-      convo.add_user(user2)
+      convo.subscribe(user2)
       convo.subscriptions.count.should == 3
     end
 
@@ -115,9 +115,9 @@ describe Convo do
       user = User.make!
       convo = Convo.make!
       convo.subscriptions.count.should == 1 # the owner is subscribed
-      convo.add_user(user)
+      convo.subscribe(user)
       convo.subscriptions.count.should == 2
-      convo.add_user(user)
+      convo.subscribe(user)
       convo.subscriptions.count.should == 2
     end
 
@@ -126,8 +126,8 @@ describe Convo do
       user = User.make!
       user2 = User.make!
       convo = Convo.make!
-      convo.add_user(user)
-      convo.add_user(user2)
+      convo.subscribe(user)
+      convo.subscribe(user2)
       convo.users.should include user
       convo.users.should include user2
     end
@@ -137,10 +137,10 @@ describe Convo do
       user = User.make!
       user2 = User.make!
       convo = Convo.make!
-      convo.add_user(user)
-      convo.add_user(user2)
-      convo.remove_user(user)
-      convo.remove_user(user2)
+      convo.subscribe(user)
+      convo.subscribe(user2)
+      convo.unsubscribe(user)
+      convo.unsubscribe(user2)
       # not sure why have to reload, but this fixes the spec
       convo.reload
       convo.users.should_not include user
@@ -158,7 +158,7 @@ describe Convo do
     it "should not add a user to their subscriptions if the convo is private and the user does not have an invitation" do
       user = User.make
       convo = Convo.make(:privacy => "private")
-      convo.add_user(user)
+      convo.subscribe(user)
       convo.users.should_not include user
     end
 
@@ -186,7 +186,7 @@ describe Convo do
       requestor = User.make
       convo = Convo.make(:user => requestor, :privacy => 'private')
       convo.invite_user(user)
-      convo.add_user(user)
+      convo.subscribe(user)
       convo.users.should include user
     end
 
@@ -196,7 +196,7 @@ describe Convo do
       requestor = User.make!
       convo = Convo.make!(:user => requestor, :privacy => 'private')
       convo.invite_user(user)
-      convo.add_user(user)
+      convo.subscribe(user)
       convo.reload
       convo.invitations.count.should == 0
     end
