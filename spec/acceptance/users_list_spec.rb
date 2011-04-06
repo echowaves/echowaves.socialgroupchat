@@ -32,5 +32,22 @@ feature "Users List", %q{
     page.should have_no_content "Next"
     page.should have_content "Prev"
   end
+  
+  scenario "test a user follow/unfollow from a users list stays on the same page" do
+    @user = login_new
+    100.times do |i|
+      User.make!(:username => "User-#{i}", :created_at => i*1000)
+    end
+    visit users_path
+    click_link "Next"
+    click_link "Next"
+    page.should have_content "User-49"
+    click_link "follow"
+    page.should have_content "User-49"
+    click_link "unfollow"
+    page.should have_content "User-49"
+    current_path.should == users_path
+  end
+  
 
 end

@@ -25,5 +25,16 @@ feature "User Profile", %q{
     click_link @user2.username
     page.should have_content"#{@user2.username}'s profile"    
   end
+
+
+  scenario "test a user follow/unfollow from a profile page stays on the same page" do
+    @user2 = active_user
+    visit user_path @user2
+
+    click_link "follow"
+    click_link "unfollow"
+    current_path.should == user_path(@user2)
+  end
+
   
 end

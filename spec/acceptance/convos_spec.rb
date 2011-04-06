@@ -75,6 +75,7 @@ feature "Convos", %q{
       page.should have_content "Convo 49"
       click_link "subscribe"
       page.should have_content "Convo 49"
+      current_path.should == convos_path
     end
 
 
