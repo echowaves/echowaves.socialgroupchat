@@ -70,4 +70,8 @@ class User
     # destroy the first visit if collection grows bigger then 100
     visits[0].destroy if visits.count > 100
   end
+  
+  def visited_convos
+    Convo.find(visits.map {|v| v.convo_id}).reverse
+  end
 end

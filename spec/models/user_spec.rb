@@ -61,32 +61,33 @@ describe User do
        3.times do |i|
           Convo.make!(:user => @user, :created_at => i*1000)
        end
-    end
-    it "should grow the visits collection" do
-       @user.visits.count.should == 0
        Convo.all.each do |convo|
          @user.visit convo
        end       
+    end
+    it "should grow the visits collection" do
        @user.visits.count.should == 3
     end
 
     it "should not grow if the same convos are visited again" do
-      Convo.all.each do |convo|
-        @user.visit convo
-      end       
-      @user.visits.count.should == 3
+      # visit the same convos again
       Convo.all.each do |convo|
         @user.visit convo
       end       
       @user.visits.count.should == 3      
     end
-    
+
+    it "should return visited_convos" do
+      @user.visited_convos.count.should == 3
+    end
+
+    it "should return visited_convos in reverse order" do
+      @user.visited_convos.should == Convo.all.reverse
+    end
+        
     it "should not grow more then 100 items" do
-      Convo.all.each do |convo|
-        @user.visit convo
-      end
-      @user.visits[0].convo.should == Convo.all[0]
       first_visit = @user.visits[0]
+      first_visit.convo.should == Convo.all[0]
       @user.visits.should include first_visit
       #after this there should be 1003 convos created but only 1000 visits
       100.times do |i|         
@@ -96,6 +97,8 @@ describe User do
       # and the first item pushed out
       @user.visits.should_not include first_visit      
     end
+    
+
   end
   
   
