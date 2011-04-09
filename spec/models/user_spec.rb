@@ -53,4 +53,50 @@ describe User do
       @leader.should_not be_followed(@follower)      
     end
   end
+  
+  
+  describe "visiting multiple convos" do
+    before do
+      @user = User.make!
+       3.times do |i|
+          Convo.make!(:user => @user, :created_at => i*1000)
+       end
+    end
+    it "should grow the visits collection" do
+       @user.visits.count.should == 0
+       Convo.all.each do |convo|
+         @user.visit convo
+       end       
+       @user.visits.count.should == 3
+    end
+
+    it "should not grow if the same convos are visited again" do
+      Convo.all.each do |convo|
+        @user.visit convo
+      end       
+      @user.visits.count.should == 3
+      Convo.all.each do |convo|
+        @user.visit convo
+      end       
+      @user.visits.count.should == 3      
+    end
+    
+    it "should not grow more then 100 items" do
+      Convo.all.each do |convo|
+        @user.visit convo
+      end
+      @user.visits[0].convo.should == Convo.all[0]
+      first_visit = @user.visits[0]
+      @user.visits.should include first_visit
+      #after this there should be 1003 convos created but only 1000 visits
+      100.times do |i|         
+         @user.visit Convo.make!(:user => @user, :created_at => i*1000)
+      end
+      @user.visits.count.should == 100
+      # and the first item pushed out
+      @user.visits.should_not include first_visit      
+    end
+  end
+  
+  
 end

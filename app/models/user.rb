@@ -60,4 +60,14 @@ class User
     user.follows?(self)
   end
 
+  def visit convo
+    # delete a visit to this convo if already exists
+    visits.each do |visit|
+      visit.destroy if visit.convo == convo
+    end
+    # append as a last element of the embedded collection
+    visits<<Visit.new(convo_id: convo.id)
+    # destroy the first visit if collection grows bigger then 100
+    visits[0].destroy if visits.count > 100
+  end
 end
