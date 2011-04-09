@@ -11,10 +11,10 @@ class User
   validates_presence_of :username
   validates_uniqueness_of :username
 
-  references_many :subscriptions
-  references_many :invitations
+  has_many :subscriptions
+  has_many :invitations
   # user will have many followerships, each will embedd a follower user, the user_id is stored on the followership object
-  references_many :followerships
+  has_many :followerships
 
   field :username, :unique => true, :background => true #  t.string,  :null               => false
   field :email, :unique => true, :background => true #  t.string,  :null               => false

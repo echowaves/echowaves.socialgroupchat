@@ -10,9 +10,9 @@ class Convo
   field :privacy, :type => String
 
   embeds_one :user #yes, yes, yes! We are embedding user here, faster, and if the user ever gets deleted, the data will not be corrupted
-  references_many :messages
-  references_many :subscriptions
-  references_many :invitations
+  has_many :messages
+  has_many :subscriptions
+  has_many :invitations
 
   after_create :subscribe_owner
 

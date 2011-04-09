@@ -4,7 +4,7 @@ class Message
 
   embeds_one :user
 
-  referenced_in :convo
+  belongs_to :convo
 
   field :uuid
   field :body

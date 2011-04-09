@@ -2,7 +2,8 @@ class Followership
   include Mongoid::Document
   include Mongoid::Timestamps
   # the user_id is stored on this object, which defines the paren leader object who is being followed
-  referenced_in :user
+  belongs_to :user
+  
   field :follower_id 
 
   validates_presence_of :user_id  
