@@ -11,6 +11,8 @@ describe User do
     it { should reference_many :invitations }
     it { should reference_many :followerships }
 
+    it { should embed_many :visits }
+
     it { should validate_uniqueness_of( :username) }
     it { should validate_uniqueness_of( :email) }
 
