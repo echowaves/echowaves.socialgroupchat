@@ -25,11 +25,6 @@ class MessagesController < ApplicationController
     end
   end
 
-
-  def show
-  end
-
-
 private
 
   def current_convo
