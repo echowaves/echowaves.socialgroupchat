@@ -72,6 +72,6 @@ class User
   end
   
   def visited_convos
-    Convo.find(visits.map {|v| v.convo_id}).reverse
+    self.visits.map(&:convo).reverse
   end
 end

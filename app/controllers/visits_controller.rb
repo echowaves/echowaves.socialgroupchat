@@ -4,10 +4,8 @@ class VisitsController < ApplicationController
   respond_to :html, :json, :xml
 
   def index
-    # @messages = @raw_messages.collect{|m| {:uuid => m.uuid, :id => m.id, :text => m.body, :gravatar_url => m.user.gravatar }}
-    # respond_with @messages do |format|
-    #   format.html { redirect_to convo_url(@convo) }
-    # end
+    @convos = current_user.visited_convos
+    respond_with @convos
   end
 
 
