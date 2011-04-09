@@ -13,6 +13,7 @@ class ConvosController < ApplicationController
     @convo = Convo.find(params[:id])
     respond_with(@convo) do |format|
       if @convo.accesible_by_user?(current_user)
+        current_user.visit @convo if user_signed_in?        
         format.html { render :layout => 'messages' }
       else
         format.html { redirect_to convos_path, :alert => "Sorry but this convo is private." }

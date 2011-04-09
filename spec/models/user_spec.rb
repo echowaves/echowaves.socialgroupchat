@@ -81,8 +81,13 @@ describe User do
       @user.visited_convos.count.should == 3
     end
 
-    it "should return visited_convos in reverse order" do
-      @user.visited_convos.should == Convo.all.reverse
+    it "should return visited_convos" do
+      all_convos = Convo.all
+      @user.visited_convos.count == all_convos.count
+      
+      @user.visited_convos.each do |visited_convo|
+        all_convos.should include visited_convo
+      end
     end
         
     it "should not grow more then 100 items" do

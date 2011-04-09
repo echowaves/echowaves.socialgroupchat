@@ -22,6 +22,8 @@ Echowaves::Application.routes.draw do
       get :manage, :on => :collection
     end
   end
+  
+  resources :visits, :only => [:index]
 
   match 'welcome', :to => 'welcome#index', :as => :welcome
   root :to => "welcome#index"

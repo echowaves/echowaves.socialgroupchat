@@ -25,6 +25,7 @@ describe ConvosController do
     it 'has access to @convo' do
       Convo.stub(:find).with('37') { mock_convo }
       mock_convo.should_receive(:accesible_by_user?).and_return(true)
+      @user.should_receive(:visit, :convo=>mock_convo)
       get :show, :id => '37'
       assigns(:convo).should be(mock_convo)
       response.should render_template("layouts/messages") 
@@ -32,6 +33,7 @@ describe ConvosController do
     it 'does not have access to @convo' do
       Convo.stub(:find).with('37') { mock_convo }
       mock_convo.should_receive(:accesible_by_user?).and_return(false)
+      @user.should_not_receive(:visit)
       get :show, :id => '37'
       assigns(:convo).should be(mock_convo)
       flash[:alert].should eq("Sorry but this convo is private.")

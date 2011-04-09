@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "ConvoUsersController routing" do
+describe ConvoUsersController do
   specify { {:get => "/convos/1/users/manage"}.should route_to(:controller=>"convo_users", :action=>"manage", :convo_id=>"1")}  
   specify { {:get => "/convos/1/users"}.should route_to(:controller=>"convo_users", :action=>"index", :convo_id=>"1")}  
   specify { {:post => "/convos/1/users"}.should route_to(:controller=>"convo_users", :action=>"create", :convo_id=>"1")}  
