@@ -5,7 +5,7 @@ class VisitsController < ApplicationController
 
   def index
     @convos = current_user.visited_convos
-    respond_with @convos
+    respond_with(@convos) 
   end
 
 
