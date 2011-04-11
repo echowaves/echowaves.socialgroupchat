@@ -24,7 +24,7 @@ class ConvoUsersController < ApplicationController
 
   private
 
-  def current_convo
+  def current_convo    
     @current_convo ||= Convo.find(params[:convo_id])
   end
 

@@ -9,7 +9,7 @@ class ConvosController < ApplicationController
     respond_with @convos
   end
 
-  def show
+  def show    
     @convo = Convo.find(params[:id])
     respond_with(@convo) do |format|
       if @convo.accesible_by_user?(current_user)

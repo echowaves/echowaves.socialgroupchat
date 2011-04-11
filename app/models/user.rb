@@ -62,9 +62,7 @@ class User
 
   def visit convo
     # delete a visit to this convo if already exists
-    visits.each do |visit|
-      visit.destroy if visit.convo == convo
-    end
+    visits.where(:convo_id => convo.id).destroy if visits.size > 0
     # append as a last element of the embedded collection
     visits<<Visit.new(convo_id: convo.id)
     # destroy the first visit if collection grows bigger then 100
