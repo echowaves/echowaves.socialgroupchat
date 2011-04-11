@@ -27,7 +27,7 @@ class MessagesController < ApplicationController
 private
 
   def current_convo
-    current_convo ||= Convo.find(params[:convo_id])
+    @current_convo ||= Convo.find(params[:convo_id])
   end
 
 end
