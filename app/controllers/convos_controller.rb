@@ -5,7 +5,7 @@ class ConvosController < ApplicationController
 
   def index
     # here we list only public convos
-    @convos = Convo.where(:privacy => "public").desc(:created_at).page(params[:page])
+    @convos = Convo.public.by_date.page(params[:page])
     respond_with @convos
   end
 
