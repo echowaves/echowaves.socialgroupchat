@@ -9,9 +9,6 @@ class Convo
   field :title, :type   => String
   field :privacy, :type => String
 
-  scope :public, where(:privacy => "public")
-  scope :by_date, desc(:created_at)
-
   embeds_one :user #yes, yes, yes! We are embedding user here, faster, and if the user ever gets deleted, the data will not be corrupted
   has_many :messages
   has_many :subscriptions
