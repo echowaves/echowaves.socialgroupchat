@@ -10,6 +10,7 @@ describe Convo do
     it { should reference_many :messages }
     it { should reference_many :subscriptions }
     it { should reference_many :invitations }
+    it { should reference_many :visits }
     
     it { should have_fields(:title, :privacy).of_type(String) }
     

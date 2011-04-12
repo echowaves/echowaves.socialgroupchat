@@ -14,6 +14,8 @@ class Convo
   has_many :subscriptions
   has_many :invitations
   
+  has_many :visits
+  
   after_create :subscribe_owner
 
   def users

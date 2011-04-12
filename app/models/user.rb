@@ -70,6 +70,7 @@ class User
   end
   
   def visited_convos
+  # TODO n+1 query here!!!!!!!!!!!!!!!!!!!!!!
     self.visits.map(&:convo).reverse
   end
 end
