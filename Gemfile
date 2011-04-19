@@ -2,7 +2,7 @@
 
 source 'http://gemcutter.org'
 
-gem "rails", "3.0.6"
+gem "rails", "3.0.7"
 
 gem 'unicorn'
 
