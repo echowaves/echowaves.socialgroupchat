@@ -13,6 +13,10 @@ describe User do
 
     it { should embed_many :visits }
 
+    it { should reference_many :convos }
+    it { should reference_many :messages }
+
+
     it { should validate_uniqueness_of( :username) }
     it { should validate_uniqueness_of( :email) }
 

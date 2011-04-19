@@ -2,8 +2,9 @@ class Message
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  embeds_one :user
+  validates_presence_of :owner
 
+  belongs_to :owner, class_name: "User"  
   belongs_to :convo
 
   field :uuid

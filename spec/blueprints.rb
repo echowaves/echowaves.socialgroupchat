@@ -27,7 +27,7 @@ end
 
 
 Message.blueprint do
-  user
   convo
+  owner { User.make }
   body { "body#{sn}"}
 end

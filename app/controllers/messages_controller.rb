@@ -5,14 +5,14 @@ class MessagesController < ApplicationController
 
   def index
     @raw_messages = current_convo.messages
-    @messages = @raw_messages.collect{|m| {:uuid => m.uuid, :id => m.id, :text => m.body, :gravatar_url => m.user.gravatar }}
+    @messages = @raw_messages.collect{|m| {:uuid => m.uuid, :id => m.id, :text => m.body, :gravatar_url => m.owner.gravatar }}
     respond_with @messages do |format|
       format.html { redirect_to convo_url(current_convo) }
     end
   end
 
   def create
-    @message = Message.create(:convo => current_convo, :user => current_user, :body => params[:text], :uuid =>  params[:uuid])
+    @message = Message.create(:convo => current_convo, :owner => current_user, :body => params[:text], :uuid =>  params[:uuid])
     respond_with([current_convo, @message]) do |format|
       format.js do
         Socky.send({ :text => params[:text],

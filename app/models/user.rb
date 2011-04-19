@@ -13,10 +13,12 @@ class User
 
   has_many :subscriptions
   has_many :invitations
-  # user will have many followerships, each will embedd a follower user, the user_id is stored on the followership object
+  
+    # user will have many followerships, each will embedd a follower user, the user_id is stored on the followership object
   has_many :followerships
   
   has_many :convos
+  has_many :messages
   
   embeds_many :visits
 
