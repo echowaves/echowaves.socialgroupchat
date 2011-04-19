@@ -16,6 +16,8 @@ class User
   # user will have many followerships, each will embedd a follower user, the user_id is stored on the followership object
   has_many :followerships
   
+  has_many :convos
+  
   embeds_many :visits
 
   field :username, :unique => true, :background => true #  t.string,  :null               => false

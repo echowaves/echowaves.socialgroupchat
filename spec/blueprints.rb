@@ -9,7 +9,7 @@ Convo.blueprint do
   title {"title#{sn}"}
   privacy {'public'}
   # associations eventually should just work, perhaps not working as expected because the user is embedded, oh well
-  user { User.make }
+  owner { User.make }
 end
 
 
@@ -22,6 +22,7 @@ end
 Invitation.blueprint do
   user
   convo
+  requestor { User.make }
 end
 
 

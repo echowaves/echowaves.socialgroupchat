@@ -59,7 +59,7 @@ describe User do
     before do
       @user = User.make!
        3.times do |i|
-          Convo.make!(:user => @user, :created_at => i*1000)
+          Convo.make!(:owner => @user, :created_at => i*1000)
        end
        Convo.all.each do |convo|
          @user.visit convo
@@ -96,7 +96,7 @@ describe User do
       @user.visits.should include first_visit
       #after this there should be 1003 convos created but only 1000 visits
       100.times do |i|         
-         @user.visit Convo.make!(:user => @user, :created_at => i*1000)
+         @user.visit Convo.make!(:owner => @user, :created_at => i*1000)
       end
       @user.visits.count.should == 100
       # and the first item pushed out

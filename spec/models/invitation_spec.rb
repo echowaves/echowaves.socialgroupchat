@@ -6,7 +6,11 @@ describe Invitation do
     it { should be_referenced_in(:convo) }
     it { should be_referenced_in(:user) }
     
-    it { should have_fields(:requestor_id).of_type(String) }
+    it { should belong_to(:requestor).of_type(User) }
+    
+    it { should validate_presence_of :convo }
+    it { should validate_presence_of :user }
+    it { should validate_presence_of :requestor }
     
   end
   

@@ -5,5 +5,11 @@ class Invitation
   belongs_to :convo
   belongs_to :user
 
-  field :requestor_id, :type => String # t.integer
+  belongs_to :requestor, class_name: "User"
+
+  validates_presence_of :convo
+  validates_presence_of :user
+  validates_presence_of :requestor
+
+  
 end

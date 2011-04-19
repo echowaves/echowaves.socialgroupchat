@@ -3,13 +3,15 @@ class Convo
   include Mongoid::Timestamps
 
   validates_presence_of :title
-  validates_presence_of :user
+  validates_presence_of :owner
   validates_length_of :title, :maximum => 140
 
   field :title, :type   => String
   field :privacy, :type => String
 
-  embeds_one :user #yes, yes, yes! We are embedding user here, faster, and if the user ever gets deleted, the data will not be corrupted
+  #the owner of the convo
+  belongs_to :owner, class_name: "User"
+  
   has_many :messages
   has_many :subscriptions
   has_many :invitations
@@ -32,14 +34,14 @@ class Convo
 
   def accesible_by_user?(user)
     self.public? ||
-      user && ( user == self.user ||
+      user && ( user == self.owner ||
                 Subscription.where(:user_id => user.id, :convo_id => self.id).first ||
                 self.invitations.where(:user_id => user.id).first)
   end
 
   # just the owner for now
   def manageable_by_user?(user)
-    user == self.user
+    user == self.owner
   end
 
   def subscribe(user)
@@ -55,13 +57,15 @@ class Convo
     subscription.destroy unless subscription.blank?
   end
 
-  def invite_user(user)
-    unless self.invitations.where(:user_id => user.id).first
-      Invitation.create(:user => user, :convo => self, :requestor_id => self.user.id)
+  def invite_user(user, requestor)
+    if accesible_by_user? requestor
+      unless self.invitations.where(:user_id => user.id).first
+        Invitation.create(:user => user, :convo => self, :requestor => requestor)
+      end
     end
   end
 
   def subscribe_owner
-    Subscription.create(:user => user, :convo => self, :created_at => created_at) #should enforce the created_at the same as for conversation
+    Subscription.create(:user => owner, :convo => self, :created_at => created_at) #should enforce the created_at the same as for conversation
   end
 end

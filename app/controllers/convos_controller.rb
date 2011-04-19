@@ -28,7 +28,7 @@ class ConvosController < ApplicationController
 
   def create
     @convo = Convo.new(params[:convo])
-    @convo.user = current_user
+    @convo.owner = current_user
     respond_to do |format|
       if @convo.save
         format.html { redirect_to(@convo, :notice => 'Convo was successfully created.') }
