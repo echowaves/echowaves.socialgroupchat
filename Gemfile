@@ -13,7 +13,7 @@ gem "mongoid", "~> 2.0.1"
 # gem "mongoid", :git => "git://github.com/mongoid/mongoid.git", :branch => "safe_master"
 
 gem "bson_ext", ">= 1.2.4"
-gem "devise", "~>1.2.1"
+gem "devise", "~>1.3.4"
 gem "kaminari" #replacement for willpaginate
 
 gem 'gravatarify', "~> 2.2.2"
@@ -24,11 +24,10 @@ group :test, :development do
   gem 'capybara', "~> 0.4.1.2"
   gem 'rspec', ">=2.5.0"
   gem 'rspec-rails', "~> 2.5.0"
-  gem 'mongoid-rspec'#, :git => 'https://github.com/shingara/mongoid-rspec.git', :branch => 'mongoid-2.0.0.rc1'
+  gem 'mongoid-rspec', "~>1.4.2"
   gem 'steak', '~> 1.1.0'
   # gem 'spork', "~> 0.9.0.rc2"
   gem 'launchy', ">=0.4.0"
-  # gem 'machinist_mongo', "~> 2.0.0.pre"
   gem 'machinist_mongo', :require => 'machinist/mongoid', :git => "git://github.com/nmerouze/machinist_mongo.git", :branch => 'machinist2'
    # or mongo_mapper
   # gem 'faker', ">=0.9.5"

@@ -10,10 +10,9 @@ class ConvosController < ApplicationController
   end
 
   def show    
-    @convo = Convo.find(params[:id])
-    respond_with(@convo) do |format|
-      if @convo.accesible_by_user?(current_user)
-        current_user.visit @convo if user_signed_in?        
+    respond_with(convo) do |format|
+      if convo.accesible_by_user?(current_user)
+        current_user.visit convo if user_signed_in?        
         format.html { render :layout => 'messages' }
       else
         format.html { redirect_to convos_path, :alert => "Sorry but this convo is private." }
@@ -42,10 +41,9 @@ class ConvosController < ApplicationController
 
   # The current user follows a conversation.
   def subscribe
-    @convo = Convo.find(params[:id])
     respond_to do |format|
-      if @convo.accesible_by_user?(current_user)
-        @convo.subscribe(current_user)
+      if convo.accesible_by_user?(current_user)
+        convo.subscribe(current_user)
         format.html { redirect_to :back, :notice => 'You are subscribed to the conversation.' }
       else
         format.html { redirect_to :back, :notice => "Sorry, but you can't access this conversation." }
@@ -55,11 +53,15 @@ class ConvosController < ApplicationController
 
   # The current user unfollows a conversation.
   def unsubscribe
-    @convo = Convo.find(params[:id])
     respond_to do |format|
-      @convo.unsubscribe(current_user)
+      convo.unsubscribe(current_user)
       format.html { redirect_to(:back, :notice => 'You are unsubscribed from the conversation.') }
     end
   end
-
+  
+  private
+  def convo
+    @convo ||= Convo.find(params[:id])
+  end
+  
 end

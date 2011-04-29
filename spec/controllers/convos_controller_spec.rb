@@ -22,7 +22,7 @@ describe ConvosController do
 
 
   describe 'GET show' do
-    it 'has access to @convo' do
+    it 'has access to current_convo' do
       Convo.stub(:find).with('37') { mock_convo }
       mock_convo.should_receive(:accesible_by_user?).and_return(true)
       @user.should_receive(:visit, :convo=>mock_convo)

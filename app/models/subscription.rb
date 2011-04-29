@@ -5,4 +5,10 @@ class Subscription
 
   belongs_to :convo
   belongs_to :user  
+  
+  field :last_read_message
+  field :new_messages_count, type: Integer
+  
+  
+  
 end
