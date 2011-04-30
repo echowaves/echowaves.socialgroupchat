@@ -14,20 +14,20 @@ end
 
 
 Subscription.blueprint do
-  user
-  convo
+  user { User.make }
+  convo { Convo.make }
 end
 
 
 Invitation.blueprint do
-  user
-  convo
+  user { User.make }
+  convo { Convo.make }
   requestor { User.make }
 end
 
 
 Message.blueprint do
-  convo
+  convo { Convo.make }
   owner { User.make }
   body { "body#{sn}"}
 end

@@ -105,9 +105,55 @@ describe User do
       @user.visits.count.should == 100
       # and the first item pushed out
       @user.visits.should_not include first_visit      
+    end    
+
+  end
+  
+  describe "updates are made to subsriptions" do
+    before do
+      @user = User.make!
+      # this convo will be automatically subscribed because the @user is the owner
+      @convo = Convo.make!(:owner => @user)
+      
+      # this convo will have to explicitely subscribe because the owner is different
+      convo = Convo.make!
+      convo.subscribe @user
+      # let's make another subscription just to make sure it's not affecting anything 
+      Subscription.make!
     end
     
+    it "should have 2 subscription" do
+      @user.subscriptions.count.should == 2
+    end
+    
+    it "should have updates when a new message posted to a subscribed convo which was never visited" do
+      # sleep 1 # sleeping to make sure the time stamp is different
+      Message.make!(:convo => @convo, :owner => @user)
+      @user.updates.count.should == 1
+      @user.updates[0].new_messages_count.should == 1
+      # add one more message, new_messages_count increased
+      Message.make!(:convo => @convo, :owner => @user)
+      @user.updates[0].new_messages_count.should == 2
+    end
 
+    it "should have updates when a new message posted to a subscribed convo which was visited before" do
+      # sleep 1 # sleeping to make sure the time stamp is different
+      Message.make!(:convo => @convo, :owner => @user)
+      sleep 1
+      @user.visit @convo
+      sleep 1
+      @user = User.find(@user.id)
+      p @user
+      @user.updates.count.should == 0
+      # @user.updates[0].new_messages_count.should == 1
+      # # add one more message, new_messages_count increased
+      # Message.make!(:convo => @convo, :owner => @user)
+      # @user.updates[0].new_messages_count.should == 2
+    end
+
+
+    it "should have updates when a new convo created and automatically subscribed"
+    
   end
   
   

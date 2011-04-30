@@ -15,8 +15,8 @@ describe Message do
   
   describe "business logic" do
     before do
-      @user = User.make!(:username => "tester", :email => "test@example.com")
-      @convo = Convo.make!(:title => "test convo", :owner => @user)
+      @user = User.make!
+      @convo = Convo.make!(:owner => @user)
       @message = Message.create!(:convo => @convo, :owner => @user, :body => "not a zero length body")
     end
 

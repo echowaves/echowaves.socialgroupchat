@@ -71,10 +71,62 @@ class User
     visits<<Visit.new(convo_id: convo.id)
     # destroy the first visit if collection grows bigger then 100
     visits[0].destroy if visits.count > 100
+
+    # update subscription visits count
+    subscription = self.subscriptions.where(convo_id: convo.id)[0]
+    if subscription != nil
+      subscription.new_messages_count = 0 # reset the new messages count while visiting
+      if convo.messages.count != 0
+        subscription.last_read_message_id = convo.messages.asc(:created_at).last.id
+        p "#{subscription.id} last_read_message_id saved::::::::::::: #{subscription.last_read_message_id}"
+      end
+      subscription.save      
+    end
   end
   
   def visited_convos
   # TODO n+1 query here!!!!!!!!!!!!!!!!!!!!!!
     self.visits.map(&:convo).reverse
   end
+
+  
+  # returns an array of subscription that have updates (new messages), since last visit
+  def updates
+    # now update the subscriptions if there are any news
+    # TODO: let's not worry about premature optimization, but the following code will be sloooooow for now
+    updated_subscriptions = []
+    # lets check each subscription, update it if there are new messages, and add it to the @updated_subscriptions
+    self.subscriptions.each do |s| 
+      messages = s.convo.messages.asc(:created_at)
+      unless messages.count == 0 # no messages -- no updates
+        p "#{s.id} last_read_message_id read::::::::::::#{s.last_read_message_id}"
+        # just started posting new messages to a new convo which was never visited before
+        if s.last_read_message_id == nil
+          s.new_messages_count = messages.count         # s.last_read_message_id = messages.first.id
+          s.save
+        else
+          last_message = messages.last
+          p '??????????????????????'
+          p s.last_read_message_id
+          p s.new_messages_count
+          p last_message.id 
+          p messages.first.id 
+          p messages.count
+
+          if s.last_read_message_id != last_message.id 
+            # some new updates, let's update the count
+            s.new_messages_count = messages.count(:created_at.gte => last_read_message.created_at)
+            s.save
+            updated_subscriptions << s
+            
+          end        
+        end #  if s.last_read_message_id == nil
+      end # unless messages.count == 0
+    end # @subscriptions.each
+    p "#####################################"
+    p "returning updated subscriptions"
+    p updated_subscriptions
+    updated_subscriptions 
+  end
+  
 end

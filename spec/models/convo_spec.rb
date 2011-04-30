@@ -21,8 +21,8 @@ describe Convo do
   
   describe "business logic" do
     before do
-      @user = User.make(:username => "tester", :email => "test@example.com")
-      @convo = Convo.create(:title => "test convo", :owner => @user)
+      @user = User.make
+      @convo = Convo.create(:owner => @user)
     end
 
 
