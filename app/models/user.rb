@@ -78,7 +78,6 @@ class User
       subscription.new_messages_count = 0 # reset the new messages count while visiting
       if convo.messages.count != 0
         subscription.last_read_message_id = convo.messages.asc(:created_at).last.id
-        p "#{subscription.id} last_read_message_id saved::::::::::::: #{subscription.last_read_message_id}"
       end
       subscription.save      
     end
@@ -99,33 +98,22 @@ class User
     self.subscriptions.each do |s| 
       messages = s.convo.messages.asc(:created_at)
       unless messages.count == 0 # no messages -- no updates
-        p "#{s.id} last_read_message_id read::::::::::::#{s.last_read_message_id}"
         # just started posting new messages to a new convo which was never visited before
         if s.last_read_message_id == nil
           s.new_messages_count = messages.count         # s.last_read_message_id = messages.first.id
           s.save
+          updated_subscriptions << s
         else
           last_message = messages.last
-          p '??????????????????????'
-          p s.last_read_message_id
-          p s.new_messages_count
-          p last_message.id 
-          p messages.first.id 
-          p messages.count
-
           if s.last_read_message_id != last_message.id 
             # some new updates, let's update the count
             s.new_messages_count = messages.count(:created_at.gte => last_read_message.created_at)
             s.save
             updated_subscriptions << s
-            
           end        
         end #  if s.last_read_message_id == nil
       end # unless messages.count == 0
     end # @subscriptions.each
-    p "#####################################"
-    p "returning updated subscriptions"
-    p updated_subscriptions
     updated_subscriptions 
   end
   

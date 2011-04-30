@@ -127,23 +127,19 @@ describe User do
     end
     
     it "should have updates when a new message posted to a subscribed convo which was never visited" do
-      # sleep 1 # sleeping to make sure the time stamp is different
-      Message.make!(:convo => @convo, :owner => @user)
+      5.times { Message.make!(:convo => @convo, :owner => @user) }
+      @user = User.find(@user.id)
       @user.updates.count.should == 1
-      @user.updates[0].new_messages_count.should == 1
+      @user.updates[0].new_messages_count.should == 5
       # add one more message, new_messages_count increased
       Message.make!(:convo => @convo, :owner => @user)
-      @user.updates[0].new_messages_count.should == 2
+      @user.updates[0].new_messages_count.should == 6
     end
 
     it "should have updates when a new message posted to a subscribed convo which was visited before" do
-      # sleep 1 # sleeping to make sure the time stamp is different
       Message.make!(:convo => @convo, :owner => @user)
-      sleep 1
       @user.visit @convo
-      sleep 1
-      @user = User.find(@user.id)
-      p @user
+      @user = User.find(@user.id) # have to refetch the user
       @user.updates.count.should == 0
       # @user.updates[0].new_messages_count.should == 1
       # # add one more message, new_messages_count increased
