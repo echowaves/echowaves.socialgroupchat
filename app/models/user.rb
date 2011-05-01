@@ -96,18 +96,19 @@ class User
     updated_subscriptions = []
     # lets check each subscription, update it if there are new messages, and add it to the @updated_subscriptions
     self.subscriptions.each do |s| 
-      messages = s.convo.messages.asc(:created_at)
-      unless messages.count == 0 # no messages -- no updates
+      my_messages = s.convo.messages.asc(:created_at) # calling my_messages to avoid naming collision
+      unless my_messages.count == 0 # no messages -- no updates
         # just started posting new messages to a new convo which was never visited before
         if s.last_read_message_id == nil
-          s.new_messages_count = messages.count         # s.last_read_message_id = messages.first.id
+          s.new_messages_count = my_messages.count         # s.last_read_message_id = messages.first.id
           s.save
           updated_subscriptions << s
         else
-          last_message = messages.last
+          last_message = my_messages.last
           if s.last_read_message_id != last_message.id 
             # some new updates, let's update the count
-            s.new_messages_count = messages.count(:created_at.gte => last_read_message.created_at)
+            last_read_message = my_messages.find(s.last_read_message_id)
+            s.new_messages_count = my_messages.where(:created_at.gt => last_read_message.created_at).count
             s.save
             updated_subscriptions << s
           end        

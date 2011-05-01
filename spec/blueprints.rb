@@ -30,4 +30,5 @@ Message.blueprint do
   convo { Convo.make }
   owner { User.make }
   body { "body#{sn}"}
+  # created_at { Date.new(sn.to_i) } # to make sure the create_at is incrementally different
 end

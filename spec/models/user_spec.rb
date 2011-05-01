@@ -127,24 +127,31 @@ describe User do
     end
     
     it "should have updates when a new message posted to a subscribed convo which was never visited" do
-      5.times { Message.make!(:convo => @convo, :owner => @user) }
+      3.times { Message.make!(:convo => @convo, :owner => @user) }
       @user = User.find(@user.id)
       @user.updates.count.should == 1
-      @user.updates[0].new_messages_count.should == 5
+      @user.updates[0].new_messages_count.should == 3
       # add one more message, new_messages_count increased
       Message.make!(:convo => @convo, :owner => @user)
-      @user.updates[0].new_messages_count.should == 6
+      @user.updates[0].new_messages_count.should == 4
     end
 
     it "should have updates when a new message posted to a subscribed convo which was visited before" do
       Message.make!(:convo => @convo, :owner => @user)
       @user.visit @convo
       @user = User.find(@user.id) # have to refetch the user
+      # @user.updates.count.should == 0
+      Message.make!(convo: @convo, owner: @user, created_at: Time.now + 1)
+      # @user.updates.count.should == 1
+      @user.updates[0].new_messages_count.should == 1
+      # one more message
+      Message.make!(convo: @convo, owner: @user, created_at: Time.now + 1)
+      # @user.updates.count.should == 1
+      @user.updates[0].new_messages_count.should == 2
+      # and now visit and it should reset
+      @user.visit @convo
+      @user = User.find(@user.id) # have to refetch the user
       @user.updates.count.should == 0
-      # @user.updates[0].new_messages_count.should == 1
-      # # add one more message, new_messages_count increased
-      # Message.make!(:convo => @convo, :owner => @user)
-      # @user.updates[0].new_messages_count.should == 2
     end
 
 
