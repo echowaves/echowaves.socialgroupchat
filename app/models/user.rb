@@ -90,7 +90,7 @@ class User
 
   
   # returns an array of subscription that have updates (new messages), since last visit
-  def updates
+  def updated_subscriptions
     # now update the subscriptions if there are any news
     # TODO: let's not worry about premature optimization, but the following code will be sloooooow for now
     updated_subscriptions = []

@@ -11,11 +11,6 @@ class SubscriptionsController < ApplicationController
     respond_with @convos
   end
 
-  def updates
-    @convos = Subscription.updates(user_id)
-    respond_with @convos
-  end
-
   private
   def user_id
     @user_id ||= params[:user_id]    
