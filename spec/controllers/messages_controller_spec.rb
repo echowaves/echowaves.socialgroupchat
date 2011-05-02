@@ -26,6 +26,7 @@ describe MessagesController do
   describe "POST create" do
     it "creates message and sends it" do
       Message.stub(:create) { message }
+      @user.should_receive(:visit).with(mock_convo)
       post :create, :convo_id => 37, :format => :js
       # Socky.should_receive(:send)
       # response.should redirect_to(convo_url(mock_convo))

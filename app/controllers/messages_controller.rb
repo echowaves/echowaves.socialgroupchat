@@ -19,6 +19,7 @@ class MessagesController < ApplicationController
                      :uuid => params[:uuid],
                      :gravatar_url => params[:gravatar_url] }.to_json,
                      :channels => "convo_#{current_convo.id}" )
+        current_user.visit current_convo # make sure to reset stats for this current convo
         render :nothing => true
       end
     end
