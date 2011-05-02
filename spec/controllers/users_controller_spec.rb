@@ -22,20 +22,7 @@ describe UsersController do
       response.should render_template(:show) 
     end
   end
-
-
-  describe 'GET updated_subscriptions' do
-    it 'assigns @subscriptions, and renderes it' do
-      @user = User.make
-      request.env['warden'] = mock(Warden, :authenticate => @user, :authenticate! => @user, :authenticate? => @user)      
-      @mock_subcriptions = [mock_model(Subscription).as_null_object]      
-      @user.should_receive(:updated_subscriptions).and_return(@mock_subcriptions)
-      get "updated_subscriptions"
-      assigns(:subscriptions).should == @mock_subcriptions
-      response.should render_template(:updated_subscriptions) 
-    end
-  end
-
+  
 
   describe "follow unfollow" do
     before do

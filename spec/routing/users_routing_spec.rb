@@ -6,7 +6,4 @@ describe UsersController do
   specify { {:put => "/users/:id/follow"}.should route_to(:controller=>"users", :action=>"follow", :id=>":id")}  
   specify { {:put => "/users/:id/unfollow"}.should route_to(:controller=>"users", :action=>"unfollow", :id=>":id")}  
 
-
-  specify { {:get => "/updates"}.should route_to(:controller=>"users", :action=>"updated_subscriptions")}  
-  
 end

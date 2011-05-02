@@ -66,6 +66,7 @@
     <%= socky :client_id => (user_signed_in? ? current_user.id : nil), :channels => "convo_#{@convo.id}" %>
     <%= javascript_include_tag "echowaves.js" %>
     <%= javascript_include_tag "convo.js" %>
+    <%= javascript_include_tag "updates.js" %>
     <%= javascript_include_tag "visits.js" %>
     <%= javascript_include_tag "rails.js" %>
 

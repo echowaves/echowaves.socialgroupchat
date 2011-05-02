@@ -24,10 +24,10 @@ Echowaves::Application.routes.draw do
   end
   
   resources :visits, :only => [:index]
+  resources :updates, :only => [:index]
 
   root :to => "welcome#index"
   match '/welcome', :to => 'welcome#index', :as => :welcome
-  match '/updates', :to => 'users#updated_subscriptions'
 
   resource :socket, :only => [:subscribe, :unsubscribe] do
     member do

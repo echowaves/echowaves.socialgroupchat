@@ -15,6 +15,7 @@ describe VisitsController do
 
       assigns(:convos).should eq([convo])
       response.should render_template(:index)
+      response.should render_template("layouts/visits")
     end
   end
   

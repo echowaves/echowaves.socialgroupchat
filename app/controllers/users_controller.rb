@@ -15,12 +15,6 @@ class UsersController < ApplicationController
   end
 
 
-  def updated_subscriptions
-    @subscriptions = current_user.updated_subscriptions
-    respond_with @subscriptions
-  end
-
-
   def follow
     respond_to do |format|
       current_user.follow user
