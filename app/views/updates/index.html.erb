@@ -1,1 +1,6 @@
-updated
+<ul id="updates">
+<% @subscriptions.each do |subscription| %>
+	<li><%=subscription.new_messages_count%>&nbsp;<%= link_to (truncate subscription.convo.title), convo_path(subscription.convo) %></li>
+<% end %>
+</ul>
+
