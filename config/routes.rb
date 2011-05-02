@@ -25,8 +25,9 @@ Echowaves::Application.routes.draw do
   
   resources :visits, :only => [:index]
 
-  match 'welcome', :to => 'welcome#index', :as => :welcome
   root :to => "welcome#index"
+  match '/welcome', :to => 'welcome#index', :as => :welcome
+  match '/updates', :to => 'users#updated_subscriptions'
 
   resource :socket, :only => [:subscribe, :unsubscribe] do
     member do
@@ -34,5 +35,8 @@ Echowaves::Application.routes.draw do
       post :unsubscribe
     end
   end
+
+  
+
 
 end

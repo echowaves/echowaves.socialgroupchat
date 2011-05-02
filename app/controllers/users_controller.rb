@@ -15,6 +15,12 @@ class UsersController < ApplicationController
   end
 
 
+  def updated_subscriptions
+    @subscriptions = current_user.updated_subscriptions
+    respond_with @subscriptions
+  end
+
+
   def follow
     respond_to do |format|
       current_user.follow user
@@ -29,6 +35,9 @@ class UsersController < ApplicationController
       format.html { redirect_to :back, :notice => 'You unfollowed the user.' }
     end
   end
+  
+  
+  
   private
   def user
     @user ||= User.find(params[:id])
