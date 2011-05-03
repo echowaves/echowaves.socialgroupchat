@@ -30,6 +30,10 @@ module HelperMethods
     login_as_user @user
     @user
   end
+  
+  def logout
+    visit destroy_user_session_path
+  end
 end
 
 RSpec.configuration.include HelperMethods, :type => :acceptance
