@@ -9,28 +9,24 @@ gem 'unicorn'
 gem "socky-server", ">= 0.4.0" # this is a stand-alone server, is not part of the app and should not be here
 gem "socky-client-rails", ">= 0.4.3" # this is the client used to connect the app to the server
 
-gem "mongoid", "~> 2.0.1"
-# gem "mongoid", :git => "git://github.com/mongoid/mongoid.git", :branch => "safe_master"
+# gem "postgres-pr"
+gem "pg"
 
-gem "bson_ext", ">= 1.2.4"
 gem "devise", "~>1.3.4"
 gem "kaminari" #replacement for willpaginate
 
 gem 'gravatarify', "~> 2.2.2"
-gem 'escape_utils' # this will fix an issue with Rack::Test 1.2.1 and ruby 1.9.2
+# gem 'escape_utils' # this will fix an issue with Rack::Test 1.2.1 and ruby 1.9.2
 gem 'dynamic_form'
 
 group :test, :development do
   gem 'capybara', "~> 0.4.1.2"
   gem 'rspec', ">=2.5.0"
   gem 'rspec-rails', "~> 2.5.0"
-  gem 'mongoid-rspec', "~>1.4.2"
+  gem "remarkable_activerecord"
   gem 'steak', '~> 1.1.0'
-  # gem 'spork', "~> 0.9.0.rc2"
+  gem "miniskirt"
   gem 'launchy', ">=0.4.0"
-  gem 'machinist_mongo', :require => 'machinist/mongoid', :git => "git://github.com/nmerouze/machinist_mongo.git", :branch => 'machinist2'
-   # or mongo_mapper
-  # gem 'faker', ">=0.9.5"
   gem 'simplecov', ">=0.4.2", :require => false  
   gem 'ruby-graphviz'
   # autotest stuff
