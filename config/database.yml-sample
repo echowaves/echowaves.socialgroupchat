@@ -1,0 +1,12 @@
+development:    
+  adapter: postgresql
+  database: ew_dev
+  username: ew_dev
+  password: ew_dev
+  
+  
+test:    
+  adapter: postgresql
+  database: ew_test
+  username: ew_test
+  password: ew_test

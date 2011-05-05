@@ -1,5 +1,4 @@
 Echowaves::Application.configure do
-  require 'machinist/mongoid'
   # require 'sham'
   # require 'faker'
 
