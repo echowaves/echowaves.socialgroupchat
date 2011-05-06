@@ -1,4 +1,6 @@
-# require 'remarkable/mongoid'
+require "miniskirt"
+require "factories"
+
 require 'simplecov'
 SimpleCov.start 'rails'
 
@@ -6,7 +8,6 @@ SimpleCov.start 'rails'
 # from the project root directory.
 ENV["RAILS_ENV"] ||= 'test'
 require File.dirname(__FILE__) + "/../config/environment" unless defined?(RAILS_ROOT)
-require File.dirname(__FILE__) + '/blueprints'
 
 require 'rspec/rails'
 
