@@ -2,7 +2,7 @@
 
 source 'http://gemcutter.org'
 
-gem "rails", "3.0.7"
+gem "rails", "3.1.0.beta1"
 
 gem 'unicorn'
 
@@ -23,6 +23,8 @@ group :test, :development do
   gem 'capybara', "~> 0.4.1.2"
   gem 'rspec', ">=2.5.0"
   gem 'rspec-rails', "~> 2.5.0"
+  gem "remarkable"
+  gem "remarkable_rails"
   gem "remarkable_activerecord"
   gem 'steak', '~> 1.1.0'
   gem "miniskirt"

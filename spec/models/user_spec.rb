@@ -1,7 +1,10 @@
 require 'spec_helper'
 
 describe User do
-  describe "mongoid-rspec" do
+  describe "remarkable" do
+    before(:each) do
+      @user = Factory(:user)
+    end
     it { should have_fields(:created_at, :updated_at).of_type(Time) }
 
     it { should validate_presence_of :username }
