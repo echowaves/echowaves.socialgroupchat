@@ -5,7 +5,9 @@ describe User do
     before(:each) do
       @user = Factory(:user)
     end
-    it { should have_fields(:created_at, :updated_at).of_type(Time) }
+    # it { should have_fields(:created_at, :updated_at).of_type(Time) }
+    it { should validate_presence_of(:created_at) }
+    it { should validate_presence_of(:updated_at) }
 
     it { should validate_presence_of :username }
     it { should validate_uniqueness_of :username }
