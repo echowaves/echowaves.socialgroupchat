@@ -1,6 +1,4 @@
-class Invitation
-  include Mongoid::Document
-  include Mongoid::Timestamps
+class Invitation < ActiveRecord::Base
 
   belongs_to :convo
   belongs_to :user

@@ -1,8 +1,6 @@
-class Visit
-  include Mongoid::Document
-  include Mongoid::Timestamps
+class Visit < ActiveRecord::Base
 
-  embedded_in :user
+  belongs_to :user
   belongs_to :convo  
 
 end

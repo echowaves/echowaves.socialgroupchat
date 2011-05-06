@@ -1,13 +1,11 @@
-class Convo
-  include Mongoid::Document
-  include Mongoid::Timestamps
+class Convo < ActiveRecord::Base
 
   validates_presence_of :title
   validates_presence_of :owner
   validates_length_of :title, :maximum => 140
 
-  field :title, :type   => String
-  field :privacy, :type => String
+  # field :title, :type   => String
+  # field :privacy, :type => String
 
   #the owner of the convo
   belongs_to :owner, class_name: "User"

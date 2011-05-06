@@ -21,7 +21,6 @@ Rspec.configure do |config|
   # methods or matchers
   require 'rspec/expectations'
   # config.include Rspec::Matchers
-  config.include Mongoid::Matchers
 
   # == Mock Framework
   #
@@ -33,12 +32,12 @@ Rspec.configure do |config|
   config.mock_with :rspec
 
   config.before(:each) do
-    Convo.delete_all
-    Followership.delete_all
-    Invitation.delete_all
-    Message.delete_all
-    Subscription.delete_all
-    User.delete_all
+    # Convo.delete_all
+    # Followership.delete_all
+    # Invitation.delete_all
+    # Message.delete_all
+    # Subscription.delete_all
+    # User.delete_all
   end
   # == Fixtures
   #
