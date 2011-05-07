@@ -5,6 +5,4 @@ class Message < ActiveRecord::Base
   belongs_to :owner, class_name: "User"  
   belongs_to :convo
 
-  # field :uuid
-  # field :body
 end

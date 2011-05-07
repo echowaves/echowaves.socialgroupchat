@@ -5,8 +5,5 @@ class Subscription < ActiveRecord::Base
 
   belongs_to :convo
   belongs_to :user
-  
-  # field :last_read_message_id
-  # field :new_messages_count, type: Integer
-    
+      
 end

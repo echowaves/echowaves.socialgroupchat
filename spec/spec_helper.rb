@@ -2,7 +2,12 @@ require "miniskirt"
 require "factories"
 
 require 'simplecov'
-SimpleCov.start 'rails'
+
+SimpleCov.start 'rails' do
+  add_filter '/vendor/'
+  add_filter '/lib/uuid.rb'
+  add_filter '/lib/authenticated_system.rb'
+end
 
 # This file is copied to ~/spec when you run 'ruby script/generate rspec'
 # from the project root directory.
@@ -15,6 +20,9 @@ require 'rspec/rails'
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
+
+
+# require 'remarkable/active_record'
 
 Rspec.configure do |config|
   # Remove this line if you don't want Rspec's should and should_not
