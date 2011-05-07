@@ -3,11 +3,12 @@
 #
 # Table name: convos
 #
-#  id         :integer         not null, primary key
-#  title      :string(140)     not null
-#  private    :boolean
-#  created_at :datetime
-#  updated_at :datetime
+#  id            :integer         not null, primary key
+#  title         :string(140)     not null
+#  privacy_level :integer         default(0)
+#  owner_id      :integer         not null
+#  created_at    :datetime
+#  updated_at    :datetime
 #
 
 class Convo < ActiveRecord::Base
@@ -33,11 +34,11 @@ class Convo < ActiveRecord::Base
   end
 
   def public?
-    self.privacy == "public"
+    self.privacy_level == 1
   end
 
   def private?
-    !public?
+    self.privacy_level == 0
   end
 
   def accesible_by_user?(user)

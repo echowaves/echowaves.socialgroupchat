@@ -24,7 +24,6 @@ describe User do
     it { should have_many :visits }
     it { should have_many :convos }
     it { should have_many :messages }
-
   end
 
 
@@ -56,12 +55,12 @@ describe User do
     end
   end
   
-  
+
   describe "visiting multiple convos" do
     before do
       @user = Factory(:user)
        3.times do |i|
-          Convo.make!(:owner => @user, :created_at => i*1000)
+          Factory(:convo, :owner => @user)#, :created_at => i*1000)
        end
        Convo.all.each do |convo|
          @user.visit convo
@@ -106,7 +105,7 @@ describe User do
     end    
 
   end
-  
+ 
   describe "updated_subscriptions are made to subsriptions" do
     before do
       @user = Factory(:user)

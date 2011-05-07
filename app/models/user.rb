@@ -45,7 +45,7 @@ class User  < ActiveRecord::Base
   has_many :visits
 
   attr_accessible :username, :email, :password, :password_confirmation
-
+ 
   def gravatar
     gravatar_url email
   end
