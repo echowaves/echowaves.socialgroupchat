@@ -7,6 +7,28 @@ describe User do
       @user = Factory(:user)
     end
 
+    # columns
+    #----------------------------------------------------------------------
+    #  username             :string(128)
+    #  email                :string(255)     default(""), not null
+    #  encrypted_password   :string(128)     default(""), not null
+    #  confirmation_token   :string(255)
+    #  confirmed_at         :datetime
+    #  confirmation_sent_at :datetime
+    #  reset_password_token :string(255)
+    #  remember_token       :string(255)
+    #  remember_created_at  :datetime
+    #  sign_in_count        :integer         default(0)
+    #  current_sign_in_at   :datetime
+    #  last_sign_in_at      :datetime
+    #  current_sign_in_ip   :string(255)
+    #  last_sign_in_ip      :string(255)
+    #  password_salt        :string(255)
+    #  created_at           :datetime
+    #  updated_at           :datetime
+
+    # it { should have_column(:name, :type => :string) }
+    
     # validations
     #----------------------------------------------------------------------
 
@@ -20,138 +42,144 @@ describe User do
     #----------------------------------------------------------------------
     it { should have_many :subscriptions }
     it { should have_many :invitations }
+
     it { should have_many :followerships }
+    it { should have_many :followers, :through => :followerships }
+      
+    it { should have_many :inverse_followerships, :class_name => "Followership", :foreign_key => "follower_id" }
+    it { should have_many :inverse_followers, :through => :inverse_followerships, :source => :user }
+    
     it { should have_many :visits }
-    it { should have_many :convos }
-    it { should have_many :messages }
+    it { should have_many :convos,   :foreign_key => "owner_id" }
+    it { should have_many :messages, :foreign_key => "owner_id" }
   end
 
 
-  describe "business logic" do
-    it "should produce gravatar url" do
-      user = Factory(:user, :email => "test@example.com")
-      user.gravatar.should include("gravatar.com/avatar/55502f40dc8b7c769880b10874abc9d0.jpg")      
-    end
-  end
-
-
-  describe "followers logic" do
-    before do
-      @follower = Factory(:user)
-      @leader = Factory(:user)
-    end
-    
-    it "should be able to follow" do
-      @leader.should_not be_followed(@follower)
-      @follower.follow(@leader)
-      @leader.should be_followed(@follower)
-    end
-
-    it "should be able to unfollow" do
-      @follower.follow(@leader)
-      @leader.should be_followed(@follower)
-      @follower.unfollow(@leader)
-      @leader.should_not be_followed(@follower)      
-    end
-  end
-  
-
-  describe "visiting multiple convos" do
-    before do
-      @user = Factory(:user)
-       3.times do |i|
-          Factory(:convo, :owner => @user)#, :created_at => i*1000)
-       end
-       Convo.all.each do |convo|
-         @user.visit convo
-       end       
-    end
-    it "should grow the visits collection" do
-       @user.visits.count.should == 3
-    end
-
-    it "should not grow if the same convos are visited again" do
-      # visit the same convos again
-      Convo.all.each do |convo|
-        @user.visit convo
-      end       
-      @user.visits.count.should == 3      
-    end
-
-    it "should return visited_convos" do
-      @user.visited_convos.should == Convo.all.reverse
-    end
-
-    it "should return visited_convos" do
-      all_convos = Convo.all
-      @user.visited_convos.count == all_convos.count
-      
-      @user.visited_convos.each do |visited_convo|
-        all_convos.should include visited_convo
-      end
-    end
-        
-    it "should not grow more then 100 items" do
-      first_visit = @user.visits[0]
-      first_visit.convo.should == Convo.all[0]
-      @user.visits.should include first_visit
-      #after this there should be 1003 convos created but only 1000 visits
-      100.times do |i|         
-         @user.visit Factory(:convo, :owner => @user, :created_at => i*1000)
-      end
-      @user.visits.count.should == 100
-      # and the first item pushed out
-      @user.visits.should_not include first_visit      
-    end    
-
-  end
- 
-  describe "updated_subscriptions are made to subsriptions" do
-    before do
-      @user = Factory(:user)
-      # this convo will be automatically subscribed because the @user is the owner
-      @convo = Factory(:convo, :owner => @user)
-      
-      # this convo will have to explicitely subscribe because the owner is different
-      convo = Factory(:convo)
-      convo.subscribe @user
-      # let's make another subscription just to make sure it's not affecting anything 
-      Factory(:subscription)
-    end
-    
-    it "should have 2 subscription" do
-      @user.subscriptions.count.should == 2
-    end
-    
-    it "should have updated_subscriptions when a new message posted to a subscribed convo which was never visited" do
-      3.times { Message.make!(:convo => @convo, :owner => @user) }
-      @user = User.find(@user.id)
-      @user.updated_subscriptions.count.should == 1
-      @user.updated_subscriptions[0].new_messages_count.should == 3
-      # add one more message, new_messages_count increased
-      Message.make!(:convo => @convo, :owner => @user)
-      @user.updated_subscriptions[0].new_messages_count.should == 4
-    end
-
-    it "should have updated_subscriptions when a new message posted to a subscribed convo which was visited before" do
-      Message.make!(:convo => @convo, :owner => @user)
-      @user.visit @convo
-      @user = User.find(@user.id) # have to refetch the user
-      Message.make!(convo: @convo, owner: @user, created_at: Time.now + 1)
-      @user.updated_subscriptions[0].new_messages_count.should == 1
-      # one more message
-      Message.make!(convo: @convo, owner: @user, created_at: Time.now + 1)
-      @user.updated_subscriptions[0].new_messages_count.should == 2
-      # and now visit and it should reset
-      @user.visit @convo
-      @user = User.find(@user.id) # have to refetch the user
-      @user.updated_subscriptions.count.should == 0
-    end
-
-
-    it "should have updates when a new convo created and automatically subscribed"
-    
-  end
+  # describe "business logic" do
+  #   it "should produce gravatar url" do
+  #     user = Factory(:user, :email => "test@example.com")
+  #     user.gravatar.should include("gravatar.com/avatar/55502f40dc8b7c769880b10874abc9d0.jpg")      
+  #   end
+  # end
+  # 
+  # 
+  # describe "followers logic" do
+  #   before do
+  #     @follower = Factory(:user)
+  #     @leader = Factory(:user)
+  #   end
+  #   
+  #   it "should be able to follow" do
+  #     @leader.should_not be_followed(@follower)
+  #     @follower.follow(@leader)
+  #     @leader.should be_followed(@follower)
+  #   end
+  # 
+  #   it "should be able to unfollow" do
+  #     @follower.follow(@leader)
+  #     @leader.should be_followed(@follower)
+  #     @follower.unfollow(@leader)
+  #     @leader.should_not be_followed(@follower)      
+  #   end
+  # end
+  # 
+  #  
+  # describe "visiting multiple convos" do
+  #   before do
+  #     @user = Factory(:user)
+  #      3.times do |i|
+  #         Factory(:convo, :owner => @user)#, :created_at => i*1000)
+  #      end
+  #      Convo.all.each do |convo|
+  #        @user.visit convo
+  #      end       
+  #   end
+  #   it "should grow the visits collection" do
+  #      @user.visits.count.should == 3
+  #   end
+  # 
+  #   it "should not grow if the same convos are visited again" do
+  #     # visit the same convos again
+  #     Convo.all.each do |convo|
+  #       @user.visit convo
+  #     end       
+  #     @user.visits.count.should == 3      
+  #   end
+  # 
+  #   it "should return visited_convos" do
+  #     @user.visited_convos.should == Convo.all.reverse
+  #   end
+  # 
+  #   it "should return visited_convos" do
+  #     all_convos = Convo.all
+  #     @user.visited_convos.count == all_convos.count
+  #     
+  #     @user.visited_convos.each do |visited_convo|
+  #       all_convos.should include visited_convo
+  #     end
+  #   end
+  #       
+  #   it "should not grow more then 100 items" do
+  #     first_visit = @user.visits[0]
+  #     first_visit.convo.should == Convo.all[0]
+  #     @user.visits.should include first_visit
+  #     #after this there should be 1003 convos created but only 1000 visits
+  #     100.times do |i|         
+  #        @user.visit Factory(:convo, :owner => @user, :created_at => i*1000)
+  #     end
+  #     @user.visits.count.should == 100
+  #     # and the first item pushed out
+  #     @user.visits.should_not include first_visit      
+  #   end    
+  # 
+  # end
+  #  
+  # describe "updated_subscriptions are made to subsriptions" do
+  #   before do
+  #     @user = Factory(:user)
+  #     # this convo will be automatically subscribed because the @user is the owner
+  #     @convo = Factory(:convo, :owner => @user)
+  #     
+  #     # this convo will have to explicitely subscribe because the owner is different
+  #     convo = Factory(:convo)
+  #     convo.subscribe @user
+  #     # let's make another subscription just to make sure it's not affecting anything 
+  #     Factory(:subscription)
+  #   end
+  #   
+  #   it "should have 2 subscription" do
+  #     @user.subscriptions.count.should == 2
+  #   end
+  #   
+  #   it "should have updated_subscriptions when a new message posted to a subscribed convo which was never visited" do
+  #     3.times { Message.make!(:convo => @convo, :owner => @user) }
+  #     @user = User.find(@user.id)
+  #     @user.updated_subscriptions.count.should == 1
+  #     @user.updated_subscriptions[0].new_messages_count.should == 3
+  #     # add one more message, new_messages_count increased
+  #     Message.make!(:convo => @convo, :owner => @user)
+  #     @user.updated_subscriptions[0].new_messages_count.should == 4
+  #   end
+  # 
+  #   it "should have updated_subscriptions when a new message posted to a subscribed convo which was visited before" do
+  #     Message.make!(:convo => @convo, :owner => @user)
+  #     @user.visit @convo
+  #     @user = User.find(@user.id) # have to refetch the user
+  #     Message.make!(convo: @convo, owner: @user, created_at: Time.now + 1)
+  #     @user.updated_subscriptions[0].new_messages_count.should == 1
+  #     # one more message
+  #     Message.make!(convo: @convo, owner: @user, created_at: Time.now + 1)
+  #     @user.updated_subscriptions[0].new_messages_count.should == 2
+  #     # and now visit and it should reset
+  #     @user.visit @convo
+  #     @user = User.find(@user.id) # have to refetch the user
+  #     @user.updated_subscriptions.count.should == 0
+  #   end
+  # 
+  # 
+  #   it "should have updates when a new convo created and automatically subscribed"
+  #   
+  # end
   
   
 end

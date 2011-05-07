@@ -13,23 +13,6 @@ class UsersController < ApplicationController
       format.html { }
     end
   end
-
-
-  def follow
-    respond_to do |format|
-      current_user.follow user
-      format.html { redirect_to :back, :notice => 'You followed the user.' }
-    end
-  end
-
-
-  def unfollow
-    respond_to do |format|
-      current_user.unfollow user
-      format.html { redirect_to :back, :notice => 'You unfollowed the user.' }
-    end
-  end
-  
   
   
   private

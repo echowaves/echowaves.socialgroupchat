@@ -22,7 +22,6 @@
 #  created_at           :datetime
 #  updated_at           :datetime
 #
-
 class User  < ActiveRecord::Base
   include Gravatarify::Helper
 
@@ -31,18 +30,27 @@ class User  < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable, :recoverable, 
   :rememberable, :trackable, :validatable, :encryptable, :encryptor => 'sha1'
   
+  # validations
+  #----------------------------------------------------------------------  
   validates_presence_of :username
   validates_uniqueness_of :username
 
+  # associations
+  #----------------------------------------------------------------------
   has_many :subscriptions
   has_many :invitations
-  
 
   has_many :followerships
+  has_many :followers, :through => :followerships
+  
+  has_many :inverse_followerships, :class_name => "Followership", :foreign_key => "follower_id"
+  has_many :inverse_followers, :through => :inverse_followerships, :source => :user
+    
+  has_many :visits
   has_many :convos,   :foreign_key => "owner_id"
   has_many :messages, :foreign_key => "owner_id"
+  #----------------------------------------------------------------------
   
-  has_many :visits
 
   attr_accessible :username, :email, :password, :password_confirmation
  
