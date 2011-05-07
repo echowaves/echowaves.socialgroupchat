@@ -20,16 +20,16 @@ gem 'gravatarify', "~> 2.2.2"
 gem 'dynamic_form'
 
 group :test, :development do
-  gem 'capybara', "~> 0.4.1.2"
-  gem 'rspec', ">=2.5.0"
-  gem 'rspec-rails', "~> 2.5.0"
-  gem "annotate-models"  
+  gem 'capybara'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem "annotate-models", :require => false
   # gem "remarkable_rails" # does not work yet
-  gem "remarkable_activerecord"
-  gem 'steak', '~> 1.1.0'
+  gem "remarkable_activerecord", ">= 4.0.0.alpha4"
+  gem 'steak'
   gem "miniskirt"
-  gem 'launchy', ">=0.4.0"
-  gem 'simplecov', ">=0.4.2", :require => false  
+  gem 'launchy'
+  gem 'simplecov', :require => false
   gem 'ruby-graphviz'
   # autotest stuff
   gem 'autotest'

@@ -15,11 +15,13 @@ ActiveRecord::Schema.define(:version => 20110507000853) do
   create_table "convos", :force => true do |t|
     t.string   "title",      :limit => 140,                    :null => false
     t.boolean  "private",                   :default => false
+    t.integer  "owner_id",                                     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "convos", ["created_at"], :name => "index_convos_on_created_at"
+  add_index "convos", ["owner_id"], :name => "index_convos_on_owner_id"
   add_index "convos", ["private"], :name => "index_convos_on_private"
 
   create_table "followerships", :force => true do |t|
@@ -49,11 +51,13 @@ ActiveRecord::Schema.define(:version => 20110507000853) do
   create_table "messages", :force => true do |t|
     t.string   "uuid",       :null => false
     t.string   "body",       :null => false
+    t.integer  "owner_id",   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "messages", ["created_at"], :name => "index_messages_on_created_at"
+  add_index "messages", ["owner_id"], :name => "index_messages_on_owner_id"
 
   create_table "subscriptions", :force => true do |t|
     t.integer  "user_id"

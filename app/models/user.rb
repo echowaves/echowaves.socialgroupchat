@@ -39,8 +39,8 @@ class User  < ActiveRecord::Base
   
 
   has_many :followerships
-  has_many :convos
-  has_many :messages
+  has_many :convos,   :foreign_key => "owner_id"
+  has_many :messages, :foreign_key => "owner_id"
   
   has_many :visits
 

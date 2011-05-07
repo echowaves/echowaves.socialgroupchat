@@ -4,9 +4,13 @@ class CreateMessage < ActiveRecord::Migration
       t.string :uuid, :null => false
       t.string :body,:null => false
       
+      t.integer :owner_id, :null => false
+    
+      
       t.timestamps
     end
     add_index :messages, :created_at
+    add_index :messages, :owner_id
     
   end
 

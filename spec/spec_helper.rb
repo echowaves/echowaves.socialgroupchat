@@ -16,13 +16,12 @@ require File.dirname(__FILE__) + "/../config/environment" unless defined?(RAILS_
 
 require 'rspec/rails'
 
-
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
-
 require 'remarkable/active_record'
+
 
 Rspec.configure do |config|
   # Remove this line if you don't want Rspec's should and should_not

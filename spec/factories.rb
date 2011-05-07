@@ -4,17 +4,16 @@ Factory.define :user do |f|
   f.email "%{username}@example.com"
 end
 
-# Factory.define :convo do |f|
-#   f.title "title%d"
-#   f.privacy 'public'
-#   owner { Factory :user }
-# end
-# 
-# 
-# Factory.define :subscription do |f|
-#   user { Factory :user }
-#   convo { Factory :convo }
-# end
+Factory.define :convo do |f|
+  f.title "title%d"
+  f.privacy 'public'
+  f.owner { Factory :user }
+end
+
+Factory.define :subscription do |f|
+  f.user  { Factory :user }
+  f.convo { Factory :convo }
+end
 # 
 # 
 # Factory.define :invitation do |f|
