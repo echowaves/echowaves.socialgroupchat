@@ -26,6 +26,12 @@ describe Followership do
     it { should belong_to :leader,     :class_name => "User" }
     it { should belong_to :follower,   :class_name => "User" }
  
+    # indexes
+    #----------------------------------------------------------------------
+    it { should have_index :leader_id }
+    it { should have_index :follower_id }
+    it { should have_index :created_at }
+ 
   end
 
 end
