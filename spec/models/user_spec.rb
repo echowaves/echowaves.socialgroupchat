@@ -9,7 +9,6 @@ describe User do
 
     # columns
     #----------------------------------------------------------------------
-
     it { should have_column :username, :type => :string, :limit => 128 }
     it { should have_column :email,    :type => :string, :limit => 255, :default => '', :null => false }
     it { should have_column :encrypted_password,    :type => :string, :limit => 128, :default => '', :null => false }
@@ -30,13 +29,13 @@ describe User do
      
     # validations
     #----------------------------------------------------------------------
-
     it { should validate_presence_of :username }
     it { should validate_uniqueness_of :username }
 
 
     it { should validate_uniqueness_of( :username) }
     it { should validate_uniqueness_of( :email) }
+
     # associations
     #----------------------------------------------------------------------
     it { should have_many :subscriptions }

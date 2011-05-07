@@ -1,8 +1,8 @@
 class CreateFollowership < ActiveRecord::Migration
   def self.up
     create_table :followerships do |t|
-      t.integer :leader_id
-      t.integer :follower_id
+      t.references :leader,   :class_name => "User", :null => false
+      t.references :follower, :class_name => "User", :null => false
             
       t.timestamps
     end

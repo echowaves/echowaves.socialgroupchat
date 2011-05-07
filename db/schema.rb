@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(:version => 20110507000853) do
   add_index "convos", ["privacy_level"], :name => "index_convos_on_privacy_level"
 
   create_table "followerships", :force => true do |t|
-    t.integer  "leader_id"
-    t.integer  "follower_id"
+    t.integer  "leader_id",   :null => false
+    t.integer  "follower_id", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

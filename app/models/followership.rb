@@ -17,5 +17,7 @@ class Followership < ActiveRecord::Base
   
   validates_presence_of :leader_id  
   validates_presence_of :follower_id
+
+  validates_uniqueness_of :leader_id, :scope => :follower_id
     
 end
