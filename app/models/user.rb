@@ -1,3 +1,28 @@
+# == Schema Information
+# Schema version: 20110507000853
+#
+# Table name: users
+#
+#  id                   :integer         not null, primary key
+#  username             :string(128)
+#  email                :string(255)     default(""), not null
+#  encrypted_password   :string(128)     default(""), not null
+#  confirmation_token   :string(255)
+#  confirmed_at         :datetime
+#  confirmation_sent_at :datetime
+#  reset_password_token :string(255)
+#  remember_token       :string(255)
+#  remember_created_at  :datetime
+#  sign_in_count        :integer         default(0)
+#  current_sign_in_at   :datetime
+#  last_sign_in_at      :datetime
+#  current_sign_in_ip   :string(255)
+#  last_sign_in_ip      :string(255)
+#  password_salt        :string(255)
+#  created_at           :datetime
+#  updated_at           :datetime
+#
+
 class User  < ActiveRecord::Base
   include Gravatarify::Helper
 
@@ -9,17 +34,15 @@ class User  < ActiveRecord::Base
   validates_presence_of :username
   validates_uniqueness_of :username
 
-  # has_many :subscriptions
-  # has_many :invitations
+  has_many :subscriptions
+  has_many :invitations
   
-    # user will have many followerships, each will embedd a follower user, the user_id is stored on the followership object
 
-  # has_many :followerships
-  # 
-  # has_many :convos
-  # has_many :messages
-  # 
-  # embeds_many :visits
+  has_many :followerships
+  has_many :convos
+  has_many :messages
+  
+  has_many :visits
 
 
   attr_accessible :username, :email, :password, :password_confirmation

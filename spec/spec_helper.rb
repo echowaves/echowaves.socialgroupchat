@@ -22,12 +22,13 @@ require 'rspec/rails'
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
 
-# require 'remarkable/active_record'
+require 'remarkable/active_record'
 
 Rspec.configure do |config|
   # Remove this line if you don't want Rspec's should and should_not
   # methods or matchers
   require 'rspec/expectations'
+  
   # config.include Rspec::Matchers
 
   # == Mock Framework

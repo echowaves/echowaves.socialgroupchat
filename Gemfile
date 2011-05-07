@@ -23,6 +23,7 @@ group :test, :development do
   gem 'capybara', "~> 0.4.1.2"
   gem 'rspec', ">=2.5.0"
   gem 'rspec-rails', "~> 2.5.0"
+  gem "annotate-models"  
   # gem "remarkable_rails" # does not work yet
   gem "remarkable_activerecord"
   gem 'steak', '~> 1.1.0'

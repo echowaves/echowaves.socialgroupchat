@@ -30,6 +30,7 @@ GEM
       activesupport (= 3.0.7)
     activesupport (3.0.7)
     addressable (2.2.5)
+    annotate-models (1.0.4)
     arel (2.0.9)
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
@@ -167,6 +168,7 @@ PLATFORMS
 
 DEPENDENCIES
   ZenTest
+  annotate-models
   autotest
   autotest-growl
   autotest-rails

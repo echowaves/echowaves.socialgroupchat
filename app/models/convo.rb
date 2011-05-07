@@ -1,3 +1,15 @@
+# == Schema Information
+# Schema version: 20110507000853
+#
+# Table name: convos
+#
+#  id         :integer         not null, primary key
+#  title      :string(140)     not null
+#  private    :boolean
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Convo < ActiveRecord::Base
 
   validates_presence_of :title
