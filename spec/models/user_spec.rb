@@ -42,45 +42,50 @@ describe User do
     it { should have_many :subscriptions }
     it { should have_many :invitations }
 
-    it { should have_many :followerships }
+    it { should have_many :followerships, :foreign_key => "leader_id" }
     it { should have_many :followers, :through => :followerships }
-      
-    it { should have_many :inverse_followerships, :class_name => "Followership", :foreign_key => "follower_id" }
-    it { should have_many :inverse_followers, :through => :inverse_followerships, :source => :user }
+     
+    it { should have_many :leaderships, :class_name => "Followership", :foreign_key => "follower_id" }
+    it { should have_many :leaders, :through => :leaderships }
     
     it { should have_many :visits }
     it { should have_many :convos,   :foreign_key => "owner_id" }
     it { should have_many :messages, :foreign_key => "owner_id" }
+
+    # indexes
+    #----------------------------------------------------------------------
+    it { should have_index :username }
+    it { should have_index :created_at }
+
   end
 
 
-  # describe "business logic" do
-  #   it "should produce gravatar url" do
-  #     user = Factory(:user, :email => "test@example.com")
-  #     user.gravatar.should include("gravatar.com/avatar/55502f40dc8b7c769880b10874abc9d0.jpg")      
-  #   end
-  # end
-  # 
-  # 
-  # describe "followers logic" do
-  #   before do
-  #     @follower = Factory(:user)
-  #     @leader = Factory(:user)
-  #   end
-  #   
-  #   it "should be able to follow" do
-  #     @leader.should_not be_followed(@follower)
-  #     @follower.follow(@leader)
-  #     @leader.should be_followed(@follower)
-  #   end
-  # 
-  #   it "should be able to unfollow" do
-  #     @follower.follow(@leader)
-  #     @leader.should be_followed(@follower)
-  #     @follower.unfollow(@leader)
-  #     @leader.should_not be_followed(@follower)      
-  #   end
-  # end
+  it "should produce gravatar url" do
+    user = Factory(:user, :email => "test@example.com")
+    user.gravatar.should include("gravatar.com/avatar/55502f40dc8b7c769880b10874abc9d0.jpg")      
+  end
+
+
+  describe "followers logic" do
+    before do
+      @follower = Factory(:user)
+      @leader = Factory(:user)
+    end
+    
+    it "should be able to follow" do
+      @leader.should_not be_followed(@follower)
+      @follower.follow(@leader)
+      @leader.should be_followed(@follower)
+    end
+  
+    it "should be able to unfollow" do
+      @follower.follow(@leader)
+      @leader.should be_followed(@follower)
+      @follower.unfollow(@leader)
+      @leader.should_not be_followed(@follower)      
+    end
+   end
+    
   # 
   #  
   # describe "visiting multiple convos" do

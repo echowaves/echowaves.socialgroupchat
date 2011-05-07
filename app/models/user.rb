@@ -22,6 +22,7 @@
 #  created_at           :datetime
 #  updated_at           :datetime
 #
+
 class User  < ActiveRecord::Base
   include Gravatarify::Helper
 
@@ -40,39 +41,40 @@ class User  < ActiveRecord::Base
   has_many :subscriptions
   has_many :invitations
 
-  has_many :followerships
+  has_many :followerships, :foreign_key => "leader_id"
   has_many :followers, :through => :followerships
   
-  has_many :inverse_followerships, :class_name => "Followership", :foreign_key => "follower_id"
-  has_many :inverse_followers, :through => :inverse_followerships, :source => :user
+  has_many :leaderships, :class_name => "Followership", :foreign_key => "follower_id"
+  has_many :leaders, :through => :leaderships
     
   has_many :visits
   has_many :convos,   :foreign_key => "owner_id"
   has_many :messages, :foreign_key => "owner_id"
   #----------------------------------------------------------------------
   
-
+  
   attr_accessible :username, :email, :password, :password_confirmation
  
   def gravatar
     gravatar_url email
   end
 
-  def follow(user)
-      Followership.create(:user_id=>user.id, :follower_id=>self.id) unless self.follows?(user)
+  def follow(leader)
+    @leadership = self.leaderships.build(:leader_id => leader.id, :follower_id => self.id)
+    @leadership.save
+  end 
+ 
+  def unfollow(leader)
+    @leadership = self.leaderships.find_by_leader_id(leader.id)
+    @leadership.destroy if @leadership
   end
-
-  def unfollow(user)
-    followerships = Followership.where(:user_id=>user.id, :follower_id=>self.id)
-    followerships.destroy unless followerships.blank?
+   
+  def follows?(leader)
+    self.leaders.count(leader.id) > 0  ? true : false
   end
-  
-  def follows?(user)
-    Followership.where(:user_id=>user.id, :follower_id=>self.id).count > 0 ? true : false
-  end
-  
-  def followed?(user)
-    user.follows?(self)
+   
+  def followed?(follower)
+    follower.follows?(self)
   end
 
   def visit convo
@@ -94,11 +96,6 @@ class User  < ActiveRecord::Base
     end
   end
   
-  def visited_convos
-  # TODO n+1 query here!!!!!!!!!!!!!!!!!!!!!!
-    self.visits.map(&:convo).reverse
-  end
-
   
   # returns an array of subscription that have updates (new messages), since last visit
   def updated_subscriptions

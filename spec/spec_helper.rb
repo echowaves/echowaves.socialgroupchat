@@ -73,11 +73,11 @@ require "factories"
 
 require 'simplecov'
 
-SimpleCov.start 'rails' do
-  add_filter '/vendor/'
-  add_filter '/lib/uuid.rb'
-  add_filter '/lib/authenticated_system.rb'
-end
+# SimpleCov.start 'rails' do
+#   add_filter '/vendor/'
+#   add_filter '/lib/uuid.rb'
+#   add_filter '/lib/authenticated_system.rb'
+# end
 
 # This file is copied to ~/spec when you run 'ruby script/generate rspec'
 # from the project root directory.

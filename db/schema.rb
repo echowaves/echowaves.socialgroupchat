@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20110507000853) do
   add_index "convos", ["privacy_level"], :name => "index_convos_on_privacy_level"
 
   create_table "followerships", :force => true do |t|
-    t.integer  "user_id"
+    t.integer  "leader_id"
     t.integer  "follower_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20110507000853) do
 
   add_index "followerships", ["created_at"], :name => "index_followerships_on_created_at"
   add_index "followerships", ["follower_id"], :name => "index_followerships_on_follower_id"
-  add_index "followerships", ["user_id"], :name => "index_followerships_on_user_id"
+  add_index "followerships", ["leader_id"], :name => "index_followerships_on_leader_id"
 
   create_table "invitations", :force => true do |t|
     t.integer  "user_id"
