@@ -31,9 +31,6 @@ group :test, :development do
   gem 'launchy'
   gem 'simplecov', :require => false
   gem 'ruby-graphviz'
-  # autotest stuff
-  gem 'autotest'
-  gem 'ZenTest'
-  gem 'autotest-rails'
-  gem 'autotest-growl'
+  gem "watchr"
+  gem 'spork', '~> 0.9.0.rc'
 end
