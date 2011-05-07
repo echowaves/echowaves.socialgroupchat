@@ -9,26 +9,25 @@ describe User do
 
     # columns
     #----------------------------------------------------------------------
-    #  username             :string(128)
-    #  email                :string(255)     default(""), not null
-    #  encrypted_password   :string(128)     default(""), not null
-    #  confirmation_token   :string(255)
-    #  confirmed_at         :datetime
-    #  confirmation_sent_at :datetime
-    #  reset_password_token :string(255)
-    #  remember_token       :string(255)
-    #  remember_created_at  :datetime
-    #  sign_in_count        :integer         default(0)
-    #  current_sign_in_at   :datetime
-    #  last_sign_in_at      :datetime
-    #  current_sign_in_ip   :string(255)
-    #  last_sign_in_ip      :string(255)
-    #  password_salt        :string(255)
-    #  created_at           :datetime
-    #  updated_at           :datetime
 
-    # it { should have_column(:name, :type => :string) }
-    
+    it { should have_column :username, :type => :string, :limit => 128 }
+    it { should have_column :email,    :type => :string, :limit => 255, :default => '', :null => false }
+    it { should have_column :encrypted_password,    :type => :string, :limit => 128, :default => '', :null => false }
+    it { should have_column :confirmation_token, :type => :string, :limit => 255 }
+    it { should have_column :confirmed_at, :type => :datetime }
+    it { should have_column :confirmation_sent_at, :type => :datetime }
+    it { should have_column :reset_password_token,    :type => :string, :limit => 255 }
+    it { should have_column :remember_token,    :type => :string, :limit => 255 }
+    it { should have_column :remember_created_at, :type => :datetime }
+    it { should have_column :sign_in_count, :type => :integer, :default => 0 }
+    it { should have_column :current_sign_in_at, :type => :datetime }
+    it { should have_column :last_sign_in_at, :type => :datetime }
+    it { should have_column :current_sign_in_ip, :type => :string, :limit => 255 }
+    it { should have_column :last_sign_in_ip, :type => :string, :limit => 255 }
+    it { should have_column :password_salt, :type => :string, :limit => 255 }
+    it { should have_column :created_at, :type => :datetime }
+    it { should have_column :updated_at, :type => :datetime }
+     
     # validations
     #----------------------------------------------------------------------
 
