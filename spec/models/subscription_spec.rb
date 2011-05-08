@@ -28,6 +28,52 @@ describe Subscription do
     end
 
   end
+  # describe "updated_subscriptions are made to subsriptions" do
+  #   before do
+  #     @user = Factory(:user)
+  #     # this convo will be automatically subscribed because the @user is the owner
+  #     @convo = Factory(:convo, :owner => @user)
+  #     
+  #     # this convo will have to explicitely subscribe because the owner is different
+  #     convo = Factory(:convo)
+  #     convo.subscribe @user
+  #     # let's make another subscription just to make sure it's not affecting anything 
+  #     Factory(:subscription)
+  #   end
+  #   
+  #   it "should have 2 subscription" do
+  #     @user.subscriptions.count.should == 2
+  #   end
+  #   
+  #   it "should have updated_subscriptions when a new message posted to a subscribed convo which was never visited" do
+  #     3.times { Message.make!(:convo => @convo, :owner => @user) }
+  #     @user = User.find(@user.id)
+  #     @user.updated_subscriptions.count.should == 1
+  #     @user.updated_subscriptions[0].new_messages_count.should == 3
+  #     # add one more message, new_messages_count increased
+  #     Message.make!(:convo => @convo, :owner => @user)
+  #     @user.updated_subscriptions[0].new_messages_count.should == 4
+  #   end
+  # 
+  #   it "should have updated_subscriptions when a new message posted to a subscribed convo which was visited before" do
+  #     Message.make!(:convo => @convo, :owner => @user)
+  #     @user.visit @convo
+  #     @user = User.find(@user.id) # have to refetch the user
+  #     Message.make!(convo: @convo, owner: @user, created_at: Time.now + 1)
+  #     @user.updated_subscriptions[0].new_messages_count.should == 1
+  #     # one more message
+  #     Message.make!(convo: @convo, owner: @user, created_at: Time.now + 1)
+  #     @user.updated_subscriptions[0].new_messages_count.should == 2
+  #     # and now visit and it should reset
+  #     @user.visit @convo
+  #     @user = User.find(@user.id) # have to refetch the user
+  #     @user.updated_subscriptions.count.should == 0
+  #   end
+  # 
+  # 
+  #   it "should have updates when a new convo created and automatically subscribed"
+  #   
+  # end
 
 
 end
