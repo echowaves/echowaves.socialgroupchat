@@ -54,8 +54,10 @@ describe User do
     # indexes
     #----------------------------------------------------------------------
     it { should have_index :username }
+    it { should have_index :email }
+    it { should have_index :confirmation_token }
+    it { should have_index :reset_password_token }
     it { should have_index :created_at }
-
   end
 
 

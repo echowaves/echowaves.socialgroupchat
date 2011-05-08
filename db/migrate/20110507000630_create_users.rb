@@ -13,6 +13,9 @@ class CreateUsers < ActiveRecord::Migration
     end
 
     add_index :users, :username
+    add_index :users, :email
+    add_index :users, :confirmation_token
+    add_index :users, :reset_password_token
     add_index :users, :created_at
   end
 
