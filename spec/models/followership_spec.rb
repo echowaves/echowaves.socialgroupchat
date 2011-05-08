@@ -29,8 +29,27 @@ describe Followership do
     # associations
     #----------------------------------------------------------------------
     it { should belong_to :leader,     :class_name => "User" }
-    it { should belong_to :follower,   :class_name => "User" }
- 
+    it { should belong_to :follower,   :class_name => "User" } 
   end
+  
+  describe "followers logic" do
+    before do
+      @follower = Factory(:user)
+      @leader = Factory(:user)
+    end
+    
+    it "should be able to follow" do
+      @leader.should_not be_followed(@follower)
+      @follower.follow(@leader)
+      @leader.should be_followed(@follower)
+    end
+  
+    it "should be able to unfollow" do
+      @follower.follow(@leader)
+      @leader.should be_followed(@follower)
+      @follower.unfollow(@leader)
+      @leader.should_not be_followed(@follower)      
+    end
+   end
 
 end
