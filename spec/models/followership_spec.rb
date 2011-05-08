@@ -11,9 +11,14 @@ describe Followership do
     #----------------------------------------------------------------------
     it { should have_column :leader_id,   :type => :integer, :null => false } 
     it { should have_column :follower_id, :type => :integer, :null => false } 
-
     it { should have_column :created_at, :type => :datetime } 
     it { should have_column :updated_at, :type => :datetime }
+
+    # indexes
+    #----------------------------------------------------------------------
+    it { should have_index :leader_id }
+    it { should have_index :follower_id }
+    it { should have_index :created_at }
 
     # validations
     #----------------------------------------------------------------------
@@ -25,12 +30,6 @@ describe Followership do
     #----------------------------------------------------------------------
     it { should belong_to :leader,     :class_name => "User" }
     it { should belong_to :follower,   :class_name => "User" }
- 
-    # indexes
-    #----------------------------------------------------------------------
-    it { should have_index :leader_id }
-    it { should have_index :follower_id }
-    it { should have_index :created_at }
  
   end
 

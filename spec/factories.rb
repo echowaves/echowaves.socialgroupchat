@@ -9,6 +9,11 @@ Factory.define :followership do |f|
   f.leader    { Factory :user }
 end
 
+Factory.define :visit do |f|
+  f.user  { Factory :user }
+  f.convo { Factory :convo }
+end
+
 Factory.define :convo do |f|
   f.title "title%d"
   f.privacy_level 0 # 0 -> private, 1 -> public

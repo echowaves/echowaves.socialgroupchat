@@ -26,6 +26,14 @@ describe User do
     it { should have_column :password_salt, :type => :string, :limit => 255 }
     it { should have_column :created_at, :type => :datetime }
     it { should have_column :updated_at, :type => :datetime }
+
+    # indexes
+    #----------------------------------------------------------------------
+    it { should have_index :username }
+    it { should have_index :email }
+    it { should have_index :confirmation_token }
+    it { should have_index :reset_password_token }
+    it { should have_index :created_at }
      
     # validations
     #----------------------------------------------------------------------
@@ -51,13 +59,6 @@ describe User do
     it { should have_many :convos,   :foreign_key => "owner_id" }
     it { should have_many :messages, :foreign_key => "owner_id" }
 
-    # indexes
-    #----------------------------------------------------------------------
-    it { should have_index :username }
-    it { should have_index :email }
-    it { should have_index :confirmation_token }
-    it { should have_index :reset_password_token }
-    it { should have_index :created_at }
   end
 
 
@@ -87,58 +88,58 @@ describe User do
     end
    end
     
-  # 
-  #  
-  # describe "visiting multiple convos" do
-  #   before do
-  #     @user = Factory(:user)
-  #      3.times do |i|
-  #         Factory(:convo, :owner => @user)#, :created_at => i*1000)
-  #      end
-  #      Convo.all.each do |convo|
-  #        @user.visit convo
-  #      end       
-  #   end
-  #   it "should grow the visits collection" do
-  #      @user.visits.count.should == 3
-  #   end
-  # 
-  #   it "should not grow if the same convos are visited again" do
-  #     # visit the same convos again
-  #     Convo.all.each do |convo|
-  #       @user.visit convo
-  #     end       
-  #     @user.visits.count.should == 3      
-  #   end
-  # 
-  #   it "should return visited_convos" do
-  #     @user.visited_convos.should == Convo.all.reverse
-  #   end
-  # 
-  #   it "should return visited_convos" do
-  #     all_convos = Convo.all
-  #     @user.visited_convos.count == all_convos.count
-  #     
-  #     @user.visited_convos.each do |visited_convo|
-  #       all_convos.should include visited_convo
-  #     end
-  #   end
-  #       
-  #   it "should not grow more then 100 items" do
-  #     first_visit = @user.visits[0]
-  #     first_visit.convo.should == Convo.all[0]
-  #     @user.visits.should include first_visit
-  #     #after this there should be 1003 convos created but only 1000 visits
-  #     100.times do |i|         
-  #        @user.visit Factory(:convo, :owner => @user, :created_at => i*1000)
-  #     end
-  #     @user.visits.count.should == 100
-  #     # and the first item pushed out
-  #     @user.visits.should_not include first_visit      
-  #   end    
-  # 
-  # end
-  #  
+  
+   
+  describe "visiting multiple convos" do
+    before do
+      @user = Factory(:user)
+       3.times do |i|
+          Factory(:convo, :owner => @user)#, :created_at => i*1000)
+       end
+       Convo.all.each do |convo|
+         @user.visit convo
+       end       
+    end
+    it "should grow the visits collection" do
+       @user.visits.count.should == 3
+    end
+  
+    it "should not grow if the same convos are visited again" do
+      # visit the same convos again
+      Convo.all.each do |convo|
+        @user.visit convo
+      end       
+      @user.visits.count.should == 3      
+    end
+  
+    it "should return visited_convos" do
+      @user.visited_convos.should == Convo.all.reverse
+    end
+  
+    it "should return visited_convos" do
+      all_convos = Convo.all
+      @user.visited_convos.count == all_convos.count
+      
+      @user.visited_convos.each do |visited_convo|
+        all_convos.should include visited_convo
+      end
+    end
+        
+    it "should not grow more then 100 items" do
+      first_visit = @user.visits[0]
+      first_visit.convo.should == Convo.all[0]
+      @user.visits.should include first_visit
+      #after this there should be 1003 convos created but only 1000 visits
+      100.times do |i|         
+         @user.visit Factory(:convo, :owner => @user, :created_at => i*1000)
+      end
+      @user.visits.count.should == 100
+      # and the first item pushed out
+      @user.visits.should_not include first_visit      
+    end    
+  
+  end
+   
   # describe "updated_subscriptions are made to subsriptions" do
   #   before do
   #     @user = Factory(:user)

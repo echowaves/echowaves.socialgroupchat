@@ -11,7 +11,14 @@
 #
 
 class Visit < ActiveRecord::Base
+  # validations
+  #----------------------------------------------------------------------  
+  validates_presence_of :user_id
+  validates_presence_of :convo_id
+  validates_uniqueness_of :user_id, :scope => :convo_id
 
+  # associations
+  #----------------------------------------------------------------------
   belongs_to :user
   belongs_to :convo  
 

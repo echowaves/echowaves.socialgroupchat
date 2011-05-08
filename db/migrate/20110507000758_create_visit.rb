@@ -1,8 +1,8 @@
 class CreateVisit < ActiveRecord::Migration
   def self.up
     create_table :visits do |t|
-      t.references :user
-      t.references :convo
+      t.references :user, :null => false
+      t.references :convo, :null => false
       
       t.timestamps
     end

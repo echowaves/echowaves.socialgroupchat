@@ -11,13 +11,15 @@
 #
 
 class Followership < ActiveRecord::Base
-  # the user_id is stored on this object, which defines the paren leader object who is being followed
-  belongs_to :leader,   :class_name => "User"
-  belongs_to :follower, :class_name => "User"
-  
+  # validations
+  #----------------------------------------------------------------------  
   validates_presence_of :leader_id  
   validates_presence_of :follower_id
-
   validates_uniqueness_of :leader_id, :scope => :follower_id
+  
+  # associations
+  #----------------------------------------------------------------------
+  belongs_to :leader,   :class_name => "User"
+  belongs_to :follower, :class_name => "User"
     
 end
