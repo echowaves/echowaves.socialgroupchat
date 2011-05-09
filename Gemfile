@@ -31,6 +31,10 @@ group :test, :development do
   gem 'launchy'
   gem 'simplecov', :require => false
   gem 'ruby-graphviz'
-  gem "watchr"
   gem 'spork', '~> 0.9.0.rc'
+  # guard stuff
+  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i  
+  gem 'guard-rspec'
+  gem 'guard-livereload'
+  gem 'growl'
 end
