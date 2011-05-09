@@ -28,6 +28,40 @@ describe Subscription do
     end
 
   end
+  
+  describe Convo do
+    before do
+      @user = Factory(:user)
+      @convo = Factory(:convo)
+    end
+    
+    it "can have many users subscribed to the convo" do
+      user2 = Factory(:user)
+      @convo.subscriptions.count.should == 1 # the owner is subscribed
+      @convo.subscribe(@user)
+      @convo.subscriptions.count.should == 2
+      @convo.subscribe(user2)
+      @convo.subscriptions.count.should == 3
+    end
+    
+    it "can't have duplicated subscriptions" do
+      @convo.subscriptions.count.should == 1 # the owner is subscribed
+      @convo.subscribe(@user)
+      @convo.subscriptions.count.should == 2
+      @convo.subscribe(@user)
+      @convo.subscriptions.count.should == 2
+    end
+  
+    it "can have multiple users subscribed" do
+      user2 = Factory(:user)
+      @convo.subscribe(@user)
+      @convo.subscribe(user2)
+      @convo.users.should include @user
+      @convo.users.should include user2
+    end
+    
+  end
+  
   # describe "updated_subscriptions are made to subsriptions" do
   #   before do
   #     @user = Factory(:user)
