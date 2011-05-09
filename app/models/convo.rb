@@ -26,6 +26,7 @@ class Convo < ActiveRecord::Base
   has_many :invitations
   
   has_many :visits
+  has_many :visiting_users, :through => :visits
   
   after_create :subscribe_owner
 

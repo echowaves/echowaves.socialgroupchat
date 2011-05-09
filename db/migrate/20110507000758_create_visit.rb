@@ -3,6 +3,7 @@ class CreateVisit < ActiveRecord::Migration
     create_table :visits do |t|
       t.references :user, :null => false
       t.references :convo, :null => false
+      t.integer :visits_count, :null => false, :default => 1
       
       t.timestamps
     end

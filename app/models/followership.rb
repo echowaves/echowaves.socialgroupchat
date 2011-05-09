@@ -4,8 +4,8 @@
 # Table name: followerships
 #
 #  id          :integer         not null, primary key
-#  leader_id   :integer
-#  follower_id :integer
+#  leader_id   :integer         not null
+#  follower_id :integer         not null
 #  created_at  :datetime
 #  updated_at  :datetime
 #

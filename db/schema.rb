@@ -99,8 +99,9 @@ ActiveRecord::Schema.define(:version => 20110507000853) do
   add_index "users", ["username"], :name => "index_users_on_username"
 
   create_table "visits", :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.integer  "convo_id",   :null => false
+    t.integer  "user_id",                     :null => false
+    t.integer  "convo_id",                    :null => false
+    t.integer  "visits_count", :default => 1, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

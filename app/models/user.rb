@@ -25,7 +25,7 @@
 
 class User  < ActiveRecord::Base
   include Gravatarify::Helper
-
+ 
   # Include default devise modules. Others available are:
   # :http_authenticatable, :token_authenticatable, :lockable, :timeoutable and :activatable
   devise :database_authenticatable, :registerable, :confirmable, :recoverable, 
@@ -47,7 +47,9 @@ class User  < ActiveRecord::Base
   has_many :leaderships, :class_name => "Followership", :foreign_key => "follower_id"
   has_many :leaders, :through => :leaderships
     
-  has_many :visits
+  has_many :visits, :order => "updated_at DESC", limit: 100
+  has_many :visited_convos, :through => :visits, :source => :convo, limit: 100
+
   has_many :convos,   :foreign_key => "owner_id"
   has_many :messages, :foreign_key => "owner_id"
   #----------------------------------------------------------------------
@@ -78,22 +80,22 @@ class User  < ActiveRecord::Base
   end
 
   def visit convo
-    # delete a visit to this convo if already exists
-    visits.where(:convo_id => convo.id).destroy if visits.size > 0
     # append as a last element of the embedded collection
-    visits<<Visit.new(convo_id: convo.id)
-    # destroy the first visit if collection grows bigger then 100
-    visits[0].destroy if visits.count > 100
+    if visit = visits.find_by_convo_id(convo.id)
+      visit.increment!( :visits_count ) 
+    else
+      self.visits.create(convo: convo)
+    end
 
     # update subscription visits count
-    subscription = self.subscriptions.where(convo_id: convo.id)[0]
-    if subscription != nil
-      subscription.new_messages_count = 0 # reset the new messages count while visiting
-      if convo.messages.count != 0
-        subscription.last_read_message_id = convo.messages.asc(:created_at).last.id
-      end
-      subscription.save      
-    end
+    # subscription = self.subscriptions.where(convo_id: convo.id)[0]
+    # if subscription != nil
+    #   subscription.new_messages_count = 0 # reset the new messages count while visiting
+    #   if convo.messages.count != 0
+    #     subscription.last_read_message_id = convo.messages.asc(:created_at).last.id
+    #   end
+    #   subscription.save      
+    # end
   end
   
   
