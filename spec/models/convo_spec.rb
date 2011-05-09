@@ -25,6 +25,7 @@ describe Convo do
     #----------------------------------------------------------------------
     it { should validate_presence_of :title }
     it { should validate_presence_of :owner }
+    it { should validate_presence_of :privacy_level }
     it { should validate_length_of :title, :maximum => 140 }
 
 
@@ -36,206 +37,177 @@ describe Convo do
     it { should have_many :invitations }
     it { should have_many :visits }
     it { should have_many :visiting_users, through: :visits, source: :user }
-
   end
 
   
-  # describe "business logic" do
-  #   before do
-  #     @user = User.make
-  #     @convo = Convo.create(:owner => @user)
-  #   end
-  # 
-  # 
-  #   it "should reference one user" do
-  #     @convo.owner.should == @user
-  #   end
-  # end
-  # 
-  # 
-  # describe "A convo instance" do
-  #   it "should be public" do
-  #     convo = Convo.make!(:privacy => "public")
-  #     convo.should be_public
-  #   end
-  # 
-  # 
-  #   it "should be private" do
-  #     convo = Convo.make!(:privacy => "private")
-  #     convo.should be_private
-  #     convo2 = Convo.make!(:privacy => "anything but public")
-  #     convo2.should be_private
-  #     convo3 = Convo.make!(:privacy => nil)
-  #     convo3.should be_private
-  #   end
-  # 
-  #   it "should be manageable by user if the user is the creator of the convo" do
-  #     user = User.make
-  #     convo = Convo.make(:owner => user)
-  #     convo.should be_manageable_by_user user
-  #   end
-  # 
-  #   it "should not be manageable by user if the user is not the creator of the convo" do
-  #     user = User.make
-  #     convo = Convo.make
-  #     convo.should_not be_manageable_by_user user
-  #   end
-  # 
-  # 
-  #   it "should be accesible by user if the user is the creator of the convo and the convo is public" do
-  #     user = User.make!
-  #     convo = Convo.make!(:privacy => "public", :owner => user)
-  #     convo.should be_accesible_by_user user
-  #   end
-  # 
-  # 
-  #   it "should be accesible by user if the user is the creator of the convo and the convo is private" do
-  #     user = User.make!
-  #     convo = Convo.make!(:privacy => "private", :owner => user)
-  #     convo.should be_accesible_by_user user
-  #   end
-  # 
-  # 
-  #   it "should be accesible by user if the user is not the creator of the convo but the convo is public" do
-  #     user = User.make!
-  #     user2 = User.make!
-  #     convo = Convo.make!(:privacy => "public", :owner => user)
-  #     convo.should be_accesible_by_user user2
-  #   end
-  # 
-  # 
-  #   it "should not be accesible by user if the user is not the creator of the convo and the convo is private and the user don't follow the convo" do
-  #     user = User.make!
-  #     user2 = User.make!
-  #     convo = Convo.make!(:privacy => "private", :owner => user)
-  #     convo.should_not be_accesible_by_user user2
-  #   end
-  # 
-  # 
-  #   it "should be accesible by user if the user is not the creator of the convo and the convo is private but the user follows the convo" do
-  #     user = User.make!
-  #     user2 = User.make!
-  #     convo = Convo.make!(:privacy => "private", :owner => user)
-  #     Subscription.make!(:user => user2, :convo => convo)
-  #     convo.should be_accesible_by_user user2
-  #   end
-  # 
-  # 
-  #   it "can have many users subscribed to the convo" do
-  #     user = User.make!
-  #     user2 = User.make!
-  #     convo = Convo.make!
-  #     convo.subscriptions.count.should == 1 # the owner is subscribed
-  #     convo.subscribe(user)
-  #     convo.subscriptions.count.should == 2
-  #     convo.subscribe(user2)
-  #     convo.subscriptions.count.should == 3
-  #   end
-  # 
-  # 
-  #   it "can't have duplicated subscriptions" do
-  #     user = User.make!
-  #     convo = Convo.make!
-  #     convo.subscriptions.count.should == 1 # the owner is subscribed
-  #     convo.subscribe(user)
-  #     convo.subscriptions.count.should == 2
-  #     convo.subscribe(user)
-  #     convo.subscriptions.count.should == 2
-  #   end
-  # 
-  # 
-  #   it "can have multiple users subscribed" do
-  #     user = User.make!
-  #     user2 = User.make!
-  #     convo = Convo.make!
-  #     convo.subscribe(user)
-  #     convo.subscribe(user2)
-  #     convo.users.should include user
-  #     convo.users.should include user2
-  #   end
-  # 
-  # 
-  #   it "can remove a user from the convo" do
-  #     user = User.make!
-  #     user2 = User.make!
-  #     convo = Convo.make!
-  #     convo.subscribe(user)
-  #     convo.subscribe(user2)
-  #     convo.unsubscribe(user)
-  #     convo.unsubscribe(user2)
-  #     # not sure why have to reload, but this fixes the spec
-  #     convo.reload
-  #     convo.users.should_not include user
-  #     convo.users.should_not include user2
-  #   end
-  # 
-  # 
-  #   it "should create a subscription when created" do
-  #     user = User.make!
-  #     convo = Convo.make!(:owner => user)
-  #     convo.users.should include user
-  #   end
-  # 
-  # 
-  #   it "should not add a user to their subscriptions if the convo is private and the user does not have an invitation" do
-  #     user = User.make
-  #     convo = Convo.make(:privacy => "private")
-  #     convo.subscribe(user)
-  #     convo.users.should_not include user
-  #   end
-  # 
-  # 
-  #   it "should create an invitation" do
-  #     user = User.make
-  #     requestor = User.make
-  #     convo = Convo.make(:privacy => "private", :owner => requestor)
-  #     convo.invite_user(user, requestor)
-  #     convo.invitations.count.should == 1
-  #   end
-  # 
-  # 
-  #   it "should not create an invitation if a invitation already exists" do
-  #     requestor = User.make!
-  #     user = User.make!
-  #     convo = Convo.make!(:privacy => "private", :owner => requestor)
-  #     convo.invite_user(user, requestor)
-  #     convo.invitations.count.should == 1
-  #     convo.invite_user(user, requestor)
-  #     convo.invitations.count.should == 1
-  #   end
-  # 
-  #   it "should be able to invite only if has access to the convo" do
-  #     user = User.make
-  #     requestor = User.make
-  #     public_convo = Convo.make(:privacy => "public")
-  #     public_convo.invite_user(user, requestor)
-  #     public_convo.invitations.count.should == 1
-  #     private_convo = Convo.make(:privacy => "private")
-  #     private_convo.invite_user(user, requestor)
-  #     private_convo.invitations.count.should == 0 # no invitation created -- not accessible by the requestor
-  #   end
-  # 
-  # 
-  #   it "should add a user to their subscriptions if the user has an invitation" do
-  #     user = User.make
-  #     requestor = User.make
-  #     convo = Convo.make(:owner => requestor, :privacy => 'private')
-  #     convo.invite_user(user, requestor)
-  #     convo.subscribe(user)
-  #     convo.users.should include user
-  #   end
-  # 
-  # 
-  #   it "should destroy the invitation when the user is added to the convo" do
-  #     user = User.make!
-  #     requestor = User.make!
-  #     convo = Convo.make!(:owner => requestor, :privacy => 'private')
-  #     convo.invite_user(user, requestor)
-  #     convo.subscribe(user)
-  #     convo.reload
-  #     convo.invitations.count.should == 0
-  #   end
-  #   
-  # end
+  describe "business logic" do
+    before do
+      @user = Factory(:user)
+      @convo = Factory(:convo, :owner => @user)
+    end
+    
+    it "should reference one user" do
+      @convo.owner.should == @user
+    end
+  end
+  
+  
+  describe "A convo instance" do
+    before do
+      @user = Factory(:user)
+    end
+
+    it "should be public" do
+      convo = Factory(:convo, :privacy_level => 1 ) # a public convo
+      convo.should be_public
+    end
+  
+  
+    it "should be private" do
+      convo = Factory(:convo, :privacy_level => 0 ) # a private convo
+      convo.should be_private
+      convo2 = Factory(:convo, :privacy_level => 10 ) # anything but public
+      convo2.should be_private
+    end
+  
+    it "should be manageable by user if the user is the creator of the convo" do
+      convo = Factory(:convo, :owner => @user)
+      convo.should be_manageable_by_user @user
+    end
+  
+    it "should not be manageable by user if the user is not the creator of the convo" do
+      convo = Factory(:convo)
+      convo.should_not be_manageable_by_user @user
+    end
+  
+  
+    it "should be accesible by user if the user is the creator of the convo and the convo is public" do
+      convo = Factory(:convo, :privacy_level => 1, :owner => @user)
+      convo.should be_accesible_by_user @user
+    end
+  
+  
+    it "should be accesible by user if the user is the creator of the convo and the convo is private" do
+      convo = Factory(:convo, :privacy_level => 0, :owner => @user)
+      convo.should be_accesible_by_user @user
+    end
+  
+  
+    it "should be accesible by user if the user is not the creator of the convo but the convo is public" do
+      user2 = Factory(:user)
+      convo = Factory(:convo, :privacy => 1, :owner => @user)
+      convo.should be_accesible_by_user user2
+    end
+  
+    it "should not be accesible by user if the user is not the creator of the convo and the convo is private and the user don't follow the convo" do
+      user2 = Factory(:user)
+      convo = Factory(:convo, :privacy => 0, :owner => @user)
+      convo.should_not be_accesible_by_user user2
+    end
+  
+    it "should be accesible by user if the user is not the creator of the convo and the convo is private but the user follows the convo" do
+      user2 = Factory(:user)
+      convo = Factory(:convo, :privacy => 0, :owner => @user)
+      Subscription.make!(:user => user2, :convo => convo)
+      convo.should be_accesible_by_user user2
+    end  
+  
+    it "can have many users subscribed to the convo" do
+      user2 = Factory(:user)
+      convo = Factory(:convo)
+      convo.subscriptions.count.should == 1 # the owner is subscribed
+      convo.subscribe(@user)
+      convo.subscriptions.count.should == 2
+      convo.subscribe(user2)
+      convo.subscriptions.count.should == 3
+    end
+    
+    it "can't have duplicated subscriptions" do
+      convo = Factory(:convo)
+      convo.subscriptions.count.should == 1 # the owner is subscribed
+      convo.subscribe(@user)
+      convo.subscriptions.count.should == 2
+      convo.subscribe(@user)
+      convo.subscriptions.count.should == 2
+    end
+  
+    it "can have multiple users subscribed" do
+      user2 = Factory(:user)
+      convo = Factory(:convo)
+      convo.subscribe(@user)
+      convo.subscribe(user2)
+      convo.users.should include @user
+      convo.users.should include user2
+    end
+  
+    it "can remove a user from the convo" do
+      user2 = Factory(:user)
+      convo = Factory(:convo)
+      convo.subscribe(@user)
+      convo.subscribe(user2)
+      convo.unsubscribe(@user)
+      convo.unsubscribe(user2)
+      # not sure why have to reload, but this fixes the spec
+      convo.reload
+      convo.users.should_not include @user
+      convo.users.should_not include user2
+    end
+  
+    it "should create a subscription when created" do
+      convo = Factory(:convo, :owner => @user)
+      convo.users.should include @user
+    end
+    
+    it "should not add a user to their subscriptions if the convo is private and the user does not have an invitation" do
+      convo = Factory(:convo, :privacy_level => 0)
+      convo.subscribe(@user)
+      convo.users.should_not include @user
+    end
+  
+    it "should create an invitation" do
+      user = User.make
+      requestor = User.make
+      convo = Convo.make(:privacy => "private", :owner => requestor)
+      convo.invite_user(user, requestor)
+      convo.invitations.count.should == 1
+    end
+  
+    it "should not create an invitation if a invitation already exists" do
+      requestor = Factory(:user)
+      convo = Factory.convo(:privacy_level => 0, :owner => requestor)
+      convo.invite_user(@user, requestor)
+      convo.invitations.count.should == 1
+      convo.invite_user(@user, requestor)
+      convo.invitations.count.should == 1
+    end
+  
+    it "should be able to invite only if has access to the convo" do
+      requestor = Factory(:user)
+      public_convo = Factory(:convo, privacy_level: 1)
+      public_convo.invite_user(@user, requestor)
+      public_convo.invitations.count.should == 1
+      private_convo = Factory(:convo, privacy_level: 0)
+      private_convo.invite_user(@user, requestor)
+      private_convo.invitations.count.should == 0 # no invitation created -- not accessible by the requestor
+    end
+  
+    it "should add a user to their subscriptions if the user has an invitation" do
+      requestor = Factory(:user)
+      convo = Factory(:convo, :owner => requestor, privacy_level: 0)
+      convo.invite_user(@user, requestor)
+      convo.subscribe(@user)
+      convo.users.should include @user
+    end
+  
+    it "should destroy the invitation when the user is added to the convo" do
+      requestor = Factory(:user)
+      convo = Factory(:convo, :owner => requestor, privacy_level: 0)
+      convo.invite_user(@user, requestor)
+      convo.subscribe(@user)
+      convo.reload
+      convo.invitations.count.should == 0
+    end
+    
+  end
 end
 

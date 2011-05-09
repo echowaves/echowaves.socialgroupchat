@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(:version => 20110507000853) do
 
   create_table "convos", :force => true do |t|
     t.string   "title",         :limit => 140,                :null => false
-    t.integer  "privacy_level",                :default => 0
+    t.integer  "privacy_level",                :default => 0, :null => false
     t.integer  "owner_id",                                    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20110507000853) do
     t.string   "uuid",       :null => false
     t.string   "body",       :null => false
     t.integer  "owner_id",   :null => false
+    t.integer  "convo_id",   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

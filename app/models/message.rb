@@ -7,6 +7,7 @@
 #  uuid       :string(255)     not null
 #  body       :string(255)     not null
 #  owner_id   :integer         not null
+#  convo_id   :integer         not null
 #  created_at :datetime
 #  updated_at :datetime
 #
@@ -17,5 +18,5 @@ class Message < ActiveRecord::Base
 
   belongs_to :owner, class_name: "User"
   belongs_to :convo
-
+ 
 end

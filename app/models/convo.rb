@@ -17,6 +17,7 @@ class Convo < ActiveRecord::Base
   #----------------------------------------------------------------------  
   validates_presence_of :title
   validates_presence_of :owner
+  validates_presence_of :privacy_level
   validates_length_of :title, :maximum => 140
 
   # associations
@@ -43,7 +44,7 @@ class Convo < ActiveRecord::Base
   end
 
   def private?
-    self.privacy_level == 0
+    !public?
   end
 
   def accesible_by_user?(user)

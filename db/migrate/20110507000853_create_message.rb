@@ -4,8 +4,8 @@ class CreateMessage < ActiveRecord::Migration
       t.string :uuid, :null => false
       t.string :body,:null => false
       
-      t.integer :owner_id, :null => false
-    
+      t.references :owner, :null => false  
+      t.references :convo, :null => false
       
       t.timestamps
     end
