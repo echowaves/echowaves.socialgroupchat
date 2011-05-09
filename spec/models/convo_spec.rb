@@ -170,7 +170,7 @@ describe Convo do
       pending "will start to work once invitations work again"
       convo.users.should include @user
     end
-  
+ 
     it "should destroy the invitation when the user is added to the convo" do
       requestor = Factory(:user)
       convo = Factory(:convo, :owner => requestor, privacy_level: 0)

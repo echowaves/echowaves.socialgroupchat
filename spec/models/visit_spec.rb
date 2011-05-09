@@ -26,7 +26,7 @@ describe Visit do
     it { should validate_presence_of :convo_id }
     it { should validate_presence_of :visits_count }
     it { should validate_uniqueness_of :user_id, :scope => :convo_id }
-        
+    
     # associations
     #----------------------------------------------------------------------
     it { should belong_to :user }

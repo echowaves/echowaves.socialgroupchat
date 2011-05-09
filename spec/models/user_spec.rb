@@ -66,6 +66,6 @@ describe User do
     user = Factory(:user, :email => "test@example.com")
     user.gravatar.should include("gravatar.com/avatar/55502f40dc8b7c769880b10874abc9d0.jpg")      
   end
-  
-  
+
+
 end

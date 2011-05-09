@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(:version => 20110507000853) do
   create_table "subscriptions", :force => true do |t|
     t.integer  "user_id",                             :null => false
     t.integer  "convo_id",                            :null => false
-    t.integer  "last_read_message_id",                :null => false
+    t.integer  "last_read_message_id", :default => 0, :null => false
     t.integer  "new_messages_count",   :default => 0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"

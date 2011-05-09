@@ -6,7 +6,7 @@
 #  id                   :integer         not null, primary key
 #  user_id              :integer         not null
 #  convo_id             :integer         not null
-#  last_read_message_id :integer         not null
+#  last_read_message_id :integer         default(0), not null
 #  new_messages_count   :integer         default(0), not null
 #  created_at           :datetime
 #  updated_at           :datetime

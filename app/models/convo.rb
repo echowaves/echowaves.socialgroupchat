@@ -12,7 +12,7 @@
 #
 
 class Convo < ActiveRecord::Base
-
+ 
   # validations
   #----------------------------------------------------------------------  
   validates_presence_of :title

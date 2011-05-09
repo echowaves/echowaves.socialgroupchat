@@ -4,7 +4,7 @@ class CreateSubscription < ActiveRecord::Migration
       t.references :user, :null  => false
       t.references :convo, :null => false
 
-      t.integer :last_read_message_id, :null => false
+      t.integer :last_read_message_id, :null => false, default: 0
       t.integer :new_messages_count, :null => false, default: 0
 
       t.timestamps
