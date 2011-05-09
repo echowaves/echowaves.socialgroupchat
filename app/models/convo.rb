@@ -13,11 +13,14 @@
 
 class Convo < ActiveRecord::Base
 
+  # validations
+  #----------------------------------------------------------------------  
   validates_presence_of :title
   validates_presence_of :owner
   validates_length_of :title, :maximum => 140
 
-
+  # associations
+  #----------------------------------------------------------------------
   #the owner of the convo
   belongs_to :owner, class_name: "User"
   
@@ -26,7 +29,8 @@ class Convo < ActiveRecord::Base
   has_many :invitations
   
   has_many :visits
-  has_many :visiting_users, :through => :visits
+  has_many :visiting_users, through: :visits, source: :user
+  #----------------------------------------------------------------------
   
   after_create :subscribe_owner
 
