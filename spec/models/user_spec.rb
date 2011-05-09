@@ -111,11 +111,10 @@ describe User do
       #after this there should be 1003 convos created but only 1000 visits
       100.times do |i|         
          @user.visit Factory(:convo, :owner => @user)
-         # sleep 0.001
       end
+      @user.reload
       @user.visits.count.should == 100
       # and the first item pushed out
-      pending "someting does not work, will have to figure out after everything else is in place"
       @user.visits.should_not include first_visit
     end    
 
