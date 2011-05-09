@@ -4,10 +4,10 @@
 # Table name: subscriptions
 #
 #  id                   :integer         not null, primary key
-#  user_id              :integer
-#  convo_id             :integer
-#  last_read_message_id :integer
-#  new_messages_count   :integer
+#  user_id              :integer         not null
+#  convo_id             :integer         not null
+#  last_read_message_id :integer         not null
+#  new_messages_count   :integer         default(0), not null
 #  created_at           :datetime
 #  updated_at           :datetime
 #

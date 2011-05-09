@@ -61,10 +61,10 @@ ActiveRecord::Schema.define(:version => 20110507000853) do
   add_index "messages", ["owner_id"], :name => "index_messages_on_owner_id"
 
   create_table "subscriptions", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "convo_id"
-    t.integer  "last_read_message_id"
-    t.integer  "new_messages_count"
+    t.integer  "user_id",                             :null => false
+    t.integer  "convo_id",                            :null => false
+    t.integer  "last_read_message_id",                :null => false
+    t.integer  "new_messages_count",   :default => 0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

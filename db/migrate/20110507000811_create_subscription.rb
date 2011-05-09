@@ -1,11 +1,11 @@
 class CreateSubscription < ActiveRecord::Migration
   def self.up
     create_table :subscriptions do |t|
-      t.references :user
-      t.references :convo
+      t.references :user, :null  => false
+      t.references :convo, :null => false
 
-      t.integer :last_read_message_id
-      t.integer :new_messages_count
+      t.integer :last_read_message_id, :null => false
+      t.integer :new_messages_count, :null => false, default: 0
 
       t.timestamps
     end

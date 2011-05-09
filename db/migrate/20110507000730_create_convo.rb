@@ -4,7 +4,7 @@ class CreateConvo < ActiveRecord::Migration
       t.string :title, :null => false, :limit => 140, null: false
       t.integer :privacy_level, :default => 0, null: false
       
-      t.integer :owner_id, :null => false
+      t.references :owner, :null => false
       
       t.timestamps
     end
