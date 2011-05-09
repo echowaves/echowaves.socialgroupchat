@@ -6,7 +6,7 @@
 #  id           :integer         not null, primary key
 #  user_id      :integer         not null
 #  convo_id     :integer         not null
-#  visits_count :integer         default(0), not null
+#  visits_count :integer         default(1), not null
 #  created_at   :datetime
 #  updated_at   :datetime
 #
