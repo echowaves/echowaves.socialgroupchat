@@ -36,9 +36,9 @@ ActiveRecord::Schema.define(:version => 20110507000853) do
   add_index "followerships", ["leader_id"], :name => "index_followerships_on_leader_id"
 
   create_table "invitations", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "convo_id"
-    t.integer  "requestor_id"
+    t.integer  "convo_id",     :null => false
+    t.integer  "user_id",      :null => false
+    t.integer  "requestor_id", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

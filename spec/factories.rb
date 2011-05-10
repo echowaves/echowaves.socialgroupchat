@@ -24,15 +24,15 @@ Factory.define :subscription do |f|
   f.user  { Factory :user }
   f.convo { Factory :convo }
 end
-# 
-# 
-# Factory.define :invitation do |f|
-#   user { Factory :user }
-#   convo { Factory :convo }
-#   requestor { Factory :user }
-# end
-# 
-# 
+
+
+Factory.define :invitation do |f|
+  f.user { Factory :user }
+  f.convo { Factory :convo }
+  f.requestor { Factory :user }
+end
+
+
 
 Factory.define :message do |f|
   f.convo { Factory :convo }
