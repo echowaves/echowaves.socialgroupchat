@@ -1,2 +1,10 @@
+rvm_install_on_use_flag=1
 rvm_gemset_create_on_use_flag=1
+
+#To enable switching to default / system when leaving a directory set
+rvm_project_rvmrc_default=1
+
+#use 3 threads for compiling rubys
+rvm_make_flags="-j 3"
+
 rvm use 1.9.2@ew
