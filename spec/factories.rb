@@ -33,8 +33,10 @@ end
 # end
 # 
 # 
-# Factory.define :message do |f|
-#   convo { Factory :convo }
-#   owner { Factory :user }
-#   body "body%d"
-# end
+
+Factory.define :message do |f|
+  f.convo { Factory :convo }
+  f.owner { Factory :user }
+  f.body "body%d"
+  f.uuid "%d"
+end

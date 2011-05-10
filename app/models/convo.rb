@@ -12,7 +12,9 @@
 #
 
 class Convo < ActiveRecord::Base
- 
+
+  # TODO: messages count cache
+
   # validations
   #----------------------------------------------------------------------  
   validates_presence_of :title
@@ -24,15 +26,15 @@ class Convo < ActiveRecord::Base
   #----------------------------------------------------------------------
   #the owner of the convo
   belongs_to :owner, class_name: "User"
-  
-  has_many :messages
+
+  has_many :messages#, :order => "created_at DESC"
   has_many :subscriptions
   has_many :invitations
-  
+
   has_many :visits
   has_many :visiting_users, through: :visits, source: :user
   #----------------------------------------------------------------------
-  
+
   after_create :subscribe_owner
 
   def users
@@ -50,9 +52,9 @@ class Convo < ActiveRecord::Base
   def accesible_by_user?(user)
     # p "#{self.public?} || #{user} && ( #{user} == #{self.owner} || #{self.subscriptions.exists?(:user_id => user.id)} || #{self.invitations.exists?(:user_id => user.id)})"
     self.public? ||
-      user && ( user == self.owner ||
-                self.subscriptions.exists?(:user_id => user.id) ||
-                self.invitations.exists?(:user_id => user.id))
+    user && ( user == self.owner ||
+    self.subscriptions.exists?(:user_id => user.id) ||
+    self.invitations.exists?(:user_id => user.id))
   end
 
   # just the owner for now
