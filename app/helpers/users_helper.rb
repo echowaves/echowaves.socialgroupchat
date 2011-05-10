@@ -3,9 +3,9 @@ module UsersHelper
     follower = args[:follower]
     leader = args[:leader]
     if follower.follows? leader
-      link_to "unfollow", unfollow_user_path(leader), :method=>:put, :class => 'button-small-red'
+      link_to "unfollow", user_followerships_path(leader.id), :method=>:delete, :class => 'button-small-red'
     else
-      link_to "follow", follow_user_path(leader), :method=>:put, :class => 'button-small-blue'
+      link_to "follow", user_followerships_path(leader.id), :method=>:post, :class => 'button-small-blue'
     end
   end
 end
