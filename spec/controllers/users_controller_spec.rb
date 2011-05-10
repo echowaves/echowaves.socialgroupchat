@@ -22,30 +22,5 @@ describe UsersController do
       response.should render_template(:show) 
     end
   end
-  
-
-  describe "follow unfollow" do
-    before do
-      @request.env['HTTP_REFERER'] = '/users'
-      User.stub(:find).with("37") { mock_user }
-      @user = Factory(:user)
-      request.env['warden'] = mock(Warden, :authenticate => @user, :authenticate! => @user, :authenticate? => @user)      
-    end
-    it "follows a leader" do
-      @user.should_receive(:follow)
-      get :follow, :id => "37"
-      flash[:notice].should eq('You followed the user.')
-      response.should redirect_to(users_url)
-    end
-
-    it 'unfollows a leader' do
-      @user.should_receive(:unfollow)
-      get :unfollow, :id => '37'
-      flash[:notice].should eq('You unfollowed the user.')
-      response.should redirect_to(users_url)
-    end
-    # 
-  end
-
 
 end

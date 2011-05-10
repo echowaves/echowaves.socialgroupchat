@@ -4,15 +4,12 @@ Echowaves::Application.routes.draw do
 
   resources :users, :only => [:index, :show] do
     resources :subscriptions, :only => [:index]
-    member do
-      put :follow
-      put :unfollow
-    end
+    resources :followerships, :only => [:create, :destroy]
   end
   
   resources :convos, :only => [:index, :show, :new, :create] do
     member do
-      # FIXME: should be post, not get
+      # FIXME: replace with subscriptions post/delete
       put :subscribe
       put :unsubscribe
     end
@@ -31,6 +28,7 @@ Echowaves::Application.routes.draw do
 
   resource :socket, :only => [:subscribe, :unsubscribe] do
     member do
+      # FIXME: replace with create/delete
       post :subscribe
       post :unsubscribe
     end
