@@ -14,10 +14,16 @@
 
 class Subscription < ActiveRecord::Base
     
+  # validations
+  #----------------------------------------------------------------------  
   validates_presence_of :convo
   validates_presence_of :user
-
+  validates_uniqueness_of :user_id, :scope => :convo_id
+  
+  # associations
+  #----------------------------------------------------------------------
   belongs_to :convo
   belongs_to :user
+  #----------------------------------------------------------------------
       
 end

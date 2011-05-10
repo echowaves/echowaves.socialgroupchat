@@ -40,7 +40,7 @@ describe Convo do
   end
 
   
-  describe "business logic" do
+  describe User, Convo do
     before do
       @user = Factory(:user)
       @convo = Factory(:convo, :owner => @user)
@@ -52,7 +52,7 @@ describe Convo do
   end
   
   
-  describe "A convo instance" do
+  describe User do
     before do
       @user = Factory(:user)
     end

@@ -48,10 +48,11 @@ class Convo < ActiveRecord::Base
   end
 
   def accesible_by_user?(user)
+    # p "#{self.public?} || #{user} && ( #{user} == #{self.owner} || #{self.subscriptions.exists?(:user_id => user.id)} || #{self.invitations.exists?(:user_id => user.id)})"
     self.public? ||
       user && ( user == self.owner ||
-                Subscription.where(:user_id => user.id, :convo_id => self.id).first ||
-                self.invitations.where(:user_id => user.id).first)
+                self.subscriptions.exists?(:user_id => user.id) ||
+                self.invitations.exists?(:user_id => user.id))
   end
 
   # just the owner for now
@@ -61,15 +62,14 @@ class Convo < ActiveRecord::Base
 
   def subscribe(user)
     if self.accesible_by_user?(user)
-      Subscription.create(:user => user, :convo => self) unless self.users.include? user
-      invitation = self.invitations.where(:user_id => user.id).first
-      invitation.destroy if invitation.present?
+      self.subscriptions.create(user: user) unless self.subscriptions.exists?(user_id: user.id)
+      self.invitations.where(:user_id => user.id).destroy_all
     end
   end
 
   def unsubscribe(user)
-    subscription = Subscription.where(:user_id => user.id, :convo_id => self.id).first
-    subscription.destroy unless subscription.blank?
+    subscription = self.subscriptions.where(:user_id => user.id)
+    subscription.destroy_all
   end
 
   def invite_user(user, requestor)

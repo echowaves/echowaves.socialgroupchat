@@ -1,25 +1,48 @@
 require 'spec_helper'
 
 describe Subscription do
-  describe "mongoid-rspec" do
-    it { should have_fields(:created_at, :updated_at).of_type(Time) }
-    it { should have_field(:last_read_message_id) }
-    it { should have_field(:new_messages_count).of_type(Integer) }
 
-    it { should validate_presence_of :convo }
+  describe "remarkable" do
+    before(:each) do
+      @subscription = Factory(:subscription)
+    end
+
+    # columns
+    #----------------------------------------------------------------------
+    it { should have_column :user_id, :type  => :integer, :null => false }
+    it { should have_column :convo_id, :type => :integer, :null => false }
+    it { should have_column :last_read_message_id, :type => :integer, :default => 0, :null => false }
+    it { should have_column :new_messages_count, :type => :integer, :default => 0, :null => false }
+    it { should have_column :created_at, :type => :datetime }
+    it { should have_column :updated_at, :type => :datetime }
+
+    # indexes
+    #----------------------------------------------------------------------
+    it { should have_index :user_id }
+    it { should have_index :convo_id }
+    it { should have_index :created_at }
+     
+    # validations
+    #----------------------------------------------------------------------
     it { should validate_presence_of :user }
+    it { should validate_presence_of :convo }
+    it { should validate_uniqueness_of :user_id, :scope => :convo_id }
 
+    # associations
+    #----------------------------------------------------------------------
+    it { should belong_to :convo }
+    it { should belong_to :user }
+    #----------------------------------------------------------------------
 
-    it { should be_referenced_in :convo }
-    it { should be_referenced_in :user }
   end
 
 
-  describe "business logic" do
+
+  describe Convo, User do
     before do
-      @user = User.make
-      @convo = Convo.make(:owner => @user)
-      @subscription = Subscription.create!(:convo => @convo, :user => @user)
+      @user = Factory(:user)
+      @convo = Factory(:convo, :owner => @user)
+      @subscription = Subscription.find(:first) # there should be only one subscription, created automagically
     end
 
     it "should reference convo and user" do
@@ -32,12 +55,12 @@ describe Subscription do
   describe Convo do
     before do
       @user = Factory(:user)
-      @convo = Factory(:convo)
+      @convo = Factory(:convo, :privacy_level => 1)
     end
     
     it "can have many users subscribed to the convo" do
       user2 = Factory(:user)
-      @convo.subscriptions.count.should == 1 # the owner is subscribed
+      @convo.subscriptions.count.should == 1 # the owner is auto subscribed
       @convo.subscribe(@user)
       @convo.subscriptions.count.should == 2
       @convo.subscribe(user2)
@@ -45,7 +68,7 @@ describe Subscription do
     end
     
     it "can't have duplicated subscriptions" do
-      @convo.subscriptions.count.should == 1 # the owner is subscribed
+      @convo.subscriptions.count.should == 1 # the owner is auto subscribed
       @convo.subscribe(@user)
       @convo.subscriptions.count.should == 2
       @convo.subscribe(@user)
