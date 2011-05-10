@@ -7,7 +7,7 @@ describe MessagesController do
   end  
 
   before do
-    @user = User.make
+    @user = Factory(:user)
     request.env['warden'] = mock(Warden, :authenticate => @user, :authenticate! => @user, :authenticate? => @user)
     Convo.stub(:find) {mock_convo}
     mock_convo.stub(:messages) {[message]}

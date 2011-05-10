@@ -7,7 +7,7 @@ describe SubscriptionsController do
   end  
 
   before do
-    @user = User.make
+    @user = Factory(:user)
     request.env['warden'] = mock(Warden, :authenticate => @user, :authenticate! => @user, :authenticate? => @user)
     mock_subscription.stub(:convo).and_return(convo)
   end

@@ -28,7 +28,7 @@ describe UsersController do
     before do
       @request.env['HTTP_REFERER'] = '/users'
       User.stub(:find).with("37") { mock_user }
-      @user = User.make
+      @user = Factory(:user)
       request.env['warden'] = mock(Warden, :authenticate => @user, :authenticate! => @user, :authenticate? => @user)      
     end
     it "follows a leader" do

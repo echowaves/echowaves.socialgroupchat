@@ -7,7 +7,7 @@ describe ConvoUsersController do
   end  
 
   before do
-    @user = User.make
+    @user = Factory(:user)
     request.env['warden'] = mock(Warden, :authenticate => @user, :authenticate! => @user, :authenticate? => @user)
     Convo.stub(:find).and_return(mock_convo)
     mock_convo.stub(:users).and_return([user])

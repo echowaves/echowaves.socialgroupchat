@@ -4,7 +4,7 @@ describe VisitsController do
   let(:convo) { mock_model(Convo).as_null_object }  
 
   before do
-    @user = User.make
+    @user = Factory(:user)
     request.env['warden'] = mock(Warden, :authenticate => @user, :authenticate! => @user, :authenticate? => @user)
     @user.stub(:visited_convos).and_return([convo])
   end

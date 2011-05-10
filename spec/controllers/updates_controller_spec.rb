@@ -4,7 +4,7 @@ describe UpdatesController do
   let(:subscription) { mock_model(Subscription).as_null_object }  
 
   before do
-    @user = User.make
+    @user = Factory(:user)
     request.env['warden'] = mock(Warden, :authenticate => @user, :authenticate! => @user, :authenticate? => @user)
     @user.stub(:updated_subscriptions).and_return([subscription])
   end
