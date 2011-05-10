@@ -38,24 +38,24 @@ describe Message do
 
   end
 
-  # 
-  # 
-  # describe "business logic" do
-  #   before do
-  #     @user = User.make!
-  #     @convo = Convo.make!(:owner => @user)
-  #     @message = Message.create!(:convo => @convo, :owner => @user, :body => "not a zero length body")
-  #   end
-  # 
-  # 
-  #   it "should reference convo and user, and contain body" do
-  #     @message.owner.should == @user
-  #     @message.convo.should == @convo
-  #     @message.body.length.should > 0
-  #   end
-  # 
-  # 
-  # end
+  
+  
+  describe "business logic" do
+    before do
+      @user = Factory(:user)
+      @convo = Factory(:convo, :owner => @user)
+      @message = Factory(:message, :convo => @convo, :owner => @user, :body => "not a zero length body")
+    end
+  
+  
+    it "should reference convo and user, and contain body" do
+      @message.owner.should == @user
+      @message.convo.should == @convo
+      @message.body.length.should > 0
+    end
+  
+  
+  end
 
 
 end
