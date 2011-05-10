@@ -127,8 +127,6 @@ describe Subscription do
       @user.updated_subscriptions.count.should == 0
     end
 
-    it "should have updates when a new convo created and automatically subscribed"
-
   end
 
 end

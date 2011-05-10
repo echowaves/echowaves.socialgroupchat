@@ -49,14 +49,15 @@ ActiveRecord::Schema.define(:version => 20110507000853) do
   add_index "invitations", ["user_id"], :name => "index_invitations_on_user_id"
 
   create_table "messages", :force => true do |t|
-    t.string   "uuid",       :null => false
-    t.string   "body",       :null => false
-    t.integer  "owner_id",   :null => false
-    t.integer  "convo_id",   :null => false
+    t.string   "uuid",                         :null => false
+    t.string   "body",       :limit => 256000, :null => false
+    t.integer  "owner_id",                     :null => false
+    t.integer  "convo_id",                     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "messages", ["convo_id"], :name => "index_messages_on_convo_id"
   add_index "messages", ["created_at"], :name => "index_messages_on_created_at"
   add_index "messages", ["owner_id"], :name => "index_messages_on_owner_id"
 

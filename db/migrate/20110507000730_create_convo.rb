@@ -1,7 +1,7 @@
 class CreateConvo < ActiveRecord::Migration
   def self.up
     create_table :convos do |t|
-      t.string :title, :null => false, :limit => 140, null: false
+      t.string :title, :limit => 140, null: false
       t.integer :privacy_level, :default => 0, null: false
       
       t.references :owner, :null => false
