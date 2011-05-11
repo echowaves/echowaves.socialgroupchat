@@ -17,9 +17,9 @@
   <div>
 	<%= f.label :privacy %><br />
 	<%= t 'privacy.public' %>
-	<%= f.radio_button :privacy, :public , :checked => true %>
+	<%= f.radio_button :privacy_level, 1 , :checked => true %>
 	<%= t 'privacy.private' %>
-	<%= f.radio_button :privacy, :private %>
+	<%= f.radio_button :privacy_level, 0 %>
   </div>
   <div class="actions">
     <%= f.submit %>
