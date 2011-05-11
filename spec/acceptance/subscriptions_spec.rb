@@ -13,14 +13,14 @@ feature "Subscriptions", %q{
 
 
   scenario "registered user creates a public Convo which results in subscribing to that convo as well" do
-    @convo = Convo.make!(:owner => @user, :title => "my new convo", :privacy => "public")
+    @convo = Factory(:convo, :owner => @user, :title => "my new convo", :privacy_level => 1)
     visit user_subscriptions_path @user
     page.should have_content"my new convo"
   end
 
 
   scenario "registered user creates a private Convo which results in subscribing to that convo as well" do
-    @convo = Convo.make!(:owner => @user, :title => "my new convo", :privacy => "private")
+    @convo = Factory(:convo, :owner => @user, :title => "my new convo", :privacy_level => 0)
     visit user_subscriptions_path @user
     page.should have_content"my new convo"
   end
@@ -28,7 +28,7 @@ feature "Subscriptions", %q{
 
   scenario "test subscriptions pagination" do
     26.times do |i|
-      Convo.make!(:owner => @user, :title => "Convo #{i}.", :created_at => i*1000)
+      Factory(:convo, :owner => @user, :title => "Convo #{i}.")
     end
     visit user_subscriptions_path @user
     page.should have_content"Convo 25."

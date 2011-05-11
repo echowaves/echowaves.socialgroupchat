@@ -1,7 +1,7 @@
 module HelperMethods
   # Put helper methods you need to be available in all tests here.
   def active_user(params={})
-    user = User.make(params)    
+    user = Factory(:user, params)    
     user.confirmed_at = Time.new
     user.save!
     user

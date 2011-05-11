@@ -10,8 +10,8 @@ feature "Users List", %q{
     @user_foo = active_user
     @user_bar = active_user
     
-    @convo_foo = Convo.make!(:owner => @user_foo, :title => "foos_convo")
-    @convo_bar = Convo.make!(:owner => @user_bar, :title => "bars_convo")
+    @convo_foo = Factory(:convo, :owner => @user_foo, :title => "foos_convo")
+    @convo_bar = Factory(:convo, :owner => @user_bar, :title => "bars_convo")
     
     @convo_foo.subscribe @user_foo
     @convo_foo.subscribe @user_bar

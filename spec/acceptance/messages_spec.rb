@@ -12,7 +12,7 @@ feature "Messages", %q{
 
 
   scenario "registered user can post a message to a public convo", :js => true do
-    @convo = Convo.make!(:owner => @user, :privacy => 'public')
+    @convo = Factory(:convo, :owner => @user, :privacy => 'public')
     visit convo_path(@convo)
     within '#convo_footer' do
       fill_in('message_area', :with => 'Really Long Text...' )

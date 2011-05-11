@@ -17,7 +17,7 @@ feature "Signup", %q{
   end
 
   scenario "Attempt registration with dup username, and/or email, short password, and not matching confirmation password" do
-    @user = User.make!(:username => "tester", :email => "test@example.com")
+    @user = Factory(:user, :username => "tester", :email => "test@example.com")
     visit new_user_registration_path
     fill_in "user_username", :with => "tester"
     fill_in "user_email", :with => "test@example.com"

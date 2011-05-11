@@ -47,7 +47,7 @@ feature "Convos", %q{
     scenario "test convos pagination" do
       @user = login_new
       26.times do |i|
-        Convo.make!(:owner => @user, :title => "Convo #{i}", :created_at => i*1000)
+        Factory(:convo, :owner => @user, :title => "Convo #{i}")
       end
       visit convos_path
       page.should have_content "Convo 25"
@@ -65,7 +65,7 @@ feature "Convos", %q{
     scenario "test convos subscribe/ubsubscribe stays on the same page" do
       @user = login_new
       100.times do |i|
-        Convo.make!(:owner => @user, :title => "Convo #{i}", :created_at => i*1000)
+        Factory(:convo, :owner => @user, :title => "Convo #{i}")
       end
       visit convos_path
       click_link "Next"
@@ -89,7 +89,7 @@ feature "Convos", %q{
 
     scenario "owner can visit his own private convos" do
       @user = login_new
-      @private_convo = Convo.make!(:owner => @user, :title => "my private convo", :privacy => "private")
+      @private_convo = Factory(:convo, :owner => @user, :title => "my private convo", :privacy_level => 0)
       visit convo_path(@private_convo)
       current_path.should == convo_path(@private_convo)
       page.should have_content "my private convo"
@@ -98,7 +98,7 @@ feature "Convos", %q{
 
     scenario "owner can visit his own public convos" do
       @user = login_new
-      @public_convo = Convo.make!(:owner => @user, :title => "my public convo", :privacy => "public")
+      @public_convo = Factory(:convo, :owner => @user, :title => "my public convo", :privacy_level => 1)
       visit convo_path(@public_convo)
       current_path.should == convo_path(@public_convo)
       page.should have_content "my public convo"
@@ -109,7 +109,7 @@ feature "Convos", %q{
       @user = login_new
             
       @other_user = active_user
-      @other_user_convo = Convo.make!(:owner => @other_user, :title => "other guy's private convo", :privacy => "private")
+      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's private convo", :privacy_level => 0)
 
       visit convo_path(@other_user_convo)
       current_path.should == convos_path
@@ -121,7 +121,7 @@ feature "Convos", %q{
       @user = login_new
             
       @other_user = active_user
-      @other_user_convo = Convo.make!(:owner => @other_user, :title => "other guy's public convo", :privacy => "public")
+      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's public convo", :privacy_level => 1)
 
       visit convo_path(@other_user_convo)
       current_path.should == convo_path(@other_user_convo)
@@ -134,9 +134,9 @@ feature "Convos", %q{
       @user = login_new
             
       @other_user = active_user
-      @other_user_convo = Convo.make!(:owner => @other_user, :title => "other guy's private convo", :privacy => "private")
+      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's private convo", :privacy_level => 0)
 
-      Subscription.make!(:user => @user, :convo => @other_user_convo) 
+      Factory(:subscription, :user => @user, :convo => @other_user_convo) 
 
       visit convo_path(@other_user_convo)
       current_path.should == convo_path(@other_user_convo)
@@ -148,7 +148,7 @@ feature "Convos", %q{
     scenario "visitor can access public convo" do
       @other_user = active_user
 
-      @other_user_convo = Convo.make!(:owner => @other_user, :title => "other guy's public convo", :privacy => "public")
+      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's public convo", :privacy_level => 1)
 
       visit convo_path(@other_user_convo)
 
@@ -160,7 +160,7 @@ feature "Convos", %q{
     scenario "visitor can't access private convo" do
       @other_user = active_user
 
-      @other_user_convo = Convo.make!(:owner => @other_user, :title => "other guy's private convo", :privacy => "private")
+      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's private convo", :privacy_level => 0)
 
       visit convo_path(@other_user_convo)
 
@@ -172,7 +172,7 @@ feature "Convos", %q{
     scenario "visitor should not see the subscriptions links in the convos list" do
       @other_user = active_user
 
-      @other_user_convo = Convo.make!(:owner => @other_user, :title => "other guy's private convo", :privacy => "private")
+      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's private convo", :privacy_level => 0)
 
       visit convos_path
 
@@ -184,7 +184,7 @@ feature "Convos", %q{
       @user = login_new
             
       @other_user = active_user
-      @other_user_convo = Convo.make!(:owner => @other_user, :title => "other guy's public convo", :privacy => "public")
+      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's public convo", :privacy_level => 1)
 
       visit convos_path
 
@@ -200,9 +200,9 @@ feature "Convos", %q{
       @user = login_new
             
       @other_user = active_user
-      @other_user_convo = Convo.make!(:owner => @other_user, :title => "other guy's public convo", :privacy => "public")
+      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's public convo", :privacy_level => 1)
 
-      Subscription.make!(:user => @user, :convo => @other_user_convo) 
+      Factory(:subscription, :user => @user, :convo => @other_user_convo) 
 
       visit convos_path
       
@@ -216,9 +216,9 @@ feature "Convos", %q{
       @user = login_new
 
       @other_user = active_user
-      @other_user_convo = Convo.make!(:owner => @other_user, :title => "other guy's private convo", :privacy => "private")
+      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's private convo", :privacy_level => 0)
 
-      Invitation.make!(:user => @user, :convo => @other_user_convo)
+      Factory(:invitation, :user => @user, :convo => @other_user_convo)
 
       visit convo_path(@other_user_convo)
     

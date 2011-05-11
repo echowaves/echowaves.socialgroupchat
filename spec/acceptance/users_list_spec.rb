@@ -7,18 +7,18 @@ feature "Users List", %q{
 } do
 
   scenario "Navigate to the users list" do
-    @user = User.make!(:username => "foo", :email => "foo@example.com")
-    @user = User.make!(:username => "bar", :email => "bar@example.com")
+    @user = Factory(:user, :username => "foo", :email => "foo@example.com")
+    @user = Factory(:user, :username => "bar", :email => "bar@example.com")
     visit root_path
     click_link("nav_users_link")
-    page.should have_content "Users List"
+    page.should have_contentcontent "Users List"
     page.should have_content "foo"
     page.should have_content "bar"
   end
 
   scenario "test users pagination" do
     26.times do |i|
-      User.make!(:username => "User-#{i}", :created_at => i*1000)
+      Factory(:user, :username => "User-#{i}")
     end
     visit users_path
     page.should have_content "User-25"
@@ -36,7 +36,7 @@ feature "Users List", %q{
   scenario "test a user follow/unfollow from a users list stays on the same page" do
     @user = login_new
     100.times do |i|
-      User.make!(:username => "User-#{i}", :created_at => i*1000)
+      Factory(:user, :username => "User-#{i}")
     end
     visit users_path
     click_link "Next"
