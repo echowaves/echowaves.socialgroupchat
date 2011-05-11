@@ -1,5 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + "/../spec_helper")
 require 'capybara/rails'
+require 'capybara/rspec'
 
 # module Steak::Capybara
 #   include Rack::Test::Methods
@@ -15,3 +16,5 @@ RSpec.configuration.include Rails.application.routes.url_helpers, :type => :acce
 
 # Put your acceptance spec helpers inside /spec/acceptance/support
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
+
+include HelperMethods

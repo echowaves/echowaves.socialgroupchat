@@ -22,7 +22,7 @@ gem 'dynamic_form'
 group :test, :development do
   gem 'capybara', '>=1.0.0.beta1'
   # gem 'steak'
-  gem 'rspec'
+  gem 'rspec', ">= 2.6.0.rc6"
   gem 'rspec-rails', ">= 2.6.0.rc6"
   gem "annotate-models", :require => false
   # gem "remarkable_rails" # does not work yet
@@ -31,7 +31,7 @@ group :test, :development do
   gem 'launchy'
   gem 'simplecov', :require => false
   gem 'ruby-graphviz'
-  gem 'spork', '~> 0.9.0.rc'
+  # gem 'spork', '~> 0.9.0.rc'
   # guard stuff
   gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i  
   gem 'guard-rspec'
