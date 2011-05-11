@@ -29,7 +29,7 @@ feature "Convos", %q{
       @user = login_new
       click_link "new convo"
       fill_in "convo_title", :with => @convo_title
-      choose('convo_privacy_private')
+      choose('convo_privacy_level_0')
       click_button("convo_submit")
       page.should have_content "Convo was successfully created."        
       click_link "nav_convos_link"
@@ -45,9 +45,8 @@ feature "Convos", %q{
 
 
     scenario "test convos pagination" do
-      @user = login_new
       26.times do |i|
-        Factory(:convo, :owner => @user, :title => "Convo #{i}")
+        Factory(:convo, :title => "Convo #{i}", :privacy_level => 1)
       end
       visit convos_path
       page.should have_content "Convo 25"
@@ -65,7 +64,7 @@ feature "Convos", %q{
     scenario "test convos subscribe/ubsubscribe stays on the same page" do
       @user = login_new
       100.times do |i|
-        Factory(:convo, :owner => @user, :title => "Convo #{i}")
+        Factory(:convo, :owner => @user, :title => "Convo #{i}", :privacy_level => 1)
       end
       visit convos_path
       click_link "Next"
