@@ -12,7 +12,7 @@ feature "Convos", %q{
       @user = login_new
       click_link "new convo"
       fill_in "convo_title", :with => @convo_title
-      choose('convo_privacy_public')
+      choose('convo_privacy_level_1')
       click_button("convo_submit")
       page.should have_content "Convo was successfully created."        
       click_link "nav_convos_link"
