@@ -20,13 +20,13 @@ gem 'gravatarify', "~> 2.2.2"
 gem 'dynamic_form'
 
 group :test, :development do
-  gem 'capybara'
+  gem 'capybara', '>=1.0.0.beta1'
+  # gem 'steak'
   gem 'rspec'
-  gem 'rspec-rails'
+  gem 'rspec-rails', ">= 2.6.0.rc6"
   gem "annotate-models", :require => false
   # gem "remarkable_rails" # does not work yet
   gem "remarkable_activerecord", ">= 4.0.0.alpha4"
-  gem 'steak'
   gem "miniskirt"
   gem 'launchy'
   gem 'simplecov', :require => false

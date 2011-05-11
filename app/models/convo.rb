@@ -55,6 +55,7 @@ class Convo < ActiveRecord::Base
     user && ( user == self.owner ||
     self.subscriptions.exists?(:user_id => user.id) ||
     self.invitations.exists?(:user_id => user.id))
+
   end
 
   # just the owner for now
