@@ -94,7 +94,7 @@ GEM
     miniskirt (1.0.0)
       activesupport (>= 2.2)
     nokogiri (1.4.4)
-    orm_adapter (0.0.4)
+    orm_adapter (0.0.5)
     pg (0.11.0)
     polyglot (0.3.1)
     rack (1.2.2)
