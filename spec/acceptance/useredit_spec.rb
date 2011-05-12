@@ -20,10 +20,10 @@ feature "Useredit", %q{
     fill_in "user_current_password", :with      => "password"
     click_button "user_submit"
     page.should have_content "4 errors prohibited this user from being saved"
-    page.should have_content "Email is already taken"
+    page.should have_content "Email has already been taken"
     page.should have_content "Password doesn't match confirmation"
     page.should have_content "Password is too short (minimum is 6 characters)"
-    page.should have_content "Username is already taken"
+    page.should have_content "Username has already been taken"
   end
 
   scenario "Edit user, all validations fail should fail, but since current password is incorrect, only 1 error" do

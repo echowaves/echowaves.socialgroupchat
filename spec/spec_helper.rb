@@ -1,8 +1,13 @@
 require "miniskirt"
-require "factories"
 require 'database_cleaner'
-# DatabaseCleaner.strategy = :truncation
+require 'simplecov'
+SimpleCov.start 'rails' do
+  add_filter '/vendor/'
+  # add_filter '/lib/uuid.rb'
+  use_merging false
+end
 
+require "factories"
 
 # This file is copied to ~/spec when you run 'ruby script/generate rspec'
 # from the project root directory.
@@ -16,14 +21,6 @@ require 'rspec/rails'
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
 require 'remarkable/active_record'
-
-require 'simplecov'
-SimpleCov.start 'rails' do
-  add_filter '/vendor/'
-  add_filter '/lib/uuid.rb'
-  add_filter '/lib/authenticated_system.rb'
-end
-
 
 Rspec.configure do |config|
   

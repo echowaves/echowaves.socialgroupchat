@@ -11,7 +11,7 @@ feature "Users List", %q{
     @user = Factory(:user, :username => "bar", :email => "bar@example.com")
     visit root_path
     click_link("nav_users_link")
-    page.should have_contentcontent "Users List"
+    page.should have_content "Users List"
     page.should have_content "foo"
     page.should have_content "bar"
   end
