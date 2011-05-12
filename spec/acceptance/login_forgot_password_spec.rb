@@ -7,7 +7,7 @@ feature "Login Forgot Password", %q{
 } do
 
   background do
-    @user = Factory(:suer, :username => "tester", :email => "test@example.com", :password => "test123")
+    @user = Factory(:user, :username => "tester", :email => "test@example.com", :password => "test123")
     visit user_confirmation_path(:confirmation_token => @user.confirmation_token)
     page.should have_content("Your account was successfully confirmed")
     @user.confirm!
