@@ -25,10 +25,10 @@ feature "Signup", %q{
     fill_in "user_password_confirmation", :with => "test2"
     click_button "user_submit"
     page.should have_content "4 errors prohibited this user from being saved"
-    page.should have_content "Email is already taken"
+    page.should have_content "Email has already been taken"
     page.should have_content "Password doesn't match confirmation"
     page.should have_content "Password is too short (minimum is 6 characters)"
-    page.should have_content "Username is already taken"
+    page.should have_content "Username has already been taken"
   end
 
   scenario "Attempt registration with non validating email" do
