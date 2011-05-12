@@ -13,11 +13,8 @@ feature "Messages", %q{
 
   scenario "registered user can post a message to a public convo", :js => true do
     @convo = Factory(:convo, :owner_id => @user.id, :privacy_level => 1)
-    p "#######################################"
-    p @convo
     
     visit convo_path(@convo.id)
-    sleep 1000
     within '#convo_footer' do
       fill_in('message_area', :with => 'Really Long Text...' )
       find("#message_area").native.send_keys(:return)

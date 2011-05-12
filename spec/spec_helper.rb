@@ -1,5 +1,7 @@
 require "miniskirt"
 require "factories"
+require 'database_cleaner'
+# DatabaseCleaner.strategy = :truncation
 
 
 # This file is copied to ~/spec when you run 'ruby script/generate rspec'
@@ -24,6 +26,10 @@ end
 
 
 Rspec.configure do |config|
+  
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+  end
   # Remove this line if you don't want Rspec's should and should_not
   # methods or matchers
   require 'rspec/expectations'
@@ -69,7 +75,16 @@ Rspec.configure do |config|
   # == Notes
   #
   # For more information take a look at Rspec::Core::Configuration
-  config.use_transactional_fixtures = true
+  # config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
   # config.include ControllerHelpers, :type => :controller
   # config.include ModelHelpers, :type => :model
 end

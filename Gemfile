@@ -22,6 +22,7 @@ gem 'dynamic_form'
 group :test, :development do
   gem 'capybara', '>=1.0.0.beta1'
   # gem 'steak'
+  gem "database_cleaner"
   gem 'rspec', ">= 2.6.0.rc6"
   gem 'rspec-rails', ">= 2.6.0.rc6"
   gem "annotate-models", :require => false
