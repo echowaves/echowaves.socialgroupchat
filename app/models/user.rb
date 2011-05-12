@@ -45,7 +45,7 @@ class User  < ActiveRecord::Base
   has_many :followers, :through => :followerships
 
   has_many :leaderships, :class_name => "Followership", :foreign_key => "follower_id"
-  has_many :leaders, :through => :leaderships
+  has_many :leaders, :through => :leaderships, :source => :follower
 
   has_many :visits, :order => "updated_at DESC", limit: 100
   has_many :visited_convos, :through => :visits, :source => :convo, limit: 100
@@ -67,16 +67,20 @@ class User  < ActiveRecord::Base
   end 
 
   def unfollow(leader)
-    @leadership = self.leaderships.find_by_leader_id(leader.id)
-    @leadership.destroy if @leadership
+    p "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    p self.id
+    p leader.id
+    
+    @followership = self.leaderships.find_by_leader_id(leader.id)
+    @followership.destroy if @followership
   end
 
   def follows?(leader)
-    self.leaders.count(leader.id) > 0  ? true : false
+    self.leaderships.exists?(:leader_id => leader.id)
   end
 
   def followed?(follower)
-    follower.follows?(self)
+    self.followerships.exists?(:follower_id => follower.id)
   end
 
   def visit convo
