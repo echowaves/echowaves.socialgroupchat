@@ -17,18 +17,17 @@ end
 Factory.define :convo do |f|
   f.title "title%d"
   f.privacy_level 0 # 0 -> private, 1 -> public
-  f.owner_id { Factory(:user).id }
+  f.owner { Factory :user }
 end
 
 Factory.define :subscription do |f|
-  f.user_id  { Factory(:user).id }
+  f.user  { Factory :user }
   f.convo { Factory :convo }
 end
 
-
 Factory.define :invitation do |f|
   f.requestor { Factory :user }
-  f.user_id { Factory(:user).id }
+  f.user  { Factory :user }
   f.convo { Factory :convo }
 end
 
