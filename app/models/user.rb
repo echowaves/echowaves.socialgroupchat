@@ -66,11 +66,7 @@ class User  < ActiveRecord::Base
     @leadership.save
   end 
 
-  def unfollow(leader)
-    p "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-    p self.id
-    p leader.id
-    
+  def unfollow(leader)    
     @followership = self.leaderships.find_by_leader_id(leader.id)
     @followership.destroy if @followership
   end
