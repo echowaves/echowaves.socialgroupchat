@@ -47,8 +47,8 @@ class User  < ActiveRecord::Base
   has_many :leaderships, :class_name => "Followership", :foreign_key => "follower_id"
   has_many :leaders, :through => :leaderships, :source => :follower
 
-  has_many :visits, :order => "updated_at DESC", limit: 100
-  has_many :visited_convos, :through => :visits, :source => :convo, limit: 100
+  has_many :visits
+  has_many :visited_convos, :through => :visits, :source => :convo, limit: 100, :order => "visits.updated_at DESC"
 
   has_many :convos,   :foreign_key => "owner_id"
   has_many :messages, :foreign_key => "owner_id"
