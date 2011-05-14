@@ -5,6 +5,9 @@ describe SubscriptionsController do
   def mock_subscription(stubs={})
     @mock_subscription ||= mock_model(Subscription, stubs).as_null_object
   end  
+  def mock_convo(stubs={})
+    @mock_convo ||= mock_model(Convo, stubs).as_null_object
+  end  
 
   before do
     @user = Factory(:user)
@@ -21,6 +24,37 @@ describe SubscriptionsController do
       assigns(:subscriptions).should eq([mock_subscription])
       assigns(:convos).should eq([convo])
       response.should render_template(:index)
+    end
+  
+  end
+  
+  describe "subscribe unsubscribe" do
+    before do
+      @request.env['HTTP_REFERER'] = '/convos'      
+      Convo.stub(:find).with("37") { mock_convo }
+    end
+
+    it "allows user to subscribe to public convo" do
+      mock_convo.stub(:accesible_by_user?) { true }
+      mock_convo.should_receive(:subscribe)
+      post :create, :convo_id => "37"
+      flash[:notice].should eq("You are subscribed to the conversation.")
+      response.should redirect_to(convos_url)
+    end
+
+    it "rejects user attempt to subscribe to private convo" do
+      mock_convo.stub(:accesible_by_user?) { false }
+      mock_convo.should_not_receive(:subscribe)
+      post :create, :convo_id => "37"
+      flash[:notice].should eq("Sorry, but you can't access this conversation.")
+      response.should redirect_to(convos_url)
+    end
+
+    it 'unsubscribes user from convo' do
+      mock_convo.should_receive(:unsubscribe)
+      delete :destroy, :convo_id => '37', :id => 'does_not_matter_but_has_to_be_passed'
+      flash[:notice].should eq('You are unsubscribed from the conversation.')
+      response.should redirect_to(convos_url)
     end
   end
   

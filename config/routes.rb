@@ -8,16 +8,13 @@ Echowaves::Application.routes.draw do
   end
   
   resources :convos, :only => [:index, :show, :new, :create] do
-    member do
-      # FIXME: replace with subscriptions post/delete
-      put :subscribe
-      put :unsubscribe
-    end
     # nested message, essential to support restful resources for messages
     resources :messages, :only => [:index, :show, :create]
     resources :users, :controller => :convo_users, :except => [:edit, :show, :update] do
       get :manage, :on => :collection
     end
+    resources :subscriptions, :only => [:create, :destroy]
+    
   end
   
   resources :visits, :only => [:index]

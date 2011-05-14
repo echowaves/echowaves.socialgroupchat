@@ -1,9 +1,6 @@
 require 'spec_helper'
 
 describe ConvosController do
-  specify { {:put => "/convos/:id/subscribe"}.should route_to(:controller=>"convos", :action=>"subscribe", :id=>":id")}  
-  specify { {:put => "/convos/:id/unsubscribe"}.should route_to(:controller=>"convos", :action=>"unsubscribe", :id=>":id")}  
-
   specify { {:get => "/convos"}.should route_to(:controller=>"convos", :action=>"index")}  
   specify { {:post => "/convos"}.should route_to(:controller=>"convos", :action=>"create")}  
   specify { {:get => "/convos/new"}.should route_to(:controller=>"convos", :action=>"new")}  

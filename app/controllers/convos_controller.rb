@@ -38,26 +38,6 @@ class ConvosController < ApplicationController
       end
     end
   end
-
-  # The current user follows a conversation.
-  def subscribe
-    respond_to do |format|
-      if convo.accesible_by_user?(current_user)
-        convo.subscribe(current_user)
-        format.html { redirect_to :back, :notice => 'You are subscribed to the conversation.' }
-      else
-        format.html { redirect_to :back, :notice => "Sorry, but you can't access this conversation." }
-      end
-    end
-  end
-
-  # The current user unfollows a conversation.
-  def unsubscribe
-    respond_to do |format|
-      convo.unsubscribe(current_user)
-      format.html { redirect_to(:back, :notice => 'You are unsubscribed from the conversation.') }
-    end
-  end
   
   private
   def convo

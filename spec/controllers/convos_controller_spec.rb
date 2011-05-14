@@ -83,37 +83,5 @@ describe ConvosController do
     end
   end
 
-
-  describe "subscribe unsubscribe" do
-    before do
-      @request.env['HTTP_REFERER'] = '/convos'      
-    end
-
-    it "allows user to subscribe to public convo" do
-      Convo.stub(:find).with("37") { mock_convo }
-      mock_convo.stub(:accesible_by_user?) { true }
-      mock_convo.should_receive(:subscribe)
-      get :subscribe, :id => "37"
-      flash[:notice].should eq("You are subscribed to the conversation.")
-      response.should redirect_to(convos_url)
-    end
-
-    it "rejects user attempt to subscribe to private convo" do
-      Convo.stub(:find).with("37") { mock_convo }
-      mock_convo.stub(:accesible_by_user?) { false }
-      mock_convo.should_not_receive(:subscribe)
-      get :subscribe, :id => "37"
-      flash[:notice].should eq("Sorry, but you can't access this conversation.")
-      response.should redirect_to(convos_url)
-    end
-
-    it 'unsubscribes user from convo' do
-      Convo.stub(:find).with('37') { mock_convo }
-      mock_convo.should_receive(:unsubscribe)
-      get :unsubscribe, :id => '37'
-      flash[:notice].should eq('You are unsubscribed from the conversation.')
-      response.should redirect_to(convos_url)
-    end
-  end
   
 end
