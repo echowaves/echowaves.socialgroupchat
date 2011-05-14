@@ -58,7 +58,7 @@ describe Visit do
     end
       
     it "should return visited_convos" do
-      @user.visited_convos.should == Convo.all
+      @user.visited_convos.should == Convo.all.reverse
     end
       
     it "should return visited_convos" do

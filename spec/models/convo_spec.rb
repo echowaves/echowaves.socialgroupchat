@@ -167,7 +167,6 @@ describe Convo do
       convo = Factory(:convo, :owner => requestor, privacy_level: 0)
       convo.invite_user(@user, requestor)
       convo.subscribe(@user)
-      pending "will start to work once invitations work again"
       convo.users.should include @user
     end
  
