@@ -3,7 +3,6 @@ Echowaves::Application.routes.draw do
   devise_for :users
 
   resources :users, :only => [:index, :show] do
-    resources :subscriptions, :only => [:index]
     resources :followerships, :only => [:create, :destroy]
   end
   

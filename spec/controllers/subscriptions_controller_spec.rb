@@ -14,19 +14,6 @@ describe SubscriptionsController do
     request.env['warden'] = mock(Warden, :authenticate => @user, :authenticate! => @user, :authenticate? => @user)
     mock_subscription.stub(:convo).and_return(convo)
   end
-
-  describe "GET index" do
-    it "assigns @convos with only subscribed convos" do
-      Subscription.stub_chain(:where, :order, :page) { [mock_subscription] }
-      get :index, :user_id => 1
-
-      assigns(:user_id).should eq(1)
-      assigns(:subscriptions).should eq([mock_subscription])
-      assigns(:convos).should eq([convo])
-      response.should render_template(:index)
-    end
-  
-  end
   
   describe "subscribe unsubscribe" do
     before do

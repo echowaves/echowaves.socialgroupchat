@@ -35,6 +35,8 @@ feature "Convos", %q{
       click_link "nav_convos_link"
       page.should_not have_content @convo_title
 
+      pending "this should be on the convos page, not on the subscriptions page"
+
       click_link "nav_subscriptions_link"
       page.should have_content @convo_title
 
@@ -188,6 +190,8 @@ feature "Convos", %q{
       visit convos_path
 
       click_link "subscribe"
+
+      pending "this should be on the convos page, not on the subscriptions page"
       
       visit user_subscriptions_path(@user)
       
@@ -206,6 +210,7 @@ feature "Convos", %q{
       visit convos_path
       
       click_link "unsubscribe"
+      pending "this should be on the convos page, not on the subscriptions page"
       visit user_subscriptions_path(@user)
       page.should_not have_content("other guy's public convo")
     end

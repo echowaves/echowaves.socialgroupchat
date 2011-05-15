@@ -14,6 +14,7 @@ feature "Subscriptions", %q{
 
   scenario "registered user creates a public Convo which results in subscribing to that convo as well" do
     @convo = Factory(:convo, :owner => @user, :title => "my new convo", :privacy_level => 1)
+    pending "this should be on the convos page, not on the subscriptions page"
     visit user_subscriptions_path @user
     page.should have_content"my new convo"
   end
@@ -21,25 +22,9 @@ feature "Subscriptions", %q{
 
   scenario "registered user creates a private Convo which results in subscribing to that convo as well" do
     @convo = Factory(:convo, :owner => @user, :title => "my new convo", :privacy_level => 0)
+    pending "this should be on the convos page, not on the subscriptions page"
     visit user_subscriptions_path @user
     page.should have_content"my new convo"
-  end
-
-
-  scenario "test subscriptions pagination" do
-    26.times do |i|
-      Factory(:convo, :owner => @user, :title => "Convo #{i}.")
-    end
-    visit user_subscriptions_path @user
-    page.should have_content"Convo 25."
-    page.should have_content"Next"
-    page.should have_no_content"Prev"
-    page.should have_no_content"Convo 0."
-    click_link "Next"
-    page.should have_no_content"Convo 25."
-    page.should have_content"Convo 0."
-    page.should have_no_content"Next"
-    page.should have_content"Prev"
   end
   
   
