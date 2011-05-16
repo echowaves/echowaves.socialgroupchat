@@ -19,9 +19,6 @@ gem 'gravatarify', "~> 2.2.2"
 # gem 'escape_utils' # this will fix an issue with Rack::Test 1.2.1 and ruby 1.9.2
 gem 'dynamic_form'
 
-gem "meta_where"
-gem "meta_search"
-
 group :test, :development do
   gem 'capybara', '>=1.0.0.beta1'
   # gem 'steak'
