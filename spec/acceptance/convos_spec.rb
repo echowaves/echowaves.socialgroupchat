@@ -33,16 +33,10 @@ feature "Convos", %q{
       click_button("convo_submit")
       page.should have_content "Convo was successfully created."        
       click_link "nav_convos_link"
-      page.should_not have_content @convo_title
-
-      pending "this should be on the convos page, not on the subscriptions page"
-
-      click_link "nav_subscriptions_link"
-      page.should have_content @convo_title
-
+      page.should have_content @convo_title # all the convos, even the private ones are visible, just cant drill into them
       click_link "logout"
       click_link "nav_convos_link"
-      page.should_not have_content @convo_title
+      page.should have_content @convo_title # should still see the convo in the list
     end
 
 

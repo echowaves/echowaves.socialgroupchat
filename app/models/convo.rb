@@ -69,8 +69,8 @@ class Convo < ActiveRecord::Base
   # just the owner for now
   def manageable_by_user?(user)
     user == self.owner
-  end
-
+  end 
+  
   def subscribe(user)
     if self.accesible_by_user?(user)
       self.subscriptions.create(user: user) unless self.subscriptions.exists?(user_id: user.id)
