@@ -28,7 +28,10 @@ class Convo < ActiveRecord::Base
   belongs_to :owner, class_name: "User"
 
   has_many :messages#, :order => "created_at DESC"
+
   has_many :subscriptions
+  has_many :users, :through => :subscriptions
+
   has_many :invitations
 
   has_many :visits
@@ -44,9 +47,6 @@ class Convo < ActiveRecord::Base
        
   after_create :subscribe_owner
 
-  def users
-    self.subscriptions.map(&:user)
-  end
 
   def confidential?
     self.privacy_level == 0

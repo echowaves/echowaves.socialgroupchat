@@ -7,8 +7,14 @@
       <% if user_signed_in? %>
         <%= subscribe_or_unsubscribe_link(:convo => convo) %>
       <% end %>
+      <span class="mute small">
+        <%= privacy_level(:convo => convo) %>      
+      </span>
+      <span class="mute small">
+        <%= accessible(:convo => convo) %>      
+      </span>
       <br/>
-      <span class="mute small"><%= convo.created_at %></span>
+      <span class="mute small"><%= convo.created_at %></span> 
     </td>
   </tr>
 <% end %>

@@ -185,14 +185,10 @@ feature "Convos", %q{
 
       click_link "subscribe"
 
-      pending "this should be on the convos page, not on the subscriptions page"
-      
-      visit user_subscriptions_path(@user)
-      
-      page.should have_content("other guy's social convo")
+      page.should have_content("unsubscribe")
     end
 
-
+ 
     scenario "I can unsubscribe from a convo from the convos list" do
       @user = login_new
             
@@ -204,9 +200,9 @@ feature "Convos", %q{
       visit convos_path
       
       click_link "unsubscribe"
-      pending "this should be on the convos page, not on the subscriptions page"
-      visit user_subscriptions_path(@user)
-      page.should_not have_content("other guy's social convo")
+      
+      find('#convos_list').should_not have_content("unsubscribe")
+      find('#convos_list').should have_content("subscribe")
     end
 
 

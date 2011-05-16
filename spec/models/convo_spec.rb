@@ -34,6 +34,7 @@ describe Convo do
     it { should belong_to :owner, class_name: "User"}
     it { should have_many :messages }
     it { should have_many :subscriptions }
+    it { should have_many :users, through: :subscriptions }
     it { should have_many :invitations }
     it { should have_many :visits }
     it { should have_many :visiting_users, through: :visits, source: :user }

@@ -5,7 +5,7 @@ class ConvosController < ApplicationController
 
   def index
     # here we list only public convos
-    @convos = Convo.includes(:owner, :subscriptions, :invitations ).order("created_at DESC").page(params[:page])
+    @convos = Convo.includes(:owner, :users, :invitations ).order("created_at DESC").page(params[:page])
     respond_with @convos
   end
 
