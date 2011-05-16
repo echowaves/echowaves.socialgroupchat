@@ -32,6 +32,7 @@ class Convo < ActiveRecord::Base
   has_many :subscriptions
   has_many :users, :through => :subscriptions
 
+  # the invitation is created for a convo and never gets deleted, so the user can sunscribe/unsubscribe from the convo many times 
   has_many :invitations
 
   has_many :visits
@@ -74,7 +75,6 @@ class Convo < ActiveRecord::Base
   def subscribe(user)
     if self.accesible_by_user?(user)
       self.subscriptions.create(user: user) unless self.subscriptions.exists?(user_id: user.id)
-      self.invitations.where(:user_id => user.id).destroy_all
     end
   end
 

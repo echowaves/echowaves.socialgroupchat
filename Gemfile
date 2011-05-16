@@ -39,4 +39,5 @@ group :test, :development do
   gem 'guard-livereload'
   gem 'growl'
   gem 'hirb'
+  gem 'bullet' # for finding n+1
 end

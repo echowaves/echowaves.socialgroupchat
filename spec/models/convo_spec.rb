@@ -70,7 +70,7 @@ describe Convo do
       convo.should be_confidential
     end
   
-    it "should be manageable by user if the user is the creator of the convo" do
+    it "should be manageable by user if the user is the creator of the 179" do
       convo = Factory(:convo, :owner => @user)
       convo.should be_manageable_by_user @user
     end
@@ -176,7 +176,8 @@ describe Convo do
       convo.invite_user(@user, requestor)
       convo.subscribe(@user)
       convo.reload
-      convo.invitations.count.should == 0
+      # once sunscribed to an invited convo, should not destroy the original invitation
+      convo.invitations.count.should == 1
     end
     
   end
