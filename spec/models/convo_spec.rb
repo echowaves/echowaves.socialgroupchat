@@ -67,8 +67,6 @@ describe Convo do
     it "should be confidential" do
       convo = Factory(:convo, :privacy_level => 0 ) # a confidential convo
       convo.should be_confidential
-      convo2 = Factory(:convo, :privacy_level => 10 ) # anything but social
-      convo2.should be_confidential
     end
   
     it "should be manageable by user if the user is the creator of the convo" do

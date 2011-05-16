@@ -36,14 +36,10 @@ class Convo < ActiveRecord::Base
   
   # scopes
   #----------------------------------------------------------------------
-  # scope : pl_private where("hidden != ?", true)
+  scope :confidential, where(:privacy_level => 0)  
+  scope :social,       where(:privacy_level => 1)  
   
   
-  # scope :with_slackers_by_name_and_salary_range,
-  #      lambda {|name, low, high|
-  #        joins(:slackers).where(:developers => {:name => name, :salary => low..high})
-  #      }
-  #      
   #----------------------------------------------------------------------
        
   after_create :subscribe_owner
@@ -52,13 +48,14 @@ class Convo < ActiveRecord::Base
     self.subscriptions.map(&:user)
   end
 
+  def confidential?
+    self.privacy_level == 0
+  end
+
   def social?
     self.privacy_level == 1
   end
 
-  def confidential?
-    !social?
-  end
 
   def accesible_by_user?(user)
     # p "#{self.public?} || #{user} && ( #{user} == #{self.owner} || #{self.subscriptions.exists?(:user_id => user.id)} || #{self.invitations.exists?(:user_id => user.id)})"
