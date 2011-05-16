@@ -12,7 +12,7 @@ feature "Subscriptions", %q{
   end
 
 
-  scenario "registered user creates a public Convo which results in subscribing to that convo as well" do
+  scenario "registered user creates a social Convo which results in subscribing to that convo as well" do
     @convo = Factory(:convo, :owner => @user, :title => "my new convo", :privacy_level => 1)
     pending "this should be on the convos page, not on the subscriptions page"
     visit user_subscriptions_path @user

@@ -57,16 +57,17 @@ describe Convo do
       @user = Factory(:user)
     end
 
-    it "should be public" do
-      convo = Factory(:convo, :privacy_level => 1 ) # a public convo
-      convo.should be_public
+
+    it "should be social" do
+      convo = Factory(:convo, :privacy_level => 1 ) # a social convo
+      convo.should be_social
     end
   
   
-    it "should be private" do
-      convo = Factory(:convo, :privacy_level => 0 ) # a private convo
+    it "should be confidential" do
+      convo = Factory(:convo, :privacy_level => 0 ) # a confidential convo
       convo.should be_confidential
-      convo2 = Factory(:convo, :privacy_level => 10 ) # anything but public
+      convo2 = Factory(:convo, :privacy_level => 10 ) # anything but social
       convo2.should be_confidential
     end
   
@@ -81,31 +82,31 @@ describe Convo do
     end
   
   
-    it "should be accesible by user if the user is the creator of the convo and the convo is public" do
+    it "should be accesible by user if the user is the creator of the convo and the convo is social" do
       convo = Factory(:convo, :privacy_level => 1, :owner => @user)
       convo.should be_accesible_by_user @user
     end
   
   
-    it "should be accesible by user if the user is the creator of the convo and the convo is private" do
+    it "should be accesible by user if the user is the creator of the convo and the convo is confidential" do
       convo = Factory(:convo, :privacy_level => 0, :owner => @user)
       convo.should be_accesible_by_user @user
     end
   
   
-    it "should be accesible by user if the user is not the creator of the convo but the convo is public" do
+    it "should be accesible by user if the user is not the creator of the convo but the convo is social" do
       user2 = Factory(:user)
       convo = Factory(:convo, :privacy_level => 1, :owner => @user)
       convo.should be_accesible_by_user user2
     end
   
-    it "should not be accesible by user if the user is not the creator of the convo and the convo is private and the user don't follow the convo" do
+    it "should not be accesible by user if the user is not the creator of the convo and the convo is confidential and the user don't follow the convo" do
       user2 = Factory(:user)
       convo = Factory(:convo, :privacy_level => 0, :owner => @user)
       convo.should_not be_accesible_by_user user2
     end
   
-    it "should be accesible by user if the user is not the creator of the convo and the convo is private but the user follows the convo" do
+    it "should be accesible by user if the user is not the creator of the convo and the convo is confidential but the user follows the convo" do
       user2 = Factory(:user)
       convo = Factory(:convo, :privacy_level => 0, :owner => @user)
       Factory(:subscription, :user => user2, :convo => convo)
@@ -130,7 +131,7 @@ describe Convo do
       convo.users.should include @user
     end
     
-    it "should not add a user to their subscriptions if the convo is private and the user does not have an invitation" do
+    it "should not add a user to their subscriptions if the convo is confidential and the user does not have an invitation" do
       convo = Factory(:convo, :privacy_level => 0)
       convo.subscribe(@user)
       convo.users.should_not include @user
@@ -154,12 +155,12 @@ describe Convo do
   
     it "should be able to invite only if has access to the convo" do
       requestor = Factory(:user)
-      public_convo = Factory(:convo, privacy_level: 1)
-      public_convo.invite_user(@user, requestor)
-      public_convo.invitations.count.should == 1
-      private_convo = Factory(:convo, privacy_level: 0)
-      private_convo.invite_user(@user, requestor)
-      private_convo.invitations.count.should == 0 # no invitation created -- not accessible by the requestor
+      social_convo = Factory(:convo, privacy_level: 1)
+      social_convo.invite_user(@user, requestor)
+      social_convo.invitations.count.should == 1
+      confidential_convo = Factory(:convo, privacy_level: 0)
+      confidential_convo.invite_user(@user, requestor)
+      confidential_convo.invitations.count.should == 0 # no invitation created -- not accessible by the requestor
     end
   
     it "should add a user to their subscriptions if the user has an invitation" do

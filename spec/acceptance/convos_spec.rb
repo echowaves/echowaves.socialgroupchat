@@ -7,7 +7,7 @@ feature "Convos", %q{
   } do
 
 
-    scenario "registered user creates a public Convo" do
+    scenario "registered user creates a social Convo" do
       @convo_title = "my new convo"
       @user = login_new
       click_link "new convo"
@@ -97,12 +97,12 @@ feature "Convos", %q{
     end
 
 
-    scenario "owner can visit his own public convos" do
+    scenario "owner can visit his own social convos" do
       @user = login_new
-      @public_convo = Factory(:convo, :owner => @user, :title => "my public convo", :privacy_level => 1)
-      visit convo_path(@public_convo)
-      current_path.should == convo_path(@public_convo)
-      page.should have_content "my public convo"
+      @social_convo = Factory(:convo, :owner => @user, :title => "my social convo", :privacy_level => 1)
+      visit convo_path(@social_convo)
+      current_path.should == convo_path(@social_convo)
+      page.should have_content "my social convo"
     end
 
 
@@ -118,16 +118,16 @@ feature "Convos", %q{
     end
     
     
-    scenario "user can access a public convo" do
+    scenario "user can access a social convo" do
       @user = login_new
             
       @other_user = active_user
-      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's public convo", :privacy_level => 1)
+      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's social convo", :privacy_level => 1)
 
       visit convo_path(@other_user_convo)
       current_path.should == convo_path(@other_user_convo)
       page.should_not have_content("Sorry but this convo is confidential")
-      page.should have_content("other guy's public convo")
+      page.should have_content("other guy's social convo")
     end
 
     
@@ -146,15 +146,15 @@ feature "Convos", %q{
     end
 
 
-    scenario "visitor can access public convo" do
+    scenario "visitor can access social convo" do
       @other_user = active_user
 
-      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's public convo", :privacy_level => 1)
+      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's social convo", :privacy_level => 1)
 
       visit convo_path(@other_user_convo)
 
       current_path.should == convo_path(@other_user_convo)
-      page.should have_content("other guy's public convo")
+      page.should have_content("other guy's social convo")
     end
 
 
@@ -181,11 +181,11 @@ feature "Convos", %q{
     end
     
 
-    scenario "I can subscribe to a public convo from the convos list" do
+    scenario "I can subscribe to a social convo from the convos list" do
       @user = login_new
             
       @other_user = active_user
-      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's public convo", :privacy_level => 1)
+      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's social convo", :privacy_level => 1)
 
       visit convos_path
 
@@ -195,7 +195,7 @@ feature "Convos", %q{
       
       visit user_subscriptions_path(@user)
       
-      page.should have_content("other guy's public convo")
+      page.should have_content("other guy's social convo")
     end
 
 
@@ -203,7 +203,7 @@ feature "Convos", %q{
       @user = login_new
             
       @other_user = active_user
-      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's public convo", :privacy_level => 1)
+      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's social convo", :privacy_level => 1)
 
       Factory(:subscription, :user => @user, :convo => @other_user_convo) 
 
@@ -212,7 +212,7 @@ feature "Convos", %q{
       click_link "unsubscribe"
       pending "this should be on the convos page, not on the subscriptions page"
       visit user_subscriptions_path(@user)
-      page.should_not have_content("other guy's public convo")
+      page.should_not have_content("other guy's social convo")
     end
 
 

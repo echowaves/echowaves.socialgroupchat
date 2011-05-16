@@ -11,7 +11,7 @@ feature "Messages", %q{
   end
 
 
-  scenario "registered user can post a message to a public convo", :js => true do
+  scenario "registered user can post a message to a social convo", :js => true do
     @convo = Factory(:convo, :owner_id => @user.id, :privacy_level => 1)
     
     visit convo_path(@convo.id)

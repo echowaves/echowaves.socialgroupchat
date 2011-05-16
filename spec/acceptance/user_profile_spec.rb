@@ -19,7 +19,7 @@ feature "User Profile", %q{
   end
   
   
-  scenario "Public profile" do
+  scenario "Social profile" do
     @user2 = active_user
     visit users_path
     click_link @user2.username

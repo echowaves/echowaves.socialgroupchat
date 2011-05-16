@@ -52,17 +52,17 @@ class Convo < ActiveRecord::Base
     self.subscriptions.map(&:user)
   end
 
-  def public?
+  def social?
     self.privacy_level == 1
   end
 
   def confidential?
-    !public?
+    !social?
   end
 
   def accesible_by_user?(user)
     # p "#{self.public?} || #{user} && ( #{user} == #{self.owner} || #{self.subscriptions.exists?(:user_id => user.id)} || #{self.invitations.exists?(:user_id => user.id)})"
-    self.public? ||
+    self.social? ||
     user && ( user == self.owner ||
     self.subscriptions.exists?(:user_id => user.id) ||
     self.invitations.exists?(:user_id => user.id))

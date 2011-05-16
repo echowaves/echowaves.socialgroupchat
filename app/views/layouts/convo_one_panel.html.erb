@@ -10,7 +10,7 @@
 
 		<div class="layout {layout: {type: 'border', hgap: 3, vgap: 3}}">
 
-			<div class="center convo <%= @convo.confidential? ? 'confidential' : 'public' %> {layout: {type: 'border', hgap: 0, vgap: 0, resize: false}}">
+			<div class="center convo <%= @convo.confidential? ? 'confidential' : 'social' %> {layout: {type: 'border', hgap: 0, vgap: 0, resize: false}}">
 			  <div class="north warn" id="convo_header">
 			    <%= @convo.title %>
           <div id="convo_settings"><%= link_to "back", convo_path(@convo) %></div>

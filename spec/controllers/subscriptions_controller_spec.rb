@@ -21,7 +21,8 @@ describe SubscriptionsController do
       Convo.stub(:find).with("37") { mock_convo }
     end
 
-    it "allows user to subscribe to public convo" do
+
+    it "allows user to subscribe to a social convo" do
       mock_convo.stub(:accesible_by_user?) { true }
       mock_convo.should_receive(:subscribe)
       post :create, :convo_id => "37"

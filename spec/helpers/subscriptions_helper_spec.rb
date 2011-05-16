@@ -5,7 +5,7 @@ describe SubscriptionsHelper do
   before do    
     @user = Factory(:user)
     controller.request.env['warden'] = mock(Warden, :authenticate => @user, :authenticate! => @user)    
-    @convo = Factory(:convo, :privacy_level => 1) #public convo
+    @convo = Factory(:convo, :privacy_level => 1) #social convo
   end
 
   describe "#subscribe_or_unsubscribe_link(:convo, :user)" do
