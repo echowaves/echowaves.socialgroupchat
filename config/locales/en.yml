@@ -4,5 +4,5 @@
 en:
   hello: "Hello world"
   privacy:
-      private: "Private"
+      confidential: "Confidential"
       public: "Public"

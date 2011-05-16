@@ -36,7 +36,7 @@ describe ConvosController do
       @user.should_not_receive(:visit)
       get :show, :id => '37'
       assigns(:convo).should be(mock_convo)
-      flash[:alert].should eq("Sorry but this convo is private.")
+      flash[:alert].should eq("Sorry but this convo is confidential.")
       response.should redirect_to(convos_path) 
     end
   end

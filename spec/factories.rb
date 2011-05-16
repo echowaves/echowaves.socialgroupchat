@@ -16,7 +16,7 @@ end
 
 Factory.define :convo do |f|
   f.title "title%d"
-  f.privacy_level 0 # 0 -> private, 1 -> public
+  f.privacy_level 0 # 0 -> confidential, 1 -> public
   f.owner { Factory :user }
 end
 

@@ -24,7 +24,7 @@ feature "Convos", %q{
     end
 
 
-    scenario "registered user creates a private Convo" do
+    scenario "registered user creates a confidential Convo" do
       @convo_title = "my new convo"
       @user = login_new
       click_link "new convo"
@@ -88,12 +88,12 @@ feature "Convos", %q{
     end
 
 
-    scenario "owner can visit his own private convos" do
+    scenario "owner can visit his own confidential convos" do
       @user = login_new
-      @private_convo = Factory(:convo, :owner => @user, :title => "my private convo", :privacy_level => 0)
-      visit convo_path(@private_convo)
-      current_path.should == convo_path(@private_convo)
-      page.should have_content "my private convo"
+      @confidential_convo = Factory(:convo, :owner => @user, :title => "my confidential convo", :privacy_level => 0)
+      visit convo_path(@confidential_convo)
+      current_path.should == convo_path(@confidential_convo)
+      page.should have_content "my confidential convo"
     end
 
 
@@ -106,15 +106,15 @@ feature "Convos", %q{
     end
 
 
-    scenario "user can't access a private convo he don't follows" do
+    scenario "user can't access a confidential convo he don't follows" do
       @user = login_new
             
       @other_user = active_user
-      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's private convo", :privacy_level => 0)
+      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's confidential convo", :privacy_level => 0)
 
       visit convo_path(@other_user_convo)
       current_path.should == convos_path
-      page.should have_content("Sorry but this convo is private")
+      page.should have_content("Sorry but this convo is confidential")
     end
     
     
@@ -126,23 +126,23 @@ feature "Convos", %q{
 
       visit convo_path(@other_user_convo)
       current_path.should == convo_path(@other_user_convo)
-      page.should_not have_content("Sorry but this convo is private")
+      page.should_not have_content("Sorry but this convo is confidential")
       page.should have_content("other guy's public convo")
     end
 
     
-    scenario "user can access a private convo he follows" do
+    scenario "user can access a confidential convo he follows" do
       @user = login_new
             
       @other_user = active_user
-      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's private convo", :privacy_level => 0)
+      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's confidential convo", :privacy_level => 0)
 
       Factory(:subscription, :user => @user, :convo => @other_user_convo) 
 
       visit convo_path(@other_user_convo)
       current_path.should == convo_path(@other_user_convo)
-      page.should_not have_content("Sorry but this convo is private")
-      page.should have_content("other guy's private convo")
+      page.should_not have_content("Sorry but this convo is confidential")
+      page.should have_content("other guy's confidential convo")
     end
 
 
@@ -158,22 +158,22 @@ feature "Convos", %q{
     end
 
 
-    scenario "visitor can't access private convo" do
+    scenario "visitor can't access confidential convo" do
       @other_user = active_user
 
-      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's private convo", :privacy_level => 0)
+      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's confidential convo", :privacy_level => 0)
 
       visit convo_path(@other_user_convo)
 
       current_path.should == convos_path
-      page.should have_content("Sorry but this convo is private")
+      page.should have_content("Sorry but this convo is confidential")
     end
     
     
     scenario "visitor should not see the subscriptions links in the convos list" do
       @other_user = active_user
 
-      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's private convo", :privacy_level => 0)
+      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's confidential convo", :privacy_level => 0)
 
       visit convos_path
 
@@ -216,18 +216,18 @@ feature "Convos", %q{
     end
 
 
-    scenario "I can access a private convo if I have an invitation" do
+    scenario "I can access a confidential convo if I have an invitation" do
       @user = login_new
 
       @other_user = active_user
-      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's private convo", :privacy_level => 0)
+      @other_user_convo = Factory(:convo, :owner => @other_user, :title => "other guy's confidential convo", :privacy_level => 0)
 
       Factory(:invitation, :user => @user, :convo => @other_user_convo)
 
       visit convo_path(@other_user_convo)
     
       current_path.should == convo_path(@other_user_convo)
-      find("#convo_header").should have_content("other guy's private convo")
+      find("#convo_header").should have_content("other guy's confidential convo")
     end
 
   end

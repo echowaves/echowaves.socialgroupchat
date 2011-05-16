@@ -33,8 +33,19 @@ class Convo < ActiveRecord::Base
 
   has_many :visits
   has_many :visiting_users, through: :visits, source: :user
+  
+  # scopes
   #----------------------------------------------------------------------
-
+  # scope : pl_private where("hidden != ?", true)
+  
+  
+  # scope :with_slackers_by_name_and_salary_range,
+  #      lambda {|name, low, high|
+  #        joins(:slackers).where(:developers => {:name => name, :salary => low..high})
+  #      }
+  #      
+  #----------------------------------------------------------------------
+       
   after_create :subscribe_owner
 
   def users
@@ -45,7 +56,7 @@ class Convo < ActiveRecord::Base
     self.privacy_level == 1
   end
 
-  def private?
+  def confidential?
     !public?
   end
 

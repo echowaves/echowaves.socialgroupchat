@@ -268,7 +268,7 @@ a.button-small-blue {
    -webkit-border-radius: 4px;
 }
 
-.private #convo_header{
+.confidential #convo_header{
   background: #cc3333;
 }
 .box .box_header.admin { background: #cc3333; }

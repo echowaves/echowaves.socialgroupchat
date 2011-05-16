@@ -42,7 +42,7 @@ describe Subscription do
     before do
       @user = Factory(:user)
       @convo = Factory(:convo, :owner => @user)
-      @subscription = Subscription.find(:first) # there should be only one subscription, created automagically
+      @subscription = Subscription.first # there should be only one subscription, created automagically
     end
 
     it "should reference convo and user" do

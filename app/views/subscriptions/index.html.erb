@@ -7,8 +7,8 @@
   <tr>
     <td>
       <%= link_to convo.title, convo_path(convo) %>
-	  <%if convo.private?%>
-		private
+	  <%if convo.confidential?%>
+		confidential
 	  <%end%>
       <br/>
       <span class="mute small"><%= convo.created_at %></span>
