@@ -51,7 +51,8 @@ describe User do
 
     it { should have_many :followerships, :foreign_key => "leader_id" }
     it { should have_many :followers, :through => :followerships }
-    it { should have_many :leaders, :through => :followerships, :source => :leader }
+    it { should have_many :leaderships, :foreign_key => "follower_id", :source => :followership, :class_name => "Followership" }
+    it { should have_many  :leaders,   :through => :leaderships }
     
     it { should have_many :visits, limit: 100, :order => "visits.updated_at DESC" }
     it { should have_many :visited_convos, :through => :visits, :source => :convo, limit: 100, :order => "visits.updated_at DESC" }
