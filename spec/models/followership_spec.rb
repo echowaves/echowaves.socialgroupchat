@@ -42,6 +42,12 @@ describe Followership do
       @leader.should_not be_followed(@follower)
       @follower.follow(@leader)
       @leader.should be_followed(@follower)
+      # expressing the same relation bu differently
+      @follower.follows?(@leader).should == true
+      #double check that it creates the relationship only on one side
+      @follower.should_not be_followed(@leader)
+      @leader.follows?(@follower).should == false
+      
     end
   
     it "should be able to unfollow" do
