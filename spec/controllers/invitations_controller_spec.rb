@@ -17,5 +17,19 @@ describe InvitationsController do
       response.should render_template(:index)
     end
   end
+
+  describe "GET new" do
+    before do
+      @follower = Factory(:user)
+      @follower.follow @user
+    end
+    it "assigns @followers with only convo invites" do
+      get :new
+
+      assigns(:followers).should eq([@follower])
+      response.should render_template(:new)
+    end
+  end
+
   
 end
