@@ -6,6 +6,7 @@
 #  id            :integer         not null, primary key
 #  title         :string(140)     not null
 #  privacy_level :integer         default(0), not null
+#  read_only     :boolean         not null
 #  owner_id      :integer         not null
 #  created_at    :datetime
 #  updated_at    :datetime

@@ -10,6 +10,7 @@ describe Convo do
     #----------------------------------------------------------------------
     it { should have_column :title, type: :string, limit: 140, null: false }
     it { should have_column :privacy_level, type: :integer, default: 0 }
+    it { should have_column :read_only, type: :boolean, default: false, null: false }
     it { should have_column :owner_id, type: :integer, null: false }
     it { should have_column :created_at, type: :datetime }
     it { should have_column :updated_at, type: :datetime }

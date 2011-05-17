@@ -13,9 +13,10 @@
 ActiveRecord::Schema.define(:version => 20110507000853) do
 
   create_table "convos", :force => true do |t|
-    t.string   "title",         :limit => 140,                :null => false
-    t.integer  "privacy_level",                :default => 0, :null => false
-    t.integer  "owner_id",                                    :null => false
+    t.string   "title",         :limit => 140,                    :null => false
+    t.integer  "privacy_level",                :default => 0,     :null => false
+    t.boolean  "read_only",                    :default => false, :null => false
+    t.integer  "owner_id",                                        :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
