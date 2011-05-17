@@ -15,8 +15,11 @@
 			<div class="center convo <%= @convo.confidential? ? 'confidential' : 'social' %> {layout: {type: 'border', hgap: 0, vgap: 0, resize: false}}">
 			  <div class="north warn" id="convo_header">
 			    <%= @convo.title %>
+			    
+			    <%= link_to 'invite', new_invitation_path %>
+			    
           <%= render :partial => "shared/convo_menu" %>
-          <div class="clear"></div>
+          <div class="clear"></div>          
 			  </div>
 			  <div class="center" id="convo_content">
           <p class="notice"><%= notice %></p>

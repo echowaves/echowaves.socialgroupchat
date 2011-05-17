@@ -18,7 +18,7 @@ Echowaves::Application.routes.draw do
   
   resources :visits, :only => [:index]
   resources :updates, :only => [:index]
-  resources :invitations, :only => [:index, :create]
+  resources :invitations, :only => [:index, :new, :create]
 
   root :to => "welcome#index"
   match '/welcome', :to => 'welcome#index', :as => :welcome
