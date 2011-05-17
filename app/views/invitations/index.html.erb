@@ -1,0 +1,5 @@
+<ul id="invitations">
+<% @convos.each do |convo| %>
+	<li><%= link_to (truncate convo.title), convo_path(convo) %></li>
+<% end %>
+</ul>

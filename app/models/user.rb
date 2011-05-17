@@ -40,6 +40,7 @@ class User  < ActiveRecord::Base
   #----------------------------------------------------------------------
   has_many :subscriptions
   has_many :invitations
+  has_many :convo_invites, :through => :invitations, :source => :convo, limit: 100, :order => "invitations.created_at DESC"
 
   has_many :followerships, :foreign_key => "leader_id"
   has_many :followers, :through => :followerships
