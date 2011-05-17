@@ -79,8 +79,8 @@ describe Subscription do
       user2 = Factory(:user)
       @convo.subscribe(@user)
       @convo.subscribe(user2)
-      @convo.users.should include @user
-      @convo.users.should include user2
+      @convo.subscribers.should include @user
+      @convo.subscribers.should include user2
     end
 
   end

@@ -35,7 +35,7 @@ describe Convo do
     it { should belong_to :owner, class_name: "User"}
     it { should have_many :messages }
     it { should have_many :subscriptions }
-    it { should have_many :users, through: :subscriptions }
+    it { should have_many :subscribers, through: :subscriptions, :source => :user }
     it { should have_many :invitations }
     it { should have_many :visits }
     it { should have_many :visiting_users, through: :visits, source: :user }
@@ -122,19 +122,19 @@ describe Convo do
       convo.unsubscribe(user2)
       # not sure why have to reload, but this fixes the spec
       convo.reload
-      convo.users.should_not include @user
-      convo.users.should_not include user2
+      convo.subscribers.should_not include @user
+      convo.subscribers.should_not include user2
     end
   
     it "should create a subscription when created" do
       convo = Factory(:convo, :owner => @user)
-      convo.users.should include @user
+      convo.subscribers.should include @user
     end
     
     it "should not add a user to their subscriptions if the convo is confidential and the user does not have an invitation" do
       convo = Factory(:convo, :privacy_level => 0)
       convo.subscribe(@user)
-      convo.users.should_not include @user
+      convo.subscribers.should_not include @user
     end
   
     it "should create an invitation" do
@@ -168,7 +168,7 @@ describe Convo do
       convo = Factory(:convo, :owner => requestor, privacy_level: 0)
       convo.invite_user(@user, requestor)
       convo.subscribe(@user)
-      convo.users.should include @user
+      convo.subscribers.should include @user
     end
  
     it "should destroy the invitation when the user is added to the convo" do

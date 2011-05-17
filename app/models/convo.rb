@@ -31,7 +31,7 @@ class Convo < ActiveRecord::Base
   has_many :messages#, :order => "created_at DESC"
 
   has_many :subscriptions
-  has_many :users, :through => :subscriptions
+  has_many :subscribers, :through => :subscriptions, :source => :user
 
   # the invitation is created for a convo and never gets deleted, so the user can sunscribe/unsubscribe from the convo many times 
   has_many :invitations

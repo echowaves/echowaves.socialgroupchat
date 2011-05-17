@@ -7,7 +7,7 @@ class ConvoUsersController < ApplicationController
   respond_to :html, :json
 
   def index
-    @users = current_convo.users
+    @subscribers = current_convo.subscribers
     respond_with @users do |format|
       format.html { render :layout => "convo_one_panel" }
     end
@@ -17,7 +17,7 @@ class ConvoUsersController < ApplicationController
     if !current_convo.manageable_by_user?(current_user)
         redirect_to current_convo, :alert => "You can't manage this convo."
     else
-      @users = current_convo.users
+      @subscribers = current_convo.subscribers
       respond_with @users
     end
   end

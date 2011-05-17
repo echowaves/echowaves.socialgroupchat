@@ -18,7 +18,7 @@ describe ConvoUsersController do
     it "assigns @convos with only subscribed convos" do
       get :index, :convo_id => 37
       
-      assigns(:users).should eq(mock_convo.users)
+      assigns(:subscribers).should eq(mock_convo.subscribers)
       response.should render_template(:index)
       response.should render_template("layouts/convo_one_panel") 
     end
@@ -29,7 +29,7 @@ describe ConvoUsersController do
     it "assigns @users from convo if allowed to manage" do
       mock_convo.should_receive(:manageable_by_user?).and_return(true)
       get :manage, :convo_id => 37
-      assigns(:users).should eq(mock_convo.users)
+      assigns(:subscribers).should eq(mock_convo.subscribers)
       response.should render_template(:manage)      
     end
 
