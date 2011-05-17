@@ -47,7 +47,6 @@ describe Followership do
       #double check that it creates the relationship only on one side
       @follower.should_not be_followed(@leader)
       @leader.follows?(@follower).should == false
-      
     end
   
     it "should be able to unfollow" do

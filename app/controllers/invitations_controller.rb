@@ -9,8 +9,9 @@ class InvitationsController < ApplicationController
   end
 
   def new
-    # @convo = current_user.convos(params[:convo_id])
-    @followers = current_user.followers
+    @convo = Convo.where(:id => params[:convo_id]).first
+    @convo.invitations.build
+    @followers = current_user.followers - @convo.users
   end
 
 end
