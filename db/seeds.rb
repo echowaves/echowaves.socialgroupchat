@@ -15,3 +15,19 @@ require "factories"
                     password: "password", email: "guest@example.com", confirmed_at: Time.new)
 @visitor = Factory( :user, username: "visitor", 
                     password: "password", email: "visitor@example.com", confirmed_at: Time.new)
+
+@dmitry.follow @guest
+@dmitry.follow @visitor
+
+@guest.follow   @dmitry
+@visitor.follow @dmitry
+
+
+Factory(:convo, :title => "dmitry's friends", :owner => @dmitry, :privacy_level => 0)
+Factory(:convo, :title => "dmitry's social", :owner => @dmitry, :privacy_level => 1)
+Factory(:convo, :title => "dmitry's diary", :owner => @dmitry, :privacy_level => 1, :read_only => true)
+
+Factory(:convo, :title => "guest testing", :owner => @guest, :privacy_level => 1)
+Factory(:convo, :title => "visitor testing", :owner => @visitor, :privacy_level => 1)
+Factory(:convo, :title => "cofidential guest", :owner => @guest, :privacy_level => 0, :read_only => true)
+
