@@ -32,4 +32,16 @@ describe ConvosHelper do
     end
   end
 
+  describe "readonly rendering" do
+    it "is readonly" do
+      @readonly_convo = Factory(:convo, :read_only => true)
+      content = helper.read_only(:convo => @readonly_convo)
+      content.should include "readonly"
+    end
+    it "is not accessible" do
+      content = helper.read_only(:convo => @social_convo)
+      content.should be_blank
+    end
+  end
+
 end
