@@ -5,7 +5,12 @@ class InvitationsController < ApplicationController
 
   def index
     @convos = current_user.convo_invites
-    respond_with(@convos) 
+    respond_with(@convos, :layout => false )
+  end
+
+  def new
+    # @convo = current_user.convos(params[:convo_id])
+    @followers = current_user.followers
   end
 
 end
