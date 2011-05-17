@@ -3,3 +3,15 @@
 <% if user_signed_in? %>
   <%= follow_or_unfollow_link(:follower => current_user, :leader => @user) %>
 <% end %>
+
+<br/><br/><br/>
+<div>
+my followers:
+<%= render @user.followers %>
+</div>
+
+<br/><br/><br/>
+<div>
+I'm following:
+<%=  render @user.leaders %>
+</div>

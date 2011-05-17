@@ -44,9 +44,7 @@ class User  < ActiveRecord::Base
 
   has_many :followerships, :foreign_key => "leader_id"
   has_many :followers, :through => :followerships
-
-  has_many :leaderships, :class_name => "Followership", :foreign_key => "follower_id"
-  has_many :leaders, :through => :leaderships, :source => :follower
+  has_many :leaders, :through => :followerships, :source => :leader
 
   has_many :visits, limit: 100, :order => "visits.updated_at DESC"
   has_many :visited_convos, :through => :visits, :source => :convo, limit: 100, :order => "visits.updated_at DESC"
@@ -63,17 +61,15 @@ class User  < ActiveRecord::Base
   end
 
   def follow(leader)
-    @leadership = self.leaderships.build(:leader_id => leader.id, :follower_id => self.id)
-    @leadership.save
+    leader.followers << self
   end 
 
   def unfollow(leader)    
-    @followership = self.leaderships.find_by_leader_id(leader.id)
-    @followership.destroy if @followership
+    leader.followers.delete(self)
   end
 
   def follows?(leader)
-    self.leaderships.exists?(:leader_id => leader.id)
+    leader.followerships.exists?(:follower_id => self.id)
   end
 
   def followed?(follower)

@@ -1,0 +1,4 @@
+  <li><%= link_to gravatar_tag(user, :size => 64, :rating => :g, :html => { :class => "gravatar" }), user %> <%= link_to user.username, user_path(user) %></li>
+<% if user_signed_in? %>
+  <%= follow_or_unfollow_link(:follower => current_user, :leader => user) %>
+<% end %>
