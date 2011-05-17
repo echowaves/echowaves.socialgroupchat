@@ -13,6 +13,9 @@
       <span class="mute small">
         <%= accessible(:convo => convo) %>      
       </span>
+      <span class="mute small">
+        <%= read_only(:convo => convo) %>      
+      </span>
       <br/>
       <span class="mute small"><%= convo.created_at %></span> 
     </td>

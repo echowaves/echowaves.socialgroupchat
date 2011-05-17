@@ -1,5 +1,5 @@
 module ConvosHelper
-  
+
   def privacy_level(args)
     convo = args[:convo]
     if convo.social?
@@ -18,5 +18,12 @@ module ConvosHelper
       "non accessible"
     end
   end
-  
+
+  def read_only(args)
+    convo = args[:convo]
+    if convo.read_only
+      "readonly"
+    end
+  end
+
 end

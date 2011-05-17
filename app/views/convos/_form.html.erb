@@ -21,6 +21,10 @@
 	<%= t 'privacy.confidential' %>
 	<%= f.radio_button :privacy_level, 0 %>
   </div>
+  <div>
+	<%= t 'read_only' %>
+	<%= f.check_box :read_only %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
