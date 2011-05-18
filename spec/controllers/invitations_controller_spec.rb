@@ -84,13 +84,33 @@ describe InvitationsController do
       flash[:notice].should eq('Invitation accepted, subscribed to convo.')      
       @convo.subscribers.should include @user
       @user.subscribed_convos.should include @convo
+      @user.invitations.count.should == 0
     end
     
   end
   
   describe "DELETE destroy" do
-    it "fails to cancel the invite for non current user"
-    it "cancels the invite "
+    before do
+      @convo = Factory(:convo)
+      @request.env['HTTP_REFERER'] = convos_path
+    end
+    it "fails to cancel the invite for non current user" do
+      @invitation = Factory(:invitation, :convo => @convo)
+      delete :destroy, :id => @invitation.id
+      response.should redirect_to(convos_path)
+      flash[:notice].should eq('Error cancelling invitation.')            
+    end
+    
+    it "cancels the invite " do
+      @invitation = Factory(:invitation, :user => @user, :convo => @convo)
+      delete :destroy, :id => @invitation.id
+      response.should redirect_to(convos_path)
+      flash[:notice].should eq('Invitation cancelled.')      
+      @convo.subscribers.should_not include @user
+      @user.subscribed_convos.should_not include @convo
+      @user.invitations.count.should == 0
+    end
+    
   end
   
 end
