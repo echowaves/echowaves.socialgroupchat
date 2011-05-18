@@ -5,6 +5,5 @@
   <!-- ... -->
   <!-- admin actions -->
   <% if @convo.manageable_by_user?(@current_user) %>
-    <%= link_to "manage users", manage_convo_users_path(@convo) %>
   <% end %>
 </div>

@@ -9,9 +9,6 @@ Echowaves::Application.routes.draw do
   resources :convos, :only => [:index, :show, :new, :create] do
     # nested message, essential to support restful resources for messages
     resources :messages, :only => [:index, :show, :create]
-    resources :users, :controller => :convo_users, :except => [:edit, :show, :update] do
-      get :manage, :on => :collection
-    end
     resources :subscriptions, :only => [:create, :destroy]
     
   end
