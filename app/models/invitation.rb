@@ -28,5 +28,7 @@ class Invitation < ActiveRecord::Base
   belongs_to :requestor, class_name: "User"
   #----------------------------------------------------------------------
 
+  default_scope includes(:requestor, :convo)
+
   
 end

@@ -16,18 +16,32 @@ class InvitationsController < ApplicationController
   def create
     @invitation = 
     Invitation.new(
-      :user_id => params[:user_id], 
-      :convo_id => params[:convo_id], 
-      :requestor_id => current_user.id)
-      
-    respond_to do |format|
-      if @invitation.save
-        format.html { redirect_to :back, :notice => 'Invitation sent.' } 
-      else
-        format.html { redirect_to :back, :notice => 'Unable to send invitation.' }         
-      end
+    :user_id => params[:user_id], 
+    :convo_id => params[:convo_id], 
+    :requestor_id => current_user.id)
+
+    if @invitation.save
+      redirect_to :back, :notice => 'Invitation sent.' 
+    else
+      redirect_to :back, :notice => 'Unable to send invitation.' 
     end
-    
   end
 
+  def accept
+    @invitation = Invitation.find params[:invitation_id]
+    if @invitation.user == current_user
+      @invitation.convo.subscribe(current_user)
+      # and lets cleanup
+      @invitation.destroy
+      redirect_to :back, :notice => 'Invitation accepted, subscribed to convo.'
+    else
+      redirect_to :back, :warning => 'Error accepting invitation.'
+    end
+  end
+
+  def destroy
+    @invitation = Invitation.find params[:id]
+    @invitation.destroy
+    redirect_to :back, :notice => 'Invitation cancelled.'
+  end
 end

@@ -63,5 +63,9 @@ describe InvitationsController do
     end
 
   end
+
+  describe "PUT accept" 
+  
+  describe "DELETE destroy" 
   
 end

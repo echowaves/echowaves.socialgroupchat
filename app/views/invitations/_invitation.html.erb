@@ -1,0 +1,6 @@
+<div>
+User @<%= invitation.requestor.username %> invited you to join 
+a convo <%= link_to invitation.convo.title, invitation.convo %>
+<%= accept_link(:invitation => invitation)%>
+<%= cancel_link(:invitation => invitation)%>
+</div>
