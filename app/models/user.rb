@@ -92,7 +92,7 @@ class User  < ActiveRecord::Base
     if self.subscriptions.exists?(convo_id: convo.id)
       subscription = self.subscriptions.where(convo_id: convo.id)[0]
       subscription.new_messages_count = 0 # reset the new messages count while visiting
-      if convo.messages.size != 0 
+      if convo.messages.count != 0 
         subscription.last_read_message_id = convo.messages.last.id
       end
       subscription.save      
