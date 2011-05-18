@@ -1,4 +1,4 @@
-<h1>Subscribers to <%= link_to @convo.title, convos_path(@convo)%></h1>
+<h1>Subscribers to <%= link_to @convo.title, convo_path(@convo)%></h1>
 
 <%= paginate @subscriptions %>
 <%= render   @subscriptions %>
