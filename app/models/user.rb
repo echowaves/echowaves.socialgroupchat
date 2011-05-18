@@ -39,6 +39,7 @@ class User  < ActiveRecord::Base
   # associations
   #----------------------------------------------------------------------
   has_many :subscriptions
+  has_many :subscribed_convos, :through => :subscriptions, :source => :convo
   has_many :invitations
   has_many :convo_invites, :through => :invitations, :source => :convo, limit: 100, :order => "invitations.created_at DESC"
 

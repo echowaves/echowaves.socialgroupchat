@@ -35,13 +35,17 @@ class InvitationsController < ApplicationController
       @invitation.destroy
       redirect_to :back, :notice => 'Invitation accepted, subscribed to convo.'
     else
-      redirect_to :back, :warning => 'Error accepting invitation.'
+      redirect_to :back, :notice => 'Error accepting invitation.'
     end
   end
 
   def destroy
     @invitation = Invitation.find params[:id]
-    @invitation.destroy
-    redirect_to :back, :notice => 'Invitation cancelled.'
+    if @invitation.user == current_user
+      @invitation.destroy
+      redirect_to :back, :notice => 'Invitation cancelled.'
+    else
+      redirect_to :back, :notice => 'Error cancelling invitation.'
+    end
   end
 end

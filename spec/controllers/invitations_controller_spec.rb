@@ -64,8 +64,33 @@ describe InvitationsController do
 
   end
 
-  describe "PUT accept" 
+  describe "PUT accept" do
+    before do
+      @convo = Factory(:convo)
+      @request.env['HTTP_REFERER'] = convos_path
+    end
+    
+    it "fails to accept invites for non current_user" do
+      @invitation = Factory(:invitation, :convo => @convo)
+      put :accept, :invitation_id => @invitation.id
+      response.should redirect_to(convos_path)
+      flash[:notice].should eq('Error accepting invitation.')      
+    end
+    
+    it "accepts invite and subscribes a user to the convo" do
+      @invitation = Factory(:invitation, :user => @user, :convo => @convo)
+      put :accept, :invitation_id => @invitation.id
+      response.should redirect_to(convos_path)
+      flash[:notice].should eq('Invitation accepted, subscribed to convo.')      
+      @convo.subscribers.should include @user
+      @user.subscribed_convos.should include @convo
+    end
+    
+  end
   
-  describe "DELETE destroy" 
+  describe "DELETE destroy" do
+    it "fails to cancel the invite for non current user"
+    it "cancels the invite "
+  end
   
 end
