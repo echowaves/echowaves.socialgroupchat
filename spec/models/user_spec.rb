@@ -24,6 +24,7 @@ describe User do
     it { should have_column :current_sign_in_ip, :type => :string, :limit => 255 }
     it { should have_column :last_sign_in_ip, :type => :string, :limit => 255 }
     it { should have_column :password_salt, :type => :string, :limit => 255 }
+    it { should have_column :subscriptions_count, type: :integer, :default => 0 }    
     it { should have_column :created_at, :type => :datetime }
     it { should have_column :updated_at, :type => :datetime }
 

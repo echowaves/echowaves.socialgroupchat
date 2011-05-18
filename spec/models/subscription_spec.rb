@@ -30,8 +30,8 @@ describe Subscription do
 
     # associations
     #----------------------------------------------------------------------
-    it { should belong_to :convo }
-    it { should belong_to :user }
+    it { should belong_to :convo, :counter_cache => true }
+    it { should belong_to :user,  :counter_cache => true }
     #----------------------------------------------------------------------
 
   end

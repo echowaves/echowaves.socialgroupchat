@@ -22,8 +22,8 @@ class Subscription < ActiveRecord::Base
   
   # associations
   #----------------------------------------------------------------------
-  belongs_to :convo
-  belongs_to :user
+  belongs_to :convo, :counter_cache => true
+  belongs_to :user,  :counter_cache => true
   #----------------------------------------------------------------------
       
 end

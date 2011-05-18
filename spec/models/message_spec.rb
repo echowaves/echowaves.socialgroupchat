@@ -33,7 +33,7 @@ describe Message do
     # associations
     #----------------------------------------------------------------------
     it { should belong_to :owner, class_name: "User" }
-    it { should belong_to :convo }
+    it { should belong_to :convo, :counter_cache => true }
     #----------------------------------------------------------------------
 
   end

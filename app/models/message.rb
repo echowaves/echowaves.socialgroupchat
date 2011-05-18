@@ -27,7 +27,7 @@ class Message < ActiveRecord::Base
   # associations
   #----------------------------------------------------------------------
   belongs_to :owner, class_name: "User"
-  belongs_to :convo
+  belongs_to :convo, :counter_cache => true
   #----------------------------------------------------------------------
  
 end

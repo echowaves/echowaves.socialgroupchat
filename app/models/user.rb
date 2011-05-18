@@ -19,6 +19,7 @@
 #  current_sign_in_ip   :string(255)
 #  last_sign_in_ip      :string(255)
 #  password_salt        :string(255)
+#  subscriptions_count  :integer         default(0)
 #  created_at           :datetime
 #  updated_at           :datetime
 #

@@ -9,6 +9,8 @@ class CreateUsers < ActiveRecord::Migration
       t.trackable
       t.encryptable
 
+      t.integer :subscriptions_count, :default => 0
+
       t.timestamps
     end
 

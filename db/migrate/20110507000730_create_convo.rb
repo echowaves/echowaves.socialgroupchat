@@ -3,9 +3,12 @@ class CreateConvo < ActiveRecord::Migration
     create_table :convos do |t|
       t.string :title, :limit => 140, null: false
       t.integer :privacy_level, :default => 0, null: false
-      t.boolean :read_only, :default => false, null: false
+      t.boolean :read_only, :default => false, null: false            
       
       t.references :owner, :null => false
+
+      t.integer :messages_count, :default => 0
+      t.integer :subscriptions_count, :default => 0
       
       t.timestamps
     end
