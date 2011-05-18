@@ -16,6 +16,18 @@ require "factories"
 @visitor = Factory( :user, username: "visitor", 
                     password: "password", email: "visitor@example.com", confirmed_at: Time.new)
 
+40.times do |i| 
+  a_convo = Factory(:convo, :title => "repeatable_#{i}", :owner => @dmitry, :privacy_level => 1)
+  a_convo.subscribe @dmitry
+end
+
+a_convo_with_subscribers = Factory(:convo, :title => "convo with some subs", :owner => @dmitry, :privacy_level => 1)
+100.times do |i| 
+  a_user = Factory( :user, username: "user_#{i}", 
+                      password: "password", email: "user_#{i}@example.com", confirmed_at: Time.new)
+  a_convo_with_subscribers.subscribe a_user
+end
+
 @dmitry.follow @guest
 @dmitry.follow @visitor
 
