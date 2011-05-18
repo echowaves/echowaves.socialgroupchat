@@ -10,17 +10,25 @@ describe SubscriptionsController do
   end  
 
   before do
-    @user = Factory(:user)
+    @user = mock_model(User).as_null_object
     request.env['warden'] = mock(Warden, :authenticate => @user, :authenticate! => @user, :authenticate? => @user)
     mock_subscription.stub(:convo).and_return(convo)
   end
+
   
-  describe "subscribe unsubscribe" do
+  describe "index, subscribe, unsubscribe" do
     before do
       @request.env['HTTP_REFERER'] = convos_path
       Convo.stub(:find).with("37") { mock_convo }
     end
 
+
+    it "GET index" do
+      mock_convo.stub_chain(:subscriptions, :page) { [mock_subscription]}      
+      get :index, :convo_id => "37"
+      assigns(:subscriptions).should eq([mock_subscription])      
+      response.should render_template("index")
+    end
 
     it "allows user to subscribe to a social convo" do
       mock_convo.stub(:accesible_by_user?) { true }

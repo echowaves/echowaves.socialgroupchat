@@ -2,6 +2,10 @@ class SubscriptionsController < ApplicationController
 
   respond_to :html, :json, :xml
 
+  def index
+    convo
+    @subscriptions = @convo.subscriptions.page(params[:page])
+  end
 
   ################################################################################
   # convo_subscriptions POST   /convos/:convo_id/subscriptions(.:format)     
