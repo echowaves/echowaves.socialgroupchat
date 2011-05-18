@@ -17,7 +17,7 @@ describe SubscriptionsController do
   
   describe "subscribe unsubscribe" do
     before do
-      @request.env['HTTP_REFERER'] = '/convos'      
+      @request.env['HTTP_REFERER'] = convos_path
       Convo.stub(:find).with("37") { mock_convo }
     end
 

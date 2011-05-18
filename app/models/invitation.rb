@@ -19,6 +19,7 @@ class Invitation < ActiveRecord::Base
   validates_presence_of :user
   validates_presence_of :convo
   validates_presence_of :requestor
+  validates_uniqueness_of :convo_id, :scope => :user_id
 
   # associations
   #----------------------------------------------------------------------

@@ -14,7 +14,7 @@ describe FollowershipsController do
 
   describe "follow unfollow" do
     before do
-      @request.env['HTTP_REFERER'] = '/users'
+      @request.env['HTTP_REFERER'] = users_path
       User.stub(:find).with("37") { mock_user }
       @user = Factory(:user)
       request.env['warden'] = mock(Warden, :authenticate => @user, :authenticate! => @user, :authenticate? => @user)      

@@ -1,1 +1,4 @@
-<p>Follower Name: <%= follower.username %></p>
+<p>
+  <%= follower.username %>
+  <%= invitation_link(:convo => @convo, :user => follower) %>
+</p>

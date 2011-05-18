@@ -10,8 +10,24 @@ class InvitationsController < ApplicationController
 
   def new
     @convo = Convo.where(:id => params[:convo_id]).first
-    @convo.invitations.build
-    @followers = current_user.followers - @convo.subscribers
+    @followers = current_user.followers - @convo.subscribers 
+  end
+
+  def create
+    @invitation = 
+    Invitation.new(
+      :user_id => params[:user_id], 
+      :convo_id => params[:convo_id], 
+      :requestor_id => current_user.id)
+      
+    respond_to do |format|
+      if @invitation.save
+        format.html { redirect_to :back, :notice => 'Invitation sent.' } 
+      else
+        format.html { redirect_to :back, :notice => 'Unable to send invitation.' }         
+      end
+    end
+    
   end
 
 end
