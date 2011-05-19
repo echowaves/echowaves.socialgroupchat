@@ -45,7 +45,8 @@ class Convo < ActiveRecord::Base
   #----------------------------------------------------------------------
   scope :confidential, where(:privacy_level => 0)  
   scope :social,       where(:privacy_level => 1)  
-    
+
+  default_scope includes(:owner)
   #----------------------------------------------------------------------
        
   after_create :subscribe_owner

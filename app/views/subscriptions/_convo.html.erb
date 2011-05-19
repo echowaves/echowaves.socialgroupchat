@@ -1,0 +1,7 @@
+<%#convo object here is really a subscription %>
+<div>
+<%= link_to convo.convo.title, convo.convo %>
+<% if user_signed_in? %>
+  <%= subscribe_or_unsubscribe_link(:convo => convo.convo, :user => current_user) %>  
+<%end%>
+</div>

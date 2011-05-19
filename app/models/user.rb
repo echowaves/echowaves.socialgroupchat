@@ -34,13 +34,14 @@ class User  < ActiveRecord::Base
 
   # validations
   #----------------------------------------------------------------------  
-  validates_presence_of :username
+  validates_presence_of   :username
   validates_uniqueness_of :username
 
   # associations
   #----------------------------------------------------------------------
   has_many :subscriptions
   has_many :subscribed_convos, :through => :subscriptions, :source => :convo
+  
   has_many :invitations
   has_many :convo_invites, :through => :invitations, :source => :convo, limit: 100, :order => "invitations.created_at DESC"
 

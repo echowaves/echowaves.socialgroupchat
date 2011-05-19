@@ -1,11 +1,13 @@
 module SubscriptionsHelper
   def subscribe_or_unsubscribe_link(args)
     convo = args[:convo]
-    if convo.accesible_by_user? current_user
+    user  = args[:user]
+    if convo.accesible_by_user? user
       if convo.subscribers.include? current_user
-        link_to "unsubscribe", convo_subscription_path(convo, 0), :method=>:delete, :class => 'button-small-red'
+        # yakes, passing 0 for subscription_id, little faster, will resolve the subscription by convo_id/user_id
+        link_to "unsubscribe", subscription_path(0, :convo_id => convo.id, :user_id => current_user.id), :method => :delete, :class => 'button-small-red'
       else
-        link_to "subscribe", convo_subscriptions_path(convo), :method=>:post, :class => 'button-small-blue'
+        link_to "subscribe", subscriptions_path(:convo_id => convo.id, :user_id => current_user.id), :method => :post, :class => 'button-small-blue'
       end
     end
   end

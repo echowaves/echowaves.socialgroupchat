@@ -48,6 +48,7 @@ describe User do
     #----------------------------------------------------------------------
     it { should have_many :subscriptions }
     it { should have_many :subscribed_convos, :through => :subscriptions, :source => :convo }
+
     it { should have_many :invitations }
     it { should have_many :convo_invites, :through => :invitations, :source => :convo, limit: 100, :order => "invitations.created_at DESC" }
 

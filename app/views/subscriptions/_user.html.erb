@@ -1,0 +1,10 @@
+<%#user object here is really a subscription %>
+
+<li><%= link_to gravatar_tag(user.user, :size => 64, :rating => :g, :html => { :class => "gravatar" }), user.user %> <%= link_to user.user.username, user_path(user.user) %></li>
+<% if user_signed_in? %>
+  <%= follow_or_unfollow_link(:follower => current_user, :leader => user.user) %>
+
+  <% if @convo && @convo.owner == current_user %>
+    <%= link_to 'x', subscription_path(0, :convo_id => @convo, :user_id => user.user.id), :confirm => "Are you sure?", :method => :delete %>
+  <% end %>  
+<% end %>

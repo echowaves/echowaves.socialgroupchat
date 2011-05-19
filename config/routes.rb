@@ -1,18 +1,16 @@
 Echowaves::Application.routes.draw do
-  
+
   devise_for :users
 
   resources :users, :only => [:index, :show] do
     resources :followerships, :only => [:create, :destroy]
   end
-  
+
   resources :convos, :only => [:index, :show, :new, :create] do
     # nested message, essential to support restful resources for messages
     resources :messages, :only => [:index, :show, :create]
-    resources :subscriptions, :only => [:create, :destroy, :index]
-    
   end
-  
+
   resources :visits, :only => [:index]
   resources :updates, :only => [:index]
   resources :invitations, :only => [:index, :new, :create, :destroy] do
@@ -30,7 +28,7 @@ Echowaves::Application.routes.draw do
     end
   end
 
-  
+  resources :subscriptions, :only => [:index, :create, :destroy ]
 
 
 end

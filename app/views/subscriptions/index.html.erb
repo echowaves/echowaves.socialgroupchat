@@ -1,5 +1,12 @@
-<h1>Subscribers to <%= link_to @convo.title, convo_path(@convo)%></h1>
+<h1>Subscriptions for:</h1> 
+<%if @convo %>
+  <h2><%= link_to @convo.title, @convo%></h2>
+<%end%>
+<%if @user %>
+  <h2><%= link_to @user.username, @user%></h2>
+<%end%>
 
 <%= paginate @subscriptions %>
-<%= render   @subscriptions %>
+<%= render :partial => "convo", :collection => @subscriptions if @user  %>
+<%= render :partial => "user",  :collection => @subscriptions if @convo  %>
 <%= paginate @subscriptions %>

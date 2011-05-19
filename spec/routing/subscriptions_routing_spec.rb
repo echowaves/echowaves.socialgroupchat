@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SubscriptionsController do
-  specify { {:get   => "/convos/:convo_id/subscriptions"}.should route_to(:controller=>"subscriptions", :action=>"index", :convo_id =>":convo_id")}  
-  specify { {:post   => "/convos/:convo_id/subscriptions"}.should route_to(:controller=>"subscriptions", :action=>"create", :convo_id =>":convo_id")}  
-  specify { {:delete => "/convos/:convo_id/subscriptions/:id"}.should route_to(:controller=>"subscriptions", :action=>"destroy", :convo_id =>":convo_id", :id =>":id")}  
+  specify { {:get   => "/subscriptions"}.should route_to(:controller=>"subscriptions", :action=>"index")}  
+  specify { {:post   => "/subscriptions"}.should route_to(:controller=>"subscriptions", :action=>"create")}  
+  specify { {:delete => "/subscriptions/:id"}.should route_to(:controller=>"subscriptions", :action=>"destroy", :id =>":id")} # sadly the id will be ignore, need to pass convo_id and user_id as a quiery string 
 end

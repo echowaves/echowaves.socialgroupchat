@@ -16,7 +16,11 @@
 			  <div class="north warn" id="convo_header">
 			    <%= @convo.title %>
 			    
-          <%= link_to "#{@convo.subscriptions.size} subscribers", convo_subscriptions_path(@convo) %>
+			    <% if user_signed_in? %>
+            <%= subscribe_or_unsubscribe_link(:convo => @convo, :user => current_user) %>
+          <% end %>
+          
+          <%= link_to "#{@convo.subscriptions.size} subscribers", subscriptions_path(:convo_id => @convo.id) %>
 			    
 			    <%= link_to 'invite', new_invitation_path(:convo_id => @convo.id) %>
 			    

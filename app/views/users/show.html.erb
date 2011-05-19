@@ -6,6 +6,11 @@
 
 <br/><br/><br/>
 <div>
+  <%= link_to "My subscriptions", subscriptions_path(:user_id => @user.id) %>
+</div>
+
+
+<div>
 My Invitations:
 <%= render @user.invitations %>
 </div>

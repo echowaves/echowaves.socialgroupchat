@@ -5,7 +5,7 @@
     <td>
       <%= link_to convo.title, convo_path(convo) %>
       <% if user_signed_in? %>
-        <%= subscribe_or_unsubscribe_link(:convo => convo) %>
+        <%= subscribe_or_unsubscribe_link(:convo => convo, :user => current_user) %>
       <% end %>
       <span class="mute small">
         <%= privacy_level(:convo => convo) %>      

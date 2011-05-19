@@ -26,5 +26,5 @@ class Subscription < ActiveRecord::Base
   belongs_to :user,  :counter_cache => true
   #----------------------------------------------------------------------
       
-  default_scope includes(:user)
+  default_scope includes(:user, :convo)
 end
