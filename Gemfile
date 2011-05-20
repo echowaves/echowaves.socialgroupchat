@@ -1,6 +1,6 @@
 # Edit this Gemfile to bundle your application's dependencies.
 
-source 'http://gemcutter.org'
+source 'http://rubygems.org'
 
 gem "rails", "3.0.7"
 
@@ -34,7 +34,7 @@ group :test, :development do
   gem 'ruby-graphviz'
   # gem 'spork', '~> 0.9.0.rc'
   # guard stuff
-  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i  
+  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
   gem 'guard-rspec'
   gem 'guard-livereload'
   gem 'growl'
