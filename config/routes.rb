@@ -22,7 +22,6 @@ Echowaves::Application.routes.draw do
 
   resource :socket, :only => [:subscribe, :unsubscribe] do
     member do
-      # FIXME: replace with create/delete
       post :subscribe
       post :unsubscribe
     end
