@@ -21,8 +21,11 @@ Development environment setup
 Run the socky server
   socky -c socky_config.yml 
   
-Web Page
-  http://echowaves.github.com/
+Web Page:
+  http://echowaves.github.com
+
+EW hosted at:
+  https://echowaves.com
 
 License
   See LICENSE.
