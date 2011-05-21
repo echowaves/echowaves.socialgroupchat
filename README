@@ -1,53 +1,25 @@
-New born EchoWaves
-
-generated with a command:
- rails echowaves --edge --skip-activerecord --skip-testunit --skip-prototype
+EchoWaves 2.0
 
 Intended infrastructure:
 	ruby 1.9.2
-	--edge (rails 3)
-	--skip-testunit (will use RSpec 2 with Cucumber)
-	--skip-prototype (will use JQuery 1.4)
-  web sockets (will use an alternative solution for non supported browsers)
+	rails 3.1
+	  CoffeeScript, SCSS
+	RSpec 2 with Capybara
+	JQuery	
+  web sockets
+  PostgreSQL
 
 Development environment setup
   # Install RVM
-  mkdir -p ~/.rvm/src/ && cd ~/.rvm/src && rm -rf ./rvm/ && git clone git://github.com/wayneeseguin/rvm.git && cd rvm && ./install
-
-  # install ruby 1.9
-  rvm install 1.9.2
-
-  # you might need to specify the readline folder rvm install 1.8.7 -C --enable-shared,--with-readline-dir=/usr/local
-
-  # user the installed ruby 1.9 with a dedicated gemset
-  rvm use 1.9.2
-  rvm gemset create ew
-  rvm use 1.9.2@ew
-
-  gem install rails
-
-
-  # check to see if you have rails 3.0.0 beta
-  rails --version
-
-Sample data
-  you can populate the db with some sample data using:
-  rake db:load_sample_data
-  take a look at lib/tasks/sample_data.task for the details
-  ***THIS WILL ERASE YOUR DB CONTENTS***
-
-Installation of ruby gems
-  # we are using some pre-released gems which works with Rails 3
-  and last, do "bundle install" to install all the dependencies
+  # clone github repo
+  cd ./echowaves
+  bundle
+  cp config/database.yml-sample config/database.yml
+  rake ew:db:reset
+  rails s
 
 Run the socky server
   socky -c socky_config.yml 
-
-Know issues
-
-
-Environment vars
-
 
 License
   See LICENSE.
