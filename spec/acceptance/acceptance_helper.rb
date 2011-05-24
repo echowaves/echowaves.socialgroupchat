@@ -5,12 +5,13 @@ require 'capybara/rspec'
 # module Steak::Capybara
 #   include Rack::Test::Methods
 #   include Capybara
-# 
+#
 #   def app
 #     ::Rails.application
 #   end
 # end
-
+# Capybara.current_driver = :selenium
+Capybara.server_boot_timeout = 50
 # RSpec.configuration.include Steak::Capybara, :type => :acceptance
 RSpec.configuration.include Rails.application.routes.url_helpers, :type => :acceptance
 

@@ -3,7 +3,9 @@
 	<head>
 		<title>echowaves</title>
 		<meta http-equiv="Content-Type" content="text/xhtml; charset=utf-8" />
-    <%= stylesheet_link_tag "reset", "echowaves", :cache => "all_styles" %>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= render :partial => 'shared/global_js_vars' %>
     <%= csrf_meta_tag %>
 	</head>
 	<body>
@@ -29,32 +31,5 @@
 			</div>
 		</div>
 	</body>
-
-    <%= javascript_include_tag "jquery.js" %>
-    <%= javascript_include_tag "jquery.metadata.js" %>
-    <%= javascript_include_tag "jquery.sizes.js" %>
-    <%= javascript_include_tag "jlayout.border.js" %>
-    <%= javascript_include_tag "jlayout.grid.js" %>
-    <%= javascript_include_tag "jlayout.flexygrid.js" %>
-    <%= javascript_include_tag "jquery.jlayout.js" %>
-    <%= javascript_include_tag "modernizr-1.6.min.js" %>
-    <%= javascript_include_tag "jquery.qtip-1.0.0-rc3.min.js" %>
-
-    <%= javascript_include_tag "echowaves.js" %>
-    <%= javascript_include_tag "rails.js" %>
-
-		<script type="text/javascript">
-			$(function($)
-			{
-       $('.page').layout({resize: false});
-				var container = $('.layout');
-				function relayout() {
-					container.layout({resize: false});
-				}
-				relayout();
-				$(window).resize(relayout);
-			});
-		</script>
-
 
 </html>
