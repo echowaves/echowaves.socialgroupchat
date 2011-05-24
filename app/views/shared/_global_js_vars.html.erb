@@ -1,0 +1,12 @@
+<script type="text/javascript">
+
+      //----------------------------------------------------------------------
+      // global settings
+      //----------------------------------------------------------------------
+
+      var g = {
+        convoId      : "<%= @convo ? @convo.id : 0 %>"
+       ,userGravatar : "<%= user_signed_in? ? gravatar_url(current_user.email) : "/images/icons/default-avatar-60.png" %>"
+      }
+
+</script>

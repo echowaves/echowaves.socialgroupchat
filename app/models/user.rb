@@ -29,11 +29,11 @@ class User  < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :http_authenticatable, :token_authenticatable, :lockable, :timeoutable and :activatable
-  devise :database_authenticatable, :registerable, :confirmable, :recoverable, 
+  devise :database_authenticatable, :registerable, :confirmable, :recoverable,
   :rememberable, :trackable, :validatable, :encryptable, :encryptor => 'sha1'
 
   # validations
-  #----------------------------------------------------------------------  
+  #----------------------------------------------------------------------
   validates_presence_of   :username
   validates_uniqueness_of :username
 
@@ -41,7 +41,7 @@ class User  < ActiveRecord::Base
   #----------------------------------------------------------------------
   has_many :subscriptions
   has_many :subscribed_convos, :through => :subscriptions, :source => :convo
-  
+
   has_many :invitations
   has_many :convo_invites, :through => :invitations, :source => :convo, limit: 100, :order => "invitations.created_at DESC"
 
@@ -67,9 +67,9 @@ class User  < ActiveRecord::Base
 
   def follow(leader)
     leader.followers << self
-  end 
+  end
 
-  def unfollow(leader)    
+  def unfollow(leader)
     leader.followers.delete(self)
   end
 
@@ -84,7 +84,7 @@ class User  < ActiveRecord::Base
   def visit convo
     # append as a last element of the embedded collection
     if visit = visits.find_by_convo_id(convo.id)
-      visit.increment!( :visits_count ) 
+      visit.increment!( :visits_count )
     else
       self.visits.create(convo: convo)
     end
@@ -93,21 +93,21 @@ class User  < ActiveRecord::Base
     if self.subscriptions.exists?(convo_id: convo.id)
       subscription = self.subscriptions.where(convo_id: convo.id)[0]
       subscription.new_messages_count = 0 # reset the new messages count while visiting
-      if convo.messages.count != 0 
+      if convo.messages.count != 0
         subscription.last_read_message_id = convo.messages.last.id
       end
-      subscription.save      
+      subscription.save
     end
   end
 
 
   # FIXME: code smels badly
   # returns an array of subscription that have updates (new messages), since last visit
-  def updated_subscriptions    
+  def updated_subscriptions
     # the original way
     # @updated_subscriptions = self.subscriptions.reject { |subscription| subscription.new_messages_count == 0 }
-    # the new way, slightly more efficient    
-    # @updated_subscriptions = self.subscriptions.find(:all, 
+    # the new way, slightly more efficient
+    # @updated_subscriptions = self.subscriptions.find(:all,
     # :joins => "JOIN convos ON subscriptions.convo_id=convos.id JOIN messages ON convos.id = messages.convo_id and messages.id > subscriptions.last_read_message_id",
     # :group => "convos.id",
     # :order => "messages.id ASC",
@@ -118,8 +118,8 @@ class User  < ActiveRecord::Base
       s.new_messages_count = s.convo.messages.count( :conditions => ["id >  #{s.last_read_message_id}" ] )
       s
     end
-    
-    @updated_subscriptions.reject! { |s| s.new_messages_count == 0 }    
+
+    @updated_subscriptions.reject! { |s| s.new_messages_count == 0 }
     @updated_subscriptions
   end
 
