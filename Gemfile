@@ -2,8 +2,8 @@
 
 source 'http://rubygems.org'
 
-gem "rails", "3.1.0.rc1"
-# gem "rails", :git => "git://github.com/rails/rails.git"
+# gem "rails", "3.1.0.rc1"
+gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem "sass"
 gem "coffee-script"
@@ -17,7 +17,8 @@ gem "socky-client-rails", ">= 0.4.3" # this is the client used to connect the ap
 # gem "postgres-pr"
 gem "pg"
 
-gem "devise", "~>1.3.4"
+# gem "devise", "~>1.3.4"
+gem "devise", :git => "git://github.com/plataformatec/devise.git"
 gem "kaminari" #replacement for willpaginate
 
 gem 'gravatarify', "~> 2.2.2"
