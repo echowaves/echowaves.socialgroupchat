@@ -12,13 +12,13 @@ feature "Useredit", %q{
     visit edit_user_registration_path
   end
 
-  scenario "Edit user, all validations fail" do
+  scenario "Edit user, all validations fail", :js => true do
     fill_in "user_username", :with              => @user2.username
     fill_in "user_email", :with                 => @user2.email
     fill_in "user_password", :with              => "test"
     fill_in "user_password_confirmation", :with => "test2"
     fill_in "user_current_password", :with      => "password"
-    click_button "user_submit"
+    click_button "Update"
     page.should have_content "4 errors prohibited this user from being saved"
     page.should have_content "Email has already been taken"
     page.should have_content "Password doesn't match confirmation"
@@ -32,30 +32,30 @@ feature "Useredit", %q{
     fill_in "user_password", :with              => "test"
     fill_in "user_password_confirmation", :with => "test2"
     fill_in "user_current_password", :with      => "testing1234"
-    click_button "user_submit"
+    click_button "Update"
     page.should have_content "1 error prohibited this user from being saved"
     page.should have_content "Current password is invalid"
   end
   
   scenario "Edit user, save with preloaded defaults" do
-    click_button "user_submit"
+    click_button "Update"
     page.should have_content "1 error prohibited this user from being saved"
     page.should have_content "Current password can't be blank"    
 
     fill_in "user_current_password", :with      => "wrong_password"
-    click_button "user_submit"
+    click_button "Update"
     page.should have_content "1 error prohibited this user from being saved"
     page.should have_content "Current password is invalid"
 
     fill_in "user_current_password", :with      => "password"
     fill_in "user_password", :with              => "test"
-    click_button "user_submit"
+    click_button "Update"
     page.should have_content "2 errors prohibited this user from being saved"
     page.should have_content "Password doesn't match confirmation"
     page.should have_content "Password is too short (minimum is 6 characters)"
     
     fill_in "user_current_password", :with      => "password"
-    click_button "user_submit"
+    click_button "Update"
     page.should have_content "You updated your account successfully."
   end
 
@@ -65,7 +65,7 @@ feature "Useredit", %q{
     fill_in "user_password", :with              => "test"
     fill_in "user_password_confirmation", :with => "test2"
     fill_in "user_current_password", :with      => ""
-    click_button "user_submit"
+    click_button "Update"
     page.should have_content "1 error prohibited this user from being saved"
     page.should have_content "Current password can't be blank"
   end
