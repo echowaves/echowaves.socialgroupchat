@@ -3,7 +3,7 @@ EchoWaves 2.0
 Intended infrastructure:
 	ruby 1.9.2
 	rails 3.1
-	  CoffeeScript, SCSS
+	  CoffeeScript, SASS
 	RSpec 2 with Capybara
 	JQuery	
   web sockets
