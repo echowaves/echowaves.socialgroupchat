@@ -9,3 +9,4 @@ gem_graph.png
 coverage.data
 *~
 *.rbc
+vendor/cache
