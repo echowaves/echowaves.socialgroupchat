@@ -1,12 +1,12 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
-guard 'livereload' do  
-  watch(%r{app/.+\.(erb|haml)})  
-  watch(%r{app/helpers/.+\.rb})  
-  watch(%r{public/.+\.(css|js|html)})  
-  watch(%r{config/locales/.+\.yml})  
-end
+# guard 'livereload' do  
+#   watch(%r{app/.+\.(erb|haml)})  
+#   watch(%r{app/helpers/.+\.rb})  
+#   watch(%r{public/.+\.(css|js|html)})  
+#   watch(%r{config/locales/.+\.yml})  
+# end
 
 guard 'rspec', :version => 2 do
 # guard 'rspec', :all_on_start => false, :all_after_pass => false do #temporary defaults
