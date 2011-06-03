@@ -16,35 +16,21 @@ $ ->
       border: { radius: 8 }
 
   Math.uuid = ->
-    # Private array of chars to use
-    CHARS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split ''
-
-    return (len, radix) ->
-      chars = CHARS
-      uuid = []
-      radix = radix || chars.length
-
-      if len
-        # compact form
-        for i in [0..len]
-          uuid[i] = chars[0 | Math.random()*radix]
-      else
-        # rfc4122, version 4 form
-        # rfc4122 requires these characters
-        uuid[8] = '-'
-        uuid[13] = '-'
-        uuid[18] = '-'
-        uuid[23] = '-'
-        uuid[14] = '4'
-
-        # Fill in random data.  At i==19 set the high bits of clock sequence as
-        # per rfc4122, sec. 4.1.5
-        for i in [0..36]
-          if !uuid[i]
-            r = 0 | Math.random()*16
-            uuid[i] = chars[(i == 19) ? (r & 0x3) | 0x8 : r]
-      uuid.join ''
-
+    chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('')
+    uuid = new Array(36)
+    random = 0
+    for digit in [0..36]
+      switch digit
+        when 8, 13, 18, 23
+          uuid[digit] = '-'
+        when 14
+          uuid[digit] = '4'
+        else
+          random = 0x2000000 + (Math.random() * 0x1000000) | 0 if (random <= 0x02)
+          r = random & 0xf
+          random = random >> 4
+          uuid[digit] = chars[if digit == 19 then (r & 0x3) | 0x8 else r]
+    uuid.join('')
 
   # socky
   #----------------------------------------------------------------------
