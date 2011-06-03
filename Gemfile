@@ -13,8 +13,8 @@ gem 'jquery-rails'
 
 gem 'unicorn'
 
-gem "socky-server", ">= 0.4.0" # this is a stand-alone server, is not part of the app and should not be here
-gem "socky-client-rails", ">= 0.4.3" # this is the client used to connect the app to the server
+gem "socky-server", "~> 0.4.1" # this is a stand-alone server, is not part of the app and should not be here
+gem "socky-client-rails", "~> 0.4.5" # this is the client used to connect the app to the server
 
 # gem "postgres-pr"
 gem "pg"
@@ -44,7 +44,7 @@ group :test, :development do
   # guard stuff
   gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
   gem 'guard-rspec'
-  gem 'guard-livereload'
+  # gem "guard-livereload", "~> 0.1.11" #has conflict, removing for now
   gem 'growl'
   gem 'hirb'
 #  gem 'bullet' # for finding n+1

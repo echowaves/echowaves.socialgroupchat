@@ -21,7 +21,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: f064664de72a34d24568eadf7340f41876df4b20
+  revision: 64325a82427120cf7659c80e1b67ca1ffb01ebc4
   specs:
     actionmailer (3.1.0.rc1)
       actionpack (= 3.1.0.rc1)
@@ -110,7 +110,7 @@ GEM
       addressable (>= 2.0.0)
       escape_utils
       eventmachine (>= 0.12.9)
-    em-websocket (0.2.1)
+    em-websocket (0.3.0)
       addressable (>= 2.1.1)
       eventmachine (>= 0.12.9)
     erubis (2.7.0)
@@ -123,10 +123,6 @@ GEM
     growl (1.0.3)
     guard (0.3.4)
       thor (~> 0.14.6)
-    guard-livereload (0.1.11)
-      em-websocket (~> 0.2.0)
-      guard (>= 0.2.2)
-      json (~> 1.5.1)
     guard-rspec (0.3.1)
       guard (>= 0.2.2)
     hike (1.0.0)
@@ -194,9 +190,9 @@ GEM
       json
     socky-client-rails (0.4.5)
       socky-client (~> 0.4.2)
-    socky-server (0.4.0)
+    socky-server (0.4.1)
       em-http-request
-      em-websocket (>= 0.1.4)
+      em-websocket (~> 0.3.0)
       json
     sprockets (2.0.0.beta.9)
       hike (~> 1.0)
@@ -230,7 +226,6 @@ DEPENDENCIES
   dynamic_form
   gravatarify (~> 2.2.2)
   growl
-  guard-livereload
   guard-rspec
   hirb
   jquery-rails
@@ -246,7 +241,7 @@ DEPENDENCIES
   ruby-graphviz
   sass
   simplecov
-  socky-client-rails (>= 0.4.3)
-  socky-server (>= 0.4.0)
+  socky-client-rails (~> 0.4.5)
+  socky-server (~> 0.4.1)
   uglifier
   unicorn
