@@ -28,6 +28,11 @@ class Message < ActiveRecord::Base
   #----------------------------------------------------------------------
   belongs_to :owner, class_name: "User"
   belongs_to :convo, :counter_cache => true
+ 
+  # scopes
+  #----------------------------------------------------------------------
+ 
+  default_scope :order => "created_at ASC"
   #----------------------------------------------------------------------
  
 end
