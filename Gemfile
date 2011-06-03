@@ -2,12 +2,14 @@
 
 source 'http://rubygems.org'
 
-gem "rails", "3.1.0.rc1"
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem "sass"
-gem "coffee-script"
-gem "jquery-rails"
+# gem "rails", "3.1.0.beta1"
+gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-1-stable'
+# Asset template engines  
+gem 'sass'  
+gem 'coffee-script'  
+gem 'uglifier'  
+  
+gem 'jquery-rails'
 
 gem 'unicorn'
 
