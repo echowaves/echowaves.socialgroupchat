@@ -3,7 +3,10 @@
 	<head>
 		<title>echowaves</title>
 		<meta http-equiv="Content-Type" content="text/xhtml; charset=utf-8" />
-    <%= stylesheet_link_tag "reset", "echowaves", :cache => "all_styles" %>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= socky :client_id => (user_signed_in? ? current_user.id : nil), :channels => "convo_#{@convo.id}" %>
+    <%= render :partial => 'shared/global_js_vars' %>
     <%= csrf_meta_tag %>
 	</head>
 	<body>
@@ -51,71 +54,5 @@
 		</div>
 
 	</body>
-
-
-
-
-
-
-
-
-
-    <%= javascript_include_tag "jquery.js" %>
-    <%= javascript_include_tag "jquery.metadata.js" %>
-    <%= javascript_include_tag "jquery.sizes.js" %>
-    <%= javascript_include_tag "jlayout.border.js" %>
-    <%= javascript_include_tag "jlayout.grid.js" %>
-    <%= javascript_include_tag "jlayout.flexygrid.js" %>
-    <%= javascript_include_tag "jquery.jlayout.js" %>
-    <%= javascript_include_tag "modernizr-1.6.min.js" %>
-    <%= javascript_include_tag "jquery.qtip-1.0.0-rc3.min.js" %>
-
-    <%= javascript_include_tag :socky %>
-    <%= socky :client_id => (user_signed_in? ? current_user.id : nil), :channels => "convo_#{@convo.id}" %>
-    <%= javascript_include_tag "echowaves.js" %>
-    <%= javascript_include_tag "convo.js" %>
-    <%= javascript_include_tag "updates.js" %>
-    <%= javascript_include_tag "visits.js" %>
-    <%= javascript_include_tag "rails.js" %>
-
-    <script type="text/javascript">
-
-      //----------------------------------------------------------------------
-      // global settings
-      //----------------------------------------------------------------------
-
-      var g = {
-        convoId      : "<%= @convo.id %>"
-       ,userGravatar : "<%= user_signed_in? ? gravatar_url(current_user.email) : "/images/icons/default-avatar-60.png" %>"
-      }
-
-      //----------------------------------------------------------------------
-      // start javascript when window is ready
-      //----------------------------------------------------------------------
-
-      $(function(){
-
-        // socky
-        //----------------------------------------------------------------------
-
-        //...real time notifications here...
-
-        // layout
-        //----------------------------------------------------------------------
-
-        $('.box').layout();
-        $('.sidebar').layout();
-        $('.convo').layout({resize: false});
-        var container = $('.layout');
-        function relayout() {
-          container.layout({resize: false});
-        };
-        relayout();
-        $(window).resize(relayout);
-        scrollBottom();
-
-      });
-    </script>
-
 
 </html>

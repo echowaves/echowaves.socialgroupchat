@@ -3,8 +3,11 @@
 	<head>
 		<title>echowaves</title>
 		<meta http-equiv="Content-Type" content="text/xhtml; charset=utf-8" />
-    <%= stylesheet_link_tag "reset", "echowaves", :cache => "all_styles" %>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= socky :client_id => (user_signed_in? ? current_user.id : nil), :channels => "convo_#{@convo.id}" %>
     <%= csrf_meta_tag %>
+    <%= render :partial => 'shared/global_js_vars' %>
 	</head>
 	<body>
 
@@ -15,17 +18,17 @@
 			<div class="center convo <%= @convo.confidential? ? 'confidential' : 'social' %> {layout: {type: 'border', hgap: 0, vgap: 0, resize: false}}">
 			  <div class="north warn" id="convo_header">
 			    <%= @convo.title %>
-			    
+
 			    <% if user_signed_in? %>
             <%= subscribe_or_unsubscribe_link(:convo => @convo, :user => current_user) %>
           <% end %>
-          
+
           <%= link_to "#{@convo.subscriptions.size} subscribers", subscriptions_path(:convo_id => @convo.id) %>
-			    
+
 			    <%= link_to 'invite', new_invitation_path(:convo_id => @convo.id) %>
-			    
+
           <%= render :partial => "shared/convo_menu" %>
-          <div class="clear"></div>          
+          <div class="clear"></div>
 			  </div>
 			  <div class="center" id="convo_content">
           <p class="notice"><%= notice %></p>
@@ -57,79 +60,5 @@
 		</div>
 
 	</body>
-
-
-
-
-    <%= javascript_include_tag "jquery.js" %>
-    <%= javascript_include_tag "jquery.metadata.js" %>
-    <%= javascript_include_tag "jquery.sizes.js" %>
-    <%= javascript_include_tag "jlayout.border.js" %>
-    <%= javascript_include_tag "jlayout.grid.js" %>
-    <%= javascript_include_tag "jlayout.flexygrid.js" %>
-    <%= javascript_include_tag "jquery.jlayout.js" %>
-    <%= javascript_include_tag "modernizr-1.6.min.js" %>
-    <%= javascript_include_tag "jquery.qtip-1.0.0-rc3.min.js" %>
-
-    <%= javascript_include_tag :socky %>
-    <%= socky :client_id => (user_signed_in? ? current_user.id : nil), :channels => "convo_#{@convo.id}" %>
-    <%= javascript_include_tag "echowaves.js" %>
-    <%= javascript_include_tag "convo.js" %>
-    <%= javascript_include_tag "updates.js" %>
-    <%= javascript_include_tag "visits.js" %>
-    <%= javascript_include_tag "rails.js" %>
-
-    <script type="text/javascript">
-
-      //----------------------------------------------------------------------
-      // global settings
-      //----------------------------------------------------------------------
-
-      var g = {
-        convoId      : "<%= @convo.id %>"
-       ,userGravatar : "<%= user_signed_in? ? gravatar_url(current_user.email) : "/images/icons/default-avatar-60.png" %>"
-      }
-
-      //----------------------------------------------------------------------
-      // start javascript when window is ready
-      //----------------------------------------------------------------------
-
-      $(function(){
-
-        // socky
-        //----------------------------------------------------------------------
-
-        Socky.prototype.respond_to_message = function(m) {
-          msg = JSON.parse(m)
-          if($("#"+msg.uuid).length == 0){
-            new messageView($('#messages'),msg,$('#message_template'));
-            $("#convo_content").attr({ scrollTop: $("#convo_content").attr("scrollHeight") - $('#convo_content').height() }, 3000);
-          };
-        };
-
-        // Socky.prototype.respond_to_connect = function() {};
-        // Socky.prototype.respond_to_authentication_success = function() {};
-        // Socky.prototype.respond_to_authentication_failure = function() {};
-        // Socky.prototype.respond_to_disconnect = function() {
-        //   setTimeout(function(instance) { instance.connect(); }, 1000, this);
-        // };
-
-
-        // layout
-        //----------------------------------------------------------------------
-
-        $('.box').layout();
-        $('.sidebar').layout();
-        $('.convo').layout({resize: false});
-        var container = $('.layout');
-        function relayout() {
-          container.layout({resize: false});
-        };
-        relayout();
-        $(window).resize(relayout);
-        scrollBottom();
-
-      });
-    </script>
 
 </html>

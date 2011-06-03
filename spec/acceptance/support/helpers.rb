@@ -18,7 +18,7 @@ module HelperMethods
     visit new_user_session_path
     fill_in "user_username", :with => username
     fill_in "user_password", :with => password
-    click_button "user_submit"
+    click_button "Sign in"
   end
   
   def login_as_user(user)

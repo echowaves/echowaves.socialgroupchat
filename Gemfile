@@ -2,7 +2,14 @@
 
 source 'http://rubygems.org'
 
-gem "rails", "3.0.7"
+# gem "rails", "3.1.0.beta1"
+gem 'rails', :git => 'git://github.com/rails/rails.git'
+# Asset template engines  
+gem 'sass'  
+gem 'coffee-script'  
+gem 'uglifier'  
+  
+gem 'jquery-rails'
 
 gem 'unicorn'
 
@@ -12,7 +19,8 @@ gem "socky-client-rails", ">= 0.4.3" # this is the client used to connect the ap
 # gem "postgres-pr"
 gem "pg"
 
-gem "devise", "~>1.3.4"
+# gem "devise", "~>1.3.4"
+gem "devise", :git => "git://github.com/plataformatec/devise.git"
 gem "kaminari" #replacement for willpaginate
 
 gem 'gravatarify', "~> 2.2.2"
@@ -20,11 +28,11 @@ gem 'gravatarify', "~> 2.2.2"
 gem 'dynamic_form'
 
 group :test, :development do
-  gem 'capybara', '>=1.0.0.beta1'
+  gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
   # gem 'steak'
   gem "database_cleaner"
-  gem 'rspec', ">= 2.6.0.rc6"
-  gem 'rspec-rails', ">= 2.6.0.rc6"
+  gem 'rspec', :git => 'https://github.com/rspec/rspec.git'
+  gem 'rspec-rails', :git => "https://github.com/rspec/rspec-rails.git"
   gem "annotate-models", :require => false
   # gem "remarkable_rails" # does not work yet
   gem "remarkable_activerecord", ">= 4.0.0.alpha4"
@@ -39,5 +47,5 @@ group :test, :development do
   gem 'guard-livereload'
   gem 'growl'
   gem 'hirb'
-  gem 'bullet' # for finding n+1
+#  gem 'bullet' # for finding n+1
 end
