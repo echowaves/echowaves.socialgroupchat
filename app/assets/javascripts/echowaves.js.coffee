@@ -32,6 +32,16 @@ $ ->
           uuid[digit] = chars[if digit == 19 then (r & 0x3) | 0x8 else r]
     uuid.join('')
 
+  # draw a message TODO:remove the duplication with echowaves.js.coffee
+  #----------------------------------------------------------------------
+  messageView = (container, message, template) ->
+    msg = template.clone().attr 'id', message.uuid
+    draw = ->
+      msg.find('.body').text message.text
+      msg.find('.avatar_img').attr "src", message.gravatar_url
+      container.append(msg)
+    draw()
+
   # socky
   #----------------------------------------------------------------------
 

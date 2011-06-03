@@ -7,7 +7,7 @@ $ ->
       3000
 
 
-  # draw a message
+  # draw a message TODO:remove the duplication with echowaves.js.coffee
   #----------------------------------------------------------------------
   messageView = (container, message, template) ->
     msg = template.clone().attr 'id', message.uuid
