@@ -21,8 +21,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: de6394208c0660ab9e5ec2d38db8ba80ebe78774
-  branch: 3-1-stable
+  revision: f064664de72a34d24568eadf7340f41876df4b20
   specs:
     actionmailer (3.1.0.rc1)
       actionpack (= 3.1.0.rc1)
@@ -53,6 +52,7 @@ GIT
       activemodel (= 3.1.0.rc1)
       activesupport (= 3.1.0.rc1)
     activesupport (3.1.0.rc1)
+      i18n (~> 0.6)
       multi_json (~> 1.0)
     rails (3.1.0.rc1)
       actionmailer (= 3.1.0.rc1)
