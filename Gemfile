@@ -3,7 +3,7 @@
 source 'http://rubygems.org'
 
 # gem "rails", "3.1.0.beta1"
-gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-1-stable'
+gem 'rails', :git => 'git://github.com/rails/rails.git'
 # Asset template engines  
 gem 'sass'  
 gem 'coffee-script'  
