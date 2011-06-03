@@ -13,7 +13,7 @@ feature "Convos", %q{
       click_link "new convo"
       fill_in "convo_title", :with => @convo_title
       choose('convo_privacy_level_1')
-      click_button("convo_submit")
+      click_button("Create Convo")
       page.should have_content "Convo was successfully created."        
       click_link "nav_convos_link"
       page.should have_content @convo_title
@@ -30,7 +30,7 @@ feature "Convos", %q{
       click_link "new convo"
       fill_in "convo_title", :with => @convo_title
       choose('convo_privacy_level_0')
-      click_button("convo_submit")
+      click_button("Create Convo")
       page.should have_content "Convo was successfully created."        
       click_link "nav_convos_link"
       page.should have_content @convo_title # all the convos, even the private ones are visible, just cant drill into them
