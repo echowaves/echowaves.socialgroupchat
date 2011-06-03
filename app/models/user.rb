@@ -36,7 +36,11 @@ class User  < ActiveRecord::Base
   #----------------------------------------------------------------------
   validates_presence_of   :username
   validates_uniqueness_of :username
-
+  validates :email,   
+            :presence => true,   
+            :uniqueness => true,   
+            :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
+            
   # associations
   #----------------------------------------------------------------------
   has_many :subscriptions

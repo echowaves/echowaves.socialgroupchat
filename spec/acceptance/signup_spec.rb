@@ -12,7 +12,7 @@ feature "Signup", %q{
     fill_in "user_email", :with => "test@example.com"
     fill_in "user_password", :with => "test1234"
     fill_in "user_password_confirmation", :with => "test1234"
-    click_button "user_submit"
+    click_button "Sign up"
     page.should have_content "You have signed up successfully. However, we could not sign you in because your account is unconfirmed."
   end
 
@@ -23,7 +23,7 @@ feature "Signup", %q{
     fill_in "user_email", :with => "test@example.com"
     fill_in "user_password", :with => "test1"
     fill_in "user_password_confirmation", :with => "test2"
-    click_button "user_submit"
+    click_button "Sign up"
     page.should have_content "4 errors prohibited this user from being saved"
     page.should have_content "Email has already been taken"
     page.should have_content "Password doesn't match confirmation"
@@ -37,7 +37,7 @@ feature "Signup", %q{
     fill_in "user_email", :with => "test@example"
     fill_in "user_password", :with => "test1234"
     fill_in "user_password_confirmation", :with => "test1234"
-    click_button "user_submit"
+    click_button "Sign up"
     page.should have_content "Email is invalid"
   end
 end
