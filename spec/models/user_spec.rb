@@ -46,21 +46,21 @@ describe User do
 
     # associations
     #----------------------------------------------------------------------
-    it { should have_many :subscriptions }
-    it { should have_many :subscribed_convos, :through => :subscriptions, :source => :convo }
-
-    it { should have_many :invitations }
-    it { should have_many :convo_invites, :through => :invitations, :source => :convo, limit: 100, :order => "invitations.created_at DESC" }
-
-    it { should have_many :followerships, :foreign_key => "leader_id" }
-    it { should have_many :followers, :through => :followerships }
-    it { should have_many :leaderships, :foreign_key => "follower_id", :source => :followership, :class_name => "Followership" }
-    it { should have_many  :leaders,   :through => :leaderships }
-    
-    it { should have_many :visits, limit: 100, :order => "visits.updated_at DESC" }
-    it { should have_many :visited_convos, :through => :visits, :source => :convo, limit: 100, :order => "visits.updated_at DESC" }
-    it { should have_many :convos,   :foreign_key => "owner_id" }
-    it { should have_many :messages, :foreign_key => "owner_id" }
+    # it { should have_many :subscriptions }
+    # it { should have_many :subscribed_convos, :through => :subscriptions, :source => :convo }
+    # 
+    # it { should have_many :invitations }
+    # it { should have_many :convo_invites, :through => :invitations, :source => :convo, limit: 100, :order => "invitations.created_at DESC" }
+    # 
+    # it { should have_many :followerships, :foreign_key => "leader_id" }
+    # it { should have_many :followers, :through => :followerships }
+    # it { should have_many :leaderships, :foreign_key => "follower_id", :source => :followership, :class_name => "Followership" }
+    # it { should have_many  :leaders,   :through => :leaderships }
+    # 
+    # it { should have_many :visits, limit: 100, :order => "visits.updated_at DESC" }
+    # it { should have_many :visited_convos, :through => :visits, :source => :convo, limit: 100, :order => "visits.updated_at DESC" }
+    # it { should have_many :convos,   :foreign_key => "owner_id" }
+    # it { should have_many :messages, :foreign_key => "owner_id" }
 
   end
 

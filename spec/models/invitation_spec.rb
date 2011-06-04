@@ -31,9 +31,9 @@ describe Invitation do
 
     # associations
     #----------------------------------------------------------------------
-    it { should belong_to :convo }
-    it { should belong_to :user }
-    it { should belong_to :requestor, class_name: "User" }
+    # it { should belong_to :convo }
+    # it { should belong_to :user }
+    # it { should belong_to :requestor, class_name: "User" }
     #----------------------------------------------------------------------
 
   end
