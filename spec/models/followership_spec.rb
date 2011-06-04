@@ -9,27 +9,27 @@ describe Followership do
 
     # columns
     #----------------------------------------------------------------------
-    it { should have_column :leader_id,   :type => :integer, :null => false } 
-    it { should have_column :follower_id, :type => :integer, :null => false } 
-    it { should have_column :created_at, :type => :datetime } 
-    it { should have_column :updated_at, :type => :datetime }
+    it { should have_db_column(:leader_id).of_type(:integer).with_options(:null => false) } 
+    it { should have_db_column(:follower_id).of_type(:integer).with_options(:null => false) } 
+    it { should have_db_column(:created_at).of_type(:datetime) } 
+    it { should have_db_column(:updated_at).of_type(:datetime) }
 
     # indexes
     #----------------------------------------------------------------------
-    it { should have_index :leader_id }
-    it { should have_index :follower_id }
-    it { should have_index :created_at }
+    it { should have_db_index :leader_id }
+    it { should have_db_index :follower_id }
+    it { should have_db_index :created_at }
 
     # validations
     #----------------------------------------------------------------------
     it { should validate_presence_of :leader_id }
     it { should validate_presence_of :follower_id }
-    it { should validate_uniqueness_of :leader_id, :scope => :follower_id }
+    it { should validate_uniqueness_of(:leader_id).scoped_to(:follower_id) }
  
     # associations
     #----------------------------------------------------------------------
-    # it { should belong_to :leader,     :class_name => "User" }
-    # it { should belong_to :follower,   :class_name => "User" } 
+    it { should belong_to :leader }
+    it { should belong_to :follower } 
   end
 
   describe "followers logic" do
