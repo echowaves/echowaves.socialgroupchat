@@ -29,8 +29,8 @@ describe Visit do
     
     # associations
     #----------------------------------------------------------------------
-    it { should belong_to :user }
-    it { should belong_to :convo }    
+    # it { should belong_to :user }
+    # it { should belong_to :convo }    
   end
 
 
