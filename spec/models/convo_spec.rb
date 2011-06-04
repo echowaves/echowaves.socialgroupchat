@@ -37,10 +37,10 @@ describe Convo do
     it { should belong_to :owner}
     it { should have_many :messages }
     it { should have_many :subscriptions }
-    it { should have_many :subscribers }
+    it { should have_many(:subscribers).through(:subscriptions) }
     it { should have_many :invitations }
     it { should have_many :visits }
-    it { should have_many :visiting_users }
+    it { should have_many(:visiting_users).through(:visits) }
   end
 
   

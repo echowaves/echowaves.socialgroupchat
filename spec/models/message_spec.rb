@@ -9,31 +9,31 @@ describe Message do
 
     # columns
     #----------------------------------------------------------------------
-    it { should have_column :uuid, :type => :string, :limit => 255, :null => false }
-    it { should have_column :body, :type => :string, :limit => 256000, :null => false }
-    it { should have_column :owner_id, :type  => :integer, :null => false }
-    it { should have_column :convo_id, :type  => :integer, :null => false }
-    it { should have_column :created_at, :type => :datetime }
-    it { should have_column :updated_at, :type => :datetime }
+    it { should have_db_column(:uuid).of_type(:string).with_options(:limit => 255, :null => false) }
+    it { should have_db_column(:body).of_type(:string).with_options(:limit => 256000, :null => false) }
+    it { should have_db_column(:owner_id).of_type(:integer).with_options(:null => false) }
+    it { should have_db_column(:convo_id).of_type(:integer).with_options(:null => false) }
+    it { should have_db_column(:created_at).of_type(:datetime) }
+    it { should have_db_column(:updated_at).of_type(:datetime) }
 
     # indexes
     #----------------------------------------------------------------------
-    it { should have_index :owner_id }
-    it { should have_index :convo_id }
-    it { should have_index :created_at }
+    it { should have_db_index :owner_id }
+    it { should have_db_index :convo_id }
+    it { should have_db_index :created_at }
 
     # validations
     it { should validate_presence_of :uuid }
     it { should validate_presence_of :body }
     it { should validate_presence_of :owner }
     it { should validate_presence_of :convo }
-    it { should validate_length_of :uuid, :maximum => 255 }
-    it { should validate_length_of :body, :maximum => 256000 }
+    it { should ensure_length_of(:uuid).is_at_most(255) }
+    it { should ensure_length_of(:body).is_at_most(256000) }
     
     # associations
     #----------------------------------------------------------------------
-    # it { should belong_to :owner, class_name: "User" }
-    # it { should belong_to :convo, :counter_cache => true }
+    it { should belong_to :owner }
+    it { should belong_to :convo }
     #----------------------------------------------------------------------
 
   end
