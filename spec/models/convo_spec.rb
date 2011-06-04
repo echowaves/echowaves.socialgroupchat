@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+ 
 describe Convo do
   describe "remarkable" do
     before(:each) do
@@ -8,20 +8,20 @@ describe Convo do
 
     # columns
     #----------------------------------------------------------------------
-    it { should have_column :title, type: :string, limit: 140, null: false }
-    it { should have_column :privacy_level, type: :integer, default: 0 }
-    it { should have_column :read_only, type: :boolean, default: false, null: false }
-    it { should have_column :owner_id, type: :integer, null: false }
-    it { should have_column :messages_count, type: :integer, :default => 0 }
-    it { should have_column :subscriptions_count, type: :integer, :default => 0 }
-    it { should have_column :created_at, type: :datetime }
-    it { should have_column :updated_at, type: :datetime }
+    it { should have_db_column(:title).of_type(:string).with_options(:limit => 140, :null => false) }
+    it { should have_db_column(:privacy_level).of_type(:integer).with_options(:default => 0) }
+    it { should have_db_column(:read_only).of_type(:boolean).with_options(:default => false, :null => false) }
+    it { should have_db_column(:owner_id).of_type(:integer).with_options(:null => false) }
+    it { should have_db_column(:messages_count).of_type(:integer).with_options(:default => 0) }
+    it { should have_db_column(:subscriptions_count).of_type(:integer).with_options(:default => 0) }
+    it { should have_db_column(:created_at).of_type(:datetime) } 
+    it { should have_db_column(:updated_at).of_type(:datetime) }
 
     # indexes
     #----------------------------------------------------------------------
-    it { should have_index :privacy_level }
-    it { should have_index :created_at }
-    it { should have_index :owner_id }
+    it { should have_db_index :privacy_level }
+    it { should have_db_index :created_at }
+    it { should have_db_index :owner_id }
 
      
     # validations
@@ -29,18 +29,18 @@ describe Convo do
     it { should validate_presence_of :title }
     it { should validate_presence_of :owner }
     it { should validate_presence_of :privacy_level }
-    it { should validate_length_of :title, :maximum => 140 }
+    it { should ensure_length_of(:title).is_at_most(140) }
 
 
     # associations
     #----------------------------------------------------------------------
-    # it { should belong_to :owner, class_name: "User"}
-    # it { should have_many :messages }
-    # it { should have_many :subscriptions }
-    # it { should have_many :subscribers, through: :subscriptions, :source => :user }
-    # it { should have_many :invitations }
-    # it { should have_many :visits }
-    # it { should have_many :visiting_users, through: :visits, source: :user }
+    it { should belong_to :owner}
+    it { should have_many :messages }
+    it { should have_many :subscriptions }
+    it { should have_many :subscribers }
+    it { should have_many :invitations }
+    it { should have_many :visits }
+    it { should have_many :visiting_users }
   end
 
   
