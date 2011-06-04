@@ -9,32 +9,32 @@ describe User do
 
     # columns
     #----------------------------------------------------------------------
-    it { should have_column :username, :type => :string, :limit => 128 }
-    it { should have_column :email,    :type => :string, :limit => 255, :default => '', :null => false }
-    it { should have_column :encrypted_password,    :type => :string, :limit => 128, :default => '', :null => false }
-    it { should have_column :confirmation_token, :type => :string, :limit => 255 }
-    it { should have_column :confirmed_at, :type => :datetime }
-    it { should have_column :confirmation_sent_at, :type => :datetime }
-    it { should have_column :reset_password_token,    :type => :string, :limit => 255 }
-    it { should have_column :remember_token,    :type => :string, :limit => 255 }
-    it { should have_column :remember_created_at, :type => :datetime }
-    it { should have_column :sign_in_count, :type => :integer, :default => 0 }
-    it { should have_column :current_sign_in_at, :type => :datetime }
-    it { should have_column :last_sign_in_at, :type => :datetime }
-    it { should have_column :current_sign_in_ip, :type => :string, :limit => 255 }
-    it { should have_column :last_sign_in_ip, :type => :string, :limit => 255 }
-    it { should have_column :password_salt, :type => :string, :limit => 255 }
-    it { should have_column :subscriptions_count, type: :integer, :default => 0 }    
-    it { should have_column :created_at, :type => :datetime }
-    it { should have_column :updated_at, :type => :datetime }
+    it { should have_db_column(:username).of_type(:string).with_options(:limit => 128) }
+    it { should have_db_column(:email).of_type(:string).with_options(:limit => 255, :default => '', :null => false) }
+    it { should have_db_column(:encrypted_password).of_type(:string).with_options(:limit => 128, :default => '', :null => false) }
+    it { should have_db_column(:confirmation_token).of_type(:string).with_options(:limit => 255) }
+    it { should have_db_column(:confirmed_at).of_type(:datetime) }
+    it { should have_db_column(:confirmation_sent_at).of_type(:datetime) }
+    it { should have_db_column(:reset_password_token).of_type(:string).with_options(:limit => 255) }
+    it { should have_db_column(:remember_token).of_type(:string).with_options(:limit => 255) }
+    it { should have_db_column(:remember_created_at).of_type(:datetime) }
+    it { should have_db_column(:sign_in_count).of_type(:integer).with_options(:default => 0) }
+    it { should have_db_column(:current_sign_in_at).of_type(:datetime) }
+    it { should have_db_column(:last_sign_in_at).of_type(:datetime) }
+    it { should have_db_column(:current_sign_in_ip).of_type(:string).with_options(:limit => 255) }
+    it { should have_db_column(:last_sign_in_ip).of_type(:string).with_options(:limit => 255) }
+    it { should have_db_column(:password_salt).of_type(:string).with_options(:limit => 255) }
+    it { should have_db_column(:subscriptions_count).of_type(:integer).with_options(:default => 0) }    
+    it { should have_db_column(:created_at).of_type(:datetime) }
+    it { should have_db_column(:updated_at).of_type(:datetime) }
 
     # indexes
     #----------------------------------------------------------------------
-    it { should have_index :username }
-    it { should have_index :email }
-    it { should have_index :confirmation_token }
-    it { should have_index :reset_password_token }
-    it { should have_index :created_at }
+    it { should have_db_index :username }
+    it { should have_db_index :email }
+    it { should have_db_index :confirmation_token }
+    it { should have_db_index :reset_password_token }
+    it { should have_db_index :created_at }
      
     # validations
     #----------------------------------------------------------------------
@@ -46,21 +46,21 @@ describe User do
 
     # associations
     #----------------------------------------------------------------------
-    # it { should have_many :subscriptions }
-    # it { should have_many :subscribed_convos, :through => :subscriptions, :source => :convo }
-    # 
-    # it { should have_many :invitations }
-    # it { should have_many :convo_invites, :through => :invitations, :source => :convo, limit: 100, :order => "invitations.created_at DESC" }
-    # 
-    # it { should have_many :followerships, :foreign_key => "leader_id" }
-    # it { should have_many :followers, :through => :followerships }
-    # it { should have_many :leaderships, :foreign_key => "follower_id", :source => :followership, :class_name => "Followership" }
-    # it { should have_many  :leaders,   :through => :leaderships }
-    # 
-    # it { should have_many :visits, limit: 100, :order => "visits.updated_at DESC" }
-    # it { should have_many :visited_convos, :through => :visits, :source => :convo, limit: 100, :order => "visits.updated_at DESC" }
-    # it { should have_many :convos,   :foreign_key => "owner_id" }
-    # it { should have_many :messages, :foreign_key => "owner_id" }
+    it { should have_many :subscriptions }
+    it { should have_many(:subscribed_convos).through(:subscriptions) }
+    
+    it { should have_many :invitations }
+    it { should have_many(:convo_invites).through(:invitations) }
+    
+    it { should have_many :followerships }
+    it { should have_many(:followers).through(:followerships) }
+    it { should have_many :leaderships }
+    it { should have_many(:leaders).through(:leaderships) }
+    
+    it { should have_many :visits }
+    it { should have_many(:visited_convos).through(:visits) }
+    it { should have_many :convos }
+    it { should have_many :messages }
 
   end
 
