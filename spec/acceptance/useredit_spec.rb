@@ -18,7 +18,7 @@ feature "Useredit", %q{
     fill_in "user_password", :with              => "test"
     fill_in "user_password_confirmation", :with => "test2"
     fill_in "user_current_password", :with      => "password"
-    click_button "Update"
+    click_button "Update"    
     page.should have_content "4 errors prohibited this user from being saved"
     page.should have_content "Email has already been taken"
     page.should have_content "Password doesn't match confirmation"
