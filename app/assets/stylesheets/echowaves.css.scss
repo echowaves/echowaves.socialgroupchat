@@ -259,10 +259,17 @@ a.button-small-red {
   padding:0 4px;
 }
 /* Note: Gecko uses non-compliant syntax! */
-.borderradius a.button-small-red {
-  border-radius: 4px;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
+.borderradius {
+  a.button-small-red {
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+  }
+  a.button-small-blue {
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+  }
 }
 
 a.button-small-blue {
@@ -271,12 +278,6 @@ a.button-small-blue {
   color:#eee;
   text-decoration:none;
   padding:0 4px;
-}
-/* Note: Gecko uses non-compliant syntax! */
-.borderradius a.button-small-blue {
-  border-radius: 4px;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
 }
 
 .confidential #convo_header{
