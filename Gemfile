@@ -33,9 +33,8 @@ group :test, :development do
   gem "database_cleaner"
   gem 'rspec', :git => 'https://github.com/rspec/rspec.git'
   gem 'rspec-rails', :git => "https://github.com/rspec/rspec-rails.git"
+  gem 'shoulda-matchers', :git => "git://github.com/thoughtbot/shoulda-matchers.git"
   gem "annotate-models", :require => false
-  # gem "remarkable_rails" # does not work yet
-  gem "remarkable_activerecord", ">= 4.0.0.alpha4"
   gem "miniskirt"
   gem 'launchy'
   gem 'simplecov', :require => false

@@ -7,4 +7,4 @@ rvm_project_rvmrc_default=1
 #use 3 threads for compiling rubys
 rvm_make_flags="-j 3"
 
-rvm use 1.9.2-head@ew
+rvm use 1.9.2@ew
