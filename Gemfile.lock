@@ -43,6 +43,10 @@ GEM
       xpath (~> 0.1.4)
     childprocess (0.2.2)
       ffi (~> 1.0.6)
+    coffee-script (2.2.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.1.2)
     database_cleaner (0.6.7)
     devise (1.4.7)
       bcrypt-ruby (~> 3.0)
@@ -137,6 +141,7 @@ GEM
       rspec (~> 2.6.0)
     ruby-graphviz (1.0.0)
     rubyzip (0.9.4)
+    sass (3.1.7)
     selenium-webdriver (2.7.0)
       childprocess (>= 0.2.1)
       ffi (>= 1.0.7)
@@ -182,6 +187,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara (= 1.1.1)
+  coffee-script
   database_cleaner
   devise (= 1.4.7)
   dynamic_form
@@ -199,6 +205,7 @@ DEPENDENCIES
   rspec (= 2.6.0)
   rspec-rails (= 2.6.1)
   ruby-graphviz
+  sass
   shoulda-matchers (= 1.0.0.beta3)
   simplecov
   socky-client-rails (~> 0.4.5)
