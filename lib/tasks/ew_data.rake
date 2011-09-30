@@ -8,7 +8,7 @@ namespace :ew do
       Rake::Task['db:seed'].invoke
       Rake::Task['db:test:clone'].invoke
       
-      sh %{bundle exec annotate}
+      # sh %{bundle exec annotate}
     end  
   end
 end
