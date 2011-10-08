@@ -21,16 +21,16 @@ feature "Users List", %q{
   end
   
   
-  scenario "logged in user can see recently visited convos", :js=>true do
-    login_as_user @user_foo
-    visit convo_path @convo_foo
-    visit convo_path @convo_bar
-    
-    within 'div#visited_convos' do
-      page.should have_content 'bars_convo'
-      page.should have_content 'foos_convo'
-    end
-  end
+  # scenario "logged in user can see recently visited convos", :js=>true do
+  #   login_as_user @user_foo
+  #   visit convo_path @convo_foo
+  #   visit convo_path @convo_bar
+  #   
+  #   within 'div#visited_convos' do
+  #     page.should have_content 'bars_convo'
+  #     page.should have_content 'foos_convo'
+  #   end
+  # end
 
 
   scenario "logged in user can see recently updated convos", :js=>true do
