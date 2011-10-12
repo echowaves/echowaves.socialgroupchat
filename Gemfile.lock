@@ -68,7 +68,8 @@ GEM
       multi_json (~> 1.0)
     ffi (1.0.9)
     gravatarify (2.2.2)
-    growl (1.0.3)
+    growl_notify (0.0.3)
+      rb-appscript
     guard (0.8.1)
       thor (~> 0.14.6)
     guard-rspec (0.4.5)
@@ -124,6 +125,7 @@ GEM
       thor (~> 0.14.6)
     raindrops (0.7.0)
     rake (0.9.2)
+    rb-appscript (0.6.1)
     rb-fsevent (0.4.3.1)
     rdoc (3.9.4)
     rspec (2.6.0)
@@ -192,7 +194,7 @@ DEPENDENCIES
   devise (= 1.4.7)
   dynamic_form
   gravatarify (~> 2.2.2)
-  growl
+  growl_notify
   guard-rspec
   hirb
   jquery-rails

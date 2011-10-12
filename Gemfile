@@ -43,7 +43,7 @@ group :test, :development do
   gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
   gem 'guard-rspec'
   # gem "guard-livereload", "~> 0.1.11" #has conflict, removing for now
-  gem 'growl'
+  gem 'growl_notify'
   gem 'hirb'
 #  gem 'bullet' # for finding n+1
 end
