@@ -1,0 +1,55 @@
++++ b/spec/acceptance/current_user_navigation_spec.rb      
+-  scenario "logged in user can see recently visited convos", :js=>true do
+-    login_as_user @user_foo
+-    visit convo_path @convo_foo
+-    visit convo_path @convo_bar
+-    
+-    within 'div#visited_convos' do
+-      page.should have_content 'bars_convo'
+-      page.should have_content 'foos_convo'
+-    end
+-  end
+ 
+
+
++++ b/spec/controllers/visits_controller_spec.rb
+-require 'spec_helper'
+-
+-describe VisitsController do
+-  let(:convo) { mock_model(Convo).as_null_object }  
+-
+-  before do
+-    @user = Factory(:user)
+-    request.env['warden'] = mock(Warden, :authenticate => @user, :authenticate! => @user, :authenticate? => @user)
+-    @user.stub(:visited_convos).and_return([convo])
+-  end
+-
+-  describe "GET index" do
+-    it "assigns @convos with only visited convos" do
+-      get :index
+-
+-      assigns(:convos).should eq([convo])
+-      response.should render_template(:index)
+-      response.should render_template("layouts/visits")
+-    end
+-  end
+-  
+-end
+
+
+
+--- a/app/controllers/visits_controller.rb
+ class VisitsController < ApplicationController
+-  before_filter :authenticate_user!
+-
+-  respond_to :html, :json, :xml
+-
+-  def index
+-    @convos = current_user.visited_convos
+-    respond_with(@convos) 
+-  end
+-
+-
+ end
+
+
