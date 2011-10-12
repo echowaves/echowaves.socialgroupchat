@@ -37,7 +37,6 @@
 -end
 
 
-
 --- a/app/controllers/visits_controller.rb
  class VisitsController < ApplicationController
 -  before_filter :authenticate_user!
@@ -51,5 +50,3 @@
 -
 -
  end
-
-
