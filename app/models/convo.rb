@@ -48,7 +48,7 @@ class Convo < ActiveRecord::Base
 
   default_scope includes(:owner)
   #----------------------------------------------------------------------
-       
+
   after_create :subscribe_owner
 
 
@@ -65,8 +65,8 @@ class Convo < ActiveRecord::Base
     # p "#{self.public?} || #{user} && ( #{user} == #{self.owner} || #{self.subscriptions.exists?(:user_id => user.id)} || #{self.invitations.exists?(:user_id => user.id)})"
     self.social? ||
     user && ( user == self.owner ||
-    self.subscriptions.exists?(:user_id => user.id) ||
-    self.invitations.exists?(:user_id => user.id))
+      self.subscriptions.exists?(:user_id => user.id) ||
+      self.invitations.exists?(:user_id => user.id))
 
   end
 
