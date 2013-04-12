@@ -2,7 +2,7 @@
 
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '3.2.13'
 # Asset template engines  
 gem 'sass'  
 gem 'coffee-script'  
@@ -12,7 +12,7 @@ gem 'jquery-rails'
 
 gem 'unicorn'
 
-gem "socky-server", "~> 0.4.1" # this is a stand-alone server, is not part of the app and should not be here
+gem "socky-server", "~> 0.5.0" # this is a stand-alone server, is not part of the app and should not be here
 gem "socky-client-rails", "~> 0.4.5" # this is the client used to connect the app to the server
 
 # gem "postgres-pr"
@@ -22,17 +22,17 @@ gem "pg"
 gem "devise", '1.4.7'
 gem "kaminari" #replacement for willpaginate
 
-gem 'gravatarify', "~> 2.2.2"
+gem 'gravatarify', "~> 3.1.0"
 # gem 'escape_utils' # this will fix an issue with Rack::Test 1.2.1 and ruby 1.9.2
 gem 'dynamic_form'
 
 group :test, :development do
-  gem 'capybara', '1.1.1'
+  gem 'capybara', '2.1.0'
   # gem 'steak'
   gem "database_cleaner"
-  gem 'rspec', '2.6.0'
-  gem 'rspec-rails', '2.6.1'
-  gem 'shoulda-matchers', '1.0.0.beta3'
+  gem 'rspec', '2.13.0'
+  gem 'rspec-rails', '2.13.0'
+  gem 'shoulda-matchers', '2.0.0'
   # gem "annotate-models", :require => false
   gem "miniskirt"
   gem 'launchy'
