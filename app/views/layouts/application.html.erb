@@ -10,28 +10,19 @@
 	</head>
 	<body>
 		<div class="layout {layout: {type: 'border', hgap: 3, vgap: 3}}">
-
 			<div class="north">
-        <%= render :partial => 'shared/header' %>
+		        <%= render :partial => 'shared/header' %>
 			</div>
-
-
 			<div class="center page {layout: {type: 'border', hgap: 0, vgap: 0, resize: false}}">
-
-			  <div class="center" id="convo_content">
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
-          <%= yield %>
-			  </div>
-
+			  	<div class="center" id="convo_content">
+		          	<p class="notice"><%= notice %></p>
+		          	<p class="alert"><%= alert %></p>
+		          	<%= yield %>
+			  	</div>
 			</div><!-- center -->
-
-
-
 			<div class="south">
-        <%= render :partial => 'shared/footer' %>
+		        <%= render :partial => 'shared/footer' %>
 			</div>
 		</div>
 	</body>
-
 </html>

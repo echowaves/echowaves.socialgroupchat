@@ -1,58 +1,56 @@
 <!DOCTYPE html>
 <html class="no-js">
-	<head>
-		<title>echowaves</title>
-		<meta http-equiv="Content-Type" content="text/xhtml; charset=utf-8" />
-    <%= stylesheet_link_tag "application" %>
-    <%= javascript_include_tag "application" %>
-    <%= socky :client_id => (user_signed_in? ? current_user.id : nil), :channels => "convo_#{@convo.id}" %>
-    <%= render :partial => 'shared/global_js_vars' %>
-    <%= csrf_meta_tag %>
-	</head>
-	<body>
+<head>
+	<title>echowaves</title>
+	<meta http-equiv="Content-Type" content="text/xhtml; charset=utf-8" />
+	<%= stylesheet_link_tag "application" %>
+	<%= javascript_include_tag "application" %>
+	<%= socky :client_id => (user_signed_in? ? current_user.id : nil), :channels => "convo_#{@convo.id}" %>
+	<%= render :partial => 'shared/global_js_vars' %>
+	<%= csrf_meta_tag %>
+</head>
+<body>
 
-		<div class="layout {layout: {type: 'border', hgap: 3, vgap: 3}}">
-
-			<div class="center convo <%= @convo.confidential? ? 'confidential' : 'social' %> {layout: {type: 'border', hgap: 0, vgap: 0, resize: false}}">
-			  <div class="north warn" id="convo_header">
-			    <%= @convo.title %>
-          <div id="convo_settings"><%= link_to "back", convo_path(@convo) %></div>
-          <div class="clear"></div>
-			  </div>
-			  <div class="center" id="convo_content">
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
-          <%= yield %>
-			  </div>
-			  <div class="south">
-			  </div>
-			</div><!-- center & convo -->
-
-      <div class="east sidebar {layout: {type: 'grid', hgap: 3, vgap: 6, columns: 1, rows: 1}}">
-
-				  <div class="box {layout: {type: 'border', hgap: 0, vgap: 0, resize: false}}" id="component-2">
-            <%= yield :secondary_panel %>
-
-          </div>
-
-				  <div class="box {layout: {type: 'border', hgap: 0, vgap: 0, resize: false}}" id="component-1">
-            <div class="north box_header">not a dashboard</div>
-            <div class="center box_content_round">
-              <%= render :partial => "shared/sidepanel" %>
-            </div>
-
-          </div>
-
-      </div><!-- east -->
-
-			<div class="north">
-        <%= render :partial => 'shared/header' %>
-			</div>
-			<div class="south">
-        <%= render :partial => 'shared/footer' %>
-			</div>
+	<div class="layout {layout: {type: 'border', hgap: 3, vgap: 3}}">
+		<div class="north">
+			<%= render :partial => 'shared/header' %>
 		</div>
 
-	</body>
+		<div class="center convo <%= @convo.confidential? ? 'confidential' : 'social' %> {layout: {type: 'border', hgap: 0, vgap: 0, resize: false}}">
+			<div class="north warn" id="convo_header">
+				<%= @convo.title %>
+				<div id="convo_settings"><%= link_to "back", convo_path(@convo) %></div>
+				<div class="clear"></div>
+			</div>
+			<div class="center" id="convo_content">
+				<p class="notice"><%= notice %></p>
+				<p class="alert"><%= alert %></p>
+				<%= yield %>
+			</div>
+			<div class="south">
+			</div>
+		</div><!-- center & convo -->
+
+		<div class="east sidebar {layout: {type: 'grid', hgap: 3, vgap: 6, columns: 1, rows: 1}}">
+			<div class="box {layout: {type: 'border', hgap: 0, vgap: 0, resize: false}}" id="component-2">
+				<%= yield :secondary_panel %>
+			</div>
+
+			<div class="box {layout: {type: 'border', hgap: 0, vgap: 0, resize: false}}" id="component-1">
+				<div class="north box_header">not a dashboard</div>
+				<div class="center box_content_round">
+					<%= render :partial => "shared/sidepanel" %>
+				</div>
+
+			</div>
+
+		</div><!-- east -->
+
+		<div class="south">
+			<%= render :partial => 'shared/footer' %>
+		</div>
+	</div>
+
+</body>
 
 </html>
