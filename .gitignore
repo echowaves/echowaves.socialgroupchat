@@ -11,4 +11,4 @@ coverage.data
 *.rbc
 vendor/cache
 .sass-cache
-Procfile.sample
+Procfile
