@@ -63,8 +63,6 @@ GEM
       multi_json (~> 1.0)
     formatador (0.2.4)
     gravatarify (3.1.0)
-    growl_notify (0.0.3)
-      rb-appscript
     guard (1.7.0)
       formatador (>= 0.2.4)
       listen (>= 0.6.0)
@@ -131,8 +129,6 @@ GEM
       thor (>= 0.14.6, < 2.0)
     raindrops (0.10.0)
     rake (10.0.4)
-    rb-appscript (0.6.1)
-    rb-fsevent (0.9.3)
     rdoc (3.12.2)
       json (~> 1.4)
     rspec (2.13.0)
@@ -214,7 +210,6 @@ DEPENDENCIES
   devise-encryptable
   dynamic_form
   gravatarify (~> 3.1.0)
-  growl_notify
   guard-rspec
   hirb
   jquery-rails
@@ -223,7 +218,6 @@ DEPENDENCIES
   miniskirt
   pg
   rails (= 3.2.13)
-  rb-fsevent
   rspec (= 2.13.0)
   rspec-rails (= 2.13.0)
   ruby-graphviz

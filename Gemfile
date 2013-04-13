@@ -3,11 +3,11 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.2.13'
-# Asset template engines  
-gem 'sass'  
-gem 'coffee-script'  
-gem 'uglifier'  
-  
+# Asset template engines
+gem 'sass'
+gem 'coffee-script'
+gem 'uglifier'
+
 gem 'jquery-rails'
 
 gem 'unicorn'
@@ -44,7 +44,6 @@ group :test, :development do
   gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
   gem 'guard-rspec'
   # gem "guard-livereload", "~> 0.1.11" #has conflict, removing for now
-  gem 'growl_notify'
   gem 'hirb'
 #  gem 'bullet' # for finding n+1
 end
