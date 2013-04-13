@@ -19,7 +19,8 @@ gem "socky-server", "~> 0.5.0" # this is a stand-alone server, is not part of th
 gem "socky-client-rails", "~> 0.4.5" # this is the client used to connect the app to the server
 
 # gem "postgres-pr"
-gem "pg"
+# gem "pg"
+gem 'mysql2'
 
 # gem "devise", "~>1.3.4"
 gem "devise", '2.2.3'
