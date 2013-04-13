@@ -50,6 +50,8 @@ GEM
       orm_adapter (~> 0.1)
       railties (~> 3.1)
       warden (~> 1.2.1)
+    devise-encryptable (0.1.1)
+      devise (>= 2.1.0.rc)
     diff-lcs (1.2.3)
     dynamic_form (1.1.4)
     em-websocket (0.3.8)
@@ -209,6 +211,7 @@ DEPENDENCIES
   coffee-script
   database_cleaner
   devise (= 2.2.3)
+  devise-encryptable
   dynamic_form
   gravatarify (~> 3.1.0)
   growl_notify
