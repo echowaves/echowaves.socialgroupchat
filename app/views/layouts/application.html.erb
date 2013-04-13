@@ -11,6 +11,11 @@
 	<body>
 		<div class="layout {layout: {type: 'border', hgap: 3, vgap: 3}}">
 
+			<div class="north">
+        <%= render :partial => 'shared/header' %>
+			</div>
+
+
 			<div class="center page {layout: {type: 'border', hgap: 0, vgap: 0, resize: false}}">
 
 			  <div class="center" id="convo_content">
@@ -23,9 +28,6 @@
 
 
 
-			<div class="north">
-        <%= render :partial => 'shared/header' %>
-			</div>
 			<div class="south">
         <%= render :partial => 'shared/footer' %>
 			</div>
