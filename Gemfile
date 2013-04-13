@@ -19,7 +19,8 @@ gem "socky-client-rails", "~> 0.4.5" # this is the client used to connect the ap
 gem "pg"
 
 # gem "devise", "~>1.3.4"
-gem "devise", '1.4.7'
+gem "devise", '2.2.3'
+gem "devise-encryptable"
 gem "kaminari" #replacement for willpaginate
 
 gem 'gravatarify', "~> 3.1.0"

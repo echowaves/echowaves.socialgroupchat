@@ -45,11 +45,12 @@ GEM
     coffee-script-source (1.6.2)
     daemons (1.1.9)
     database_cleaner (0.9.1)
-    devise (1.4.7)
+    devise (2.2.3)
       bcrypt-ruby (~> 3.0)
-      orm_adapter (~> 0.0.3)
-      warden (~> 1.0.3)
-    diff-lcs (1.2.2)
+      orm_adapter (~> 0.1)
+      railties (~> 3.1)
+      warden (~> 1.2.1)
+    diff-lcs (1.2.3)
     dynamic_form (1.1.4)
     em-websocket (0.3.8)
       addressable (>= 2.1.1)
@@ -68,7 +69,7 @@ GEM
       lumberjack (>= 1.0.2)
       pry (>= 0.9.10)
       thor (>= 0.14.6)
-    guard-rspec (2.5.2)
+    guard-rspec (2.5.3)
       guard (>= 1.1)
       rspec (~> 2.11)
     hike (1.2.2)
@@ -97,7 +98,7 @@ GEM
       activesupport
     multi_json (1.7.2)
     nokogiri (1.5.9)
-    orm_adapter (0.0.7)
+    orm_adapter (0.4.0)
     pg (0.15.1)
     polyglot (0.3.3)
     pry (0.9.12)
@@ -190,7 +191,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    warden (1.0.6)
+    warden (1.2.1)
       rack (>= 1.0)
     websocket-rack (0.4.0)
       em-websocket (~> 0.3.6)
@@ -207,7 +208,7 @@ DEPENDENCIES
   capybara (= 2.1.0)
   coffee-script
   database_cleaner
-  devise (= 1.4.7)
+  devise (= 2.2.3)
   dynamic_form
   gravatarify (~> 3.1.0)
   growl_notify
