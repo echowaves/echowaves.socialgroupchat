@@ -1,19 +1,19 @@
 $ ->
 
-  $("#convo_menu_link").qtip
-    content: { text: $("#convo_menu") }
-    show: { when: 'click', delay: 0 }
-    hide:
-      when: 'unfocus'
-      fixed: true
-    position:
-      corner:
-        target: 'bottomMiddle'
-        tooltip: 'topMiddle'
-    style:
-      tip: 'topMiddle'
-      name: 'dark'
-      border: { radius: 8 }
+#  $("#convo_menu_link").qtip
+#    content: { text: $("#convo_menu") }
+#    show: { when: 'click', delay: 0 }
+#    hide:
+#      when: 'unfocus'
+#      fixed: true
+#    position:
+#      corner:
+#        target: 'bottomMiddle'
+#        tooltip: 'topMiddle'
+#    style:
+#      tip: 'topMiddle'
+#      name: 'dark'
+#      border: { radius: 8 }
 
   Math.uuid = ->
     chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('')
