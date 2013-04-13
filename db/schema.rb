@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(:version => 20110507000853) do
     t.integer  "owner_id",                                              :null => false
     t.integer  "messages_count",                     :default => 0
     t.integer  "subscriptions_count",                :default => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
   end
 
   add_index "convos", ["created_at"], :name => "index_convos_on_created_at"
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(:version => 20110507000853) do
   create_table "followerships", :force => true do |t|
     t.integer  "leader_id",   :null => false
     t.integer  "follower_id", :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   add_index "followerships", ["created_at"], :name => "index_followerships_on_created_at"
@@ -43,8 +43,8 @@ ActiveRecord::Schema.define(:version => 20110507000853) do
     t.integer  "convo_id",     :null => false
     t.integer  "user_id",      :null => false
     t.integer  "requestor_id", :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   add_index "invitations", ["convo_id"], :name => "index_invitations_on_convo_id"
@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(:version => 20110507000853) do
     t.string   "body",       :limit => 256000, :null => false
     t.integer  "owner_id",                     :null => false
     t.integer  "convo_id",                     :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   add_index "messages", ["convo_id"], :name => "index_messages_on_convo_id"
@@ -70,8 +70,8 @@ ActiveRecord::Schema.define(:version => 20110507000853) do
     t.integer  "convo_id",                            :null => false
     t.integer  "last_read_message_id", :default => 0, :null => false
     t.integer  "new_messages_count",   :default => 0, :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
   end
 
   add_index "subscriptions", ["convo_id"], :name => "index_subscriptions_on_convo_id"
@@ -95,8 +95,8 @@ ActiveRecord::Schema.define(:version => 20110507000853) do
     t.string   "last_sign_in_ip"
     t.string   "password_salt"
     t.integer  "subscriptions_count",                 :default => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                          :null => false
+    t.datetime "updated_at",                                          :null => false
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token"
@@ -109,8 +109,8 @@ ActiveRecord::Schema.define(:version => 20110507000853) do
     t.integer  "user_id",                     :null => false
     t.integer  "convo_id",                    :null => false
     t.integer  "visits_count", :default => 1, :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
   add_index "visits", ["convo_id"], :name => "index_visits_on_convo_id"
